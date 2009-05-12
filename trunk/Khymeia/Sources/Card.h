@@ -26,6 +26,9 @@ typedef enum {
 	CardType        type;
 	CardElement     element;
 	NSInteger       level;
+	
+	//on init health=level
+	NSInteger		health;
 	NSString        *name;
 	NSString        *image;
 }
@@ -33,7 +36,18 @@ typedef enum {
 @property(nonatomic, assign) CardType		type;
 @property(nonatomic, assign) CardElement	element;
 @property(nonatomic, assign) NSInteger		level;
+@property(nonatomic, assign) NSInteger		health;
 @property(nonatomic, retain) NSString		*name;
 @property(nonatomic, retain) NSString		*image;
+
+/**
+ Create an instance of Card
+ /param aName:
+ */
+-(id)initWithName:(NSString*)aName image:(NSString*)aImage;
+
+-(id)initWithName:(NSString*)aName image:(NSString*)aImage element:(CardElement)elementType type:(CardType)aType;
+
+-(id)initWithName:(NSString*)aName image:(NSString*)aImage element:(CardElement)elementType type:(CardType)aType level:(NSInteger)aLevel;
 
 @end

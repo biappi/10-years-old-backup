@@ -17,6 +17,8 @@
 		CF23E7600FBA24BB0057A1F9 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75A0FBA24BB0057A1F9 /* Game.m */; };
 		CF23E7610FBA24BB0057A1F9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75C0FBA24BB0057A1F9 /* Player.m */; };
 		CF23E7620FBA24BB0057A1F9 /* Table.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75E0FBA24BB0057A1F9 /* Table.m */; };
+		CF23E7950FBA2CFC0057A1F9 /* cardTest1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF23E7940FBA2CFC0057A1F9 /* cardTest1.png */; };
+		CF23E7970FBA2D070057A1F9 /* cardTest2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF23E7960FBA2D070057A1F9 /* cardTest2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		CF23E75C0FBA24BB0057A1F9 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
 		CF23E75D0FBA24BB0057A1F9 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
 		CF23E75E0FBA24BB0057A1F9 /* Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table.m; sourceTree = "<group>"; };
+		CF23E7940FBA2CFC0057A1F9 /* cardTest1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardTest1.png; path = images/cards/cardTest1.png; sourceTree = "<group>"; };
+		CF23E7960FBA2D070057A1F9 /* cardTest2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardTest2.png; path = images/cards/cardTest2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CF23E7920FBA2CD10057A1F9 /* images */,
 				8D1107310486CEB800E47090 /* Khymeia-Info.plist */,
 			);
 			path = Resources;
@@ -134,6 +139,23 @@
 				CF23E75A0FBA24BB0057A1F9 /* Game.m */,
 			);
 			name = Gameplay;
+			sourceTree = "<group>";
+		};
+		CF23E7920FBA2CD10057A1F9 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				CF23E7930FBA2CE30057A1F9 /* cards */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		CF23E7930FBA2CE30057A1F9 /* cards */ = {
+			isa = PBXGroup;
+			children = (
+				CF23E7960FBA2D070057A1F9 /* cardTest2.png */,
+				CF23E7940FBA2CFC0057A1F9 /* cardTest1.png */,
+			);
+			name = cards;
 			sourceTree = "<group>";
 		};
 		CF7457E90FBA159400B7C1C8 /* Boilerplate */ = {
@@ -187,6 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF23E7950FBA2CFC0057A1F9 /* cardTest1.png in Resources */,
+				CF23E7970FBA2D070057A1F9 /* cardTest2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
