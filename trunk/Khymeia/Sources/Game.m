@@ -31,5 +31,67 @@
 	//prendi le prime 5 carte
 }
 
+#pragma mark -
+#pragma mark Interface to Gameplayer methods
+
+-(BOOL)willPlayCard:(Card*)aCard onCard:(Card*)otherCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(void)didPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
+{
+	NOT_IMPLEMENTED();
+}
+
+-(BOOL)willPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(void)didPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+{
+	NOT_IMPLEMENTED();
+}
+
+-(BOOL)willPlayCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(void)didPlayCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+}
+
+-(BOOL)willSelectCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(void)didSelectCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+}
+
+-(BOOL)shouldPassNextPhase;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(void)didDiscardCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+}
+
+-(void)didTimeout;
+{
+	NOT_IMPLEMENTED();
+}
 
 @end
