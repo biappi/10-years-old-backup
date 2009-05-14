@@ -276,7 +276,8 @@
 
 -(NSMutableArray*)playablePointsForCard:(Card*)aCard;
 {
-	
+	NOT_IMPLEMENTED();
+	return nil;
 }
 
 -(void)didDiscardCard:(Card*)aCard;
