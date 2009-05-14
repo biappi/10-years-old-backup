@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Game.h"
 
 @interface KhymeiaAppDelegate : NSObject <UIApplicationDelegate>
 {
     UIWindow         * window;
+	Game			 * gameplay;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow * window;

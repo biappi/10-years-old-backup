@@ -10,7 +10,7 @@
 #import "InterfaceController.h"
 #import "Player.h"
 #import "Card.h"
-#import "Game.h"
+
 
 @implementation KhymeiaAppDelegate
 
@@ -102,19 +102,22 @@
 	/*
 	 * initialize game
 	 */
-	Game *theGame=[[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES] autorelease];
+	gameplay =[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES];
 	
 	/*
 	 *	release all
 	 */
 	[player release];
 	[opponent release];
-	[window addSubview:theGame.interface.view];
+	[window addSubview:gameplay.interface.view];
+	
+	[gameplay setupState];
 	
 }
 
 - (void)dealloc;
 {
+	[gameplay release];
     [window release];
     [super dealloc];
 }
