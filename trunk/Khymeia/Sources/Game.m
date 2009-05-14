@@ -26,7 +26,7 @@
 
 -(void)opponentStateBegin;
 
--(void)callNextPhase;
+-(void)callNextState;
 
 @end
 
@@ -93,18 +93,25 @@
 #pragma mark GameState methods
 
 -(void)setupState;
-{	
+{		
 	state = GameStateSetup;
+	//[interface setState:state];
 	phase = GamePhaseNone;
 	player.health = 100;
 	//mix deck
-	//take first 5 cards
+	[interface drawCard:[player.hand objectAtIndex:0]];
+	[interface drawCard:[player.hand objectAtIndex:1]];
+	[interface drawCard:[player.hand objectAtIndex:2]];
+	[interface drawCard:[player.hand objectAtIndex:3]];
+	[interface drawCard:[player.hand objectAtIndex:4]];
+	
 	[self callNextState];
 }
 
 -(void)playerStateBegin;
-{
+{	
 	state = GameStatePlayer;
+	[interface setState:state];
 	//say to interface about state change
 	//say to server about state change
 	[self playerPhaseCardAttainment]; 
@@ -117,10 +124,16 @@
 -(void)playerPhaseCardAttainment;
 {
 	phase = GamePhaseCardAttainment;
-	[interface drawCard:[player.deck lastObject]];
-	[player.deck removeLastObject];
-	[self callNextPhase];
+	//[interface drawCard:[player.deck lastObject]];
+	//[player.deck removeLastObject];
+	[self callNextState];
 }
+
+-(void)playerPhaseMainphase;
+{
+	phase = GamePhaseMainphase;
+}
+
 
 #pragma mark -
 #pragma mark GameState opponent methods
@@ -258,7 +271,7 @@
 
 -(BOOL)shouldPassNextPhase;
 {
-	[self callNextPhase];
+	[self callNextState];
 	return YES;
 }
 
