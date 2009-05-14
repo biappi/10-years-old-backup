@@ -256,12 +256,7 @@
 
 -(BOOL)shouldPassNextPhase;
 {
-	if (state == GameStatePlayer && phase == GamePhaseDiscard)
-	{
-		if (YES)
-		{
-		}
-	}
+	[self callNextPhase];
 	return YES;
 }
 

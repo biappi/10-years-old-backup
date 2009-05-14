@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "InterfaceToGameplayProtocol.h"
 #import "Player.h"
 #import "Card.h"
-
-@class Game;
 
 typedef enum 
 {
@@ -39,10 +37,10 @@ typedef enum
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;
 	
-	Game			 * gameplay;
+	id				 * gameplay;
 }
 
-@property (nonatomic, retain) Game* gameplay;
+@property (nonatomic, retain) id *gameplay;
 
 #pragma mark Gameplay To Interface
 

@@ -11,6 +11,8 @@
 #import "Player.h"
 #import "Table.h"
 #import "InterfaceController.h"
+#import "InterfaceToGameplayProtocol.h"
+#import "ComunicationToGameplayProtocol.h"
 
 /**
  this enum represent all the state in which the game can be
@@ -37,7 +39,7 @@ typedef enum
 	GamePhaseNone
 }GamePhase;
 
-@interface Game : NSObject 
+@interface Game : NSObject <InterfaceToGameplayProtocol, ComunicationToGameplayProtocol>
 {
 	Table					*table;
 	Player					*player;
@@ -45,8 +47,9 @@ typedef enum
 	bool					isFirst;
 	InterfaceController*	interface;
 	
-	NSInteger	state;
-	NSInteger	phase;
+	
+	NSInteger				state;
+	NSInteger				phase;
 }
 
 @property (nonatomic, readonly) InterfaceController *interface;
@@ -62,89 +65,5 @@ typedef enum
  */
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 
-/**
- Called by the interface when user would play the card at position. Interface should show aCard at fullscreen
- 
- \param aCard: card that user would play
- \param otherCard: the target card
- \return YES if the could be played, NO otherwise
- */
--(BOOL)willPlayCard:(Card*)aCard onCard:(Card*)otherCard;
 
-/**
- Called by the interface when the user did play card at position.
- \param aCard: card that user would play
- \param otherCard: the target card
- \param result: YES if gesture was complete, NO otherwise.
- */
--(void)didPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
-
-/**
- Called by the interface when user would play the card at position
- \param aCard: card that user would play
- \param aPlayer: the player on which aCard will played
- \return YES if the could be played, NO otherwise
- */
--(BOOL)willPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
-
-/**
- Called by the interface when the user did play card at position
- \param aCard: card that user have played
- \param aPlayer: the player on which aCard is played
- */
--(void)didPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
-
-/**
- Called by the interface when user would play the card
- \param aCard: card that user would play
- \return YES if the could be played, NO otherwise
- */
--(BOOL)willPlayCard:(Card*)aCard;
-
-/**
- Called by the interface when the user did play card
- \param aCard: card that user have played
- */
--(void)didPlayCard:(Card*)aCard;
-
-/**
- Called by the interface when user would select the card
- \param aCard: card that user would select
- \return YES if the could be selected, NO otherwise
- */
--(BOOL)willSelectCard:(Card*)aCard;
-
-/**
- Called by the interface when the user did select card
- \param aCard: card that user have selected
- */
--(void)didSelectCard:(Card*)aCard;
-
-/**
- Ask to next
- \param idTurn: turn identifier 
- \return YES if the user can pass to the next phase, NO otherwise
- */
--(BOOL)shouldPassNextPhase;
-
-/**
- A card did discard
- */
--(void)didDiscardCard:(Card*)aCard;
-
-/**
- timeout event
- */
--(void)didTimeout;
-
-/**
- Called by the comunication interface when user would play the card
- \param aCard: card that opponent has played
- */
--(BOOL)willPlayOpponentCard:(Card*)aCard;
-
-
-/**
- Card on player with gesture is missing and is to add
- */
 @end

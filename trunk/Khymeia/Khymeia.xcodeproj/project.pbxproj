@@ -60,6 +60,8 @@
 		CF23E75E0FBA24BB0057A1F9 /* Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table.m; sourceTree = "<group>"; };
 		CF23E7940FBA2CFC0057A1F9 /* cardTest1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardTest1.png; path = images/cards/cardTest1.png; sourceTree = "<group>"; };
 		CF23E7960FBA2D070057A1F9 /* cardTest2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardTest2.png; path = images/cards/cardTest2.png; sourceTree = "<group>"; };
+		CF47D7AF0FBCB56C00DC8026 /* InterfaceToGameplayProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceToGameplayProtocol.h; sourceTree = "<group>"; };
+		CF47D7FC0FBCB84F00DC8026 /* ComunicationToGameplayProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComunicationToGameplayProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				3DF584270FBC8771003ABD93 /* ComunicatioLayer.h */,
 				3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */,
+				CF47D7FC0FBCB84F00DC8026 /* ComunicationToGameplayProtocol.h */,
 			);
 			name = Comunication;
 			sourceTree = "<group>";
@@ -147,6 +150,7 @@
 				3F7F97760FBB863400F011FD /* Layers */,
 				3F7F96B60FBA271C00F011FD /* InterfaceController.h */,
 				3F7F96B50FBA271C00F011FD /* InterfaceController.m */,
+				CF47D7AF0FBCB56C00DC8026 /* InterfaceToGameplayProtocol.h */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
