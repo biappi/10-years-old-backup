@@ -11,17 +11,32 @@
 
 @implementation ComunicatioLayer
 
--(BOOL)willSendDidPlayCard:(Card*)card onCard:(Card*)oncard
+-(BOOL)sendDidPlayCard:(Card*)card onCard:(Card*)oncard
 {
 	return NO;
 }
 
--(BOOL)willSendDidPlayCard:(Card*)card onPlayer:(Player *)player
+-(BOOL)sendDidPlayCard:(Card*)card onPlayer:(Player *)player
 {
 	return NO;
 }
 
--(BOOL)willSendDidPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
+-(BOOL)sendDidPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
+{
+	return NO;
+}
+
+-(BOOL)sendWillPlayCard:(Card*)card onCard:(Card*)oncard;
+{
+	return NO;
+}
+
+-(BOOL)sendWillPlayCard:(Card*)card onPlayer:(Player *)player;
+{
+	return NO;
+}
+
+-(BOOL)sendWillPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
 {
 	return NO;
 }
