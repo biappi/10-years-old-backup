@@ -58,6 +58,7 @@ CGRect cardSlotsRects[] =
 	playerPlayArea   = [[NSMutableArray alloc] initWithCapacity:4];
 	opponentPlayArea = [[NSMutableArray alloc] initWithCapacity:4];
 	
+	
 	return self;
 }
 

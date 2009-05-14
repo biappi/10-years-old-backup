@@ -35,8 +35,8 @@
 
 -(void)setup;
 {	
-	state = GamestateSetup;
-	phase = GamephaseNone;
+	state = GameStateSetup;
+	phase = GamePhaseNone;
 	player.health = 100;
 	//mix deck
 	//take first 5 cards

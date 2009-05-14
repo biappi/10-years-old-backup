@@ -14,27 +14,27 @@
 /**
  this enum represent all the state in which the game can be
  */
-enum
+typedef enum
 {
-	GamestateSetup,
-	GamestateFirstPlayer,
-	GamestateSecondPlayer,
-	GamestateEnd
-}Gamestate;
+	GameStateSetup,
+	GameStatePlayer,
+	GameStateOpponent,
+	GameStateEnd
+}GameState;
 
 
 /**
   this enum represent all the phase in which the game can be
  */
-enum
+typedef enum
 {
-	GamephaseCardAttainment,
-	GamephaseMainphase,
-	GamephaseAttack,
-	GamephaseDamageResolution,
-	GamephaseDiscard,
-	GamephaseNone
-}Gamephase;
+	GamePhaseCardAttainment,
+	GamePhaseMainphase,
+	GamePhaseAttack,
+	GamePhaseDamageResolution,
+	GamePhaseDiscard,
+	GamePhaseNone
+}GamePhase;
 
 @interface Game : NSObject 
 {
