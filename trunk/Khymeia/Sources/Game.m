@@ -108,6 +108,7 @@
 	//say to interface about state change
 	//say to server about state change
 	[self playerPhaseCardAttainment]; 
+
 }
 	
 #pragma mark -
