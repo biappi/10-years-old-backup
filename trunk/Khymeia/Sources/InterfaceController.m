@@ -228,6 +228,8 @@ CGRect cardSlotsRects[] =
 		
 	BOOL found = NO;
 	
+	CGPoint p = [[touches anyObject] locationInView:self.view];
+	
 	for (CALayer * l in self.mainLayer.sublayers)
 	{
 		if ([l isKindOfClass:[SlotLayer class]] && [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
