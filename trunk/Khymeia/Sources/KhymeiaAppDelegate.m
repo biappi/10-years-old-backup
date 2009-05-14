@@ -7,6 +7,7 @@
 //
 
 #import "KhymeiaAppDelegate.h"
+#import "InterfaceController.h"
 
 @implementation KhymeiaAppDelegate
 
@@ -14,12 +15,21 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application;
 {
-    // Override point for customization after application launch
+	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [window makeKeyAndVisible];
+	
+	vc = [[InterfaceController alloc] init];
+	[window addSubview:vc.view];
+	
+	InterfaceController * ic = (InterfaceController *) vc;
+	[ic drawCard:nil];
+	[ic drawCard:nil];
+	[ic drawCard:nil];
 }
 
 - (void)dealloc;
 {
+	[vc release];
     [window release];
     [super dealloc];
 }

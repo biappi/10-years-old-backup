@@ -6,9 +6,10 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-@class Player, Card;
+#import "Player.h"
+#import "Card.h"
 
 typedef enum {
 	InterfaceModesOpponentCardHidden,
@@ -23,10 +24,20 @@ typedef enum {
 	InterfaceModesPlayerCemetery,
 } InterfaceModes;
 
-@interface InterfaceController : NSObject
+@interface InterfaceController : UIViewController
 {
+	IBOutlet UILabel * playerHealthPointsLabel;
+	IBOutlet UILabel * opponentHealthPointsLabel;
+
+	CALayer          * currentlyMovingCard;
+	CGPoint            currentlyMovingCardOriginalPosition;
 	
+	NSMutableArray   * playerHand;
+	NSMutableArray   * playerPlayArea;
+	NSMutableArray   * opponentPlayArea;	
 }
+
+#pragma mark Gameplay To Interface
 
 - (void) beginTurn;
 - (void) endTurn;

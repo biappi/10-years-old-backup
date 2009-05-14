@@ -10,7 +10,8 @@
 
 @interface KhymeiaAppDelegate : NSObject <UIApplicationDelegate>
 {
-    UIWindow * window;
+    UIWindow         * window;
+	UIViewController * vc;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow * window;

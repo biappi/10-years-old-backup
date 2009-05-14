@@ -5,6 +5,8 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
+	#import "UIAlertViewAdditions.h"
+	#import "CGPointAdditions.h"
 #endif
 
 #define NOT_IMPLEMENTED() NSLog(@"WARNING: %s NOT IMPLEMENTED", __PRETTY_FUNCTION__)
