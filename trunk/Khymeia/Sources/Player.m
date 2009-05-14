@@ -17,4 +17,13 @@
 @synthesize hand;
 @synthesize cemetery;
 
+-(id) init
+{
+	if (self = [super init])
+	{
+		
+	}
+	return self;
+}
+
 @end
