@@ -215,6 +215,11 @@
 	}
 }
 
+/************************************************************
+ *    Card on player with gesture is missing and is to add  *
+ ************************************************************/
+
+
 -(BOOL)willPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
 {
 	NOT_IMPLEMENTED();

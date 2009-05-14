@@ -17,6 +17,15 @@
 @synthesize image;
 @synthesize health;
 
+-(id)initWithCard:(Card*)card;
+{
+	if(self=[super init])
+	{
+		
+	}
+	return card;
+}
+
 -(id)initWithName:(NSString*)aName image:(NSString*)aImage;
 {
 	if (self = [super init])

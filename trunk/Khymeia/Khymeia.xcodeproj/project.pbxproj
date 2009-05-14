@@ -12,6 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		3DF584290FBC8771003ABD93 /* ComunicatioLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */; };
 		3F7F96B70FBA271C00F011FD /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7F96B50FBA271C00F011FD /* InterfaceController.m */; };
 		3F7F972F0FBB6CD500F011FD /* TableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7F972E0FBB6CD500F011FD /* TableView.xib */; };
 		3F7F97540FBB7E8800F011FD /* UIAlertViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7F97530FBB7E8800F011FD /* UIAlertViewAdditions.m */; };
@@ -35,6 +36,8 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Khymeia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khymeia_Prefix.pch; sourceTree = "<group>"; };
+		3DF584270FBC8771003ABD93 /* ComunicatioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComunicatioLayer.h; sourceTree = "<group>"; };
+		3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComunicatioLayer.m; sourceTree = "<group>"; };
 		3F7F96B50FBA271C00F011FD /* InterfaceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
 		3F7F96B60FBA271C00F011FD /* InterfaceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
 		3F7F972E0FBB6CD500F011FD /* TableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableView.xib; sourceTree = "<group>"; };
@@ -77,6 +80,7 @@
 		080E96DDFE201D6D7F000001 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3DF584260FBC8732003ABD93 /* Comunication */,
 				CF7457E90FBA159400B7C1C8 /* Boilerplate */,
 				3F7F97550FBB7EEA00F011FD /* Additions */,
 				CF23E7640FBA24C70057A1F9 /* Gameplay */,
@@ -126,6 +130,15 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3DF584260FBC8732003ABD93 /* Comunication */ = {
+			isa = PBXGroup;
+			children = (
+				3DF584270FBC8771003ABD93 /* ComunicatioLayer.h */,
+				3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */,
+			);
+			name = Comunication;
 			sourceTree = "<group>";
 		};
 		3F7F96BA0FBA278300F011FD /* Interface */ = {
@@ -272,6 +285,7 @@
 				3F7F97540FBB7E8800F011FD /* UIAlertViewAdditions.m in Sources */,
 				3F7F97590FBB812800F011FD /* CardLayer.m in Sources */,
 				3F7F977C0FBB867100F011FD /* SlotLayer.m in Sources */,
+				3DF584290FBC8771003ABD93 /* ComunicatioLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

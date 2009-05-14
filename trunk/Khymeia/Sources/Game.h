@@ -143,4 +143,8 @@ typedef enum
  */
 -(BOOL)willPlayOpponentCard:(Card*)aCard;
 
+
+/**
+ Card on player with gesture is missing and is to add
+ */
 @end

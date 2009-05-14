@@ -99,23 +99,16 @@
 	opponent.hand=handOp;
 	[handOp release];
 	
-	
-	/*[ic drawCard:nil];
-	[ic drawCard:nil];
-	[ic drawCard:nil];*/
+	/*
+	 * initialize game
+	 */
+	Game *theGame=[[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES] autorelease];
 	
 	/*
 	 *	release all
 	 */
 	[player release];
 	[opponent release];
-	
-	/*
-	 * initialize game
-	 */
-	Game *theGame=[[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES] autorelease];
-	
-	
 	[window addSubview:theGame.interface.view];
 	
 }
