@@ -45,7 +45,7 @@ typedef enum
 
 #pragma mark Gameplay To Interface
 
-- (void) beginTurn:(GameState) turn;
+- (void) setState:(GameState) turn;
 
 - (void) gameDidEnd:(BOOL)youWin;
 

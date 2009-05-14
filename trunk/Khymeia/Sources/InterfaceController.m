@@ -97,7 +97,7 @@ CGRect cardSlotsRects[] =
 
 #pragma mark Gameplay To Interface
 
-- (void) beginTurn:(GameState) turn;
+- (void) setState:(GameState) turn;
 {
 		if(turn==GameStatePlayer)
 		{
