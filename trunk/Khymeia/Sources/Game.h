@@ -10,6 +10,7 @@
 #import "Card.h"
 #import "Player.h"
 #import "Table.h"
+#import "InterfaceController.h"
 
 /**
  this enum represent all the state in which the game can be
@@ -38,14 +39,19 @@ typedef enum
 
 @interface Game : NSObject 
 {
-	Table		*table;
-	Player		*player;
-	Player		*opponent;
-	bool		isFirst;
+	Table					*table;
+	Player					*player;
+	Player					*opponent;
+	bool					isFirst;
+	InterfaceController*	interface;
 	
 	NSInteger	state;
 	NSInteger	phase;
 }
+
+@property (nonatomic, readonly) InterfaceController *interface;
+
+-(void)setupState;
 
 /**
  Called by the interface when user would play the card at position. Interface should show aCard at fullscreen
@@ -135,6 +141,6 @@ typedef enum
  Called by the comunication interface when user would play the card
  \param aCard: card that opponent has played
  */
--(void)willPlayOpponentCard:(Card*)aCard;
+-(BOOL)willPlayOpponentCard:(Card*)aCard;
 
 @end

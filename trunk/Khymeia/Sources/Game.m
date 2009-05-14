@@ -8,8 +8,33 @@
 
 #import "Game.h"
 
+@interface Game (PrivateMethods)
+
+-(void)setupState;
+
+-(void)playerStateBegin;
+
+-(void)playerPhaseCardAttainment;
+
+-(void)playerPhaseMainphase;
+
+-(void)playerPhaseAttack;
+
+-(void)playerPhaseDamageResolution;
+
+-(void)playerPhaseDiscard;
+
+-(void)opponentStateBegin;
+
+-(void)callNextPhase;
+
+@end
+
+
 
 @implementation Game
+
+@synthesize interface;
 
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 {
@@ -19,31 +44,92 @@
 		opponent = [aOpponent retain];
 		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
+		interface = [[InterfaceController alloc] init];
 	}
 	return self;
 }
 
 -(void)dealloc;
 {
+	[interface release];
 	[player release];
 	[opponent release];
 	[super dealloc];
 }
 
-#pragma mark -
-#pragma mark Gamestate methods
+-(void)callNextState;
+{
+	if (state == GameStatePlayer ||state == GameStateOpponent)
+	{
+		if (phase == GamePhaseCardAttainment)
+			[self playerPhaseMainphase];
+		else if (phase == GamePhaseMainphase)
+			[self playerPhaseAttack];
+		else if (phase == GamePhaseAttack)
+			[self playerPhaseDamageResolution];
+		else if (phase == GamePhaseDamageResolution)
+		{
+			if (state == GameStatePlayer)
+				[self opponentStateBegin];
+			else
+				[self playerStateBegin];
+		}
+	}
+	else if (state == GameStateSetup)
+	{
+		if (isFirst)
+			[self playerStateBegin];
+		else
+			[self opponentStateBegin];
+	}
+	else if (state == GameStateEnd)
+	{
+		//do somethings
+	}
+}
 
--(void)setup;
+#pragma mark -
+#pragma mark GameState methods
+
+-(void)setupState;
 {	
 	state = GameStateSetup;
 	phase = GamePhaseNone;
 	player.health = 100;
 	//mix deck
 	//take first 5 cards
+	[self callNextState];
+}
+
+-(void)playerStateBegin;
+{
+	state = GameStatePlayer;
+	//say to interface about state change
+	//say to server about state change
+	[self playerPhaseCardAttainment]; 
+}
+	
+#pragma mark -
+#pragma mark GamePhase player methods
+
+-(void)playerPhaseCardAttainment;
+{
+	phase = GamePhaseCardAttainment;
+	[interface drawCard:[player.deck lastObject]];
+	[player.deck removeLastObject];
+	[self callNextPhase];
 }
 
 #pragma mark -
-#pragma mark Gameplay internal methods
+#pragma mark GameState opponent methods
+
+-(void)opponentStateBegin;
+{
+	
+}
+
+#pragma mark -
+#pragma mark Gameplay interface events methods
 
 -(BOOL)willPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 {
@@ -99,17 +185,25 @@
 
 -(BOOL)willPlayCard:(Card*)aCard onCard:(Card*)otherCard;
 {
-	if (state == GamestateFirstPlayer)
+	if (state == GameStatePlayer)
 	{
-		if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+		if (phase == GamePhaseAttack || phase==GamePhaseMainphase)
 		{
-			BOOL result = [self willPlayInstance:aCard onInstance:otherCard];
-			//pass state change to comunication layer
-			return result;
+			if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+			{
+				BOOL result = [self willPlayInstance:aCard onInstance:otherCard];
+				//pass state change to comunication layer
+				return result;
+			}
 		}
 		else
 			return NO;
 	}
+	else if (state == GameStateOpponent)
+	{
+		//something
+	}
+	return NO;
 }
 
 -(void)didPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
@@ -143,12 +237,6 @@
 	NOT_IMPLEMENTED();
 }
 
--(BOOL)willPlayOpponentCard:(Card*)aCard;
-{
-	NOT_IMPLEMENTED();
-	return NO;
-}
-
 
 -(BOOL)willSelectCard:(Card*)aCard;
 {
@@ -163,8 +251,13 @@
 
 -(BOOL)shouldPassNextPhase;
 {
-	NOT_IMPLEMENTED();
-	return NO;
+	if (state == GameStatePlayer && phase == GamePhaseDiscard)
+	{
+		if (YES)
+		{
+		}
+	}
+	return YES;
 }
 
 -(void)didDiscardCard:(Card*)aCard;
@@ -175,6 +268,15 @@
 -(void)didTimeout;
 {
 	NOT_IMPLEMENTED();
+}
+
+#pragma mark -
+#pragma mark Gameplay to Opponent methods
+
+-(BOOL)willPlayOpponentCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
 }
 
 @end

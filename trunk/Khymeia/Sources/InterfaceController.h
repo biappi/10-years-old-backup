@@ -11,6 +11,8 @@
 #import "Player.h"
 #import "Card.h"
 
+@class Game;
+
 typedef enum 
 {
 	InterfaceModesOpponentCardHidden,
@@ -35,8 +37,12 @@ typedef enum
 	UIButton		 * turnEnded;
 	NSMutableArray   * playerHand;
 	NSMutableArray   * playerPlayArea;
-	NSMutableArray   * opponentPlayArea;	
+	NSMutableArray   * opponentPlayArea;
+	
+	Game			 * gameplay;
 }
+
+@property (nonatomic, retain) Game* gameplay;
 
 #pragma mark Gameplay To Interface
 

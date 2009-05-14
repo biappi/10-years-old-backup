@@ -21,11 +21,6 @@
 	window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [window makeKeyAndVisible];
 	
-	vc = [[InterfaceController alloc] init];
-	[window addSubview:vc.view];
-	
-	InterfaceController * ic = (InterfaceController *) vc;
-	
 	/*
 	 *Card creation
 	 */
@@ -72,7 +67,7 @@
 	[waterElemental2 release];
 	[earthElemental2 release];
 	[voidElemental2 release];
-	NSMutableArray *andOp=[[NSMutableArray alloc] initWithObjects:fireElementalOp2,windElementalOp2,waterElementalOp2,earthElementalOp2,voidElementalOp2,nil];
+	NSMutableArray *handOp=[[NSMutableArray alloc] initWithObjects:fireElementalOp2,windElementalOp2,waterElementalOp2,earthElementalOp2,voidElementalOp2,nil];
 	[fireElementalOp2 release];
 	[windElementalOp2 release];
 	[waterElementalOp2 release];
@@ -118,15 +113,15 @@
 	/*
 	 * initialize game
 	 */
-	Game *theGame=[[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:Yes] autorelease];
+	Game *theGame=[[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES] autorelease];
 	
 	
+	[window addSubview:theGame.interface.view];
 	
 }
 
 - (void)dealloc;
 {
-	[vc release];
     [window release];
     [super dealloc];
 }

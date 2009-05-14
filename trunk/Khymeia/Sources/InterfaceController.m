@@ -44,6 +44,8 @@ CGRect cardSlotsRects[] =
 
 #pragma mark House Keeping
 
+@synthesize gameplay;
+
 - (id)init;
 {
 	return [self initWithNibName:nil bundle:nil];
