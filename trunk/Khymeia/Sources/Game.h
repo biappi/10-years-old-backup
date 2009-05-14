@@ -131,5 +131,10 @@ typedef enum
  */
 -(void)didTimeout;
 
+/**
+ Called by the comunication interface when user would play the card
+ \param aCard: card that opponent has played
+ */
+-(void)willPlayOpponentCard:(Card*)aCard;
 
 @end

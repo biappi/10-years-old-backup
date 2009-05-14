@@ -143,6 +143,13 @@
 	NOT_IMPLEMENTED();
 }
 
+-(BOOL)willPlayOpponentCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+
 -(BOOL)willSelectCard:(Card*)aCard;
 {
 	NOT_IMPLEMENTED();
