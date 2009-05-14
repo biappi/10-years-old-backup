@@ -287,6 +287,19 @@
 #pragma mark -
 #pragma mark Gameplay to Opponent methods
 
+
+-(BOOL)willPlayOpponentCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(BOOL)didPlayOpponentCard:(Card*)aCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
 -(BOOL)willPlayOpponentCard:(Card*)aCard onCard:(Card*)otherCard;
 {
 	NOT_IMPLEMENTED();

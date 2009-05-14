@@ -28,6 +28,25 @@
 
 @property (nonatomic, retain) ComunicatioLayer *comLayer;
 @property (nonatomic, retain) id gameplay;
+
+/**
+ send a message to opponent that a card is played 
+ \param aCard: the played card
+ \return YES if message is sent. NO otherwise
+ */
+
+-(BOOL)sendWillPlayCard:(Card*)aCard;
+
+/**
+ send a message to opponent that a card will played on a card
+ \param aCard: the played card
+ \return YES if message is sent. NO otherwise
+ */
+
+-(BOOL)sendDidPlayCard:(Card*)aCard;
+
+
+
 /**
  send a message to opponent that a card is played on a card
  \param card: the played card
@@ -72,6 +91,23 @@
 /*NOT YET IMPLEMENTED
 -(BOOL)sendWillPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
 */
+
+
+/**
+ receive a message to opponent that a card is played on a card
+ \param aCard: the played card
+ \param onCard: the card on which card is played
+ */
+-(void)receiveWillPlayCard:(Card*)aCard;
+
+/**
+ receive a message to opponent that a card will played on a card
+ \param aCard: the played card
+ \param onCard: the card on which card will be played
+ */
+-(void)receiveDidPlayCard:(Card*)aCard;
+
+
 
 /**
  receive a message to opponent that a card is played on a card

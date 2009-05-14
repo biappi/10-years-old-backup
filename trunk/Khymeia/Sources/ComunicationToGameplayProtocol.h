@@ -15,6 +15,22 @@
 /**
  Called by the comunication interface when user would play the card
  \param aCard: card that opponent has played
+ \return YES if the could be played, NO otherwise
+ */
+-(BOOL)willPlayOpponentCard:(Card*)aCard;
+
+/**
+ Called by the comunication interface when user has played the card
+ \param aCard: card that opponent has played
+ \return YES if the could be played, NO otherwise
+ */
+-(BOOL)didPlayOpponentCard:(Card*)aCard;
+
+/**
+ Called by the comunication interface when user would play the card
+ \param aCard: card that opponent has played
+ \param otherCard: card on which is played aCard
+ \return YES if the could be played, NO otherwise
  */
 -(BOOL)willPlayOpponentCard:(Card*)aCard onCard:(Card*)otherCard;
 
@@ -22,6 +38,7 @@
  Called by the comunication interface when user has played the card
  \param aCard: card that opponent has played
  \param otherCard: card on which is played aCard
+ \return YES if the could be played, NO otherwise
  */
 -(BOOL)didPlayOpponentCard:(Card*)aCard onCard:(Card*)otherCard;
 

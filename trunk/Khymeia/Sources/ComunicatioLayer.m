@@ -16,7 +16,20 @@
 @synthesize gameplay;
 
 #pragma mark -
-#pragma mark send methods
+#pragma mark send methods 
+
+-(BOOL)sendWillPlayCard:(Card*)aCard;
+{
+	[comLayer receiveWillPlayCard:aCard];
+	return YES;
+}
+
+-(BOOL)sendDidPlayCard:(Card*)aCard;
+{
+	[comLayer receiveDidPlayCard:aCard];
+	return YES;
+}
+
 
 -(BOOL)sendDidPlayCard:(Card*)card onCard:(Card*)onCard
 {
@@ -56,6 +69,17 @@
 
 #pragma mark -
 #pragma mark receive methods
+
+-(void)receiveWillPlayCard:(Card*)aCard;
+{
+	[gameplay willPlayOpponentCard:aCard];
+}
+
+-(void)receiveDidPlayCard:(Card*)aCard;
+{
+	[gameplay didPlayOpponentCard:aCard];
+}
+
 
 -(void)receiveDidPlayCard:(Card*)card onCard:(Card*)onCard
 {

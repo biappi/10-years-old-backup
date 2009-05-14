@@ -113,6 +113,22 @@
  */
 -(void)didTimeout;
 
+
+/**
+ Called by the comunication interface when user would play the card
+ \param aCard: card that opponent has played
+ \return YES if the could be played, NO otherwise
+ */
+-(BOOL)willPlayOpponentCard:(Card*)aCard;
+
+/**
+ Called by the comunication interface when user has played the card
+ \param aCard: card that opponent has played
+ \return YES if the could be played, NO otherwise
+ */
+-(BOOL)didPlayOpponentCard:(Card*)aCard;
+
+
 /**
  Called by the comunication interface when user would play the card
  \param aCard: card that opponent will play
@@ -153,4 +169,6 @@
 /**
  Card on player with gesture is missing and is to add
  */
+
+
 @end
