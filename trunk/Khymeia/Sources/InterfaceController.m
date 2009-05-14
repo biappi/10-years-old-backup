@@ -59,11 +59,16 @@ CGRect cardSlotsRects[] =
 	playerHand       = [[NSMutableArray alloc] initWithCapacity:5];
 	playerPlayArea   = [[NSMutableArray alloc] initWithCapacity:4];
 	opponentPlayArea = [[NSMutableArray alloc] initWithCapacity:4];
-	
+	turnEnded= [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[turnEnded setTitle:@"Done" forState:[turnEnded state]];
+	[turnEnded addTarget:self action:@selector(endTurn) forControlEvents:UIControlEventTouchDown];
 	
 	return self;
 }
+-(void) endTurn
+{
 
+}
 - (void)dealloc;
 {
 	[playerHand release];
@@ -92,16 +97,15 @@ CGRect cardSlotsRects[] =
 
 #pragma mark Gameplay To Interface
 
-- (void) beginTurn;
+- (void) beginTurn:(GameState) turn;
 {
-	[UIAlertView presentInfoAlertViewWithTitle:@"Begin Turn" description:@"Your turn has begun."];
-	NOT_IMPLEMENTED();
-}
-
-- (void) endTurn;
-{
-	[UIAlertView presentInfoAlertViewWithTitle:@"Turn Ended" description:@"Your turn has ended"];
-	NOT_IMPLEMENTED();
+		if(turn==GameStatePlayer)
+		{
+			[UIAlertView presentInfoAlertViewWithTitle:@"GameState: PLAY"
+										   description:@"ok now you can start playing"];
+			[self.view addSubview:turnEnded];
+			[turnEnded setCenter:CGPointMake(20,20)];
+		}
 }
 
 - (void) gameDidEnd:(BOOL)youWin;

@@ -10,6 +10,7 @@
 #import "InterfaceToGameplayProtocol.h"
 #import "Player.h"
 #import "Card.h"
+#import "GameState.h"
 
 typedef enum 
 {
@@ -44,8 +45,7 @@ typedef enum
 
 #pragma mark Gameplay To Interface
 
-- (void) beginTurn;
-- (void) endTurn;
+- (void) beginTurn:(GameState) turn;
 
 - (void) gameDidEnd:(BOOL)youWin;
 
