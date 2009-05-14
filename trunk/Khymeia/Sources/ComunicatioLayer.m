@@ -11,6 +11,7 @@
 
 @implementation ComunicatioLayer
 
+@synthesize gameplay;
 -(BOOL)sendDidPlayCard:(Card*)card onCard:(Card*)oncard
 {
 	return NO;

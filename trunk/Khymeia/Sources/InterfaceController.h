@@ -37,10 +37,10 @@ typedef enum
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;
 	
-	id				 * gameplay;
+	id<InterfaceToGameplayProtocol>	 gameplay;
 }
 
-@property (nonatomic, retain) id *gameplay;
+@property (nonatomic, retain) id<InterfaceToGameplayProtocol> gameplay;
 
 #pragma mark Gameplay To Interface
 

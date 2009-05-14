@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 #import "Player.h"
+#import "ComunicationToGameplayProtocol.h"
 
 
 @interface ComunicatioLayer : NSObject 
 {
-
+	id<ComunicationToGameplayProtocol> gameplay;
 }
 
+@property (nonatomic, retain) id gameplay;
 -(BOOL)sendDidPlayCard:(Card*)card onCard:(Card*)oncard;
 
 -(BOOL)sendDidPlayCard:(Card*)card onPlayer:(Player *)player;
