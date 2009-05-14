@@ -45,6 +45,7 @@
 		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
 		interface = [[InterfaceController alloc] init];
+		
 	}
 	return self;
 }
