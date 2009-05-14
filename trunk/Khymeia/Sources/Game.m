@@ -190,7 +190,7 @@
 	if (otherInstace.health < 1)
 	{
 		NSLog(@"card %@ is dead", otherInstace.name);
-		//say to interface for bring the otherIstance to opponent's cimitery
+		[interface discardFromPlayArea:otherInstace];
 	}
 }
 
@@ -272,6 +272,11 @@
 {
 	[self callNextState];
 	return YES;
+}
+
+-(NSMutableArray*)playablePointsForCard:(Card*)aCard;
+{
+	
 }
 
 -(void)didDiscardCard:(Card*)aCard;
