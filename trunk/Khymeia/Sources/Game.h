@@ -11,12 +11,40 @@
 #import "Player.h"
 #import "Table.h"
 
+/**
+ this enum represent all the state in which the game can be
+ */
+enum
+{
+	GamestateSetup,
+	GamestateFirstPlayer,
+	GamestateSecondPlayer,
+	GamestateEnd
+}Gamestate;
+
+
+/**
+  this enum represent all the phase in which the game can be
+ */
+enum
+{
+	GamephaseCardAttainment,
+	GamephaseMainphase,
+	GamephaseAttack,
+	GamephaseDamageResolution,
+	GamephaseDiscard,
+	GamephaseNone
+}Gamephase;
+
 @interface Game : NSObject 
 {
-	Table	*table;
-	Player	*player;
-	Player  *opponent;
-	bool	isFirst;
+	Table		*table;
+	Player		*player;
+	Player		*opponent;
+	bool		isFirst;
+	
+	NSInteger	state;
+	NSInteger	phase;
 }
 
 /**

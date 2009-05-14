@@ -11,7 +11,8 @@
 #import "Player.h"
 #import "Card.h"
 
-typedef enum {
+typedef enum 
+{
 	InterfaceModesOpponentCardHidden,
 	InterfaceModesOpponentCardNotHidden,
 	InterfaceModesOpponentPlayArea,
@@ -31,7 +32,7 @@ typedef enum {
 
 	CALayer          * currentlyMovingCard;
 	CGPoint            currentlyMovingCardOriginalPosition;
-	
+	UIButton		 * turnEnded;
 	NSMutableArray   * playerHand;
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;	

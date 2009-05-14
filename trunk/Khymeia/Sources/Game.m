@@ -17,22 +17,33 @@
 	{
 		player = [aPlayer retain];
 		opponent = [aOpponent retain];
+		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
-		
 	}
 	return self;
 }
 
+-(void)dealloc;
+{
+	[player release];
+	[opponent release];
+	[super dealloc];
+}
+
+#pragma mark -
+#pragma mark Gamestate methods
 
 -(void)setup;
-{
+{	
+	state = GamestateSetup;
+	phase = GamephaseNone;
 	player.health = 100;
 	//mix deck
 	//take first 5 cards
 }
 
 #pragma mark -
-#pragma mark gameplay internal methods
+#pragma mark Gameplay internal methods
 
 -(BOOL)willPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 {
@@ -88,14 +99,17 @@
 
 -(BOOL)willPlayCard:(Card*)aCard onCard:(Card*)otherCard;
 {
-	if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+	if (state == GamestateFirstPlayer)
 	{
-		BOOL result = [self willPlayInstance:aCard onInstance:otherCard];
-		//pass state change to comunication layer
-		return result;
+		if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+		{
+			BOOL result = [self willPlayInstance:aCard onInstance:otherCard];
+			//pass state change to comunication layer
+			return result;
+		}
+		else
+			return NO;
 	}
-	else
-		return NO;
 }
 
 -(void)didPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
@@ -155,6 +169,5 @@
 {
 	NOT_IMPLEMENTED();
 }
-
 
 @end
