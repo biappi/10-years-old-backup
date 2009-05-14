@@ -45,7 +45,6 @@
 		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
 		interface = [[InterfaceController alloc] init];
-		
 	}
 	return self;
 }
@@ -288,7 +287,33 @@
 #pragma mark -
 #pragma mark Gameplay to Opponent methods
 
--(BOOL)willPlayOpponentCard:(Card*)aCard;
+-(BOOL)willPlayOpponentCard:(Card*)aCard onCard:(Card*)otherCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(BOOL)didPlayOpponentCard:(Card*)aCard onCard:(Card*)otherCard;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+-(BOOL)willPlayOpponentCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+
+-(BOOL)didPlayOpponentCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+{
+	NOT_IMPLEMENTED();
+	return NO;
+}
+
+
+-(BOOL)didPlayOpponentCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
 {
 	NOT_IMPLEMENTED();
 	return NO;
