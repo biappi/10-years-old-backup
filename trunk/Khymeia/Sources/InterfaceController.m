@@ -103,11 +103,27 @@ CGRect cardSlotsRects[] =
 		{
 			[UIAlertView presentInfoAlertViewWithTitle:@"GameState: PLAY"
 										   description:@"ok now you can start playing"];
-			[self.view addSubview:turnEnded];
-			[turnEnded setCenter:CGPointMake(20,20)];
+			/*[self.view addSubview:turnEnded];
+			[turnEnded setCenter:CGPointMake(20,20)];*/
 		}
 }
 
+-(void) setPhase:(GamePhase) phase;
+{
+	switch (phase) {
+		case GamePhaseMainphase:
+			[self.view addSubview:turnEnded];
+			[turnEnded setCenter:CGPointMake(20,20)];
+			break;
+		case GamePhaseAttack:
+			[self.view addSubview:turnEnded];
+			[turnEnded setCenter:CGPointMake(20,20)];
+			break;			
+		default:
+			break;
+	}
+}
+	
 - (void) gameDidEnd:(BOOL)youWin;
 {
 	NOT_IMPLEMENTED();

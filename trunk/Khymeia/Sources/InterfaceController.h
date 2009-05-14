@@ -46,7 +46,7 @@ typedef enum
 #pragma mark Gameplay To Interface
 
 - (void) setState:(GameState) turn;
-
+- (void) setPhase:(GamePhase) phase;
 - (void) gameDidEnd:(BOOL)youWin;
 
 - (void) beginPhaseTimer:(NSTimeInterval)timeout;
