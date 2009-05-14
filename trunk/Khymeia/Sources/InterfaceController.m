@@ -37,7 +37,7 @@ CGRect cardSlotsRects[] =
 @property(readonly) CALayer * mainLayer;
 
 - (CGRect) frameRectForNextPlayerHandCard;
-
+- (void) showText:(NSString *) text withTitle:(NSString *) title;
 @end
 
 @implementation InterfaceController
@@ -101,10 +101,7 @@ CGRect cardSlotsRects[] =
 {
 		if(turn==GameStatePlayer)
 		{
-			[UIAlertView presentInfoAlertViewWithTitle:@"GameState: PLAY"
-										   description:@"ok now you can start playing"];
-			/*[self.view addSubview:turnEnded];
-			[turnEnded setCenter:CGPointMake(20,20)];*/
+			[self showText:@"ok now you can start playing" withTitle:@"GameState: PLAY"];
 		}
 }
 
@@ -287,6 +284,12 @@ CGRect cardSlotsRects[] =
 - (CALayer *) mainLayer;
 {
 	return self.view.layer;
+}
+
+- (void) showText:(NSString *) text withTitle:(NSString *) title
+{
+	[UIAlertView presentInfoAlertViewWithTitle:title
+								   description:text];
 }
 
 @end
