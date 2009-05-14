@@ -223,12 +223,31 @@ CGRect cardSlotsRects[] =
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-	currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
+	if (currentlyMovingCard == nil)
+		return;
+		
+	BOOL found = NO;
+	
+	for (CALayer * l in self.mainLayer.sublayers)
+	{
+		if ([l isKindOfClass:[SlotLayer class]] && [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
+		{
+			currentlyMovingCard.position = l.position;
+			found = YES;
+		}
+	}
+	
+	if (found == NO)
+		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
+	
 	currentlyMovingCard = nil;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
 {
+	if (currentlyMovingCard == nil)
+		return;
+
 	currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
 	currentlyMovingCard = nil;
 }
