@@ -7,14 +7,33 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Card.h"
+#import "TableTarget.h"
 
 @interface Table : NSObject
 {
-	NSMutableArray    *playerCards;
-	NSMutableArray    *opponentCards;
+	Card* card1;
+	Card* card2;
+	Card* card3;
+	Card* card4;
+	Card* cardOpponent1;
+	Card* cardOpponent2;
+	Card* cardOpponent3;
+	Card* cardOpponent4;
 }
 
-@property (nonatomic, retain) NSMutableArray *playerCards;
-@property (nonatomic, retain) NSMutableArray *opponentCards;
+@property (nonatomic, retain) Card* card1;
+@property (nonatomic, retain) Card* card2;
+@property (nonatomic, retain) Card* card3;
+@property (nonatomic, retain) Card* card4;
+@property (nonatomic, retain) Card* cardOpponent1;
+@property (nonatomic, retain) Card* cardOpponent2;
+@property (nonatomic, retain) Card* cardOpponent3;
+@property (nonatomic, retain) Card* cardOpponent4;
+
+-(NSArray*)opponentFreePosisitions;
+-(NSArray*)playerFreePosisitions;
+
+-(void)discardCardFromPosition:(TableTarget*)aTarget;
 
 @end
