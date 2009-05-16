@@ -49,7 +49,7 @@
 		isFirst = iAmFirst; 
 		interface = [[InterfaceController alloc] init];
 		/**********TEST STUFF******/
-		 
+		interface.gameplay=self;
 		table.cardOpponent1 = [[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6] autorelease];
 		table.cardOpponent2 = [[[Card alloc] initWithName:@"Mio" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:6] autorelease];
 		table.cardOpponent3 = [[[Card alloc] initWithName:@"Yougurt" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6] autorelease];
@@ -105,6 +105,7 @@
 
 -(void)setupState;
 {		
+	NSLog(@"setup state");
 	state = GameStateSetup;
 	[interface setState:state];
 	phase = GamePhaseNone;

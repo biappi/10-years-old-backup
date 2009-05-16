@@ -11,9 +11,10 @@
 
 @interface CardLayer : CALayer
 {
-
+	Card * card;
 }
 
 - (id) initWithCard:(Card *)card;
 
+@property (nonatomic, retain) Card * card;
 @end

@@ -37,7 +37,7 @@ typedef enum
 	NSMutableArray   * playerHand;
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;
-	
+	NSArray			 * currentTargets;
 	id<InterfaceToGameplayProtocol>	 gameplay;
 }
 
@@ -63,7 +63,7 @@ typedef enum
 - (void) playCard:(Card *)card overCard:(Card *)card;
 - (void) playCard:(Card *)card overPlayer:(Player *)player;
 
-- (void) opponentPlaysCard:(Card *)card;
+- (void) opponentPlaysCard:(Card *)card onTarget:(TableTarget *) target;
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
 - (void) setInterfaceMode:(InterfaceModes)mode;

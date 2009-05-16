@@ -161,9 +161,18 @@ CGRect cardSlotsRects[] =
 	[playerHand addObject:newCard];	
 }
 
-- (void) discardFromHand:(Card *)card;
+- (void) discardFromHand:(Card *)acard;
 {
-	NOT_IMPLEMENTED();
+	CardLayer * toRemove;
+	for(CardLayer * card in self.view.layer.sublayers)
+	{
+		if([card isKindOfClass:[CardLayer class]] && [card.card isEqual:acard])
+		{
+			toRemove=card;
+		}
+	}
+	[toRemove removeFromSuperlayer];
+	[toRemove release];
 }
 
 - (void) discardFromPlayArea:(Card *)card;
@@ -186,9 +195,17 @@ CGRect cardSlotsRects[] =
 	NOT_IMPLEMENTED();
 }
 
-- (void) opponentPlaysCard:(Card *)card;
+- (void) opponentPlaysCard:(Card *)card onTarget:(TableTarget *) target;
 {
-	NOT_IMPLEMENTED();
+	CardLayer * theCard=[[CardLayer alloc] initWithCard:card];
+	if(target.table==TableTargetTypePlayer)
+	{
+			theCard.frame=cardSlotsRects[4+target.position];
+	}
+	else if(target.table==TableTargetTypeOpponent)
+	{
+		theCard.frame=cardSlotsRects[target.position];
+	}
 }
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
@@ -218,10 +235,22 @@ CGRect cardSlotsRects[] =
 	CGPoint   p = [[touches anyObject] locationInView:self.view];
 	CALayer * l = [self.mainLayer hitTest:[self.mainLayer convertPoint:p
 										   toLayer:self.mainLayer.superlayer]];
-	if ([l isKindOfClass:[CardLayer class]])
+	if ([l isKindOfClass:[CardLayer class]] )
 	{
-		currentlyMovingCard = l;
-		currentlyMovingCardOriginalPosition = l.position;
+		
+		if(currentTargets)
+			[currentTargets release];
+		currentTargets=[[gameplay targetsForCard:[(CardLayer*) l card]] retain];
+		if([currentTargets count]>0)
+		{	
+			currentlyMovingCard = l;
+			currentlyMovingCardOriginalPosition = l.position;
+			[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]+1];
+		}
+		else
+		{
+			currentlyMovingCard=nil;
+		}
 	}
 }
 
@@ -249,19 +278,47 @@ CGRect cardSlotsRects[] =
 	BOOL found = NO;
 	
 	CGPoint p = [[touches anyObject] locationInView:self.view];
-	
+
 	for (CALayer * l in self.mainLayer.sublayers)
 	{
+	
+		
+		if([l isKindOfClass:[CardLayer class]] && [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
+		{
+			/*if([gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onCard:[(CardLayer *) l card]])
+			{
+				currentlyMovingCard.position = l.position;
+				[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onCard:[(CardLayer *) l card] withGesture:NO];
+				found=YES;
+			}*/
+		}
+		
+		
+	}
+	for (CALayer * l in self.mainLayer.sublayers)
+	{
+		
 		if ([l isKindOfClass:[SlotLayer class]] && [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
 		{
-			currentlyMovingCard.position = l.position;
-			found = YES;
+		/*	if([gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onCard:nil])
+			{
+				currentlyMovingCard.position = l.position;
+				[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onCard:nil withGesture:NO];
+				found=YES;
+			}*/
 		}
 	}
+ 
+ 
 	
+	/*
+	 * Let's control if you're playing a card on a slot on the play area
+	 */
 	if (found == NO)
 		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
 	
+	[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]-1];
+
 	currentlyMovingCard = nil;
 }
 
