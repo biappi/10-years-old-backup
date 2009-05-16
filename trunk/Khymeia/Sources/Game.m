@@ -50,10 +50,10 @@
 		interface = [[InterfaceController alloc] init];
 		/**********TEST STUFF******/
 		 
-		[table.opponentCards addObject:[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6]];
-		[table.opponentCards addObject:[[Card alloc] initWithName:@"Mio" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:6]];
-		[table.opponentCards addObject:[[Card alloc] initWithName:@"Yougurt" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6]];
-		[table.opponentCards addObject:[[Card alloc] initWithName:@"Pippo" image:@"cardTest1" element:CardElementEarth type:CardTypeElement level:6]];
+		table.cardOpponent1 = [[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6] autorelease];
+		table.cardOpponent2 = [[[Card alloc] initWithName:@"Mio" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:6] autorelease];
+		table.cardOpponent3 = [[[Card alloc] initWithName:@"Yougurt" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6] autorelease];
+		table.cardOpponent4 = [[[Card alloc] initWithName:@"Pippo" image:@"cardTest1" element:CardElementEarth type:CardTypeElement level:6] autorelease];
 				 
 		 /**********END TEST STUFF******/
 	}
@@ -106,7 +106,7 @@
 -(void)setupState;
 {		
 	state = GameStateSetup;
-	//[interface setState:state];
+	[interface setState:state];
 	phase = GamePhaseNone;
 	player.health = 100;
 	
@@ -272,7 +272,7 @@
 
 -(void)willPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
-	//now it is useless, but we will need it.
+	//ND DoBs: now it is useless, but we will need it.
 	if ([aTarget isKindOfClass:[Card class]])
 	{
 		//pass state change to comunication layer
@@ -302,7 +302,8 @@
 	}
 	else if ([aTarget isKindOfClass:[TableTarget class]])
 	{
-		
+		TableTarget* tableTarget = (TableTarget*)aTarget;
+		[table.playerCards insertObject:aCard atIndex:tableTarget.position];
 	}
 }
 
@@ -359,6 +360,10 @@
 						tableTarget.table = TableTargetTypeOpponent;				
 						[targets addObject:tableTarget];
 					}
+				}
+				for (Card * playerCard in table.playerCards)
+				{
+					
 				}
 			}
 			NSArray *array = [NSArray arrayWithArray:targets];

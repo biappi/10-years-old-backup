@@ -25,13 +25,13 @@
 {
 	NSMutableArray *positions = [[NSMutableArray alloc] init];
 	if (self.cardOpponent1)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:1]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:1] autorelease]];
 	if (self.cardOpponent2)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:2]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:2] autorelease]];
 	if (self.cardOpponent3)
-	    [positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:3]];
+	    [positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:3] autorelease]];
 	if (self.cardOpponent4)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:3]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:4] autorelease]];
     return [positions autorelease];	
 }
 
@@ -39,14 +39,42 @@
 {
 	NSMutableArray *positions = [[NSMutableArray alloc] init];
 	if (self.card1)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:1]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:1] autorelease]];
 	if (self.card2)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:2]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:2] autorelease]];
     if (self.card3)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:3]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:3] autorelease]];
 	if (self.card4)
-		[positions addObject:[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:4]];
+		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:4] autorelease]];
     return [positions autorelease];
+}
+
+-(NSArray*)playerCards;
+{
+	NSMutableArray *cards = [[NSMutableArray alloc] init];
+	if (self.card1)
+		[cards addObject:self.card1];
+	if (self.card2)
+		[cards addObject:self.card2];
+    if (self.card3)
+		[cards addObject:self.card3];
+	if (self.card4)
+		[cards addObject:self.card4];
+    return [cards autorelease];
+}
+
+-(NSArray*)opponentCards;
+{
+	NSMutableArray *cards = [[NSMutableArray alloc] init];
+	if (self.cardOpponent1)
+		[cards addObject:self.cardOpponent1];
+	if (self.cardOpponent2)
+		[cards addObject:self.cardOpponent2];
+	if (self.cardOpponent3)
+	    [cards addObject:self.cardOpponent3];
+	if (self.cardOpponent4)
+		[cards addObject:self.cardOpponent4];
+    return [cards autorelease];	
 }
 
 -(void)discardCardFromPosition:(TableTarget*)aTarget;

@@ -20,6 +20,9 @@
 	Card* cardOpponent2;
 	Card* cardOpponent3;
 	Card* cardOpponent4;
+	
+	NSArray *playerCards;
+	NSArray *opponentCards;
 }
 
 @property (nonatomic, retain) Card* card1;
@@ -30,6 +33,8 @@
 @property (nonatomic, retain) Card* cardOpponent2;
 @property (nonatomic, retain) Card* cardOpponent3;
 @property (nonatomic, retain) Card* cardOpponent4;
+@property (nonatomic, readonly) NSArray *playerCards;
+@property (nonatomic, readonly) NSArray *opponentCards;
 
 -(NSArray*)opponentFreePosisitions;
 -(NSArray*)playerFreePosisitions;
