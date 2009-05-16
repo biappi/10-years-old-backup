@@ -303,7 +303,7 @@
 	else if ([aTarget isKindOfClass:[TableTarget class]])
 	{
 		TableTarget* tableTarget = (TableTarget*)aTarget;
-		[table.playerCards insertObject:aCard atIndex:tableTarget.position];
+		[table addCard:aCard toPosition:tableTarget];
 	}
 }
 
@@ -361,10 +361,7 @@
 						[targets addObject:tableTarget];
 					}
 				}
-				for (Card * playerCard in table.playerCards)
-				{
-					
-				}
+				[targets addObjectsFromArray:[table playerFreePositions]];
 			}
 			NSArray *array = [NSArray arrayWithArray:targets];
 			[targets release];

@@ -36,9 +36,10 @@
 @property (nonatomic, readonly) NSArray *playerCards;
 @property (nonatomic, readonly) NSArray *opponentCards;
 
--(NSArray*)opponentFreePosisitions;
--(NSArray*)playerFreePosisitions;
+-(NSArray*)opponentFreePositions;
+-(NSArray*)playerFreePositions;
 
 -(void)discardCardFromPosition:(TableTarget*)aTarget;
+-(void)addCard:(Card*)aCard toPosition:(TableTarget*)aTarget;
 
 @end

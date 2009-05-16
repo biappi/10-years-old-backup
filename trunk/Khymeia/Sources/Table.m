@@ -21,7 +21,7 @@
 @synthesize cardOpponent4;
 
 
--(NSArray*)opponentFreePosisitions;
+-(NSArray*)opponentFreePositions;
 {
 	NSMutableArray *positions = [[NSMutableArray alloc] init];
 	if (self.cardOpponent1)
@@ -35,7 +35,7 @@
     return [positions autorelease];	
 }
 
--(NSArray*)playerFreePosisitions;
+-(NSArray*)playerFreePositions;
 {
 	NSMutableArray *positions = [[NSMutableArray alloc] init];
 	if (self.card1)
@@ -126,6 +126,59 @@
 		NSLog(@"Unexpected case in -(void)discardCardFromTableTarget:(TableTarget*)aTarget;");
 	}
 }
+
+-(void)addCard:(Card*)aCard toPosition:(TableTarget*)aTarget;
+{
+	if (aTarget.table == TableTargetTypePlayer)
+	{
+		switch(aTarget.position)
+		{
+			case 1:
+				self.card1 = aCard;
+				break;
+			case 2:
+				self.card2 = aCard;
+				break;
+			case 3:
+				self.card3 = aCard;
+				break;
+			case 4:
+				self.card4 = aCard;
+				break;
+			default:
+				NSLog(@"Unexpected case in -(void)addCard:(Card*)aCard toPosition:(TableTarget*)aTarget;");
+				break;
+		}
+	}
+	else if (aTarget.table == TableTargetTypeOpponent)
+	{
+		switch(aTarget.position)
+		{
+			case 1:
+				self.cardOpponent1 = aCard;
+				break;
+			case 2:
+				self.cardOpponent2 = aCard;
+				break;
+			case 3:
+				self.cardOpponent3 = aCard;
+				break;
+			case 4:
+				self.cardOpponent4 = aCard;
+				break;
+			default:
+				NSLog(@"Unexpected case in -(void)addCard:(Card*)aCard toPosition:(TableTarget*)aTarget");
+				break;
+		}
+	}
+	else
+	{
+		NSLog(@"Unexpected case in -(void)addCard:(Card*)aCard toPosition:(TableTarget*)aTarget;");
+	}
+	
+}
+
+
 -(void)dealloc;
 {
 	[card1 release];
