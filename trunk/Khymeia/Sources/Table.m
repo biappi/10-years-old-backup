@@ -38,13 +38,13 @@
 -(NSArray*)playerFreePositions;
 {
 	NSMutableArray *positions = [[NSMutableArray alloc] init];
-	if (self.card1)
+	if (!self.card1)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:1] autorelease]];
-	if (self.card2)
+	if (!self.card2)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:2] autorelease]];
-    if (self.card3)
+    if (!self.card3)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:3] autorelease]];
-	if (self.card4)
+	if (!self.card4)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:4] autorelease]];
     return [positions autorelease];
 }
