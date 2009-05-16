@@ -26,4 +26,32 @@
 	return self;
 }
 
+-(BOOL)isCardInHand:(Card*)aCard;
+{
+	BOOL cardIsInHand=NO;
+	for (Card * card in hand)
+	{
+		if ([card isEqual:aCard])
+		{
+			cardIsInHand=YES;
+		}
+	}
+	return cardIsInHand;
+}
+
+-(BOOL)removeCardFromHand:(Card*)aCard;
+{
+	BOOL cardIsInHand=NO;
+	for (Card * card in hand)
+	{
+		if ([card isEqual:aCard])
+		{
+			cardIsInHand=YES;
+		}
+	}
+	if (cardIsInHand)
+		[hand removeObject:aCard];
+	return cardIsInHand;
+}
+
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Card.h"
 
 @interface Player : NSObject
 {
@@ -24,6 +24,17 @@
 @property(nonatomic, retain) NSMutableArray     *hand;
 @property(nonatomic, retain) NSMutableArray     *cemetery;
 
+/**
+ Ask to player if aCard is in hand
+ /return YES if aCard belong to is hand, NO otherwise
+ */
+-(BOOL)isCardInHand:(Card*)aCard;
+
+/**
+Remove a card form player's hand
+ /return YES if aCard was removed, NO otherwise
+ */
+-(BOOL)removeCardFromHand:(Card*)aCard;
 
 @end
 

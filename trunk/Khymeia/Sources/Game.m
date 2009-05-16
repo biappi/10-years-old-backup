@@ -52,13 +52,13 @@
 		
 		/**********TEST STUFF******/
 		interface.gameplay=self;
-		table.cardOpponent1 = [[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6] autorelease];
+		table.cardOpponent1 = [[[Card alloc] initWithName:@"eatFire" image:@"fire" element:CardElementFire type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent1 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:1] autorelease]];
-		table.cardOpponent2 = [[[Card alloc] initWithName:@"Mio" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:6] autorelease];
+		table.cardOpponent2 = [[[Card alloc] initWithName:@"Mio" image:@"water" element:CardElementWater type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent2 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:2] autorelease]];
-		table.cardOpponent3 = [[[Card alloc] initWithName:@"Yougurt" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6] autorelease];
+		table.cardOpponent3 = [[[Card alloc] initWithName:@"Yougurt" image:@"fire" element:CardElementFire type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent3 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:3] autorelease]];
-		table.cardOpponent4 = [[[Card alloc] initWithName:@"Pippo" image:@"cardTest1" element:CardElementEarth type:CardTypeElement level:6] autorelease];
+		table.cardOpponent4 = [[[Card alloc] initWithName:@"Pippo" image:@"earth" element:CardElementEarth type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent4 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:4] autorelease]];
 				 
 		 /**********END TEST STUFF******/
@@ -131,9 +131,9 @@
 
 -(void)playerStateBegin;
 {	
-	state = GameStatePlayer;
-	[interface setState:state];
+	state = GameStatePlayer;	
 	//say to interface about state change
+	[interface setState:state];
 	//say to server about state change
 	[self playerPhaseCardAttainment]; 
 
@@ -148,6 +148,7 @@
 	if ([player.hand count]<5)
 	{
 		[interface drawCard:[player.deck lastObject]];
+		[player.hand addObject:[player.deck lastObject]];
 		[player.deck removeLastObject];
 	}
 	[self callNextPhase];
@@ -209,7 +210,10 @@
 -(void)playerPhaseDiscard;
 {
 	phase = GamePhaseDiscard;
-	playerDidDiscard = NO;
+	//*******************************************************************************************/
+	//IN THIS VERSION DISCARD PHASE DON'T WORK, SO SET THIS FLAG TO YES, OTHERWISE IT MUST BE YES
+	//*******************************************************************************************/
+	playerDidDiscard = YES;
 	[interface setPhase:phase];
 }
 
@@ -267,11 +271,6 @@
 {
 	//calculate otherIstance damage
 	otherInstace.health = otherInstace.health - aInstace.level;
-	if (otherInstace.health < 1)
-	{
-		NSLog(@"card %@ is dead", otherInstace.name);
-		[interface discardFromPlayArea:otherInstace];
-	}
 }
 
 #pragma mark -
@@ -297,6 +296,9 @@
 	{
 		playerDidAttack = YES;
 	}
+	
+	//remove card from user's hand
+	[player removeCardFromHand:aCard];
 	
 	if ([aTarget isKindOfClass:[Card class]])
 	{
@@ -348,10 +350,11 @@
 }
 
 -(NSArray*)targetsForCard:(Card*)aCard;
-{	
+{
 	if (state == GameStatePlayer)
 	{
-		if ((phase == GamePhaseAttack && !waitingForOpponentAttack) || phase==GamePhaseMainphase)
+		if ([player isCardInHand:aCard]																		//if aCard is in hand
+			&& ((phase == GamePhaseAttack && !waitingForOpponentAttack) || phase==GamePhaseMainphase))      //and is the right phase
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
 			TableTarget *tableTarget;
@@ -363,13 +366,15 @@
 					if ([self canPlayInstance:aCard onInstance:opponentCard])
 					{
 						tableTarget = [[[TableTarget alloc] init] autorelease];
-						tableTarget.position = [table.opponentCards indexOfObject:opponentCard];				
+						tableTarget.position = [table.opponentCards indexOfObject:opponentCard]+1;				
 						tableTarget.table = TableTargetTypeOpponent;				
 						[targets addObject:tableTarget];
 					}
 				}
-				[targets addObjectsFromArray:[table playerFreePositions]];
 			}
+			if (phase == GamePhaseMainphase)				
+				[targets addObjectsFromArray:[table playerFreePositions]];
+			
 			NSArray *array = [NSArray arrayWithArray:targets];
 			[targets release];
 			return array;
