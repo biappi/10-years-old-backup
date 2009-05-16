@@ -200,12 +200,14 @@ CGRect cardSlotsRects[] =
 	CardLayer * theCard=[[CardLayer alloc] initWithCard:card];
 	if(target.table==TableTargetTypePlayer)
 	{
-			theCard.frame=cardSlotsRects[4+target.position];
+			theCard.frame=cardSlotsRects[3+target.position];
+			
 	}
 	else if(target.table==TableTargetTypeOpponent)
 	{
-		theCard.frame=cardSlotsRects[target.position];
+		theCard.frame=cardSlotsRects[target.position-1];
 	}
+	[self.view.layer addSublayer:theCard];
 }
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;

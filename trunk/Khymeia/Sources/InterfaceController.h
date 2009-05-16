@@ -58,11 +58,11 @@ typedef enum
 - (void) drawCard:(Card *)card;
 - (void) discardFromHand:(Card *)card;
 - (void) discardFromPlayArea:(Card *)card;
-
+/*
 - (void) playCard:(Card *)card;
 - (void) playCard:(Card *)card overCard:(Card *)card;
 - (void) playCard:(Card *)card overPlayer:(Player *)player;
-
+*/
 - (void) opponentPlaysCard:(Card *)card onTarget:(TableTarget *) target;
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
