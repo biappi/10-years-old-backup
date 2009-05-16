@@ -26,7 +26,9 @@
 
 -(void)opponentStateBegin;
 
--(void)callNextState;
+-(void)callNextPhase;
+
+-(BOOL)canPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 
 @end
 
@@ -42,22 +44,32 @@
 	{
 		player = [aPlayer retain];
 		opponent = [aOpponent retain];
+		table = [[Table alloc] init];
 		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
 		interface = [[InterfaceController alloc] init];
+		/**********TEST STUFF******/
+		 
+		[table.opponentCards addObject:[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6]];
+		[table.opponentCards addObject:[[Card alloc] initWithName:@"Mio" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:6]];
+		[table.opponentCards addObject:[[Card alloc] initWithName:@"Yougurt" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:6]];
+		[table.opponentCards addObject:[[Card alloc] initWithName:@"Pippo" image:@"cardTest1" element:CardElementEarth type:CardTypeElement level:6]];
+				 
+		 /**********END TEST STUFF******/
 	}
 	return self;
 }
 
 -(void)dealloc;
 {
+	[table release];
 	[interface release];
 	[player release];
 	[opponent release];
 	[super dealloc];
 }
 
--(void)callNextState;
+-(void)callNextPhase;
 {
 	if (state == GameStatePlayer ||state == GameStateOpponent)
 	{
@@ -97,14 +109,17 @@
 	//[interface setState:state];
 	phase = GamePhaseNone;
 	player.health = 100;
-	//mix deck
+	
+	//<------mix deck
+	
+	//take first 5 cards
 	[interface drawCard:[player.hand objectAtIndex:0]];
 	[interface drawCard:[player.hand objectAtIndex:1]];
 	[interface drawCard:[player.hand objectAtIndex:2]];
 	[interface drawCard:[player.hand objectAtIndex:3]];
 	[interface drawCard:[player.hand objectAtIndex:4]];
 	
-	[self callNextState];
+	[self callNextPhase];
 }
 
 -(void)playerStateBegin;
@@ -123,14 +138,72 @@
 -(void)playerPhaseCardAttainment;
 {
 	phase = GamePhaseCardAttainment;
-	//[interface drawCard:[player.deck lastObject]];
-	//[player.deck removeLastObject];
-	[self callNextState];
+	if ([player.hand count]<5)
+	{
+		[interface drawCard:[player.deck lastObject]];
+		[player.deck removeLastObject];
+	}
+	[self callNextPhase];
 }
 
 -(void)playerPhaseMainphase;
 {
 	phase = GamePhaseMainphase;
+	[interface setPhase:phase];
+}
+
+-(void)playerPhaseAttack;
+{
+	//check if one of players is dead
+	phase = GamePhaseAttack;
+	
+	//setting attack phase flags
+	waitingForOpponentAttack = YES;
+	playerDidAttack = NO;
+	
+	[interface setPhase:phase];
+}
+
+-(void)playerPhaseDamageResolution;
+{
+	phase = GamePhaseDamageResolution;
+	[interface setPhase:phase];
+	
+	//calculate opponent damage and restoring player's card with health >0
+	for (Card * card in table.playerCards)
+	{
+		if (card.health>0)
+		{
+			//apply card damage to opponent
+			opponent.health -= card.health;
+			//restoring healt to card
+			card.health = card.level;
+		}
+		else
+		{
+			[interface discardFromPlayArea:card];
+		}
+	}
+	[interface setHP:opponent.health player:opponent];
+	//restoring opponent's card with health >0
+	for (Card * card in table.opponentCards)
+	{
+		if (card.health>0)
+		{
+			card.health = card.level;
+		}
+		else
+		{
+			[interface discardFromPlayArea:card];
+		}
+	}	
+}
+
+-(void)playerPhaseDiscard;
+{
+	phase = GamePhaseDiscard;
+	playerDidDiscard = NO;
+	[interface setPhase:phase];
 }
 
 
@@ -143,9 +216,9 @@
 }
 
 #pragma mark -
-#pragma mark Gameplay interface events methods
+#pragma mark private methods
 
--(BOOL)willPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
+-(BOOL)canPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 {
 	if (aInstace.element == CardElementVoid)
 	{
@@ -179,7 +252,7 @@
 		else
 			return NO;
 	}
-	NSLog(@"unxpected case in willPlayInstance");
+	NSLog(@"unxpected case in canPlayInstance");
 	return NO;
 }
 
@@ -197,35 +270,39 @@
 #pragma mark -
 #pragma mark Interface to Gameplayer methods
 
--(BOOL)willPlayCard:(Card*)aCard onCard:(Card*)otherCard;
+-(void)willPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
-	if (state == GameStatePlayer)
-	{
-		if (phase == GamePhaseAttack || phase==GamePhaseMainphase)
-		{
-			if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
-			{
-				BOOL result = [self willPlayInstance:aCard onInstance:otherCard];
-				//pass state change to comunication layer
-				return result;
-			}
-		}
-		else
-			return NO;
-	}
-	else if (state == GameStateOpponent)
-	{
-		//something
-	}
-	return NO;
-}
-
--(void)didPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
-{
-	if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+	//now it is useless, but we will need it.
+	if ([aTarget isKindOfClass:[Card class]])
 	{
 		//pass state change to comunication layer
-		[self didPlayInstance:aCard onInstance:otherCard];
+	}
+	else if ([aTarget isKindOfClass:[TableTarget class]])
+	{
+		
+	}
+}
+
+-(void)didPlayCard:(Card*)aCard onTarget:(id)aTarget withGesture:(BOOL)completed;
+{
+	//set the flag to remeber that the play have attack in AttackPhase
+	if (state == GameStatePlayer && phase == GamePhaseAttack)
+	{
+		playerDidAttack = YES;
+	}
+	
+	if ([aTarget isKindOfClass:[Card class]])
+	{
+		Card* otherCard = (Card*)aTarget;
+		if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+		{
+			//pass state change to comunication layer
+			[self didPlayInstance:aCard onInstance:otherCard];
+		}
+	}
+	else if ([aTarget isKindOfClass:[TableTarget class]])
+	{
+		
 	}
 }
 
@@ -234,33 +311,9 @@
  ************************************************************/
 
 
--(BOOL)willPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+-(void)willSelectCard:(Card*)aCard;
 {
 	NOT_IMPLEMENTED();
-	return NO;
-}
-
--(void)didPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
-{
-	NOT_IMPLEMENTED();
-}
-
--(BOOL)willPlayCard:(Card*)aCard;
-{
-	NOT_IMPLEMENTED();
-	return NO;
-}
-
--(void)didPlayCard:(Card*)aCard;
-{
-	NOT_IMPLEMENTED();
-}
-
-
--(BOOL)willSelectCard:(Card*)aCard;
-{
-	NOT_IMPLEMENTED();
-	return NO;
 }
 
 -(void)didSelectCard:(Card*)aCard;
@@ -270,13 +323,49 @@
 
 -(BOOL)shouldPassNextPhase;
 {
-	[self callNextState];
-	return YES;
+	if (state == GameStatePlayer)
+	{
+		if (!(phase == GamePhaseDiscard) || ((phase == GamePhaseDiscard) && playerDidDiscard) 
+			|| ((phase == GamePhaseAttack) && !playerDidAttack))
+		{
+			[self callNextPhase];
+			return YES;
+		}
+	}
+	else
+	{
+		
+	}
+	return NO;
 }
 
--(NSMutableArray*)playablePointsForCard:(Card*)aCard;
-{
-	NOT_IMPLEMENTED();
+-(NSArray*)targetsForCard:(Card*)aCard;
+{	
+	if (state == GameStatePlayer)
+	{
+		if ((phase == GamePhaseAttack && !waitingForOpponentAttack) || phase==GamePhaseMainphase)
+		{
+			NSMutableArray *targets = [[NSMutableArray alloc] init];
+			TableTarget *tableTarget;
+			if (aCard.type == CardTypeElement)
+			{
+				for (Card * opponentCard in table.opponentCards)
+				{
+					//check if i can play aCard vs opponentCard
+					if ([self canPlayInstance:aCard onInstance:opponentCard])
+					{
+						tableTarget = [[[TableTarget alloc] init] autorelease];
+						tableTarget.position = [table.opponentCards indexOfObject:opponentCard];				
+						tableTarget.table = TableTargetTypeOpponent;				
+						[targets addObject:tableTarget];
+					}
+				}
+			}
+			NSArray *array = [NSArray arrayWithArray:targets];
+			[targets release];
+			return array;
+		}
+	}
 	return nil;
 }
 
@@ -292,6 +381,10 @@
 
 #pragma mark -
 #pragma mark Gameplay to Opponent methods
+
+/***************************************
+* THIS METHOD MUST BE UPDATE TO TARGET *
+****************************************/
 
 
 -(BOOL)willPlayOpponentCard:(Card*)aCard;

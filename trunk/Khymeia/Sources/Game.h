@@ -14,18 +14,27 @@
 #import "InterfaceToGameplayProtocol.h"
 #import "ComunicationToGameplayProtocol.h"
 #import "GameState.h"
+#import "TableTarget.h"
 
 @interface Game : NSObject <InterfaceToGameplayProtocol, ComunicationToGameplayProtocol>
 {
 	Table					*table;
 	Player					*player;
 	Player					*opponent;
-	bool					isFirst;
+	BOOL					isFirst;
 	InterfaceController*	interface;
 	
 	
 	NSInteger				state;
 	NSInteger				phase;
+	
+	//discard phase flag
+	BOOL					playerDidDiscard;
+	
+	//attack phase flags
+	BOOL					waitingForOpponentAttack;
+	BOOL					playerDidAttack;
+	
 }
 
 @property (nonatomic, readonly) InterfaceController *interface;

@@ -14,4 +14,11 @@
 @synthesize playerCards;
 @synthesize opponentCards;
 
+-(void)dealloc;
+{
+	[opponentCards release];
+	[playerCards   release];
+	[super dealloc];
+}
+
 @end

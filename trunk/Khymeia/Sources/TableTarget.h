@@ -10,19 +10,24 @@
 
 typedef enum 
 {
-	PlayerTable,
-	OpponentTable
-} TableTargeted;
+	TableTargetTypePlayer,
+	TableTargetTypeOpponent
+} TableTargetType;
 
 
 @interface TableTarget : NSObject 
 {
-	TableTargeted table;
+	TableTargetType table;
 	int position;
 }
--(id) initwithTable:(TableTargeted) table andPosition:(int) position;
 
-
-@property(nonatomic,assign) TableTargeted table;
+@property(nonatomic,assign) TableTargetType table;
 @property(nonatomic,assign) int position;
+
+/**
+ /param table: type of table
+ /return an instance of TableTarget
+ */
+-(id) initwithTable:(TableTargetType)table andPosition:(int) position;
+
 @end

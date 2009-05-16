@@ -10,10 +10,11 @@
 
 
 @implementation TableTarget
+
 @synthesize table;
 @synthesize position;
 
--(id) initwithTable:(TableTargeted) atable andPosition:(int) aposition;
+-(id) initwithTable:(TableTargetType) atable andPosition:(int) aposition;
 {
 	if (self = [super init])
 	{
@@ -22,4 +23,5 @@
 	}
 	return self;
 }
+
 @end

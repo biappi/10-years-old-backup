@@ -7,75 +7,51 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TableTarget.h"
 #import "Card.h"
-#import "Player.h"
+
 
 
 @protocol InterfaceToGameplayProtocol
 
 /**
- Called by the interface when user would play the card at position. Interface should show aCard at fullscreen
- 
- \param aCard: card that user would play
- \param otherCard: the target card
- \return YES if the could be played, NO otherwise
- */
--(BOOL)willPlayCard:(Card*)aCard onCard:(Card*)otherCard;
+Called by the interface when user would play the card on a target (see target class)
+\param aCard: card that user would play
+\param aTarget: the target witch aCard will play
+*/
+-(void)willPlayCard:(Card*)aCard onTarget:(id)aTarget;
 
 /**
- Called by the interface when the user did play card at position.
- \param aCard: card that user would play
- \param otherCard: the target card
- \param result: YES if gesture was complete, NO otherwise.
- */
--(void)didPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
+Called by the interface when the user did play card
+\param aCard: card that user have played
+\param aTarget: the target witch aCard is played
+*/
+-(void)didPlayCard:(Card*)aCard onTarget:(id)aTarget withGesture:(BOOL)completed;
 
 /**
- Called by the interface when user would play the card at position
- \param aCard: card that user would play
- \param aPlayer: the player on which aCard will played
- \return YES if the could be played, NO otherwise
- */
--(BOOL)willPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+Called by the interface when would to know where aCard is playable
+\param aCard: the card 
+\return an array of game elements where aCard is playable
+*/
+-(NSArray*)targetsForCard:(Card*)aCard;
 
 /**
- Called by the interface when the user did play card at position
- \param aCard: card that user have played
- \param aPlayer: the player on which aCard is played
- */
--(void)didPlayCard:(Card*)aCard atPlayer:(Player*)aPlayer;
+Called by the interface when user would select the card
+\param aCard: card that user would select
+*/
+-(void)willSelectCard:(Card*)aCard;
 
 /**
- Called by the interface when user would play the card
- \param aCard: card that user would play
- \return YES if the could be played, NO otherwise
- */
--(BOOL)willPlayCard:(Card*)aCard;
-
-/**
- Called by the interface when the user did play card
- \param aCard: card that user have played
- */
--(void)didPlayCard:(Card*)aCard;
-
-/**
- Called by the interface when user would select the card
- \param aCard: card that user would select
- \return YES if the could be selected, NO otherwise
- */
--(BOOL)willSelectCard:(Card*)aCard;
-
-/**
- Called by the interface when the user did select card
- \param aCard: card that user have selected
- */
+Called by the interface when the user did select card
+\param aCard: card that user have selected
+*/
 -(void)didSelectCard:(Card*)aCard;
 
 /**
- Ask to next
- \param idTurn: turn identifier 
- \return YES if the user can pass to the next phase, NO otherwise
- */
+Ask to next
+\param idTurn: turn identifier 
+\return YES if the user can pass to the next phase, NO otherwise
+*/
 -(BOOL)shouldPassNextPhase;
 
 /**
