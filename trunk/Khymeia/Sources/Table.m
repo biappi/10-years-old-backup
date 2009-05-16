@@ -24,13 +24,13 @@
 -(NSArray*)opponentFreePositions;
 {
 	NSMutableArray *positions = [[NSMutableArray alloc] init];
-	if (self.cardOpponent1)
+	if (!self.cardOpponent1)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:1] autorelease]];
-	if (self.cardOpponent2)
+	if (!self.cardOpponent2)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:2] autorelease]];
-	if (self.cardOpponent3)
+	if (!self.cardOpponent3)
 	    [positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:3] autorelease]];
-	if (self.cardOpponent4)
+	if (!self.cardOpponent4)
 		[positions addObject:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:4] autorelease]];
     return [positions autorelease];	
 }
