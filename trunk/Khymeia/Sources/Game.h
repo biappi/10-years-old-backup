@@ -28,6 +28,8 @@
 	NSInteger				state;
 	NSInteger				phase;
 	
+	BOOL					isFirstTurn;
+	
 	//discard phase flag
 	BOOL					playerDidDiscard;
 	
