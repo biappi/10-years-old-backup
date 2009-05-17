@@ -36,6 +36,7 @@ CGRect cardSlotsRects[] =
 
 @property(readonly) CALayer * mainLayer;
 
+- (TableTarget *) findSelectedTargetforCard:(CardLayer *) card;
 - (CGRect) frameRectForNextPlayerHandCard;
 - (void) showText:(NSString *) text withTitle:(NSString *) title;
 @end
@@ -60,6 +61,7 @@ CGRect cardSlotsRects[] =
 	playerPlayArea   = [[NSMutableArray alloc] initWithCapacity:4];
 	opponentPlayArea = [[NSMutableArray alloc] initWithCapacity:4];
 	turnEnded= [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	[turnEnded setFrame:CGRectMake(0, 0, 40, 40)];
 	[turnEnded setTitle:@"Done" forState:[turnEnded state]];
 	[turnEnded addTarget:self action:@selector(endTurn) forControlEvents:UIControlEventTouchDown];
 	
@@ -67,7 +69,13 @@ CGRect cardSlotsRects[] =
 }
 -(void) endTurn
 {
-
+	if(![gameplay shouldPassNextPhase])
+		[self showText:@"You cannot yet pass to the next phase" withTitle:@"Gameplay message"];
+	else
+	{
+		[self showText:@"passed to next phase" withTitle:@"Gameplay message"];
+		[turnEnded removeFromSuperview];
+	}
 }
 - (void)dealloc;
 {
@@ -109,14 +117,30 @@ CGRect cardSlotsRects[] =
 {
 	switch (phase) {
 		case GamePhaseMainphase:
+			[self showText:@"MainPhase" withTitle:@"gp message"];
+			[self.view addSubview:turnEnded];
+			[turnEnded setCenter:CGPointMake(20,20)];
+			[turnEnded setNeedsDisplay];
+			break;
+		case GamePhaseAttack:
+			[self showText:@"AttackPhase" withTitle:@"gp message"];
 			[self.view addSubview:turnEnded];
 			[turnEnded setCenter:CGPointMake(20,20)];
 			break;
-		case GamePhaseAttack:
-			[self.view addSubview:turnEnded];
-			[turnEnded setCenter:CGPointMake(20,20)];
-			break;			
-		default:
+		case GamePhaseCardAttainment:
+			[self showText:@"CardAttainmentPhase" withTitle:@"gp message"];
+			break;
+		case GamePhaseDiscard:
+			[self showText:@"DiscardPhase" withTitle:@"gp message"];
+
+			break;
+		case GamePhaseDamageResolution:
+			[self showText:@"DamageResolutionPhase" withTitle:@"gp message"];
+
+			break;
+		case GamePhaseNone:
+			[self showText:@"NonePhase" withTitle:@"gp message"];
+
 			break;
 	}
 }
@@ -208,6 +232,7 @@ CGRect cardSlotsRects[] =
 		theCard.frame=cardSlotsRects[target.position-1];
 	}
 	[self.view.layer addSublayer:theCard];
+	[opponentPlayArea addObject:card];
 }
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
@@ -285,30 +310,25 @@ CGRect cardSlotsRects[] =
 	{
 	
 		
-		if([l isKindOfClass:[CardLayer class]] && [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
+		if(([l isKindOfClass:[CardLayer class]] || [l isKindOfClass:[SlotLayer class]])&& [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
 		{
-			/*if([gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onCard:[(CardLayer *) l card]])
+			TableTarget * target=[self findSelectedTargetforCard:(CardLayer*)l];
+			if(target)
 			{
-				currentlyMovingCard.position = l.position;
-				[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onCard:[(CardLayer *) l card] withGesture:NO];
-				found=YES;
-			}*/
+				for(TableTarget * allowedTarget in currentTargets)
+				{
+					if(target.position==allowedTarget.position && target.table==allowedTarget.table)
+					{
+						[gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget];
+							currentlyMovingCard.position = l.position;
+							[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget withGesture:NO];
+						found=YES;
+					}
+				}
+			}
 		}
 		
 		
-	}
-	for (CALayer * l in self.mainLayer.sublayers)
-	{
-		
-		if ([l isKindOfClass:[SlotLayer class]] && [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
-		{
-		/*	if([gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onCard:nil])
-			{
-				currentlyMovingCard.position = l.position;
-				[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onCard:nil withGesture:NO];
-				found=YES;
-			}*/
-		}
 	}
  
  
@@ -334,6 +354,29 @@ CGRect cardSlotsRects[] =
 }
 
 #pragma mark Private Methods
+
+-(TableTarget *)findSelectedTargetforCard:(CardLayer*) card;
+{
+	int i;
+	for(i=0;i<4; i++)
+	{
+		if(CGRectContainsPoint(cardSlotsRects[i],card.position))
+		{
+			
+			return [[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:i+1]autorelease];
+		}
+	}
+	for(i=0;i<4;i++)
+	{
+		if(CGRectContainsPoint(cardSlotsRects[i+4],card.position))
+		{
+			
+			return [[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:i+1]autorelease];
+		}
+	
+	}
+	return nil;
+}
 
 - (CGRect) frameRectForNextPlayerHandCard;
 {

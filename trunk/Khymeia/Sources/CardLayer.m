@@ -47,4 +47,14 @@
 	return CGSizeMake(72, 90);
 }
 
+- (void) setPosition:(CGPoint) point
+{
+	[CATransaction begin]; 
+	[CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
+	[super setPosition:point];
+	[CATransaction commit];
+	
+}
+
+
 @end
