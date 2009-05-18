@@ -10,6 +10,7 @@
 #import "InterfaceController.h"
 #import "Player.h"
 #import "Card.h"
+#import "ComunicatioLayer.h"
 
 
 @implementation KhymeiaAppDelegate
@@ -102,22 +103,41 @@
 	/*
 	 * initialize game
 	 */
-	gameplay =[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES];
+	gameplayPlayer =[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES];
+	gameplayOpponent =[[Game alloc] initWithPlayer:opponent opponent:player andImFirst:NO];
+	ComunicatioLayer *comPlayer=[[[ComunicatioLayer alloc] init]autorelease];
+	ComunicatioLayer *comOpponent=[[[ComunicatioLayer alloc] init]autorelease];
+	/*
+	 * link game play to comLayer
+	 */
+	comPlayer.gameplay=gameplayPlayer;
+	comPlayer.comLayer=comOpponent;
+	
+	comOpponent.gameplay=gameplayOpponent;
+	comOpponent.comLayer=comPlayer;
+
+	gameplayPlayer.comLayer=comPlayer;
+	gameplayOpponent.comLayer=comOpponent;
 	
 	/*
 	 *	release all
 	 */
 	[player release];
 	[opponent release];
-	[window addSubview:gameplay.interface.view];
 	
-	[gameplay setupState];
+	//we need a scroller view on which add the two inteface
+	[window addSubview:gameplayPlayer.interface.view];
+	//[window addSubview:gameplayOpponent.interface.view];
+	
+	[gameplayPlayer setupState];
+	[gameplayOpponent setupState];
 	
 }
 
 - (void)dealloc;
 {
-	[gameplay release];
+	[gameplayPlayer release];
+	[gameplayOpponent release];
     [window release];
     [super dealloc];
 }

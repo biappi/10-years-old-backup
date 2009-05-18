@@ -15,51 +15,18 @@
 
 @synthesize gameplay;
 
+-(id)init
+{
+	if (self = [super init])
+	{
+	}
+	return self;
+}
+
 #pragma mark -
 #pragma mark send methods 
 
--(BOOL)sendWillPlayCard:(Card*)aCard;
-{
-	[comLayer receiveWillPlayCard:aCard];
-	return YES;
-}
 
--(BOOL)sendDidPlayCard:(Card*)aCard;
-{
-	[comLayer receiveDidPlayCard:aCard];
-	return YES;
-}
-
-
--(BOOL)sendDidPlayCard:(Card*)card onCard:(Card*)onCard
-{
-	[comLayer receiveDidPlayCard:card onCard:onCard];
-	return YES;
-}
-
--(BOOL)sendDidPlayCard:(Card*)card onPlayer:(Player *)player
-{
-	[comLayer receiveDidPlayCard:card onPlayer:player];
-	return YES;
-}
-
--(BOOL)sendDidPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
-{
-	[comLayer receiveDidPlayCard:aCard onCard:otherCard withGesture:completed];
-	return YES;
-}
-
--(BOOL)sendWillPlayCard:(Card*)card onCard:(Card*)onCard;
-{
-	[comLayer receiveWillPlayCard:card onCard:onCard];
-	return YES;
-}
-
--(BOOL)sendWillPlayCard:(Card*)card onPlayer:(Player *)player;
-{
-	[comLayer receiveWillPlayCard:card onPlayer:player];
-	return YES;
-}
 /*NOT YET IMPLEMENTED
 -(BOOL)sendWillPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
 {
@@ -70,47 +37,26 @@
 #pragma mark -
 #pragma mark receive methods
 
--(void)receiveWillPlayCard:(Card*)aCard;
+-(BOOL)sendWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
-	[gameplay willPlayOpponentCard:aCard];
+	[comLayer receiveWillPlayCard:aCard onTarget:aTarget];
+	return YES;
 }
-
--(void)receiveDidPlayCard:(Card*)aCard;
+-(BOOL)sendDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
-	[gameplay didPlayOpponentCard:aCard];
+	[comLayer receiveDidPlayCard:aCard onTarget:aTarget];
+	return YES;
 }
 
-
--(void)receiveDidPlayCard:(Card*)card onCard:(Card*)onCard
+-(void)receiveWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
-	[gameplay didPlayOpponentCard:card onCard:onCard];
+	[gameplay willPlayOpponentCard:aCard onTarget:aTarget];
+	
 }
 
--(void)receiveDidPlayCard:(Card*)card onPlayer:(Player *)player
+-(void)receiveDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
-	[gameplay didPlayOpponentCard:card atPlayer:player];
+	[gameplay didPlayOpponentCard:aCard onTarget:aTarget];
 }
-
--(void)receiveDidPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
-{	
-	[gameplay didPlayOpponentCard:aCard onCard:otherCard withGesture:completed];
-}
-
--(void)receiveWillPlayCard:(Card*)card onCard:(Card*)onCard;
-{	
-	[gameplay willPlayOpponentCard:card onCard:onCard];
-}
-
--(void)receiveWillPlayCard:(Card*)card onPlayer:(Player *)player;
-{	
-	[gameplay willPlayOpponentCard:card atPlayer:player];
-}
-
-/*NOT YET IMPLEMENTED
- -(void)receiveWillPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
-{	
-	[gameplay willPlayOpponentCard:aCard onCard:otherCard withGesture:completed];
-}
-*/
 
 @end

@@ -12,7 +12,8 @@
 @interface KhymeiaAppDelegate : NSObject <UIApplicationDelegate>
 {
     UIWindow         * window;
-	Game			 * gameplay;
+	Game			 * gameplayPlayer;
+	Game			 * gameplayOpponent;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow * window;

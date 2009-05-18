@@ -15,6 +15,7 @@
 #import "ComunicationToGameplayProtocol.h"
 #import "GameState.h"
 #import "TableTarget.h"
+#import "ComunicatioLayer.h"
 
 @interface Game : NSObject <InterfaceToGameplayProtocol, ComunicationToGameplayProtocol>
 {
@@ -23,7 +24,7 @@
 	Player					*opponent;
 	BOOL					isFirst;
 	InterfaceController*	interface;
-	
+	ComunicatioLayer *     comLayer; //is the link to the comunication layer
 	
 	NSInteger				state;
 	NSInteger				phase;
@@ -40,6 +41,7 @@
 }
 
 @property (nonatomic, readonly) InterfaceController *interface;
+@property (nonatomic, retain)   ComunicatioLayer   *comLayer;
 
 -(void)setupState;
 

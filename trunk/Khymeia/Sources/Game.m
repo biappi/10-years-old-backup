@@ -47,6 +47,7 @@
 @implementation Game
 
 @synthesize interface;
+@synthesize comLayer;
 
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 {
