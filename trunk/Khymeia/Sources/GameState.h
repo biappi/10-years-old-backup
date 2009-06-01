@@ -12,23 +12,23 @@
  this enum represent all the state in which the game can be
  */
 typedef enum
-	{
-		GameStateSetup,
-		GameStatePlayer,
-		GameStateOpponent,
-		GameStateEnd
-	}GameState;
+{
+	GameStateSetup,
+	GameStatePlayer,
+	GameStateOpponent,
+	GameStateEnd
+}GameState;
 
 
 /**
  this enum represent all the phase in which the game can be
  */
 typedef enum
-	{
-		GamePhaseCardAttainment,
-		GamePhaseMainphase,
-		GamePhaseAttack,
-		GamePhaseDamageResolution,
-		GamePhaseDiscard,
-		GamePhaseNone
-	}GamePhase;
+{
+	GamePhaseCardAttainment,
+	GamePhaseMainphase,
+	GamePhaseAttack,
+	GamePhaseDamageResolution,
+	GamePhaseDiscard,
+	GamePhaseNone
+}GamePhase;

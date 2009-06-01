@@ -63,13 +63,13 @@
 		
 		/**********TEST STUFF******/
 		interface.gameplay=self;
-		table.cardOpponent1 = [[[Card alloc] initWithName:@"eatFire" image:@"fire" element:CardElementFire type:CardTypeElement level:6] autorelease];
+		table.cardOpponent1 = [[[Card alloc] initWithName:@"eatFire" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent1 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:1] autorelease]];
-		table.cardOpponent2 = [[[Card alloc] initWithName:@"Mio" image:@"water" element:CardElementWater type:CardTypeElement level:6] autorelease];
+		table.cardOpponent2 = [[[Card alloc] initWithName:@"Mio" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent2 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:2] autorelease]];
-		table.cardOpponent3 = [[[Card alloc] initWithName:@"Yougurt" image:@"fire" element:CardElementFire type:CardTypeElement level:6] autorelease];
+		table.cardOpponent3 = [[[Card alloc] initWithName:@"Yougurt" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent3 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:3] autorelease]];
-		table.cardOpponent4 = [[[Card alloc] initWithName:@"Pippo" image:@"earth" element:CardElementEarth type:CardTypeElement level:6] autorelease];
+		table.cardOpponent4 = [[[Card alloc] initWithName:@"Pippo" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:6] autorelease];
 		[interface opponentPlaysCard:table.cardOpponent4 onTarget:[[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:4] autorelease]];
 				 
 		 /**********END TEST STUFF******/

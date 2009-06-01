@@ -25,27 +25,27 @@
 	/*
 	 *Card creation
 	 */
-	Card *fireElemental=[[Card alloc] initWithName:@"eatFire" image:@"cardTest1" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElemental=[[Card alloc] initWithName:@"etchù" image:@"cardTest1" element:CardElementWind type:CardTypeElement level:1];
-	Card *waterElemental=[[Card alloc] initWithName:@"beerDrinker" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElemental=[[Card alloc] initWithName:@"googleEarth" image:@"cardTest1" element:CardElementEarth type:CardTypeElement level:1];
-	Card *voidElemental=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"cardTest1" element:CardElementVoid type:CardTypeElement level:1];
-	Card *fireElemental2=[[Card alloc] initWithName:@"eatFire" image:@"cardTest1" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElemental2=[[Card alloc] initWithName:@"etchù" image:@"cardTest1" element:CardElementWind type:CardTypeElement level:1];
-	Card *waterElemental2=[[Card alloc] initWithName:@"beerDrinker" image:@"cardTest1" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElemental2=[[Card alloc] initWithName:@"googleEarth" image:@"cardTest1" element:CardElementEarth type:CardTypeElement level:1];
-	Card *voidElemental2=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"cardTest1" element:CardElementVoid type:CardTypeElement level:1];
+	Card *fireElemental=[[Card alloc] initWithName:@"eatFire" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:1];
+	Card *windElemental=[[Card alloc] initWithName:@"etchù" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
+	Card *waterElemental=[[Card alloc] initWithName:@"beerDrinker" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElemental=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
+	Card *voidElemental=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
+	Card *fireElemental2=[[Card alloc] initWithName:@"eatFire" image:@"elementale1.png" element:CardElementFire type:CardTypeElement level:1];
+	Card *windElemental2=[[Card alloc] initWithName:@"etchù" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
+	Card *waterElemental2=[[Card alloc] initWithName:@"beerDrinker" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElemental2=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
+	Card *voidElemental2=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
 	
-	Card *fireElementalOp=[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElementalOp=[[Card alloc] initWithName:@"etchù" image:@"cardTest2" element:CardElementWind type:CardTypeElement level:1];
-	Card *waterElementalOp=[[Card alloc] initWithName:@"beerDrinker" image:@"cardTest2" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElementalOp=[[Card alloc] initWithName:@"googleEarth" image:@"cardTest2" element:CardElementEarth type:CardTypeElement level:1];
-	Card *voidElementalOp=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"cardTest2" element:CardElementVoid type:CardTypeElement level:1];
-	Card *fireElementalOp2=[[Card alloc] initWithName:@"eatFire" image:@"cardTest2" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElementalOp2=[[Card alloc] initWithName:@"etchù" image:@"cardTest2" element:CardElementWind type:CardTypeElement level:1];
-	Card *waterElementalOp2=[[Card alloc] initWithName:@"beerDrinker" image:@"cardTest2" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElementalOp2=[[Card alloc] initWithName:@"googleEarth" image:@"cardTest2" element:CardElementEarth type:CardTypeElement level:1];
-	Card *voidElementalOp2=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"cardTest2" element:CardElementVoid type:CardTypeElement level:1];
+	Card *fireElementalOp=[[Card alloc] initWithName:@"eatFire" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:1];
+	Card *windElementalOp=[[Card alloc] initWithName:@"etchù" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
+	Card *waterElementalOp=[[Card alloc] initWithName:@"beerDrinker" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElementalOp=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
+	Card *voidElementalOp=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
+	Card *fireElementalOp2=[[Card alloc] initWithName:@"eatFire" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:1];
+	Card *windElementalOp2=[[Card alloc] initWithName:@"etchù" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
+	Card *waterElementalOp2=[[Card alloc] initWithName:@"beerDrinker" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElementalOp2=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
+	Card *voidElementalOp2=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
 	
 	/*
 	 *	create deck

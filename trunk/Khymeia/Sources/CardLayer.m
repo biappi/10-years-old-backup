@@ -18,8 +18,8 @@
 	self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;
 	self.borderColor     = [UIColor blackColor].CGColor;
 	self.borderWidth     = 1;
-	UIImage *img;
-	switch (acard.element) {
+	UIImage *img=[UIImage imageNamed:acard.image];
+	/*switch (acard.element) {
 		case CardElementVoid:
 			img=[UIImage imageNamed:@"vacuum.jpg"];
 			break;
@@ -37,7 +37,7 @@
 			break;
 		default:
 			break;
-	}
+	}*/
 	[self setContents:(id) [img CGImage]];
 	return self;
 }
