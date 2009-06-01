@@ -31,7 +31,7 @@
 	Card *earthElemental=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
 	Card *voidElemental=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
 	Card *fireElemental2=[[Card alloc] initWithName:@"eatFire" image:@"elementale1.png" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElemental2=[[Card alloc] initWithName:@"etchù" image:@"elementale2.png" element:CardElementWind type:CardTypeElement level:1];
+	Card *windElemental2=[[Card alloc] initWithName:@"etchù" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
 	Card *waterElemental2=[[Card alloc] initWithName:@"beerDrinker" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
 	Card *earthElemental2=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
 	Card *voidElemental2=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];

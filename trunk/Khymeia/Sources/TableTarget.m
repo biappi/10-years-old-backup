@@ -24,4 +24,9 @@
 	return self;
 }
 
++(id) targetWithTarget:(TableTarget*)aTarget;
+{
+	return [[[TableTarget alloc] initwithTable:aTarget.table andPosition:aTarget.position] autorelease];
+}
+
 @end

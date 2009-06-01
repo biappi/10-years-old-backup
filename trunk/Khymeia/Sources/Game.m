@@ -137,7 +137,8 @@
 
 -(void)setupState;
 {		
-	NSLog(@"player %@ setup state", player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player %@ setup state", player.name]);
+	
 	state = GameStateSetup;
 	[interface setState:state];
 	phase = GamePhaseNone;
@@ -162,7 +163,7 @@
 
 -(void)playerStateBegin;
 {	
-	NSLog(@"player %@ Statebegin",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player %@ Statebegin", player.name]);
 	state = GameStatePlayer;	
 	//say to interface about state change
 	[interface setState:state];
@@ -174,7 +175,7 @@
 
 -(void)opponentStateBegin;
 {
-	NSLog(@"player %@ Opponent Statebegin",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player %@ Opponent Statebegin", player.name]);
 	state = GameStateOpponent;
 	[interface setState:state];	
 }
@@ -184,7 +185,7 @@
 
 -(void)playerPhaseCardAttainment;
 {
-	NSLog(@"player: %@ Card Attainment",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player: %@ Card Attainment", player.name]);
 	
 	phase = GamePhaseCardAttainment;
 	[interface setPhase:phase];
@@ -202,7 +203,7 @@
 
 -(void)playerPhaseMainphase;
 {
-	NSLog(@"player: %@ Card Mainphase",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player: %@ Card Mainphase", player.name]);
 	
 	phase = GamePhaseMainphase;
 	[interface setPhase:phase];
@@ -211,7 +212,7 @@
 
 -(void)playerPhaseAttackOpponent;
 {
-	NSLog(@"player: %@ Card Attack opponent",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player: %@ Card Attack opponent", player.name]);
 	
 	//check if one of players is dead
 	phase = GamePhaseAttackOpponent;
@@ -223,7 +224,7 @@
 
 -(void)playerPhaseAttackPlayer;
 {
-	NSLog(@"player: %@ Card Attack player",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player: %@ Card Attack player", player.name]);
 	
 	//check if one of players is dead
 	phase = GamePhaseAttackPlayer;
@@ -234,7 +235,7 @@
 
 -(void)playerPhaseDamageResolution;
 {
-	NSLog(@"player: %@ Damage resolution",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player: %@ Damage resolution", player.name]);
 	
 	phase = GamePhaseDamageResolution;
 	[interface setPhase:phase];
@@ -273,7 +274,7 @@
 
 -(void)playerPhaseDiscard;
 {
-	NSLog(@"player: %@ Discard",player.name);
+	KhymeiaLog([NSString stringWithFormat:@"player: %@ Discard", player.name]);
 	
 	phase = GamePhaseDiscard;
 	//*******************************************************************************************/
@@ -372,27 +373,21 @@
 -(void)didPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 {
 	//calculate otherIstance damage
+	NSInteger backup = otherInstace.health;
 	otherInstace.health = otherInstace.health - aInstace.level;
+	KhymeiaLog([NSString stringWithFormat:@"card: %@ vs card:%@ ------- %d = %d - %d", otherInstace.health, backup, aInstace.level]);
 }
 
 #pragma mark -
 #pragma mark Interface to Gameplayer methods
 
--(void)willPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(void)willPlayCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
 	[comunication sendWillPlayCard:aCard onTarget:aTarget];
-	if ([aTarget isKindOfClass:[Card class]])
-	{
-		//pass state change to comunication layer
-	}
-	else if ([aTarget isKindOfClass:[TableTarget class]])
-	{
-		
-	}
 }
 
--(void)didPlayCard:(Card*)aCard onTarget:(id)aTarget withGesture:(BOOL)completed;
+-(void)didPlayCard:(Card*)aCard onTarget:(TableTarget*)aTarget withGesture:(BOOL)completed;
 {
 	//set the flag to remeber that the play have attack in AttackPhase
 	
@@ -548,7 +543,14 @@
 }
 
 -(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
-{	
+{		
+	TableTarget* tableTarget = [TableTarget targetWithTarget:aTarget];
+	//convertion from opponent to player
+	if (tableTarget.table == TableTargetTypeOpponent)
+		tableTarget.table = TableTargetTypePlayer;
+	else
+		tableTarget.table = TableTargetTypeOpponent;
+	
 	//remove card from user's hand
 	[opponent removeCardFromHand:aCard];
 	
@@ -563,11 +565,10 @@
 	}
 	else if ([aTarget isKindOfClass:[TableTarget class]])
 	{
-		TableTarget* tableTarget = (TableTarget*)aTarget;
 		[table addCard:aCard toPosition:tableTarget];
 		
 	}
-	[interface opponentPlaysCard:aCard onTarget:aTarget];
+	[interface opponentPlaysCard:aCard onTarget:tableTarget];
 	
 	return NO;
 }

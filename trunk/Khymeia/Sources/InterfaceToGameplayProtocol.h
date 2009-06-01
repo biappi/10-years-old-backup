@@ -19,14 +19,14 @@ Called by the interface when user would play the card on a target (see target cl
 \param aCard: card that user would play
 \param aTarget: the target witch aCard will play
 */
--(void)willPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(void)willPlayCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
 
 /**
 Called by the interface when the user did play card
 \param aCard: card that user have played
 \param aTarget: the target witch aCard is played
 */
--(void)didPlayCard:(Card*)aCard onTarget:(id)aTarget withGesture:(BOOL)completed;
+-(void)didPlayCard:(Card*)aCard onTarget:(TableTarget*)aTarget withGesture:(BOOL)completed;
 
 /**
 Called by the interface when would to know where aCard is playable

@@ -30,4 +30,6 @@ typedef enum
  */
 -(id) initwithTable:(TableTargetType)table andPosition:(int) position;
 
++(id) targetWithTarget:(TableTarget*)aTarget;
+
 @end
