@@ -29,6 +29,7 @@
 	NSInteger				state;
 	NSInteger				phase;
 	
+	//used for determinate if is first turn in attack phase
 	BOOL					isFirstTurn;
 	
 	//discard phase flag
@@ -37,6 +38,9 @@
 	//attack phase flags
 	BOOL					waitingForOpponentAttack;
 	BOOL					playerDidAttack;
+	
+	//opponent attack phase flag
+	BOOL					opponentDidAttack;
 	
 }
 

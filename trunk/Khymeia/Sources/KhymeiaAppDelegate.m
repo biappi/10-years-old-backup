@@ -130,7 +130,7 @@
 	//[window addSubview:gameplayOpponent.interface.view];
 	
 	[gameplayPlayer setupState];
-	[gameplayOpponent setupState];
+	//[gameplayOpponent setupState];
 	
 }
 

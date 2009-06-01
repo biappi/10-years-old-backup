@@ -97,7 +97,7 @@
 			if (isFirstTurn)
 			{
 				isFirstTurn = NO;
-				[self playerPhaseDiscard];				
+				[self playerPhaseDamageResolution];				
 			}
 			else
 				[self playerPhaseAttack];
@@ -105,6 +105,8 @@
 		else if (phase == GamePhaseAttack)
 			[self playerPhaseDamageResolution];
 		else if (phase == GamePhaseDamageResolution)
+			[self playerPhaseDiscard];
+		else if (phase == GamePhaseDiscard)
 		{
 			if (state == GameStatePlayer)
 				[self opponentStateBegin];
@@ -159,8 +161,6 @@
 	[self playerPhaseCardAttainment]; 
 
 }
-
-
 
 -(void)opponentStateBegin;
 {
@@ -242,6 +242,7 @@
 			[interface discardFromPlayArea:card];
 		}
 	}	
+	[self callNextPhase];
 }
 
 -(void)playerPhaseDiscard;
@@ -252,6 +253,7 @@
 	//*******************************************************************************************/
 	playerDidDiscard = YES;
 	[interface setPhase:phase];
+	[self callNextPhase];
 }
 
 
@@ -274,6 +276,7 @@
 -(void)opponentPhaseAttack;
 {
 	phase = GamePhaseAttack;
+	opponentDidAttack=YES;
 	[interface setPhase:phase];
 }
 
@@ -409,10 +412,6 @@
 			return YES;
 		}
 	}
-	else
-	{
-		
-	}
 	return NO;
 }
 
@@ -439,12 +438,20 @@
 					}
 				}
 			}
-			if (phase == GamePhaseMainphase)				
+			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
 				[targets addObjectsFromArray:[table playerFreePositions]];
 			
 			NSArray *array = [NSArray arrayWithArray:targets];
 			[targets release];
 			return array;
+		}
+	}
+	else
+	{
+		if ([player isCardInHand:aCard]
+			&& (phase = GamePhaseAttack && opponentDidAttack))
+		{
+			
 		}
 	}
 	return nil;
