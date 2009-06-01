@@ -20,6 +20,7 @@
 		3F7F97590FBB812800F011FD /* CardLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7F97580FBB812800F011FD /* CardLayer.m */; };
 		3F7F97660FBB858600F011FD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7F97650FBB858600F011FD /* QuartzCore.framework */; };
 		3F7F977C0FBB867100F011FD /* SlotLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7F977B0FBB867100F011FD /* SlotLayer.m */; };
+		3FDA805F0FD3E06000D894A6 /* LoggerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDA805E0FD3E06000D894A6 /* LoggerView.m */; };
 		CF23E75F0FBA24BB0057A1F9 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E7580FBA24BB0057A1F9 /* Card.m */; };
 		CF23E7600FBA24BB0057A1F9 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75A0FBA24BB0057A1F9 /* Game.m */; };
 		CF23E7610FBA24BB0057A1F9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75C0FBA24BB0057A1F9 /* Player.m */; };
@@ -57,6 +58,8 @@
 		3F7F977A0FBB867100F011FD /* SlotLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlotLayer.h; sourceTree = "<group>"; };
 		3F7F977B0FBB867100F011FD /* SlotLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlotLayer.m; sourceTree = "<group>"; };
 		3F7F97B70FBB944F00F011FD /* CGPointAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointAdditions.h; sourceTree = "<group>"; };
+		3FDA805D0FD3E06000D894A6 /* LoggerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggerView.h; sourceTree = "<group>"; };
+		3FDA805E0FD3E06000D894A6 /* LoggerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggerView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Khymeia-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Khymeia-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		CF23E7570FBA24BB0057A1F9 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		CF23E7580FBA24BB0057A1F9 /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
@@ -168,6 +171,8 @@
 				3F7F96B50FBA271C00F011FD /* InterfaceController.m */,
 				3F2360770FD3CE9100BF2734 /* ScrollerViewController.h */,
 				3F2360780FD3CE9100BF2734 /* ScrollerViewController.m */,
+				3FDA805D0FD3E06000D894A6 /* LoggerView.h */,
+				3FDA805E0FD3E06000D894A6 /* LoggerView.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 				3DF584290FBC8771003ABD93 /* ComunicatioLayer.m in Sources */,
 				CF84AE470FBD693B000149ED /* TableTarget.m in Sources */,
 				3F2360790FD3CE9100BF2734 /* ScrollerViewController.m in Sources */,
+				3FDA805F0FD3E06000D894A6 /* LoggerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,6 +39,7 @@ CGRect cardSlotsRects[] =
 - (TableTarget *) findSelectedTargetforCard:(CardLayer *) card;
 - (CGRect) frameRectForNextPlayerHandCard;
 - (void) showText:(NSString *) text withTitle:(NSString *) title;
+
 @end
 
 @implementation InterfaceController
@@ -399,6 +400,8 @@ CGRect cardSlotsRects[] =
 {
 //	[UIAlertView presentInfoAlertViewWithTitle:title
 //								   description:text];
+
+	KhymeiaLog(text);
 }
 
 @end

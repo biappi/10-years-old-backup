@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "InterfaceController.h"
+#import "LoggerView.h"
 
 @interface ScrollerViewController : UIViewController
 {
 	InterfaceController * playerOneInterface;
-	InterfaceController * playerTwoInterface;
+	InterfaceController * playerTwoInterface;	
+	LoggerView          * loggerView;
+	
+	BOOL logCollapsed;
 }
 
 @property(nonatomic, readonly) InterfaceController * playerOneInterface;
 @property(nonatomic, readonly) InterfaceController * playerTwoInterface;
+@property(nonatomic, readonly) LoggerView          * loggerView;
 
 + (ScrollerViewController *) scrollerController;
 

@@ -10,3 +10,26 @@
 #endif
 
 #define NOT_IMPLEMENTED() NSLog(@"WARNING: %s NOT IMPLEMENTED", __PRETTY_FUNCTION__)
+
+
+// ugly hack to prevent warnings
+
+@interface NSObject (UglyHack)
+
+- (id) setStatus:(id)s;
+- (id) log:(id)s;
+- (id) theScroller;
+- (id) loggerView;
+- (id) setHighlight:(BOOL)x;
+
+@end
+
+static inline void KhymeiaLog(NSString * logline)
+{
+	NSObject * d = [[UIApplication sharedApplication] delegate];
+	NSObject * lv = [[d theScroller] loggerView];
+	
+	[lv setStatus:logline];
+	[lv log:logline];
+	[lv setHighlight:YES];
+}

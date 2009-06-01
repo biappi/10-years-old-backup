@@ -37,6 +37,7 @@
 
 @synthesize playerOneInterface;
 @synthesize playerTwoInterface;
+@synthesize loggerView;
 
 + (ScrollerViewController *) scrollerController;
 {
@@ -61,6 +62,8 @@
 
 - (void)loadView;
 {	
+	UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
+	
 	KhymeiaScrollView * scrollView;
 	scrollView = [[KhymeiaScrollView alloc] initWithFrame:CGRectMake(0, 0, 480, 320)];
 	scrollView.contentSize = CGSizeMake(480, 320 * 2);
@@ -75,8 +78,16 @@
 	
 	[scrollView addSubview:playerOneInterface.view];
 	[scrollView addSubview:playerTwoInterface.view];
+
+	[view addSubview:scrollView];
 	
-	self.view = scrollView;
+	loggerView = [[LoggerView alloc] initWithFrame:CGRectMake(0, 320 - 20, 480, 320 / 2 + 20)];
+	logCollapsed = YES;
+	[view addSubview:loggerView];
+	[loggerView.statusButton addTarget:self action:@selector(showHideLog) forControlEvents:UIControlEventTouchUpInside];
+	
+	self.view = view;
+	
 	[scrollView release];
 }
 
@@ -84,14 +95,33 @@
 {
 	[playerOneInterface release];
 	[playerTwoInterface release];
-
+	[loggerView release];
+	
 	playerOneInterface = nil;
 	playerTwoInterface = nil;
+	loggerView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 {
     return (interfaceOrientation == UIInterfaceOrientationLandscapeRight);
+}
+
+- (void)showHideLog;
+{
+	CGRect logFrame = loggerView.frame;
+	
+	logFrame.origin.y = (logCollapsed)? 320 / 2 - 20 : 320 - 20;
+	
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+	loggerView.frame = logFrame;
+	[UIView commitAnimations];
+
+	if (logCollapsed == NO)
+		loggerView.highlight = NO;
+	
+	logCollapsed = !logCollapsed;
 }
 
 @end

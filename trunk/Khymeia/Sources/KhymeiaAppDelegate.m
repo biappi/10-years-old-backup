@@ -12,10 +12,10 @@
 #import "Card.h"
 #import "ComunicatioLayer.h"
 
-
 @implementation KhymeiaAppDelegate
 
 @synthesize window;
+@synthesize theScroller;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application;
 {
@@ -139,7 +139,7 @@
 	gameplayOpponent.interface = theScroller.playerTwoInterface;
 	
 	[gameplayPlayer setupState];
-	[gameplayOpponent setupState];
+	[gameplayOpponent setupState];	
 }
 
 - (void)dealloc;
