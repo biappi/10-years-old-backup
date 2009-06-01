@@ -27,7 +27,8 @@ typedef enum
 {
 	GamePhaseCardAttainment,
 	GamePhaseMainphase,
-	GamePhaseAttack,
+	GamePhaseAttackOpponent,
+	GamePhaseAttackPlayer,
 	GamePhaseDamageResolution,
 	GamePhaseDiscard,
 	GamePhaseNone

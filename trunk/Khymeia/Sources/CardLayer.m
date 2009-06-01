@@ -18,27 +18,9 @@
 	self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;
 	self.borderColor     = [UIColor blackColor].CGColor;
 	self.borderWidth     = 1;
-	UIImage *img=[UIImage imageNamed:acard.image];
-	/*switch (acard.element) {
-		case CardElementVoid:
-			img=[UIImage imageNamed:@"vacuum.jpg"];
-			break;
-		case CardElementFire:
-			img=[UIImage imageNamed:@"fire.jpg"];
-			break;
-		case CardElementWater:
-			img=[UIImage imageNamed:@"water.jpg"];
-			break;
-		case CardElementEarth:
-			img=[UIImage imageNamed:@"earth.jpg"];
-			break;
-		case CardElementWind:
-			img=[UIImage imageNamed:@"air.jpg"];
-			break;
-		default:
-			break;
-	}*/
+	UIImage *img=[UIImage imageNamed:acard.image];	
 	[self setContents:(id) [img CGImage]];
+	
 	return self;
 }
 

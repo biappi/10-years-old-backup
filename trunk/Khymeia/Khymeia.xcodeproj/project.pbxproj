@@ -26,6 +26,7 @@
 		CF23E7610FBA24BB0057A1F9 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75C0FBA24BB0057A1F9 /* Player.m */; };
 		CF23E7620FBA24BB0057A1F9 /* Table.m in Sources */ = {isa = PBXBuildFile; fileRef = CF23E75E0FBA24BB0057A1F9 /* Table.m */; };
 		CF3A539C0FD3D00000B6F14C /* elementale1.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3A539B0FD3D00000B6F14C /* elementale1.png */; };
+		CF3A53D80FD3D43500B6F14C /* elementale2.png in Resources */ = {isa = PBXBuildFile; fileRef = CF3A53D70FD3D43500B6F14C /* elementale2.png */; };
 		CF84AE470FBD693B000149ED /* TableTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = CF84AE460FBD693B000149ED /* TableTarget.m */; };
 		CFB7A1AF0FBF293100212422 /* air.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB7A1AA0FBF293100212422 /* air.jpg */; };
 		CFB7A1B00FBF293100212422 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB7A1AB0FBF293100212422 /* earth.jpg */; };
@@ -70,6 +71,7 @@
 		CF23E75D0FBA24BB0057A1F9 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
 		CF23E75E0FBA24BB0057A1F9 /* Table.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Table.m; sourceTree = "<group>"; };
 		CF3A539B0FD3D00000B6F14C /* elementale1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elementale1.png; path = images/cards/elementale1.png; sourceTree = "<group>"; };
+		CF3A53D70FD3D43500B6F14C /* elementale2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = elementale2.png; path = images/cards/elementale2.png; sourceTree = "<group>"; };
 		CF47D7AF0FBCB56C00DC8026 /* InterfaceToGameplayProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterfaceToGameplayProtocol.h; sourceTree = "<group>"; };
 		CF47D7FC0FBCB84F00DC8026 /* ComunicationToGameplayProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComunicationToGameplayProtocol.h; sourceTree = "<group>"; };
 		CF47D88B0FBCC30D00DC8026 /* GameState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameState.h; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		CF23E7930FBA2CE30057A1F9 /* cards */ = {
 			isa = PBXGroup;
 			children = (
+				CF3A53D70FD3D43500B6F14C /* elementale2.png */,
 				CF3A539B0FD3D00000B6F14C /* elementale1.png */,
 				CFB7A1AA0FBF293100212422 /* air.jpg */,
 				CFB7A1AB0FBF293100212422 /* earth.jpg */,
@@ -302,6 +305,7 @@
 				CFB7A1B20FBF293100212422 /* vacuum.jpg in Resources */,
 				CFB7A1B30FBF293100212422 /* water.jpg in Resources */,
 				CF3A539C0FD3D00000B6F14C /* elementale1.png in Resources */,
+				CF3A53D80FD3D43500B6F14C /* elementale2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

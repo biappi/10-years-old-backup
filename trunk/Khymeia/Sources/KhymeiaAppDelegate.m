@@ -31,7 +31,7 @@
 	Card *earthElemental=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
 	Card *voidElemental=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
 	Card *fireElemental2=[[Card alloc] initWithName:@"eatFire" image:@"elementale1.png" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElemental2=[[Card alloc] initWithName:@"etchù" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
+	Card *windElemental2=[[Card alloc] initWithName:@"etchù" image:@"elementale2.png" element:CardElementWind type:CardTypeElement level:1];
 	Card *waterElemental2=[[Card alloc] initWithName:@"beerDrinker" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
 	Card *earthElemental2=[[Card alloc] initWithName:@"googleEarth" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:1];
 	Card *voidElemental2=[[Card alloc] initWithName:@"ciSonoStorieCheNonEsistono" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
@@ -79,7 +79,7 @@
 	 * initialize Player 
 	 */
 	Player *player=[[Player alloc] init];
-	player.name=[NSString stringWithFormat:@"player ruttincul"];
+	player.name=[NSString stringWithFormat:@"player1"];
 	player.health=100;
 	player.deck=deck;
 	[deck release];
@@ -92,7 +92,7 @@
 	 * initialize Opponent 
 	 */
 	Player *opponent=[[Player alloc] init];
-	opponent.name=[NSString stringWithFormat:@"opponent sisi"];
+	opponent.name=[NSString stringWithFormat:@"player2"];
 	opponent.health=100;
 	opponent.deck=deckOp;
 	[deckOp release];
@@ -105,10 +105,18 @@
 	 */
 	gameplayPlayer =[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES];
 	gameplayOpponent =[[Game alloc] initWithPlayer:opponent opponent:player andImFirst:NO];
+	
+	/*
+	 *	release all
+	 */
+	[player release];
+	[opponent release];	
+	
 	ComunicatioLayer *comPlayer=[[[ComunicatioLayer alloc] init]autorelease];
 	ComunicatioLayer *comOpponent=[[[ComunicatioLayer alloc] init]autorelease];
+	
 	/*
-	 * link game play to comLayer
+	 * link game play to communication
 	 */
 	comPlayer.gameplay=gameplayPlayer;
 	comPlayer.comLayer=comOpponent;
@@ -118,16 +126,6 @@
 
 	gameplayPlayer.comunication=comPlayer;
 	gameplayOpponent.comunication=comOpponent;
-	
-	/*
-	 *	release all
-	 */
-	[player release];
-	[opponent release];
-	
-	//we need a scroller view on which add the two inteface
-	//[window addSubview:gameplayPlayer.interface.view];
-	//[window addSubview:gameplayOpponent.interface.view];
 	
 	theScroller = [[ScrollerViewController scrollerController] retain];
 	[window addSubview:theScroller.view];
@@ -140,6 +138,9 @@
 	
 	[gameplayPlayer setupState];
 	[gameplayOpponent setupState];	
+	
+	[gameplayPlayer start];
+	[gameplayOpponent start];
 }
 
 - (void)dealloc;

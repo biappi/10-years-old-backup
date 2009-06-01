@@ -50,4 +50,11 @@ typedef enum {
 
 -(id)initWithName:(NSString*)aName image:(NSString*)aImage element:(CardElement)elementType type:(CardType)aType level:(NSInteger)aLevel;
 
+/**
+ Return an array of targets for card
+ /return an array of targets 
+ */
+-(NSArray*)targets;
+
+
 @end

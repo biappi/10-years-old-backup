@@ -50,6 +50,8 @@
 
 -(void)setupState;
 
+-(void)start;
+
 /**
  Called by the interface when user would play the card at position. Interface should show aCard at fullscreen
  

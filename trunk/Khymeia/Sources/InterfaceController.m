@@ -62,7 +62,7 @@ CGRect cardSlotsRects[] =
 	playerHand       = [[NSMutableArray alloc] initWithCapacity:5];
 	playerPlayArea   = [[NSMutableArray alloc] initWithCapacity:4];
 	opponentPlayArea = [[NSMutableArray alloc] initWithCapacity:4];
-	turnEnded= [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	turnEnded = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
 	[turnEnded setFrame:CGRectMake(0, 0, 40, 40)];
 	[turnEnded retain];
 	[turnEnded setTitle:@"Done" forState:[turnEnded state]];
@@ -72,6 +72,7 @@ CGRect cardSlotsRects[] =
 	
 	return self;
 }
+
 -(void) endTurn
 {
 	if(![gameplay shouldPassNextPhase])
@@ -82,6 +83,7 @@ CGRect cardSlotsRects[] =
 		[turnEnded removeFromSuperview];
 	}
 }
+
 - (void)dealloc;
 {
 	[playerHand release];
@@ -128,8 +130,13 @@ CGRect cardSlotsRects[] =
 			[turnEnded setCenter:CGPointMake(20,20)];
 			[turnEnded setNeedsDisplay];
 			break;
-		case GamePhaseAttack:
-			[self showText:@"AttackPhase" withTitle:@"gp message"];
+		case GamePhaseAttackOpponent:
+			[self showText:@"AttackPhaseOpponent" withTitle:@"gp message"];
+			[self.view addSubview:turnEnded];
+			[turnEnded setCenter:CGPointMake(20,20)];
+			break;
+		case GamePhaseAttackPlayer:
+			[self showText:@"AttackPhasePlayer" withTitle:@"gp message"];
 			[self.view addSubview:turnEnded];
 			[turnEnded setCenter:CGPointMake(20,20)];
 			break;
@@ -229,12 +236,13 @@ CGRect cardSlotsRects[] =
 	CardLayer * theCard=[[CardLayer alloc] initWithCard:card];
 	if(target.table==TableTargetTypePlayer)
 	{
-			theCard.frame=cardSlotsRects[3+target.position];
+		
+		theCard.frame=cardSlotsRects[target.position-1];
 			
 	}
 	else if(target.table==TableTargetTypeOpponent)
 	{
-		theCard.frame=cardSlotsRects[target.position-1];
+		theCard.frame=cardSlotsRects[3+target.position];
 	}
 	[self.view.layer addSublayer:theCard];
 	[opponentPlayArea addObject:card];

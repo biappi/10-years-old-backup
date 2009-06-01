@@ -26,13 +26,6 @@
 #pragma mark -
 #pragma mark send methods 
 
-
-/*NOT YET IMPLEMENTED
--(BOOL)sendWillPlayCard:(Card*)aCard onCard:(Card*)otherCard withGesture:(BOOL)completed;
-{
-	[comLayer receiveWillPlayCard:aCard onCard:otherCard withGesture:completed];
-	return YES;
-}*/
 -(BOOL)sendWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
 	[comLayer receiveWillPlayCard:aCard onTarget:aTarget];
