@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
+#import "Game.h"
 #import "Player.h"
 #import "ComunicationToGameplayProtocol.h"
 #import "ComunicatioLayer.h"
@@ -47,6 +48,24 @@
 -(BOOL)sendDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
 
 /**
+ send a message to opponent that player has changed status
+ /param state: the new state
+ */
+-(void)sendStateChange:(GameState)state;
+
+/**
+ send a message to opponent that player has changed phase
+ /param phase: the new phase
+ */
+-(void)sendPhaseChange:(GamePhase)phase;
+
+/**
+ send a message to opponent that player has discarded a card
+ /param card: the discarded card
+ */
+-(void)sendDrawCard:(Card *)card;
+
+/**
  receive a message from player that a card is played on a target
  \param aCard: the card that player will play
  \param aTarget: the target on which the card will played
@@ -61,5 +80,19 @@
  */
 -(void)receiveDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
 
+/**
+ receive a message from player that the opponent has changed status
+ */
+-(GameState)receiveStateChange;
+
+/**
+ receive a message from player that the opponent has changed phase
+ */
+-(GamePhase)receivePhaseChange;
+
+/**
+ receive a message from player that the opponent has discarded a card
+ */
+-(Card*)receiveDrawCard;
 
 @end

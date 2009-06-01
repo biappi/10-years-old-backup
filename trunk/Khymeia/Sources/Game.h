@@ -15,7 +15,8 @@
 #import "ComunicationToGameplayProtocol.h"
 #import "GameState.h"
 #import "TableTarget.h"
-#import "ComunicatioLayer.h"
+
+@class ComunicatioLayer;
 
 @interface Game : NSObject <InterfaceToGameplayProtocol, ComunicationToGameplayProtocol>
 {

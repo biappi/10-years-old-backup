@@ -27,8 +27,18 @@
 -(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
 
 /**
- Opponent will pass phase
+ Opponent  passed phase
  */
--(void)didOpponentPassPhase;
+-(GamePhase)didOpponentPassPhase;
+
+/**
+ opponent changed status
+ */
+-(GameState)didOpponentPassStatus;
+
+/**
+ opponent draw a card
+ */
+-(Card*)didOpponentDrawCard;
 
 @end

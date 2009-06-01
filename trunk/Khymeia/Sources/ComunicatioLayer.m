@@ -33,10 +33,6 @@
 	[comLayer receiveWillPlayCard:aCard onCard:otherCard withGesture:completed];
 	return YES;
 }*/
-
-#pragma mark -
-#pragma mark receive methods
-
 -(BOOL)sendWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
 	[comLayer receiveWillPlayCard:aCard onTarget:aTarget];
@@ -48,6 +44,26 @@
 	return YES;
 }
 
+-(void)sendStateChange:(GameState)state;
+{
+	
+}
+
+-(void)sendPhaseChange:(GamePhase)phase;
+{
+	
+}
+
+-(void)sendDrawCard:(Card*)card;
+{
+	
+}
+
+
+#pragma mark -
+#pragma mark receive methods
+
+
 -(void)receiveWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
 	[gameplay willPlayOpponentCard:aCard onTarget:aTarget];
@@ -57,6 +73,26 @@
 -(void)receiveDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
 	[gameplay didPlayOpponentCard:aCard onTarget:aTarget];
+}
+
+-(GameState)receiveStateChange;
+{
+	 return [gameplay didOpponentPassStatus];
+}
+
+/**
+ receive a message from player that the opponent has changed phase
+ */
+-(GamePhase)receivePhaseChange;
+{
+	return [gameplay didOpponentPassPhase];
+}
+/**
+ receive a message from player that the opponent has discarded a card
+ */
+-(Card*)receiveDrawCard;
+{
+	return [gameplay didOpponentDrawCard];
 }
 
 @end

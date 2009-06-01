@@ -517,10 +517,23 @@
 	return NO;
 }
 
--(void)didOpponentPassPhase;
+-(GamePhase)didOpponentPassPhase;
 {
 	[self callNextPhase];
+	return phase;
 }
 
+-(GameState)didOpponentPassStatus;
+{
+	if(state == GameStateOpponent)
+		return GameStatePlayer;
+	else
+		return GameStateOpponent;
+}
+
+-(Card*)didOpponentDrawCard;
+{
+	return nil;
+}
 
 @end
