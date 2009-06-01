@@ -169,17 +169,24 @@ CGRect cardSlotsRects[] =
 
 - (void) setHP:(int)newHP player:(PlayerKind)thePlayer;
 {
-	NOT_IMPLEMENTED();
+	UILabel * l;
+	
+	l = (thePlayer == PlayerKindPlayer)   ? playerHealthPointsLabel   : nil;
+	l = (thePlayer == PlayerKindOpponent) ? opponentHealthPointsLabel : nil;
+	
+	l.text = [NSString stringWithFormat:@"%d", newHP];
 }
 
 - (void) substractHP:(int)newHP player:(PlayerKind)thePlayer;
 {
-	NOT_IMPLEMENTED();
+	// TODO: trigger some animation
+	[self setHP:newHP player:thePlayer];
 }
 
 - (void) addHP:(int)newHP player:(PlayerKind)thePlayer;
 {
-	NOT_IMPLEMENTED();
+	// TODO: trigger some animation
+	[self setHP:newHP player:thePlayer];
 }
 
 - (void) drawCard:(Card *)card;
