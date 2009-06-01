@@ -255,7 +255,7 @@
 			[interface discardFromPlayArea:card];
 		}
 	}
-	[interface setHP:opponent.health player:opponent];
+	[interface setHP:opponent.health player:PlayerKindOpponent];
 	//restoring opponent's card with health >0
 	for (Card * card in table.opponentCards)
 	{

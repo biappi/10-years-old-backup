@@ -55,9 +55,9 @@ typedef enum
 
 - (void) beginPhaseTimer:(NSTimeInterval)timeout;
 
-- (void) setHP:(int)newHP player:(Player *)thePlayer;
-- (void) substractHP:(int)newHP player:(Player *)thePlayer;
-- (void) addHP:(int)newHP player:(Player *)thePlayer;
+- (void) setHP:(int)newHP player:(PlayerKind)thePlayer;
+- (void) substractHP:(int)newHP player:(PlayerKind)thePlayer;
+- (void) addHP:(int)newHP player:(PlayerKind)thePlayer;
 
 - (void) drawCard:(Card *)card;
 - (void) discardFromHand:(Card *)card;

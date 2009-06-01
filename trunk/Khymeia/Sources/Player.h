@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 
+typedef enum {
+	PlayerKindPlayer,
+	PlayerKindOpponent,
+} PlayerKind;
+
 @interface Player : NSObject
 {
 	NSString            *name;

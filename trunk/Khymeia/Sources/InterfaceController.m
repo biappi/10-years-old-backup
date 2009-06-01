@@ -167,17 +167,17 @@ CGRect cardSlotsRects[] =
 	NOT_IMPLEMENTED();
 }
 
-- (void) setHP:(int)newHP player:(Player *)thePlayer;
+- (void) setHP:(int)newHP player:(PlayerKind)thePlayer;
 {
 	NOT_IMPLEMENTED();
 }
 
-- (void) substractHP:(int)newHP player:(Player *)thePlayer;
+- (void) substractHP:(int)newHP player:(PlayerKind)thePlayer;
 {
 	NOT_IMPLEMENTED();
 }
 
-- (void) addHP:(int)newHP player:(Player *)thePlayer;
+- (void) addHP:(int)newHP player:(PlayerKind)thePlayer;
 {
 	NOT_IMPLEMENTED();
 }
@@ -200,6 +200,7 @@ CGRect cardSlotsRects[] =
 - (void) discardFromHand:(Card *)acard;
 {
 	CardLayer * toRemove;
+	
 	for(CardLayer * card in self.view.layer.sublayers)
 	{
 		if([card isKindOfClass:[CardLayer class]] && [card.card isEqual:acard])
@@ -207,6 +208,7 @@ CGRect cardSlotsRects[] =
 			toRemove=card;
 		}
 	}
+	
 	[toRemove removeFromSuperlayer];
 	[toRemove release];
 }
@@ -234,16 +236,16 @@ CGRect cardSlotsRects[] =
 - (void) opponentPlaysCard:(Card *)card onTarget:(TableTarget *) target;
 {
 	CardLayer * theCard=[[CardLayer alloc] initWithCard:card];
+	
 	if(target.table==TableTargetTypePlayer)
 	{
-		
 		theCard.frame=cardSlotsRects[target.position-1];
-			
 	}
 	else if(target.table==TableTargetTypeOpponent)
 	{
 		theCard.frame=cardSlotsRects[3+target.position];
 	}
+	
 	[self.view.layer addSublayer:theCard];
 	[opponentPlayArea addObject:card];
 }

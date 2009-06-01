@@ -54,7 +54,7 @@
 - (void)setHighlight:(BOOL)x;
 {
 	[UIView beginAnimations:nil context:nil];
-	statusButton.backgroundColor = (x)? [UIColor colorWithRed:0xCC / 255.0 green:0 blue:0 alpha:1] : [UIColor colorWithWhite:0.60 alpha:1];
+	statusButton.backgroundColor = (x)? [UIColor colorWithRed:0xCC / 255.0 green:0 blue:0 alpha:1] : [UIColor colorWithWhite:0.60 alpha:0.7];
 	[UIView commitAnimations];
 	highlighted = x;
 }
