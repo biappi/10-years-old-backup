@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "ComunicatioLayer.h"
 
 @interface Game (PrivateMethods)
 
@@ -185,7 +186,7 @@
 {
 	phase = GamePhaseCardAttainment;
 	[interface setPhase:phase];
-	//[comunication sendPhaseChange:phase];
+	[comunication sendPhaseChange:phase];
 	if ([player.hand count]<5)
 	{
 		[interface drawCard:[player.deck lastObject]];

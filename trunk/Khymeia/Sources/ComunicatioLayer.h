@@ -83,16 +83,16 @@
 /**
  receive a message from player that the opponent has changed status
  */
--(NSInteger)receiveStateChange:(NSInteger)state;
+-(void)receiveStateChange:(NSInteger)state;
 
 /**
  receive a message from player that the opponent has changed phase
  */
--(NSInteger)receivePhaseChange:(NSInteger)phase;
+-(void)receivePhaseChange:(NSInteger)phase;
 
 /**
  receive a message from player that the opponent has discarded a card
  */
--(Card*)receiveDrawCard:(Card*)card;
+-(void)receiveDrawCard:(Card*)card;
 
 @end

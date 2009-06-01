@@ -75,24 +75,24 @@
 	[gameplay didPlayOpponentCard:aCard onTarget:aTarget];
 }
 
--(NSInteger)receiveStateChange:(NSInteger)stato;
+-(void)receiveStateChange:(NSInteger)stato;
 {
-	return [gameplay didOpponentPassStatus:stato];
+	[gameplay didOpponentPassStatus:stato];
 }
 
 /**
  receive a message from player that the opponent has changed phase
  */
--(NSInteger)receivePhaseChange:(NSInteger)fase;
+-(void)receivePhaseChange:(NSInteger)fase;
 {
-	return [gameplay didOpponentPassPhase:fase];
+	[gameplay didOpponentPassPhase:fase];
 }
 /**
  receive a message from player that the opponent has discarded a card
  */
--(Card*)receiveDrawCard:(Card*)card;
+-(void)receiveDrawCard:(Card*)card;
 {
-	return [gameplay didOpponentDrawCard:card];
+	[gameplay didOpponentDrawCard:card];
 }
 
 @end

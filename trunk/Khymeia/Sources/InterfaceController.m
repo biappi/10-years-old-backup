@@ -64,6 +64,7 @@ CGRect cardSlotsRects[] =
 	opponentPlayArea = [[NSMutableArray alloc] initWithCapacity:4];
 	turnEnded= [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	[turnEnded setFrame:CGRectMake(0, 0, 40, 40)];
+	[turnEnded retain];
 	[turnEnded setTitle:@"Done" forState:[turnEnded state]];
 	[turnEnded addTarget:self action:@selector(endTurn) forControlEvents:UIControlEventTouchDown];
 	
@@ -86,6 +87,7 @@ CGRect cardSlotsRects[] =
 	[playerHand release];
 	[playerPlayArea release];
 	[opponentPlayArea release];
+	[turnEnded release];
 	[playerHealthPointsLabel release];
 	[opponentHealthPointsLabel release];
 	[super dealloc];
@@ -144,7 +146,6 @@ CGRect cardSlotsRects[] =
 			break;
 		case GamePhaseNone:
 			[self showText:@"NonePhase" withTitle:@"gp message"];
-
 			break;
 	}
 }
