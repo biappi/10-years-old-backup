@@ -8,6 +8,7 @@
 
 #import "TableTarget.h"
 
+#if 0
 
 @implementation TableTarget
 
@@ -30,3 +31,5 @@
 }
 
 @end
+
+#endif

@@ -28,6 +28,9 @@ typedef enum
 
 @interface InterfaceController : UIViewController
 {
+	// TODO: maybe "HealthPoints" is too redundant
+	//       we can rename it "playerHPLabel"?
+	
 	IBOutlet UILabel * playerHealthPointsLabel;
 	IBOutlet UILabel * opponentHealthPointsLabel;
 
