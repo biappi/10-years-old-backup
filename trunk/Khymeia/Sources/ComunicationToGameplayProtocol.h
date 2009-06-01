@@ -29,16 +29,16 @@
 /**
  Opponent  passed phase
  */
--(GamePhase)didOpponentPassPhase;
+-(NSInteger)didOpponentPassPhase:(NSInteger)phase;
 
 /**
  opponent changed status
  */
--(GameState)didOpponentPassStatus;
+-(NSInteger)didOpponentPassStatus:(NSInteger)state;
 
 /**
  opponent draw a card
  */
--(Card*)didOpponentDrawCard;
+-(Card*)didOpponentDrawCard:(Card*)card;
 
 @end

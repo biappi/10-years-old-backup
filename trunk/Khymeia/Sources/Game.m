@@ -47,7 +47,7 @@
 @implementation Game
 
 @synthesize interface;
-@synthesize comLayer;
+@synthesize comunication;
 
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 {
@@ -165,7 +165,7 @@
 	//say to interface about state change
 	[interface setState:state];
 	//say to server about state change
-	//[comunication sendStateChange:state];
+	[comunication sendStateChange:state];
 	[self playerPhaseCardAttainment]; 
 
 }
@@ -189,7 +189,7 @@
 	if ([player.hand count]<5)
 	{
 		[interface drawCard:[player.deck lastObject]];
-		//[comunication sendDrawCard:[player.deck lastObject]];
+		[comunication sendDrawCard:[player.deck lastObject]];
 		[player.hand addObject:[player.deck lastObject]];
 		[player.deck removeLastObject];
 	}
@@ -200,7 +200,7 @@
 {
 	phase = GamePhaseMainphase;
 	[interface setPhase:phase];
-	//[comunication sendPhaseChange:phase];
+	[comunication sendPhaseChange:phase];
 }
 
 -(void)playerPhaseAttack;
@@ -213,14 +213,14 @@
 	playerDidAttack = NO;
 	
 	[interface setPhase:phase];
-	//[comunication sendPhaseChange:phase];
+	[comunication sendPhaseChange:phase];
 }
 
 -(void)playerPhaseDamageResolution;
 {
 	phase = GamePhaseDamageResolution;
 	[interface setPhase:phase];
-	//[comunication sendPhaseChange:phase];
+	[comunication sendPhaseChange:phase];
 	
 	//calculate opponent damage and restoring player's card with health >0
 	for (Card * card in table.playerCards)
@@ -353,7 +353,7 @@
 -(void)willPlayCard:(Card*)aCard onTarget:(id)aTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
-	//[comunication sendWillPlayCard:aCard onTarget:aTarget];
+	[comunication sendWillPlayCard:aCard onTarget:aTarget];
 	if ([aTarget isKindOfClass:[Card class]])
 	{
 		//pass state change to comunication layer
@@ -368,7 +368,7 @@
 {
 	//set the flag to remeber that the play have attack in AttackPhase
 	
-	//[comunication sendDidPlayCard:aCard onTarget:aTarget];
+	[comunication sendDidPlayCard:aCard onTarget:aTarget];
 	
 	if (state == GameStatePlayer && phase == GamePhaseAttack)
 	{
@@ -486,6 +486,7 @@
 -(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
+	
 	return YES;
 }
 
@@ -512,18 +513,20 @@
 	{
 		TableTarget* tableTarget = (TableTarget*)aTarget;
 		[table addCard:aCard toPosition:tableTarget];
+		
 	}
+	[interface opponentPlaysCard:aCard onTarget:aTarget];
 	
 	return NO;
 }
 
--(GamePhase)didOpponentPassPhase;
+-(NSInteger)didOpponentPassPhase:(NSInteger)fase;
 {
 	[self callNextPhase];
 	return phase;
 }
 
--(GameState)didOpponentPassStatus;
+-(NSInteger)didOpponentPassStatus:(NSInteger)stato;
 {
 	if(state == GameStateOpponent)
 		return GameStatePlayer;
@@ -531,7 +534,7 @@
 		return GameStateOpponent;
 }
 
--(Card*)didOpponentDrawCard;
+-(Card*)didOpponentDrawCard:(Card*)card;
 {
 	return nil;
 }

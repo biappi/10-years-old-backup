@@ -44,19 +44,19 @@
 	return YES;
 }
 
--(void)sendStateChange:(GameState)state;
+-(void)sendStateChange:(NSInteger)state;
 {
-	
+	[comLayer receiveStateChange:state];
 }
 
--(void)sendPhaseChange:(GamePhase)phase;
+-(void)sendPhaseChange:(NSInteger)phase;
 {
-	
+	[comLayer receivePhaseChange:phase];
 }
 
 -(void)sendDrawCard:(Card*)card;
 {
-	
+	[comLayer receiveDrawCard:card];
 }
 
 
@@ -75,24 +75,24 @@
 	[gameplay didPlayOpponentCard:aCard onTarget:aTarget];
 }
 
--(GameState)receiveStateChange;
+-(NSInteger)receiveStateChange:(NSInteger)stato;
 {
-	 return [gameplay didOpponentPassStatus];
+	return [gameplay didOpponentPassStatus:stato];
 }
 
 /**
  receive a message from player that the opponent has changed phase
  */
--(GamePhase)receivePhaseChange;
+-(NSInteger)receivePhaseChange:(NSInteger)fase;
 {
-	return [gameplay didOpponentPassPhase];
+	return [gameplay didOpponentPassPhase:fase];
 }
 /**
  receive a message from player that the opponent has discarded a card
  */
--(Card*)receiveDrawCard;
+-(Card*)receiveDrawCard:(Card*)card;
 {
-	return [gameplay didOpponentDrawCard];
+	return [gameplay didOpponentDrawCard:card];
 }
 
 @end

@@ -116,8 +116,8 @@
 	comOpponent.gameplay=gameplayOpponent;
 	comOpponent.comLayer=comPlayer;
 
-	gameplayPlayer.comLayer=comPlayer;
-	gameplayOpponent.comLayer=comOpponent;
+	gameplayPlayer.comunication=comPlayer;
+	gameplayOpponent.comunication=comOpponent;
 	
 	/*
 	 *	release all

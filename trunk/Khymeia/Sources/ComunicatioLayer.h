@@ -51,13 +51,13 @@
  send a message to opponent that player has changed status
  /param state: the new state
  */
--(void)sendStateChange:(GameState)state;
+-(void)sendStateChange:(NSInteger)state;
 
 /**
  send a message to opponent that player has changed phase
  /param phase: the new phase
  */
--(void)sendPhaseChange:(GamePhase)phase;
+-(void)sendPhaseChange:(NSInteger)phase;
 
 /**
  send a message to opponent that player has discarded a card
@@ -83,16 +83,16 @@
 /**
  receive a message from player that the opponent has changed status
  */
--(GameState)receiveStateChange;
+-(NSInteger)receiveStateChange:(NSInteger)state;
 
 /**
  receive a message from player that the opponent has changed phase
  */
--(GamePhase)receivePhaseChange;
+-(NSInteger)receivePhaseChange:(NSInteger)phase;
 
 /**
  receive a message from player that the opponent has discarded a card
  */
--(Card*)receiveDrawCard;
+-(Card*)receiveDrawCard:(Card*)card;
 
 @end

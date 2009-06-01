@@ -25,7 +25,7 @@
 	Player					*opponent;
 	BOOL					isFirst;
 	InterfaceController*	interface;
-	ComunicatioLayer *     comLayer; //is the link to the comunication layer
+	ComunicatioLayer *      comunication; //is the link to the comunication layer
 	
 	NSInteger				state;
 	NSInteger				phase;
@@ -46,7 +46,7 @@
 }
 
 @property (nonatomic, assign) InterfaceController * interface;
-@property (nonatomic, retain)   ComunicatioLayer   *comLayer;
+@property (nonatomic, retain)   ComunicatioLayer   *comunication;
 
 -(void)setupState;
 
