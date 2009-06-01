@@ -58,8 +58,11 @@
 		table = [[Table alloc] init];
 		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
+		/*
+		 WILLY: moved out to appdelegate to better implement scrolling etc...
 		interface = [[InterfaceController alloc] init];
 		interface.gameplay = self;
+		*/
 		
 		/**********TEST STUFF******/
 		interface.gameplay=self;
@@ -80,7 +83,12 @@
 -(void)dealloc;
 {
 	[table release];
+	/*
+	 removed, interface to gameplay and vice-versa are weak pointers,
+	 they're both retained by the AppDelegate
+	 
 	[interface release];
+	 */
 	[player release];
 	[opponent release];
 	[super dealloc];

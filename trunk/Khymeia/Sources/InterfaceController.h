@@ -38,9 +38,13 @@ typedef enum
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;
 	NSArray			 * currentTargets;
+	
+	BOOL               interfaceIsBusy;
+	
 	id<InterfaceToGameplayProtocol>	 gameplay;
 }
 
+@property (nonatomic, assign) BOOL interfaceIsBusy; // <- return YES to prevent the scroller to kick in
 @property (nonatomic, retain) id<InterfaceToGameplayProtocol> gameplay;
 
 #pragma mark Gameplay To Interface

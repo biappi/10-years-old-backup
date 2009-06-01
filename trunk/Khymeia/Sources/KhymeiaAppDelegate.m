@@ -126,18 +126,27 @@
 	[opponent release];
 	
 	//we need a scroller view on which add the two inteface
-	[window addSubview:gameplayPlayer.interface.view];
+	//[window addSubview:gameplayPlayer.interface.view];
 	//[window addSubview:gameplayOpponent.interface.view];
 	
-	[gameplayPlayer setupState];
-	//[gameplayOpponent setupState];
+	theScroller = [[ScrollerViewController scrollerController] retain];
+	[window addSubview:theScroller.view];
 	
+	theScroller.playerOneInterface.gameplay = gameplayPlayer;
+	gameplayPlayer.interface = theScroller.playerOneInterface;
+	
+	theScroller.playerTwoInterface.gameplay = gameplayOpponent;
+	gameplayOpponent.interface = theScroller.playerTwoInterface;
+	
+	[gameplayPlayer setupState];
+	[gameplayOpponent setupState];
 }
 
 - (void)dealloc;
 {
 	[gameplayPlayer release];
 	[gameplayOpponent release];
+	[theScroller release];
     [window release];
     [super dealloc];
 }

@@ -46,6 +46,7 @@ CGRect cardSlotsRects[] =
 #pragma mark House Keeping
 
 @synthesize gameplay;
+@synthesize interfaceIsBusy;
 
 - (id)init;
 {
@@ -64,6 +65,8 @@ CGRect cardSlotsRects[] =
 	[turnEnded setFrame:CGRectMake(0, 0, 40, 40)];
 	[turnEnded setTitle:@"Done" forState:[turnEnded state]];
 	[turnEnded addTarget:self action:@selector(endTurn) forControlEvents:UIControlEventTouchDown];
+	
+	interfaceIsBusy = NO;
 	
 	return self;
 }
@@ -279,6 +282,8 @@ CGRect cardSlotsRects[] =
 			currentlyMovingCard=nil;
 		}
 	}
+	
+	interfaceIsBusy = YES;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -342,6 +347,7 @@ CGRect cardSlotsRects[] =
 	[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]-1];
 
 	currentlyMovingCard = nil;
+	interfaceIsBusy = NO;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -351,6 +357,7 @@ CGRect cardSlotsRects[] =
 
 	currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
 	currentlyMovingCard = nil;
+	interfaceIsBusy = NO;
 }
 
 #pragma mark Private Methods
@@ -390,8 +397,8 @@ CGRect cardSlotsRects[] =
 
 - (void) showText:(NSString *) text withTitle:(NSString *) title
 {
-	[UIAlertView presentInfoAlertViewWithTitle:title
-								   description:text];
+//	[UIAlertView presentInfoAlertViewWithTitle:title
+//								   description:text];
 }
 
 @end

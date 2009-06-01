@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Game.h"
+#import "ScrollerViewController.h"
 
 @interface KhymeiaAppDelegate : NSObject <UIApplicationDelegate>
 {
     UIWindow         * window;
 	Game			 * gameplayPlayer;
 	Game			 * gameplayOpponent;
+	ScrollerViewController * theScroller;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow * window;

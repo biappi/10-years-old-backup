@@ -44,7 +44,7 @@
 	
 }
 
-@property (nonatomic, readonly) InterfaceController *interface;
+@property (nonatomic, assign) InterfaceController * interface;
 @property (nonatomic, retain)   ComunicatioLayer   *comLayer;
 
 -(void)setupState;
