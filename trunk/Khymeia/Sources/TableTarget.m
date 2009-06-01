@@ -8,28 +8,18 @@
 
 #import "TableTarget.h"
 
-#if 0
+@implementation Target
 
-@implementation TableTarget
-
-@synthesize table;
+@synthesize type;
 @synthesize position;
 
--(id) initwithTable:(TableTargetType) atable andPosition:(int) aposition;
++ (Target *) targetWithType:(TargetTypes)theType position:(int)thePosition;
 {
-	if (self = [super init])
-	{
-		self.table=atable;
-		self.position=aposition;
-	}
-	return self;
-}
-
-+(id) targetWithTarget:(TableTarget*)aTarget;
-{
-	return [[[TableTarget alloc] initwithTable:aTarget.table andPosition:aTarget.position] autorelease];
+	Target * p = [[Target alloc] init];
+	p.type = theType;
+	p.position = thePosition;
+	
+	return [p autorelease];
 }
 
 @end
-
-#endif

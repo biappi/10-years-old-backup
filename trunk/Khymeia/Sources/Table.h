@@ -12,27 +12,21 @@
 
 @interface Table : NSObject
 {
-	NSArray * playerPlayArea;
-	NSArray * opponentPlayArea;
+	NSMutableArray * playerPlayArea;
+	NSMutableArray * opponentPlayArea;
 }
 
-@property (nonatomic, retain) Card* card1;
-@property (nonatomic, retain) Card* card2;
-@property (nonatomic, retain) Card* card3;
-@property (nonatomic, retain) Card* card4;
+@property(nonatomic, readonly) NSArray * playerPlayArea;
+@property(nonatomic, readonly) NSArray * opponentPlayArea;
 
-@property (nonatomic, retain) Card* cardOpponent1;
-@property (nonatomic, retain) Card* cardOpponent2;
-@property (nonatomic, retain) Card* cardOpponent3;
-@property (nonatomic, retain) Card* cardOpponent4;
+// ---- For GP
 
-@property (nonatomic, readonly) NSArray *playerCards;
-@property (nonatomic, readonly) NSArray *opponentCards;
+- (NSArray *)opponentFreePositions;
+- (NSArray *)playerFreePositions;
 
--(NSArray*)opponentFreePositions;
--(NSArray*)playerFreePositions;
+// ---- For INT
 
--(void)discardCardFromPosition:(TableTarget*)aTarget;
--(void)addCard:(Card*)aCard toPosition:(TableTarget*)aTarget;
+- (void)addCard:(Card *)aCard toPosition:(Target *)aTarget;
+- (void)discardCardFromPosition:(Target *)aTarget;
 
 @end

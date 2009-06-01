@@ -21,31 +21,15 @@ typedef enum {
 	TargetTypeOpponentPlayArea,
 } TargetTypes;
 
-#if 0
-
-typedef enum 
+@interface Target : NSObject
 {
-	TableTargetTypePlayer,
-	TableTargetTypeOpponent
-} TableTargetType;
-
-@interface TableTarget : NSObject 
-{
-	TableTargetType table;
-	int position;
+	TargetTypes type;
+	int         position; //< are zero-based
 }
 
-@property(nonatomic,assign) TableTargetType table;
-@property(nonatomic,assign) int position;
+@property(nonatomic, assign) TargetTypes type;
+@property(nonatomic, assign) int         position;
 
-/**
- /param table: type of table
- /return an instance of TableTarget
- */
--(id) initwithTable:(TableTargetType)table andPosition:(int) position;
-	YES	
-+(id) targetWithTarget:(TableTarget*)aTarget;
++ (Target *) targetWithType:(TargetTypes)type position:(int)position;
 
 @end
-
-#endif
