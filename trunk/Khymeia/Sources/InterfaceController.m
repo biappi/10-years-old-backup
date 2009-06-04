@@ -281,6 +281,7 @@ Target * TargetHitTest(CGPoint point)
 	
 	CardLayer * cardLayer = [CardLayer cardWithCard:card];
 	cardLayer.frame = playerHandTargetRects[dstTarget.position];
+	[self.mainLayer addSublayer:cardLayer];
 	
 	[playerHand replaceObjectAtIndex:dstTarget.position withObject:cardLayer];
 }
