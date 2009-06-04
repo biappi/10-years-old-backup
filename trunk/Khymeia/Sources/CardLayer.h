@@ -12,6 +12,7 @@
 @interface CardLayer : CALayer
 {
 	Card * card;
+	NSMutableArray * level;
 }
 
 - (id) initWithCard:(Card *)card;
