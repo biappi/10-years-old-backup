@@ -70,7 +70,7 @@ typedef enum
 - (void) playCard:(Card *)card overCard:(Card *)card;
 - (void) playCard:(Card *)card overPlayer:(Player *)player;
 */
-- (void) opponentPlaysCard:(Card *)card onTarget:(TableTarget *) target;
+- (void) opponentPlaysCard:(Card *)card onTarget:(Target *) target;
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
 - (void) setInterfaceMode:(InterfaceModes)mode;

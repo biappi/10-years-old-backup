@@ -242,7 +242,7 @@
 	[comunication sendPhaseChange:phase];
 	
 	//calculate opponent damage and restoring player's card with health >0
-	for (Card * card in table.playerCards)
+	for (Card * card in table.playerPlayArea)
 	{
 		if (card.health>0)
 		{
@@ -258,7 +258,7 @@
 	}
 	[interface setHP:opponent.health player:PlayerKindOpponent];
 	//restoring opponent's card with health >0
-	for (Card * card in table.opponentCards)
+	for (Card * card in table.opponentPlayArea)
 	{
 		if (card.health>0)
 		{
@@ -381,13 +381,13 @@
 #pragma mark -
 #pragma mark Interface to Gameplayer methods
 
--(void)willPlayCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
+-(void)willPlayCard:(Card*)aCard onTarget:(Target*)aTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
 	[comunication sendWillPlayCard:aCard onTarget:aTarget];
 }
 
--(void)didPlayCard:(Card*)aCard onTarget:(TableTarget*)aTarget withGesture:(BOOL)completed;
+-(void)didPlayCard:(Card*)aCard onTarget:(Target*)aTarget withGesture:(BOOL)completed;
 {
 	//set the flag to remeber that the play have attack in AttackPhase
 	
@@ -401,19 +401,18 @@
 	//remove card from user's hand
 	[player removeCardFromHand:aCard];
 	
-	if ([aTarget isKindOfClass:[Card class]])
+	if (aTarget.type == TargetTypeOpponentPlayArea)
 	{
-		Card* otherCard = (Card*)aTarget;
-		if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+		Card* otherCard = (Card*)[table.opponentPlayArea objectAtIndex:aTarget.position];
+		if(aCard.type == CardTypeElement && otherCard.type == CardTypeElement)
 		{
 			//pass state change to comunication layer
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
 	}
-	else if ([aTarget isKindOfClass:[TableTarget class]])
+	else if (aTarget.type == TargetTypePlayerPlayArea)
 	{
-		TableTarget* tableTarget = (TableTarget*)aTarget;
-		[table addCard:aCard toPosition:tableTarget];
+		[table addCard:aCard toPosition:aTarget];
 	}
 }
 
@@ -462,17 +461,15 @@
 			&& ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))      //and is the right phase
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
-			TableTarget *tableTarget;
+			Target *tableTarget;
 			if (aCard.type == CardTypeElement)
 			{
-				for (Card * opponentCard in table.opponentCards)
+				for (Card * opponentCard in table.opponentPlayArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if ([self canPlayInstance:aCard onInstance:opponentCard])
 					{
-						tableTarget = [[[TableTarget alloc] init] autorelease];
-						tableTarget.position = [table.opponentCards indexOfObject:opponentCard]+1;				
-						tableTarget.table = TableTargetTypeOpponent;				
+						tableTarget = [[Target alloc] targetWithType:TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
 						[targets addObject:tableTarget];
 					}
 				}
@@ -491,17 +488,15 @@
 			&& phase == GamePhaseAttackOpponent)
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
-			TableTarget *tableTarget;
+			Target *tableTarget;
 			if (aCard.type == CardTypeElement)
 			{
-				for (Card * opponentCard in table.opponentCards)
+				for (Card * opponentCard in table.opponentPlayArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if ([self canPlayInstance:aCard onInstance:opponentCard])
 					{
-						tableTarget = [[[TableTarget alloc] init] autorelease];
-						tableTarget.position = [table.opponentCards indexOfObject:opponentCard]+1;				
-						tableTarget.table = TableTargetTypeOpponent;				
+						tableTarget = [[Target alloc] targetWithType: TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
 						[targets addObject:tableTarget];
 					}
 				}
@@ -535,21 +530,21 @@
 ****************************************/
 
 
--(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
+-(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
 	
 	return YES;
 }
 
--(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
+-(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
 {		
-	TableTarget* tableTarget = [TableTarget targetWithTarget:aTarget];
+	Target* tableTarget = [Target targetWithTarget:aTarget];
 	//convertion from opponent to player
-	if (tableTarget.table == TableTargetTypeOpponent)
-		tableTarget.table = TableTargetTypePlayer;
+	if (tableTarget.type == TargetTypeOpponentPlayArea)
+		tableTarget.type = TargetTypePlayerPlayArea;
 	else
-		tableTarget.table = TableTargetTypeOpponent;
+		tableTarget.type= TargetTypeOpponentPlayArea;
 	
 	//remove card from user's hand
 	[opponent removeCardFromHand:aCard];
@@ -563,7 +558,7 @@
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
 	}
-	else if ([aTarget isKindOfClass:[TableTarget class]])
+	else if ([aTarget isKindOfClass:[Target class]])
 	{
 		[table addCard:aCard toPosition:tableTarget];
 		

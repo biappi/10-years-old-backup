@@ -17,14 +17,14 @@
  \param aCard: card that opponent has played
  \return YES if the could be played, NO otherwise
  */
--(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
+-(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
 
 /**
  Called by the comunication interface when user has played the card
  \param aCard: card that opponent has played
  \return YES if the could be played, NO otherwise
  */
--(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(TableTarget*)aTarget;
+-(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
 
 /**
  Opponent  passed phase

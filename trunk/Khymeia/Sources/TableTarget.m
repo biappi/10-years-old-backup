@@ -22,4 +22,13 @@
 	return [p autorelease];
 }
 
++ (Target *) targetWithTarget:(Target*)theTarget;
+{
+	Target * p = [[Target alloc] init];
+	p.type = theTarget.type;
+	
+	
+	return [p autorelease];
+}
+
 @end

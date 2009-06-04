@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum {
+typedef enum 
+{
 	TargetTypePlayer,
 	TargetTypeOpponent,
 	TargetTypePlayerHand,
@@ -31,5 +32,6 @@ typedef enum {
 @property(nonatomic, assign) int         position;
 
 + (Target *) targetWithType:(TargetTypes)type position:(int)position;
++ (Target *) targetWithTarget:(Target*)theTarget;
 
 @end

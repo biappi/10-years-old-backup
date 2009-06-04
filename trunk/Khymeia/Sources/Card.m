@@ -56,6 +56,7 @@
 		self.image = aImage;
 		self.element = aElement;
 		self.type = aType;
+		self.health = aLevel;
 		self.level = aLevel;
 	}
 	return self;

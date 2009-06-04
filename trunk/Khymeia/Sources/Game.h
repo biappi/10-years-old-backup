@@ -14,7 +14,7 @@
 #import "InterfaceToGameplayProtocol.h"
 #import "ComunicationToGameplayProtocol.h"
 #import "GameState.h"
-#import "TableTarget.h"
+//#import "TableTarget.h"
 
 @class ComunicatioLayer;
 

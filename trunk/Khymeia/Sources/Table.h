@@ -16,8 +16,8 @@
 	NSMutableArray * opponentPlayArea;
 }
 
-@property(nonatomic, readonly) NSArray * playerPlayArea;
-@property(nonatomic, readonly) NSArray * opponentPlayArea;
+@property(nonatomic, readonly) NSMutableArray * playerPlayArea;
+@property(nonatomic, readonly) NSMutableArray * opponentPlayArea;
 
 // ---- For GP
 

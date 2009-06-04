@@ -36,7 +36,7 @@ CGRect cardSlotsRects[] =
 
 @property(readonly) CALayer * mainLayer;
 
-- (TableTarget *) findSelectedTargetforCard:(CardLayer *) card;
+- (Target *) findSelectedTargetforCard:(CardLayer *) card;
 - (CGRect) frameRectForNextPlayerHandCard;
 - (void) showText:(NSString *) text withTitle:(NSString *) title;
 
@@ -240,15 +240,15 @@ CGRect cardSlotsRects[] =
 	NOT_IMPLEMENTED();
 }
 
-- (void) opponentPlaysCard:(Card *)card onTarget:(TableTarget *) target;
+- (void) opponentPlaysCard:(Card *)card onTarget:(Target *) target;
 {
 	CardLayer * theCard=[[CardLayer alloc] initWithCard:card];
 	
-	if(target.table==TableTargetTypePlayer)
+	if(target.type ==TargetTypePlayerPlayArea)
 	{
 		theCard.frame=cardSlotsRects[3+target.position];
 	}
-	else if(target.table==TableTargetTypeOpponent)
+	else if(target.type==TargetTypeOpponentPlayArea)
 	{
 		
 		theCard.frame=cardSlotsRects[target.position-1];
@@ -337,12 +337,12 @@ CGRect cardSlotsRects[] =
 		
 		if(([l isKindOfClass:[CardLayer class]] || [l isKindOfClass:[SlotLayer class]])&& [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
 		{
-			TableTarget * target=[self findSelectedTargetforCard:(CardLayer*)l];
+			Target * target=[self findSelectedTargetforCard:(CardLayer*)l];
 			if(target)
 			{
-				for(TableTarget * allowedTarget in currentTargets)
+				for(Target * allowedTarget in currentTargets)
 				{
-					if(target.position==allowedTarget.position && target.table==allowedTarget.table)
+					if(target.position==allowedTarget.position && target.type==allowedTarget.type)
 					{
 						[gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget];
 							currentlyMovingCard.position = l.position;
@@ -382,7 +382,7 @@ CGRect cardSlotsRects[] =
 
 #pragma mark Private Methods
 
--(TableTarget *)findSelectedTargetforCard:(CardLayer*) card;
+-(Target *)findSelectedTargetforCard:(CardLayer*) card;
 {
 	int i;
 	for(i=0;i<4; i++)
@@ -390,7 +390,7 @@ CGRect cardSlotsRects[] =
 		if(CGRectContainsPoint(cardSlotsRects[i],card.position))
 		{
 			
-			return [[[TableTarget alloc] initwithTable:TableTargetTypeOpponent andPosition:i+1]autorelease];
+			return [[Target alloc] targetWithType:TargetTypeOpponentPlayArea position:i+1];
 		}
 	}
 	for(i=0;i<4;i++)
@@ -398,7 +398,7 @@ CGRect cardSlotsRects[] =
 		if(CGRectContainsPoint(cardSlotsRects[i+4],card.position))
 		{
 			
-			return [[[TableTarget alloc] initwithTable:TableTargetTypePlayer andPosition:i+1]autorelease];
+			return [[Target alloc] targetWithType:TargetTypePlayerPlayArea position:i+1];
 		}
 	
 	}
