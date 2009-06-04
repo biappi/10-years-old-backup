@@ -37,6 +37,7 @@
 		CF8F1F1E0FD838E000844F9C /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8F1F150FD838E000844F9C /* 7.png */; };
 		CF8F1F1F0FD838E000844F9C /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8F1F160FD838E000844F9C /* 8.png */; };
 		CF8F1F200FD838E000844F9C /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8F1F170FD838E000844F9C /* 9.png */; };
+		CF8F1F240FD83C2000844F9C /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF8F1F230FD83C2000844F9C /* icon.png */; };
 		CFB7A1AF0FBF293100212422 /* air.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB7A1AA0FBF293100212422 /* air.jpg */; };
 		CFB7A1B00FBF293100212422 /* earth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB7A1AB0FBF293100212422 /* earth.jpg */; };
 		CFB7A1B10FBF293100212422 /* fire.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CFB7A1AC0FBF293100212422 /* fire.jpg */; };
@@ -95,6 +96,7 @@
 		CF8F1F150FD838E000844F9C /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 7.png; path = images/numbers/7.png; sourceTree = "<group>"; };
 		CF8F1F160FD838E000844F9C /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 8.png; path = images/numbers/8.png; sourceTree = "<group>"; };
 		CF8F1F170FD838E000844F9C /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 9.png; path = images/numbers/9.png; sourceTree = "<group>"; };
+		CF8F1F230FD83C2000844F9C /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = images/icon.png; sourceTree = "<group>"; };
 		CFB7A1AA0FBF293100212422 /* air.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = air.jpg; path = images/cards/air.jpg; sourceTree = "<group>"; };
 		CFB7A1AB0FBF293100212422 /* earth.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = earth.jpg; path = images/cards/earth.jpg; sourceTree = "<group>"; };
 		CFB7A1AC0FBF293100212422 /* fire.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fire.jpg; path = images/cards/fire.jpg; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 		CF23E7920FBA2CD10057A1F9 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CF8F1F230FD83C2000844F9C /* icon.png */,
 				CF8F1F0E0FD838CC00844F9C /* numbers */,
 				CF23E7930FBA2CE30057A1F9 /* cards */,
 			);
@@ -350,6 +353,7 @@
 				CF8F1F1E0FD838E000844F9C /* 7.png in Resources */,
 				CF8F1F1F0FD838E000844F9C /* 8.png in Resources */,
 				CF8F1F200FD838E000844F9C /* 9.png in Resources */,
+				CF8F1F240FD83C2000844F9C /* icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
