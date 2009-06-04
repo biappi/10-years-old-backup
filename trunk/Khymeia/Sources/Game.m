@@ -532,10 +532,6 @@
 #pragma mark -
 #pragma mark Gameplay to Opponent methods
 
-/***************************************
-* THIS METHOD MUST BE UPDATE TO TARGET *
-****************************************/
-
 
 -(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
 {
@@ -607,8 +603,9 @@
 
 -(void)notifyDamage:(NSInteger)damage
 {
-	player.health-=damage;
-	[interface substractHP:damage player:PlayerKindPlayer];
+	//TO CHANGE WHEN SUBTRACT WILL WORK!!!!!!
+	[interface setHP:player.health player:PlayerKindPlayer];
+	//[interface substractHP:damage player:PlayerKindPlayer];
 }
 
 -(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;

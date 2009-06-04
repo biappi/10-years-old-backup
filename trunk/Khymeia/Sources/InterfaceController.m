@@ -191,7 +191,7 @@ CGRect cardSlotsRects[] =
 	UILabel * l;
 	
 	l = (thePlayer == PlayerKindPlayer)   ? playerHealthPointsLabel   : nil;
-	l = (thePlayer == PlayerKindOpponent) ? opponentHealthPointsLabel : nil;
+	l = (thePlayer == PlayerKindOpponent) ? opponentHealthPointsLabel : l;
 	
 	l.text = [NSString stringWithFormat:@"%d", newHP];
 }
