@@ -38,7 +38,6 @@ CGRect cardSlotsRects[] =
 
 - (Target *) findSelectedTargetforCard:(CardLayer *) card;
 - (CGRect) frameRectForNextPlayerHandCard;
-- (void) showText:(NSString *) text withTitle:(NSString *) title;
 
 @end
 
@@ -76,12 +75,9 @@ CGRect cardSlotsRects[] =
 -(void) endTurn
 {
 	if(![gameplay shouldPassNextPhase])
-		[self showText:@"You cannot yet pass to the next phase" withTitle:@"Gameplay message"];
+		KhymeiaLog(@"You cannot yet pass to the next phase");
 	else
-	{
-		//[self showText:@"passed to next phase" withTitle:@"Gameplay message"];
 		[turnEnded removeFromSuperview];
-	}
 }
 
 - (void)dealloc;
@@ -115,10 +111,6 @@ CGRect cardSlotsRects[] =
 
 - (void) setState:(GameState) turn;
 {
-		if(turn==GameStatePlayer)
-		{
-			[self showText:@"ok now you can start playing" withTitle:@"GameState: PLAY"];
-		}
 	currentState=turn;
 }
 
@@ -126,7 +118,6 @@ CGRect cardSlotsRects[] =
 {
 	switch (phase) {
 		case GamePhaseMainphase:
-			[self showText:@"MainPhase" withTitle:@"gp message"];
 			if(currentState==GameStatePlayer)
 			{
 				[self.view addSubview:turnEnded];
@@ -141,8 +132,6 @@ CGRect cardSlotsRects[] =
 				[turnEnded setCenter:CGPointMake(20,20)];
 				[turnEnded setNeedsDisplay];
 			}
-			
-			[self showText:@"AttackPhaseOpponent" withTitle:@"gp message"];
 			break;
 		case GamePhaseAttackPlayer:
 			if(currentState==GameStatePlayer)
@@ -150,11 +139,9 @@ CGRect cardSlotsRects[] =
 				[self.view addSubview:turnEnded];
 				[turnEnded setCenter:CGPointMake(20,20)];
 				[turnEnded setNeedsDisplay];
-			}			
-			[self showText:@"AttackPhasePlayer" withTitle:@"gp message"];
+			}		
 			break;
 		case GamePhaseCardAttainment:
-			[self showText:@"CardAttainmentPhase" withTitle:@"gp message"];
 			break;
 		case GamePhaseDiscard:
 			if(currentState==GameStatePlayer)
@@ -163,15 +150,10 @@ CGRect cardSlotsRects[] =
 				[turnEnded setCenter:CGPointMake(20,20)];
 				[turnEnded setNeedsDisplay];
 			}
-			
-			[self showText:@"DiscardPhase" withTitle:@"gp message"];
-
 			break;
 		case GamePhaseDamageResolution:
-			[self showText:@"DamageResolutionPhase" withTitle:@"gp message"];
 			break;
 		case GamePhaseNone:
-			[self showText:@"NonePhase" withTitle:@"gp message"];
 			break;
 	}
 }
@@ -431,14 +413,6 @@ CGRect cardSlotsRects[] =
 - (CALayer *) mainLayer;
 {
 	return self.view.layer;
-}
-
-- (void) showText:(NSString *) text withTitle:(NSString *) title
-{
-//	[UIAlertView presentInfoAlertViewWithTitle:title
-//								   description:text];
-
-	KhymeiaLog(text);
 }
 
 @end
