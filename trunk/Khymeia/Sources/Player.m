@@ -17,6 +17,17 @@
 @synthesize hand;
 @synthesize cemetery;
 
++(id)playerWithPlayer:(Player*)aPlayer;
+{
+	Player *clone = [[Player alloc] init];
+	clone.name = [NSString stringWithString:aPlayer.name];
+	clone.health = aPlayer.health;
+	clone.hand = [NSMutableArray arrayWithArray:aPlayer.hand];
+	clone.cemetery = [NSMutableArray arrayWithArray:aPlayer.cemetery];
+	clone.deck = [NSMutableArray arrayWithArray:aPlayer.deck];
+	return [clone autorelease];
+}
+
 -(id) init
 {
 	if (self = [super init])

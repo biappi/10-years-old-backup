@@ -167,7 +167,7 @@
 	KhymeiaLog([NSString stringWithFormat:@"player %@ Statebegin", player.name]);
 	state = GameStatePlayer;	
 	//say to interface about state change
-	[interface setState:state];	
+	[interface setState:state];
 	//say to server about state change
 	[comunication sendStateChange:state];
 	[self playerPhaseCardAttainment]; 
@@ -430,6 +430,15 @@
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
 	}
+	else if (aTarget.type == TargetTypePlayerPlayArea && ([[table.playerPlayArea objectAtIndex:aTarget.position] class] != [NSNull class]))
+	{
+		Card* otherCard = (Card*)[table.playerPlayArea objectAtIndex:aTarget.position];
+		if(aCard.type == CardTypeElement && otherCard.type == CardTypeElement && ![otherCard isEqual:aCard])
+		{
+			//pass state change to comunication layer
+			[self didPlayInstance:aCard onInstance:otherCard];
+		}
+	}
 	else if (aTarget.type == TargetTypePlayerPlayArea)
 	{
 		[table addCard:aCard toPosition:aTarget];
@@ -497,6 +506,18 @@
 					
 					i++;
 				}
+				
+				i = 0;
+				for (Card * card in table.playerPlayArea)
+				{
+					//check if i can play aCard vs opponentCard
+					if (!([card class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:card])
+					{
+						[targets addObject:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
+					}
+					
+					i++;
+				}
 			}
 			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
 				[targets addObjectsFromArray:[table playerFreePositions]];
@@ -525,6 +546,18 @@
 					if (!([opponentCard class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:opponentCard])
 					{
 						[targets addObject:[Target targetWithType: TargetTypeOpponentPlayArea position:i]];
+					}
+					
+					i++;
+				}
+				
+				i = 0;
+				for (Card * card in table.playerPlayArea)
+				{
+					//check if i can play aCard vs opponentCard
+					if (!([card class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:card])
+					{
+						[targets addObject:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
 					}
 					
 					i++;

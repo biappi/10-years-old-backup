@@ -29,6 +29,8 @@ typedef enum {
 @property(nonatomic, retain) NSMutableArray     *hand;
 @property(nonatomic, retain) NSMutableArray     *cemetery;
 
++(id)playerWithPlayer:(Player*)aPlayer;
+
 /**
  Ask to player if aCard is in hand
  /return YES if aCard belong to is hand, NO otherwise

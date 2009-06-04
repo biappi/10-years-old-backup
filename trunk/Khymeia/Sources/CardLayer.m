@@ -8,6 +8,14 @@
 
 #import "CardLayer.h"
 
+
+@interface CardLayer (PrivateMethods)
+
+-(void) setLevel:(int)ii;
+
+@end
+
+
 @implementation CardLayer
 @synthesize card;
 
@@ -45,7 +53,7 @@
 	
 }
 
--(void) setLevel:(int) ii
+-(void) setLevel:(int)ii;
 {
 	for(CALayer * l in level)
 	{

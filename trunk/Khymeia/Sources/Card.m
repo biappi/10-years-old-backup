@@ -69,4 +69,44 @@
 	[super dealloc];
 }
 
+#pragma mark -
+#pragma mark Gameplay methods
+/*
+-(NSArray*)targetsWithState:(State*)aState;
+{
+	
+		NSMutableArray *targets = [[NSMutableArray alloc] init];
+		Target *tableTarget;
+		if (aCard.type == CardTypeElement)
+		{
+			for (Card * opponentCard in table.opponentPlayArea)
+			{
+				//check if i can play aCard vs opponentCard
+				if (!([opponentCard class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:opponentCard])
+				{
+					tableTarget = [Target targetWithType:TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
+					[targets addObject:tableTarget];
+				}
+			}				
+			
+			for (Card * card in table.playerPlayArea)
+			{
+				//check if i can play aCard vs opponentCard
+				if (!([card class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:card])
+				{
+					tableTarget = [Target targetWithType: TargetTypePlayerPlayArea position:[table.playerPlayArea indexOfObject:card]];	
+					[targets addObject:tableTarget];
+				}
+			}
+		}
+		if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
+			[targets addObjectsFromArray:[table playerFreePositions]];
+		
+		NSArray *array = [NSArray arrayWithArray:targets];
+		[targets release];
+		return array;
+	}
+	return nil;
+}*/
+
 @end

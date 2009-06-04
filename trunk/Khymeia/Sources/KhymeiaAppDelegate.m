@@ -103,8 +103,8 @@
 	/*
 	 * initialize game
 	 */
-	gameplayPlayer =[[Game alloc] initWithPlayer:player opponent:opponent andImFirst:YES];
-	gameplayOpponent =[[Game alloc] initWithPlayer:opponent opponent:player andImFirst:NO];
+	gameplayPlayer =[[Game alloc] initWithPlayer:player opponent:[Player playerWithPlayer:opponent] andImFirst:YES];
+	gameplayOpponent =[[Game alloc] initWithPlayer:opponent opponent:[Player playerWithPlayer:player] andImFirst:NO];
 	
 	/*
 	 *	release all
