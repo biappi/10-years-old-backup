@@ -252,6 +252,7 @@
 				opponent.health -= card.health;
 				//restoring healt to card
 				card.health = card.level;
+				[comunication sendDamageToOpponent:card.health];
 			}
 			else
 			{
@@ -602,6 +603,21 @@
 		[self opponentPhaseDiscard];
 	}
 	return phase;
+}
+
+-(void)notifyDamage:(NSInteger)damage
+{
+	player.health-=damage;
+	[interface substractHP:damage player:PlayerKindPlayer];
+}
+
+-(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
+{
+	((Card*)[table.playerPlayArea objectAtIndex:[table.playerPlayArea indexOfObject:card]]).health+=-damage;
+	
+	/**************************************************
+	 link to the interface method who update the health
+	 **************************************************/
 }
 
 -(NSInteger)didOpponentPassStatus:(NSInteger)stato;

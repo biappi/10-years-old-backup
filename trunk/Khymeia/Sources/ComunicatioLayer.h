@@ -66,6 +66,20 @@
 -(void)sendDrawCard:(Card *)card;
 
 /**
+ send a message in wich player notify to the opponent that he receives a damage
+ /param damage: the damage received from opponent
+ */
+-(void) sendDamageToOpponent:(NSInteger)damage;
+
+
+/**
+ send a message in wich player notify to the opponent that a card has been damaged 
+ /param damage: the damage
+ /param card: the card damaged
+ */
+-(void)sendDamage:(NSInteger)damage toCard:(Card*)card;
+
+/**
  receive a message from player that a card is played on a target
  \param aCard: the card that player will play
  \param aTarget: the target on which the card will played
@@ -95,4 +109,16 @@
  */
 -(void)receiveDrawCard:(Card*)card;
 
+/**
+ receive a message in wich opponent notify to the player that he receives a damage
+ /param damage: the damage received from player
+ */
+-(void) receiveDamageFromOpponent:(NSInteger)damage;
+
+/**
+ receive a message in wich opponent notify a damage to a card
+ /param damage: the damage
+ /param card: the card attacked
+ */
+-(void)receiveDamage:(NSInteger)damage onCard:(Card*)card;
 @end

@@ -37,7 +37,7 @@
 	[CATransaction commit];
 	
 }
-
+/*
 /*-(void) setLevel:(int) i
 {
 	NSString * level=

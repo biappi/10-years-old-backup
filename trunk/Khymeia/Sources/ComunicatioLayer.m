@@ -52,6 +52,15 @@
 	[comLayer receiveDrawCard:card];
 }
 
+-(void) sendDamageToOpponent:(NSInteger)damage;
+{
+	[comLayer receiveDamageFromOpponent:damage];
+}
+
+-(void)sendDamage:(NSInteger)damage toCard:(Card*)card;
+{
+	[comLayer receiveDamage:damage onCard:card];
+}
 
 #pragma mark -
 #pragma mark receive methods
@@ -86,6 +95,16 @@
 -(void)receiveDrawCard:(Card*)card;
 {
 	[gameplay didOpponentDrawCard:card];
+}
+
+-(void) receiveDamageFromOpponent:(NSInteger)damage;
+{
+	[gameplay notifyDamage:damage];
+}
+
+-(void)receiveDamage:(NSInteger)damage onCard:(Card*)card;
+{
+	[gameplay notifyDamage:damage toCard:card];
 }
 
 @end

@@ -41,4 +41,14 @@
  */
 -(Card*)didOpponentDrawCard:(Card*)card;
 
+/**
+ notify the damage to other player
+ */
+-(void)notifyDamage:(NSInteger)damage;
+
+/**
+ notify the damage to the card
+ */
+-(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
+
 @end
