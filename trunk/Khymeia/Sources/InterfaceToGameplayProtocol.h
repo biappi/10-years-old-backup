@@ -67,10 +67,6 @@ Ask to next
 */
 -(BOOL)shouldPassNextPhase;
 
-/**
- A card did discard
- */
--(void)didDiscardCard:(Card*)aCard;
 
 /**
  timeout event

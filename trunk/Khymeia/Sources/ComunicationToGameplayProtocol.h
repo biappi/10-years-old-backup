@@ -18,7 +18,7 @@
  \return YES if the could be played, NO otherwise
  */
 
--(BOOL)willPlayOpponentCard:(Card *)aCard onTarget:(Target *)aTarget;
+-(BOOL)willPlayOpponentCardAtTarget:(Target *)aCard onTarget:(Target *)aTarget;
 
 /**
  Called by the comunication interface when user has played the card
@@ -26,7 +26,7 @@
  \return YES if the could be played, NO otherwise
  */
 
--(BOOL)didPlayOpponentCard:(Card *)aCard onTarget:(Target *)aTarget;
+-(BOOL)didPlayOpponentCardAtTarget:(Target *)aCard onTarget:(Target *)aTarget;
 
 /**
  Opponent  passed phase
@@ -38,19 +38,5 @@
  */
 -(NSInteger)didOpponentPassStatus:(NSInteger)state;
 
-/**
- opponent draw a card
- */
--(Card*)didOpponentDrawCard:(Card*)card;
-
-/**
- notify the damage to other player
- */
--(void)notifyDamage:(NSInteger)damage;
-
-/**
- notify the damage to the card
- */
--(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
 
 @end

@@ -56,13 +56,15 @@
 @synthesize interface;
 @synthesize comunication;
 
+@synthesize state;
+@synthesize phase;
+
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 {
 	if (self = [super init])
 	{
 		player = [aPlayer retain];
 		opponent = [aOpponent retain];
-		table = [[Table alloc] init];
 		//isFirst YES if user is first player, NO otherwise
 		isFirst = iAmFirst; 
 	}
@@ -71,13 +73,6 @@
 
 -(void)dealloc;
 {
-	[table release];
-	/*
-	 removed, interface to gameplay and vice-versa are weak pointers,
-	 they're both retained by the AppDelegate
-	 
-	[interface release];
-	 */
 	[player release];
 	[opponent release];
 	[super dealloc];
@@ -252,7 +247,7 @@
 	
 	//calculate opponent damage and restoring player's card with health >0
 	int i = 0;
-	for (Card * card in table.playerPlayArea)
+	for (Card * card in player.playArea)
 	{
 		if ([card class] != [NSNull class])
 		{
@@ -275,7 +270,7 @@
 	[interface setHP:opponent.health player:PlayerKindOpponent];
 	
 	//restoring opponent's card with health >0
-	for (Card * card in table.opponentPlayArea)
+	for (Card * card in opponent.playArea)
 	{
 		if ([card class] != [NSNull class])
 		{
@@ -398,20 +393,42 @@
 	KhymeiaLog([NSString stringWithFormat:@"card: %@ vs card:%@ ------- %d = %d - %d", aInstace.name, otherInstace.name,otherInstace.health, backup, aInstace.level]);
 }
 
+
+- (Card *)cardForTarget:(Target *)t;
+{
+	switch (t.type)
+	{
+		case TargetTypePlayerHand:
+			return [player.hand objectAtIndex:t.position];
+			
+		case TargetTypeOpponentPlayArea:
+			return [opponent.playArea objectAtIndex:t.position];
+			
+		case TargetTypePlayerPlayArea:
+			return [player.playArea objectAtIndex:t.position];
+			
+		default:
+			return nil;
+	}
+}
+
 #pragma mark -
 #pragma mark Interface to Gameplayer methods
 
--(void)willPlayCard:(Card*)aCard onTarget:(Target*)aTarget;
+- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
-	[comunication sendWillPlayCard:aCard onTarget:aTarget];
+	[comunication sendWillPlayCardAtTarget:srcTarget onTarget:dstTarget];
 }
 
--(void)didPlayCard:(Card*)aCard onTarget:(Target*)aTarget withGesture:(BOOL)completed;
+- (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
 {
 	//set the flag to remeber that the play have attack in AttackPhase
 	
-	[comunication sendDidPlayCard:aCard onTarget:aTarget];
+	[comunication sendDidPlayCardAtTarget:srcTarget onTarget:dstTarget];
+	Card* aCard;
+	if (!(aCard = [self cardForTarget:srcTarget]))
+		return;
 	
 	if (state == GameStatePlayer && phase == GamePhaseAttackPlayer)
 	{
@@ -421,27 +438,27 @@
 	//remove card from user's hand
 	[player removeCardFromHand:aCard];
 	
-	if (aTarget.type == TargetTypeOpponentPlayArea)
+	if (dstTarget.type == TargetTypeOpponentPlayArea)
 	{
-		Card* otherCard = (Card*)[table.opponentPlayArea objectAtIndex:aTarget.position];
+		Card* otherCard = (Card*)[opponent.playArea objectAtIndex:dstTarget.position];
 		if(aCard.type == CardTypeElement && otherCard.type == CardTypeElement)
 		{
 			//pass state change to comunication layer
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
 	}
-	else if (aTarget.type == TargetTypePlayerPlayArea && ([[table.playerPlayArea objectAtIndex:aTarget.position] class] != [NSNull class]))
+	else if (dstTarget.type == TargetTypePlayerPlayArea && ([[player.playArea objectAtIndex:dstTarget.position] class] != [NSNull class]))
 	{
-		Card* otherCard = (Card*)[table.playerPlayArea objectAtIndex:aTarget.position];
+		Card* otherCard = (Card*)[player.playArea objectAtIndex:dstTarget.position];
 		if(aCard.type == CardTypeElement && otherCard.type == CardTypeElement && ![otherCard isEqual:aCard])
 		{
 			//pass state change to comunication layer
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
 	}
-	else if (aTarget.type == TargetTypePlayerPlayArea)
+	else if (dstTarget.type == TargetTypePlayerPlayArea)
 	{
-		[table addCard:aCard toPosition:aTarget];
+		[player addCard:aCard toPosition:dstTarget];
 	}
 }
 
@@ -491,12 +508,14 @@
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
 			
-			Card * aCard = [self cardForTarget:aTarget];
+			Card * aCard;
+			if (!(aCard = [self cardForTarget:aTarget]))
+				return nil;
 			
 			if (aCard.type == CardTypeElement)
 			{
 				int i = 0;
-				for (Card * opponentCard in table.opponentPlayArea)
+				for (Card * opponentCard in opponent.playArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if (!([opponentCard class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:opponentCard])
@@ -508,7 +527,7 @@
 				}
 				
 				i = 0;
-				for (Card * card in table.playerPlayArea)
+				for (Card * card in player.playArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if (!([card class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:card])
@@ -520,7 +539,7 @@
 				}
 			}
 			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
-				[targets addObjectsFromArray:[table playerFreePositions]];
+				[targets addObjectsFromArray:[player playAreaFreePositions]];
 			
 			NSArray *array = [NSArray arrayWithArray:targets];
 			[targets release];
@@ -534,13 +553,15 @@
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
 			
-			Card * aCard = [self cardForTarget:aTarget];
+			Card * aCard;
+			if (!(aCard = [self cardForTarget:aTarget]))
+				return nil;
 			
 			if (aCard.type == CardTypeElement)
 			{
 				int i = 0;
 				
-				for (Card * opponentCard in table.opponentPlayArea)
+				for (Card * opponentCard in opponent.playArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if (!([opponentCard class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:opponentCard])
@@ -552,7 +573,7 @@
 				}
 				
 				i = 0;
-				for (Card * card in table.playerPlayArea)
+				for (Card * card in player.playArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if (!([card class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:card])
@@ -564,9 +585,6 @@
 				}
 			}
 			
-			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
-				[targets addObjectsFromArray:[table playerFreePositions]];
-			
 			NSArray *array = [NSArray arrayWithArray:targets];
 			[targets release];
 			return array;
@@ -575,7 +593,7 @@
 	return nil;
 }
 
--(void)didDiscardCard:(Card*)aCard;
+- (void)didDiscardCardAtTarget:(Target *)aTarget;
 {
 	NOT_IMPLEMENTED();
 }
@@ -586,10 +604,10 @@
 }
 
 #pragma mark -
-#pragma mark Gameplay to Opponent methods
+#pragma mark ComunicatioLayer to Opponent methods
 
 
--(BOOL)willPlayOpponentCard:(Card *)aCard onTarget:(Target *)aTarget;
+-(BOOL)willPlayOpponentCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
 	// i.e. fare partire animazioni prima della gesture, presenta a fullscreen.
@@ -597,9 +615,13 @@
 	return YES;
 }
 
--(BOOL)didPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
+-(BOOL)didPlayOpponentCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {		
-	Target* tableTarget = [Target targetWithTarget:aTarget];
+	Card *aCard;
+	if (!(aCard = [self cardForTarget:srcTarget]))
+		return NO;
+	
+	Target* tableTarget = [Target targetWithTarget:dstTarget];
 	//convertion from opponent to player
 	if (tableTarget.type == TargetTypeOpponentPlayArea)
 		tableTarget.type = TargetTypePlayerPlayArea;
@@ -609,18 +631,27 @@
 	//remove card from user's hand
 	[opponent removeCardFromHand:aCard];
 	
-	if ([aTarget isKindOfClass:[Card class]])
+	if (dstTarget.type == TargetTypeOpponentPlayArea)
 	{
-		Card* otherCard = (Card*)aTarget;
+		Card* otherCard = (Card*)[opponent.playArea objectAtIndex:dstTarget.position];
 		if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
 		{
 			//pass state change to comunication layer
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
 	}
-	else if ([aTarget isKindOfClass:[Target class]])
+	else if (dstTarget.type == TargetTypePlayerPlayArea && ([[player.playArea objectAtIndex:dstTarget.position] class] != [NSNull class]))
 	{
-		[table addCard:aCard toPosition:tableTarget];
+		Card* otherCard = (Card*)[player.playArea objectAtIndex:dstTarget.position];
+		if(aCard.type == CardTypeElement && otherCard.type == CardTypeElement && ![otherCard isEqual:aCard])
+		{
+			//pass state change to comunication layer
+			[self didPlayInstance:aCard onInstance:otherCard];
+		}
+	}
+	else if (dstTarget.type == TargetTypePlayerPlayArea)
+	{
+		[opponent addCard:aCard toPosition:dstTarget];
 		
 	}
 	[interface opponentPlaysCard:aCard onTarget:tableTarget];
@@ -667,7 +698,7 @@
 
 -(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
 {
-	((Card*)[table.playerPlayArea objectAtIndex:[table.playerPlayArea indexOfObject:card]]).health+=-damage;
+	((Card*)[player.playArea objectAtIndex:[player.playArea indexOfObject:card]]).health+=-damage;
 	
 	/**************************************************
 	 link to the interface method who update the health
@@ -703,27 +734,57 @@
 	NOT_IMPLEMENTED();
 }
 
-- (void)didDiscardCardAtTarget:(Target *)aTarget;
+#pragma mark ComunicationLayer & Card methods
+
+-(void)drawCardAtTarget:(Target*)aTarget playerKind:(PlayerKind)aKind;
 {
-	NOT_IMPLEMENTED();
 }
 
-- (Card *)cardForTarget:(Target *)t;
+-(void)applyDamage:(NSInteger)damage fromCard:(Target*)fTarget playerKind:(PlayerKind)aKind;
 {
-	switch (t.type)
+	//TO CHANGE WHEN SUBTRACT WILL WORK!!!!!!	
+	//[interface substractHP:damage player:PlayerKindPlayer];
+	//*******************************************************
+	if (aKind == PlayerKindPlayer)
 	{
-		case TargetTypePlayerHand:
-			return [player.hand objectAtIndex:t.position];
-			
-		case TargetTypeOpponentPlayArea:
-			return [table.opponentPlayArea objectAtIndex:t.position];
-
-		case TargetTypePlayerPlayArea:
-			return [table.playerPlayArea objectAtIndex:t.position];
-
-		default:
-			return nil;
+		player.health-=damage;
+		[interface setHP:player.health player:aKind];
 	}
+	else
+	{
+		opponent.health-=damage;
+		[interface setHP:opponent.health player:aKind];
+	}
+	
 }
+
+-(void)applyDamage:(NSInteger)damage fromCard:(Target*)fTarget toCard:(Target*)tTarget;
+{
+    Card *card;
+	Card *otherCard;
+	if (!(card = [self cardForTarget:fTarget]) || !(otherCard = [self cardForTarget:tTarget]))
+		return;
+	card.health -= damage;	
+}
+
+- (void)discardCardAtTarget:(Target *)aTarget;
+{
+	Card *card;
+	if (!(card = [self cardForTarget:aTarget]))
+		return;
+	
+	if (aTarget.type == TargetTypePlayerPlayArea || aTarget.type == TargetTypePlayerDeck ||
+		aTarget.type == TargetTypePlayerCemetery || aTarget.type == TargetTypePlayerHand)
+	{
+		[player discardCardFromTarget:aTarget];
+	}
+	else if (aTarget.type == TargetTypeOpponentPlayArea || aTarget.type == TargetTypeOpponentDeck ||
+			 aTarget.type == TargetTypeOpponentCemetery || aTarget.type == TargetTypeOpponentHand)
+	{
+		[opponent discardCardFromTarget:aTarget];
+	}
+	
+}
+
 
 @end

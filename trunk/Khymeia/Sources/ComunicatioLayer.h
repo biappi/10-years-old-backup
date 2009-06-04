@@ -37,7 +37,7 @@
  \return YES if message is sent. NO otherwise
  */
 
--(BOOL)sendWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(BOOL)sendWillPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 
 /**
  send a message to opponent that a card is played on a specific target
@@ -45,7 +45,7 @@
  \param aTarget: the target on which the card is played
  \return YES if message is sent. NO otherwise
  */
--(BOOL)sendDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(BOOL)sendDidPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 
 /**
  send a message to opponent that player has changed status
@@ -84,7 +84,7 @@
  \param aCard: the card that player will play
  \param aTarget: the target on which the card will played
  */
--(void)receiveWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(void)receiveWillPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 
 /**
  receive a message from player that a card is played on a specific target
@@ -92,7 +92,7 @@
  \param aTarget: the target on which the card is played
  \return YES if message is sent. NO otherwise
  */
--(void)receiveDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(void)receiveDidPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 
 /**
  receive a message from player that the opponent has changed status

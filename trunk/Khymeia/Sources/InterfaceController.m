@@ -425,9 +425,9 @@ Target * TargetHitTest(CGPoint point)
 	Target * target = TargetHitTest(p);
 	if ([currentTargets indexOfObject:target] != NSNotFound)
 	{
-		// [gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
+		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
 		currentlyMovingCard.frame = CGRectForTarget(target);
-		// [gameplay didPlayCardAtTarget:currentlyMovingCardTarget onTarget:target withGesture:NO];
+		[gameplay didPlayCardAtTarget:currentlyMovingCardTarget onTarget:target withGesture:NO];
 	} else {
 		currentlyMovingCard.pleaseDoNotMove = NO;
 		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;

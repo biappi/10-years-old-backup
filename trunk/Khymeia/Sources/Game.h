@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Card.h"
 #import "Player.h"
-#import "Table.h"
 #import "InterfaceController.h"
 #import "InterfaceToGameplayProtocol.h"
 #import "ComunicationToGameplayProtocol.h"
@@ -20,7 +19,6 @@
 
 @interface Game : NSObject <InterfaceToGameplayProtocol, ComunicationToGameplayProtocol>
 {
-	Table					*table;
 	Player					*player;
 	Player					*opponent;
 	BOOL					isFirst;
@@ -48,9 +46,29 @@
 @property (nonatomic, assign) InterfaceController * interface;
 @property (nonatomic, retain)   ComunicatioLayer   *comunication;
 
+@property (nonatomic, readonly) NSInteger	state;
+@property (nonatomic, readonly) NSInteger	phase;
+
 -(void)setupState;
 
 -(void)start;
+
+/**
+Card did draw by a player of kind aKind
+ */
+-(void)drawCardAtTarget:(Target*)aTarget playerKind:(PlayerKind)aKind;
+
+/**
+ apply the damage to other player from card
+ */
+-(void)applyDamage:(NSInteger)damage fromCard:(Target*)fTarget playerKind:(PlayerKind)aKind;
+
+/**
+ apply the damage to the fTarget from tTarget, work only if fTarget and tTarget are cards
+ */
+-(void)applyDamage:(NSInteger)damage fromCard:(Target*)fTarget toCard:(Target*)tTarget;
+
+- (void)discardCardAtTarget:(Target *)aTarget;
 
 /**
  Called by the interface when user would play the card at position. Interface should show aCard at fullscreen

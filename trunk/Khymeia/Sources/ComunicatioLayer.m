@@ -26,14 +26,15 @@
 #pragma mark -
 #pragma mark send methods 
 
--(BOOL)sendWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(BOOL)sendWillPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 {
-	[comLayer receiveWillPlayCard:aCard onTarget:aTarget];
+	[comLayer receiveWillPlayCardAtTarget:srcTarget onTarget:dstTarget];
 	return YES;
 }
--(BOOL)sendDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
+
+-(BOOL)sendDidPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 {
-	[comLayer receiveDidPlayCard:aCard onTarget:aTarget];
+	[comLayer receiveDidPlayCardAtTarget:srcTarget onTarget:dstTarget];
 	return YES;
 }
 
@@ -66,15 +67,15 @@
 #pragma mark receive methods
 
 
--(void)receiveWillPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(void)receiveWillPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 {
-	[gameplay willPlayOpponentCard:aCard onTarget:aTarget];
+	[gameplay willPlayOpponentCardAtTarget:srcTarget onTarget:dstTarget];
 	
 }
 
--(void)receiveDidPlayCard:(Card*)aCard onTarget:(id)aTarget;
+-(void)receiveDidPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 {
-	[gameplay didPlayOpponentCard:aCard onTarget:aTarget];
+	[gameplay didPlayOpponentCardAtTarget:srcTarget onTarget:dstTarget];
 }
 
 -(void)receiveStateChange:(NSInteger)stato;

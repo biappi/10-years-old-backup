@@ -78,26 +78,24 @@
 	/*
 	 * initialize Player 
 	 */
-	Player *player=[[Player alloc] init];
+	Player *player=[[Player alloc] initWithHand:hand];
 	player.name=[NSString stringWithFormat:@"player1"];
 	player.health=100;
 	player.deck=deck;
 	[deck release];
 	player.cemetery=[[[NSMutableArray alloc] init]autorelease];
-	player.hand=hand;
 	[hand release];
 	
 	
 	/*
 	 * initialize Opponent 
 	 */
-	Player *opponent=[[Player alloc] init];
+	Player *opponent=[[Player alloc] initWithHand:handOp];
 	opponent.name=[NSString stringWithFormat:@"player2"];
 	opponent.health=100;
 	opponent.deck=deckOp;
 	[deckOp release];
 	opponent.cemetery=[[[NSMutableArray alloc] init] autorelease];
-	opponent.hand=handOp;
 	[handOp release];
 	
 	/*
