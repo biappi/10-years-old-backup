@@ -381,7 +381,7 @@
 	//calculate otherIstance damage
 	NSInteger backup = otherInstace.health;
 	otherInstace.health = otherInstace.health - aInstace.level;
-	KhymeiaLog([NSString stringWithFormat:@"card: %@ vs card:%@ ------- %d = %d - %d", otherInstace.health, backup, aInstace.level]);
+	KhymeiaLog([NSString stringWithFormat:@"card: %@ vs card:%@ ------- %d = %d - %d", aInstace.name, otherInstace.name,otherInstace.health, backup, aInstace.level]);
 }
 
 #pragma mark -

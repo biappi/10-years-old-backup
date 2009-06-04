@@ -271,7 +271,7 @@ CGRect cardSlotsRects[] =
 	else if(target.type==TargetTypeOpponentPlayArea)
 	{
 		
-		theCard.frame=cardSlotsRects[target.position-1];
+		theCard.frame=cardSlotsRects[target.position];
 	}
 	
 	[self.view.layer addSublayer:theCard];
@@ -352,9 +352,7 @@ CGRect cardSlotsRects[] =
 	CGPoint p = [[touches anyObject] locationInView:self.view];
 
 	for (CALayer * l in self.mainLayer.sublayers)
-	{
-	
-		
+	{		
 		if(([l isKindOfClass:[CardLayer class]] || [l isKindOfClass:[SlotLayer class]])&& [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
 		{
 			Target * target=[self findSelectedTargetforCard:(CardLayer*)l];
@@ -373,9 +371,7 @@ CGRect cardSlotsRects[] =
 					}
 				}
 			}
-		}
-		
-		
+		}		
 	}
  
  
@@ -412,7 +408,7 @@ CGRect cardSlotsRects[] =
 		if(CGRectContainsPoint(cardSlotsRects[i],card.position))
 		{
 			
-			return [Target targetWithType:TargetTypeOpponentPlayArea position:i+1];
+			return [Target targetWithType:TargetTypeOpponentPlayArea position:i];
 		}
 	}
 	for(i=0;i<4;i++)
@@ -420,7 +416,7 @@ CGRect cardSlotsRects[] =
 		if(CGRectContainsPoint(cardSlotsRects[i+4],card.position))
 		{
 			
-			return [Target  targetWithType:TargetTypePlayerPlayArea position:i+1];
+			return [Target  targetWithType:TargetTypePlayerPlayArea position:i];
 		}
 	
 	}

@@ -26,7 +26,7 @@
 {
 	Target * p = [[Target alloc] init];
 	p.type = theTarget.type;
-	
+	p.position = theTarget.position;
 	
 	return [p autorelease];
 }
