@@ -411,7 +411,7 @@ Target * TargetHitTest(CGPoint point)
 	CGPoint p = [[touches anyObject] locationInView:self.view];
 
 	Target * target = TargetHitTest(p);
-	if ([currentTargets indexOfObjectIdenticalTo:target] != NSNotFound)
+	if ([currentTargets indexOfObject:target] != NSNotFound)
 	{
 		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
 		currentlyMovingCard.position = CGRectForTarget(target).origin;

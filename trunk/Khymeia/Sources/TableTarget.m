@@ -8,6 +8,21 @@
 
 #import "TableTarget.h"
 
+static char * typeStrings[] =
+{
+	"TargetTypePlayer",
+	"TargetTypeOpponent",
+	"TargetTypePlayerHand",
+	"TargetTypeOpponentHand",
+	"TargetTypePlayerDeck",
+	"TargetTypeOpponentDeck",
+	"TargetTypePlayerCemetery",
+	"TargetTypeOpponentCemetery",
+	"TargetTypePlayerPlayArea",
+	"TargetTypeOpponentPlayArea",
+	"TargetTypeNumberOfTargetTypes"
+};
+
 @implementation Target
 
 @synthesize type;
@@ -29,6 +44,21 @@
 	p.position = theTarget.position;
 	
 	return [p autorelease];
+}
+
+- (BOOL)isEqual:(id)two;
+{
+	if ([two isKindOfClass :[Target class]] == NO)
+		return NO;
+	
+	Target * x = (Target *)two;
+	
+	return (self.type == x.type) && (self.position == x.position);
+}
+
+- (NSString *)description;
+{
+	return [NSString stringWithFormat:@"<Target: 0x%08x - type: %s position: %d>", self, typeStrings[self.type], self.position];
 }
 
 @end
