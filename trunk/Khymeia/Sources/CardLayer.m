@@ -10,6 +10,12 @@
 
 @implementation CardLayer
 @synthesize card;
+
++ (CardLayer *)cardWithCard:(Card *)theCard;
+{
+	return [[[CardLayer alloc] initWithCard:theCard] autorelease];
+}
+
 - (id) initWithCard:(Card *)acard;
 {
 	if ((self = [super init]) == nil)

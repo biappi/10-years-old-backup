@@ -15,6 +15,8 @@
 	NSMutableArray * level;
 }
 
++ (CardLayer *)cardWithCard:(Card *)theCard;
+
 - (id) initWithCard:(Card *)card;
 
 @property (nonatomic, retain) Card * card;

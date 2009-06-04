@@ -468,7 +468,9 @@
 			&& ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))      //and is the right phase
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
-			Target *tableTarget;
+
+			Target * tableTarget;
+
 			if (aCard.type == CardTypeElement)
 			{
 				for (Card * opponentCard in table.opponentPlayArea)
@@ -533,10 +535,11 @@
 #pragma mark Gameplay to Opponent methods
 
 
--(BOOL)willPlayOpponentCard:(Card*)aCard onTarget:(Target*)aTarget;
+-(BOOL)willPlayOpponentCard:(Card *)aCard onTarget:(Target *)aTarget;
 {
 	//ND DoBs: now it is useless, but we will need it.
-	
+	// i.e. fare partire animazioni prima della gesture, presenta a fullscreen.
+
 	return YES;
 }
 

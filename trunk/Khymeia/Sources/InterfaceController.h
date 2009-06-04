@@ -33,9 +33,11 @@ typedef enum
 	
 	IBOutlet UILabel * playerHealthPointsLabel;
 	IBOutlet UILabel * opponentHealthPointsLabel;
-
+	
 	CALayer          * currentlyMovingCard;
 	CGPoint            currentlyMovingCardOriginalPosition;
+	Target           * currentlyMovingCardTarget;
+	
 	UIButton		 * turnEnded;
 	NSMutableArray   * playerHand;
 	NSMutableArray   * playerPlayArea;
@@ -62,15 +64,19 @@ typedef enum
 - (void) substractHP:(int)newHP player:(PlayerKind)thePlayer;
 - (void) addHP:(int)newHP player:(PlayerKind)thePlayer;
 
-- (void) drawCard:(Card *)card;
-- (void) discardFromHand:(Card *)card;
-- (void) discardFromPlayArea:(Card *)card;
+- (void) drawCard:(Card *)card toTarget:(Target *)target;
+
+- (void) discardFromTarget:(Target *)target;
+
 /*
 - (void) playCard:(Card *)card;
 - (void) playCard:(Card *)card overCard:(Card *)card;
 - (void) playCard:(Card *)card overPlayer:(Player *)player;
 */
+
 - (void) opponentPlaysCard:(Card *)card onTarget:(Target *) target;
+
+// not sure if this is really needed in with new target types
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
 - (void) setInterfaceMode:(InterfaceModes)mode;

@@ -10,23 +10,34 @@
 #import "TableTarget.h"
 #import "Card.h"
 
-
-
 @protocol InterfaceToGameplayProtocol
 
+- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
+- (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
+- (NSArray *)targetsForCardAtTarget:(Target *)aTarget;
+
+// Correntemente non le chiamo --
+- (void)willSelectCardAtTarget:(Target *)aTarget;
+- (void)didSelectCardAtTarget:(Target *)aTarget;
+- (void)didDiscardCardAtTarget:(Target *)aTarget;
+// ------------------------------
+
+#if 0
+'
 /**
 Called by the interface when user would play the card on a target (see target class)
 \param aCard: card that user would play
 \param aTarget: the target witch aCard will play
 */
--(void)willPlayCard:(Card*)aCard onTarget:(Target*)aTarget;
+-(void)willPlayCard:(Card*)aCard onTarget:(Target *)aTarget;
 
 /**
 Called by the interface when the user did play card
 \param aCard: card that user have played
 \param aTarget: the target witch aCard is played
 */
--(void)didPlayCard:(Card*)aCard onTarget:(Target*)aTarget withGesture:(BOOL)completed;
+
+-(void)didPlayCard:(Card*)aCard onTarget:(Target *)aTarget withGesture:(BOOL)completed;
 
 /**
 Called by the interface when would to know where aCard is playable
@@ -46,6 +57,8 @@ Called by the interface when the user did select card
 \param aCard: card that user have selected
 */
 -(void)didSelectCard:(Card*)aCard;
+'
+#endif
 
 /**
 Ask to next

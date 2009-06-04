@@ -10,21 +10,24 @@
 #import "CardLayer.h"
 #import "SlotLayer.h"
 
-CGRect cardSlotsRects[] =
+CGRect opponentPlayAreaTargetRects[] =
 {
-	// Opponent Play Area
 	{ 44,  17, 72, 90},
 	{124,  17, 72, 90},
 	{204,  17, 72, 90},
-	{284,  17, 72, 90},
+	{284,  17, 72, 90}
+};
 
-	// Player Play Area
+CGRect playerPlayAreaTargetRects[] =
+{
 	{124, 115, 72, 90},
 	{204, 115, 72, 90},
 	{284, 115, 72, 90},
-	{364, 115, 72, 90},
+	{364, 115, 72, 90}
+};
 
-	// Player Hand
+CGRect playerHandTargetRects[] =
+{
 	{ 44, 213, 72, 90},
 	{124, 213, 72, 90},
 	{204, 213, 72, 90},
@@ -32,12 +35,68 @@ CGRect cardSlotsRects[] =
 	{364, 213, 72, 90}
 };
 
+CGRect CGRectForTarget(Target * target)
+{
+	switch (target.type)
+	{
+		case TargetTypeOpponentPlayArea:
+			return opponentPlayAreaTargetRects[target.position];
+
+		case TargetTypePlayerPlayArea:
+			return playerPlayAreaTargetRects[target.position];
+			
+		case TargetTypePlayerHand:
+			return playerHandTargetRects[target.position];
+	}
+	
+	return CGRectZero;
+}
+
+Target * TargetHitTest(CGPoint point)
+{
+	Target * result = [[Target new] autorelease];
+	
+	result.type = TargetTypeOpponentPlayArea;
+	for (int i = 0; i < 4; i++)
+	{
+		if (CGRectContainsPoint(opponentPlayAreaTargetRects[i], point))
+		{
+			result.position = i;
+			return result;
+		}
+	}
+	
+	result.type = TargetTypePlayerPlayArea;
+	for (int i = 0; i < 4; i++)
+	{
+		if (CGRectContainsPoint(playerPlayAreaTargetRects[i], point))
+		{
+			result.position = i;
+			return result;
+		}
+	}
+
+	result.type = TargetTypePlayerHand;
+	for (int i = 0; i < 4; i++)
+	{
+		if (CGRectContainsPoint(playerHandTargetRects[i], point))
+		{
+			result.position = i;
+			return result;
+		}
+	}
+	
+	return nil;
+}
+
 @interface InterfaceController (PrivateMethods)
 
 @property(readonly) CALayer * mainLayer;
 
 - (Target *) findSelectedTargetforCard:(CardLayer *) card;
 - (CGRect) frameRectForNextPlayerHandCard;
+
+- (CardLayer *)cardAtTarget:(Target *)target;
 
 @end
 
@@ -53,14 +112,17 @@ CGRect cardSlotsRects[] =
 	return [self initWithNibName:nil bundle:nil];
 }
 
+#define NSNULL [NSNull null]
+
 - (id)initWithNibName:(id)nib bundle:(id)bundle;
 {
 	if ((self = [super initWithNibName:@"TableView" bundle:nil]) == nil)
 		return nil;
 	
-	playerHand       = [[NSMutableArray alloc] initWithCapacity:5];
-	playerPlayArea   = [[NSMutableArray alloc] initWithCapacity:4];
-	opponentPlayArea = [[NSMutableArray alloc] initWithCapacity:4];
+	playerHand       = [[NSMutableArray alloc] initWithObjects:NSNULL, NSNULL, NSNULL, NSNULL, NSNULL, nil];
+	playerPlayArea   = [[NSMutableArray alloc] initWithObjects:NSNULL, NSNULL, NSNULL, NSNULL, nil];
+	opponentPlayArea = [[NSMutableArray alloc] initWithObjects:NSNULL, NSNULL, NSNULL, NSNULL, nil];
+	
 	turnEnded = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
 	[turnEnded setFrame:CGRectMake(0, 0, 40, 40)];
 	[turnEnded retain];
@@ -98,10 +160,26 @@ CGRect cardSlotsRects[] =
 
 - (void)viewDidLoad;
 {
-	for (int i = 0; i <= (sizeof(cardSlotsRects) / sizeof(CGRect)); i++)
+	for (int i = 0; i <= (sizeof(opponentPlayAreaTargetRects) / sizeof(CGRect)); i++)
 	{
 		SlotLayer * l = [[SlotLayer alloc] init];
-		l.frame = cardSlotsRects[i];
+		l.frame = opponentPlayAreaTargetRects[i];
+		[self.view.layer addSublayer:l];
+		[l release];
+	}
+
+	for (int i = 0; i <= (sizeof(playerPlayAreaTargetRects) / sizeof(CGRect)); i++)
+	{
+		SlotLayer * l = [[SlotLayer alloc] init];
+		l.frame = playerPlayAreaTargetRects[i];
+		[self.view.layer addSublayer:l];
+		[l release];
+	}
+	
+	for (int i = 0; i <= (sizeof(playerHandTargetRects) / sizeof(CGRect)); i++)
+	{
+		SlotLayer * l = [[SlotLayer alloc] init];
+		l.frame = playerHandTargetRects[i];
 		[self.view.layer addSublayer:l];
 		[l release];
 	}
@@ -190,74 +268,111 @@ CGRect cardSlotsRects[] =
 	[self setHP:newHP player:thePlayer];
 }
 
-- (void) drawCard:(Card *)card;
+#pragma mark New Targets Handling
+
+#if 0
+'
+// ---                            --- //
+// --- MAYBE THIS WAS TOO COMPLEX --- //
+// ---                            --- //
+
+- (void)setCard:(Card *)card fromTarget:(Target *)srcTarget toTarget:(Target *)dstTarget;
 {
-	if ([playerHand count] == 5)
+	switch (srcTarget.type)
 	{
-		[UIAlertView presentInfoAlertViewWithTitle:@"AIEE"
-									   description:@"Stupid proof of concept code does not support more than 5 cards in hand"];
-		return;
+		case TargetTypePlayerDeck:
+			
+			// DRAW CARD FROM DECK TO PLAYER HAND
+			// -----------------------------------
+			
+			if (dstTarget.type == TargetTypePlayerDeck)
+			{
+				NSAssert(dstTarget.position < 5, @"Not Enough Position In Player Hand!!");
+				
+				id existingCard = [playerHand objectAtIndex:dstTarget.position];
+				
+				if (existingCard != [NSNull null])
+					[(CALayer *)existingCard removeFromSuperlayer];
+				
+				CardLayer * cardLayer = [CardLayer cardWithCard:card];
+				cardLayer.frame = playerHandTargetRects[dstTarget.position];
+				
+				[playerHand replaceObjectAtIndex:dstTarget.position withObject:srcTarget];
+			}
+			
+			break;
+
+		case TargetTypePlayerHand:
+			
+			// REMOVE CARD FROM PLAYER DECK TO CEMETERY
+			// ----------------------------------------
+			
+			if (dstTarget.type == TargetTypePlayerCemetery)
+			{
+				NSAssert(dstTarget.position < 5, @"Incorrect Position!!");
+				
+				id existingCard = [playerHand objectAtIndex:dstTarget.position];
+				if (existingCard == [NSNull null])
+					[(Card *)existingCard removeFromSuperlayer];
+				
+				[playerHand replaceObjectAtIndex:dstTarget.position withObject:[NSNull null]];
+			}
+			
+			break;
+			
+			
+		default:
+			break;
 	}
+}
+'
+#endif
+
+
+- (void) drawCard:(Card *)card toTarget:(Target *)dstTarget;
+{
+	NSAssert(dstTarget.position < 5, @"Not Enough Position In Player Hand!!");
 	
-	CardLayer * newCard = [[CardLayer alloc] initWithCard:card];
-	newCard.frame = [self frameRectForNextPlayerHandCard];
-	[self.view.layer addSublayer:newCard];
-	[playerHand addObject:newCard];	
+	id existingCard = [playerHand objectAtIndex:dstTarget.position];
+	
+	if (existingCard != [NSNull null])
+		[(CALayer *)existingCard removeFromSuperlayer];
+	
+	CardLayer * cardLayer = [CardLayer cardWithCard:card];
+	cardLayer.frame = playerHandTargetRects[dstTarget.position];
+	
+	[playerHand replaceObjectAtIndex:dstTarget.position withObject:cardLayer];
 }
 
-- (void) discardFromHand:(Card *)acard;
+- (void) discardFromTarget:(Target *)target;
 {
-	CardLayer * toRemove;
-	
-	for(CardLayer * card in self.view.layer.sublayers)
+	if (target.type == TargetTypePlayerHand)
 	{
-		if([card isKindOfClass:[CardLayer class]] && [card.card isEqual:acard])
-		{
-			toRemove=card;
-			//;
-		}
-	}
-	
-	[toRemove removeFromSuperlayer];
-	[toRemove release];
-}
-
-- (void) discardFromPlayArea:(Card *)card;
-{
-	NOT_IMPLEMENTED();
-}
-
-- (void) playCard:(Card *)card;
-{
-	NOT_IMPLEMENTED();
-}
-
-- (void) playCard:(Card *)cardOne overCard:(Card *)cardTwo;
-{
-	NOT_IMPLEMENTED();
-}
-
-- (void) playCard:(Card *)card overPlayer:(Player *)player;
-{
-	NOT_IMPLEMENTED();
-}
-
-- (void) opponentPlaysCard:(Card *)card onTarget:(Target *) target;
-{
-	CardLayer * theCard=[[CardLayer alloc] initWithCard:card];
-	
-	if(target.type ==TargetTypePlayerPlayArea)
-	{
-		theCard.frame=cardSlotsRects[3+target.position];
-	}
-	else if(target.type==TargetTypeOpponentPlayArea)
-	{
+		CardLayer * toRemove = [self cardAtTarget:target];
+		[toRemove removeFromSuperlayer];
 		
-		theCard.frame=cardSlotsRects[target.position];
+		[playerHand replaceObjectAtIndex:target.position withObject:[NSNull null]];
+	}
+}
+
+- (void) opponentPlaysCard:(Card *)card onTarget:(Target *)target;
+{
+	CardLayer * theCard = [CardLayer cardWithCard:card];	
+
+	if(target.type == TargetTypePlayerPlayArea)
+	{
+		NSAssert(target.position < 4, @"Not Enough Position In Player Playarea!!");
+		theCard.frame = playerPlayAreaTargetRects[target.position];
+	}
+
+	else if(target.type == TargetTypeOpponentPlayArea)
+	{
+		NSAssert(target.position < 4, @"Not Enough Position In Opponent Playarea!!");
+		theCard.frame = opponentPlayAreaTargetRects[target.position];
 	}
 	
 	[self.view.layer addSublayer:theCard];
-	[opponentPlayArea addObject:card];
+	[opponentPlayArea replaceObjectAtIndex:target.position withObject:theCard];
 }
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
@@ -285,27 +400,30 @@ CGRect cardSlotsRects[] =
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
 {
 	CGPoint   p = [[touches anyObject] locationInView:self.view];
-	CALayer * l = [self.mainLayer hitTest:[self.mainLayer convertPoint:p
-										   toLayer:self.mainLayer.superlayer]];
-	if ([l isKindOfClass:[CardLayer class]] )
+	
+	Target    * target  = TargetHitTest(p);
+	CardLayer * cardHit = [self cardAtTarget:target]; 
+	
+	if (cardHit != nil)
 	{
+		[currentTargets release];
 		
-		if(currentTargets)
-			[currentTargets release];
-		currentTargets=[[gameplay targetsForCard:[(CardLayer*) l card]] retain];
+		currentTargets = [[gameplay targetsForCardAtTarget:target] retain];
 		if([currentTargets count]>0)
 		{	
-			currentlyMovingCard = l;
-			currentlyMovingCardOriginalPosition = l.position;
+			currentlyMovingCard = cardHit;
+			currentlyMovingCardOriginalPosition = cardHit.position;
+			currentlyMovingCardTarget = [target retain];
+			
 			[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]+1];
+			
+			interfaceIsBusy = YES;
 		}
 		else
 		{
 			currentlyMovingCard=nil;
 		}
 	}
-	
-	interfaceIsBusy = YES;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -329,41 +447,21 @@ CGRect cardSlotsRects[] =
 	if (currentlyMovingCard == nil)
 		return;
 		
-	BOOL found = NO;
-	
 	CGPoint p = [[touches anyObject] locationInView:self.view];
 
-	for (CALayer * l in self.mainLayer.sublayers)
-	{		
-		if(([l isKindOfClass:[CardLayer class]] || [l isKindOfClass:[SlotLayer class]])&& [l containsPoint:[l convertPoint:p fromLayer:self.mainLayer]])
-		{
-			Target * target=[self findSelectedTargetforCard:(CardLayer*)l];
-			if(target)
-			{
-				for(Target * allowedTarget in currentTargets)
-				{
-					if(target.position==allowedTarget.position && target.type==allowedTarget.type)
-					{
-						[gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget];
-							currentlyMovingCard.position = l.position;
-							
-							[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget withGesture:NO];
-						[playerHand removeObject:currentlyMovingCard];
-						found=YES;
-					}
-				}
-			}
-		}		
+	Target * target = TargetHitTest(p);
+	if ([currentTargets indexOfObjectIdenticalTo:target] != NSNotFound)
+	{
+		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
+		currentlyMovingCard.position = CGRectForTarget(target).origin;
+		[gameplay didPlayCardAtTarget:currentlyMovingCardTarget onTarget:target withGesture:NO];
+	} else {
+		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
 	}
- 
- 
 	
 	/*
 	 * Let's control if you're playing a card on a slot on the play area
 	 */
-	if (found == NO)
-		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
-	
 	[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]-1];
 
 	currentlyMovingCard = nil;
@@ -382,37 +480,41 @@ CGRect cardSlotsRects[] =
 
 #pragma mark Private Methods
 
--(Target *)findSelectedTargetforCard:(CardLayer*) card;
-{
-	int i;
-	for(i=0;i<4; i++)
-	{
-		if(CGRectContainsPoint(cardSlotsRects[i],card.position))
-		{
-			
-			return [Target targetWithType:TargetTypeOpponentPlayArea position:i];
-		}
-	}
-	for(i=0;i<4;i++)
-	{
-		if(CGRectContainsPoint(cardSlotsRects[i+4],card.position))
-		{
-			
-			return [Target  targetWithType:TargetTypePlayerPlayArea position:i];
-		}
-	
-	}
-	return nil;
-}
-
-- (CGRect) frameRectForNextPlayerHandCard;
-{
-	return cardSlotsRects[8 + [playerHand count]];
-}
-
 - (CALayer *) mainLayer;
 {
 	return self.view.layer;
+}
+
+- (void) showText:(NSString *) text withTitle:(NSString *) title
+{
+	KhymeiaLog(text);
+}
+
+- (CardLayer *)cardAtTarget:(Target *)target;
+{
+	NSArray * type;
+	
+	switch (target.type)
+	{
+		case TargetTypePlayerHand:
+			type = playerHand;
+			break;
+		
+		case TargetTypeOpponentPlayArea:
+			type = opponentPlayArea;
+			break;
+			
+		case TargetTypePlayerPlayArea:
+			type = playerPlayArea;
+			break;
+	}
+	
+	id object = [type objectAtIndex:target.position];
+	
+	if (object == [NSNull null])
+		return nil;
+	
+	return object;
 }
 
 @end

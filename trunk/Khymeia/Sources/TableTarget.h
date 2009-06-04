@@ -20,6 +20,7 @@ typedef enum
 	TargetTypeOpponentCemetery,
 	TargetTypePlayerPlayArea,
 	TargetTypeOpponentPlayArea,
+	TargetTypeNumberOfTargetTypes,
 } TargetTypes;
 
 @interface Target : NSObject
