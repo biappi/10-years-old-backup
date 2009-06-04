@@ -270,65 +270,6 @@ Target * TargetHitTest(CGPoint point)
 
 #pragma mark New Targets Handling
 
-#if 0
-'
-// ---                            --- //
-// --- MAYBE THIS WAS TOO COMPLEX --- //
-// ---                            --- //
-
-- (void)setCard:(Card *)card fromTarget:(Target *)srcTarget toTarget:(Target *)dstTarget;
-{
-	switch (srcTarget.type)
-	{
-		case TargetTypePlayerDeck:
-			
-			// DRAW CARD FROM DECK TO PLAYER HAND
-			// -----------------------------------
-			
-			if (dstTarget.type == TargetTypePlayerDeck)
-			{
-				NSAssert(dstTarget.position < 5, @"Not Enough Position In Player Hand!!");
-				
-				id existingCard = [playerHand objectAtIndex:dstTarget.position];
-				
-				if (existingCard != [NSNull null])
-					[(CALayer *)existingCard removeFromSuperlayer];
-				
-				CardLayer * cardLayer = [CardLayer cardWithCard:card];
-				cardLayer.frame = playerHandTargetRects[dstTarget.position];
-				
-				[playerHand replaceObjectAtIndex:dstTarget.position withObject:srcTarget];
-			}
-			
-			break;
-
-		case TargetTypePlayerHand:
-			
-			// REMOVE CARD FROM PLAYER DECK TO CEMETERY
-			// ----------------------------------------
-			
-			if (dstTarget.type == TargetTypePlayerCemetery)
-			{
-				NSAssert(dstTarget.position < 5, @"Incorrect Position!!");
-				
-				id existingCard = [playerHand objectAtIndex:dstTarget.position];
-				if (existingCard == [NSNull null])
-					[(Card *)existingCard removeFromSuperlayer];
-				
-				[playerHand replaceObjectAtIndex:dstTarget.position withObject:[NSNull null]];
-			}
-			
-			break;
-			
-			
-		default:
-			break;
-	}
-}
-'
-#endif
-
-
 - (void) drawCard:(Card *)card toTarget:(Target *)dstTarget;
 {
 	NSAssert(dstTarget.position < 5, @"Not Enough Position In Player Hand!!");
@@ -346,12 +287,31 @@ Target * TargetHitTest(CGPoint point)
 
 - (void) discardFromTarget:(Target *)target;
 {
+	// TODO: Code is the same for both branches
+	//       Will be different for different animations, etc...
+	
 	if (target.type == TargetTypePlayerHand)
 	{
 		CardLayer * toRemove = [self cardAtTarget:target];
 		[toRemove removeFromSuperlayer];
 		
 		[playerHand replaceObjectAtIndex:target.position withObject:[NSNull null]];
+	}
+	
+	if (target.type == TargetTypePlayerPlayArea)
+	{
+		CardLayer * toRemove = [self cardAtTarget:target];
+		[toRemove removeFromSuperlayer];
+		
+		[playerPlayArea replaceObjectAtIndex:target.position withObject:[NSNull null]];		
+	}
+	
+	if (target.type == TargetTypeOpponentPlayArea)
+	{
+		CardLayer * toRemove = [self cardAtTarget:target];
+		[toRemove removeFromSuperlayer];
+		
+		[opponentPlayArea replaceObjectAtIndex:target.position withObject:[NSNull null]];		
 	}
 }
 

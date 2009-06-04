@@ -45,6 +45,8 @@
 
 -(BOOL)canPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 
+- (Card *)cardForTarget:(Target *)t;
+
 @end
 
 
@@ -147,12 +149,11 @@
 	
 	//<------mix deck
 	
-	//take first 5 cards
-	[interface drawCard:[player.hand objectAtIndex:0]];
-	[interface drawCard:[player.hand objectAtIndex:1]];
-	[interface drawCard:[player.hand objectAtIndex:2]];
-	[interface drawCard:[player.hand objectAtIndex:3]];
-	[interface drawCard:[player.hand objectAtIndex:4]];
+	[interface drawCard:[player.hand objectAtIndex:0] toTarget:[Target targetWithType:TargetTypePlayerHand position:0]];
+	[interface drawCard:[player.hand objectAtIndex:1] toTarget:[Target targetWithType:TargetTypePlayerHand position:1]];
+	[interface drawCard:[player.hand objectAtIndex:2] toTarget:[Target targetWithType:TargetTypePlayerHand position:2]];
+	[interface drawCard:[player.hand objectAtIndex:3] toTarget:[Target targetWithType:TargetTypePlayerHand position:3]];
+	[interface drawCard:[player.hand objectAtIndex:4] toTarget:[Target targetWithType:TargetTypePlayerHand position:4]];
 }
 
 -(void)start;
@@ -166,7 +167,7 @@
 	KhymeiaLog([NSString stringWithFormat:@"player %@ Statebegin", player.name]);
 	state = GameStatePlayer;	
 	//say to interface about state change
-	[interface setState:state];
+	[interface setState:state];	
 	//say to server about state change
 	[comunication sendStateChange:state];
 	[self playerPhaseCardAttainment]; 
@@ -190,14 +191,22 @@
 	phase = GamePhaseCardAttainment;
 	[interface setPhase:phase];
 	[comunication sendPhaseChange:phase];
-	
-	if ([player.hand count]<5)
+		
+	int firstNull = [player.hand indexOfObject:[NSNull null]];
+	if (firstNull != NSNotFound)
 	{
-		[interface drawCard:[player.deck lastObject]];
-		[comunication sendDrawCard:[player.deck lastObject]];
-		[player.hand addObject:[player.deck lastObject]];
-		[player.deck removeLastObject];
+		Card * drawnCard = [player.deck lastObject];
+		
+		if (drawnCard != nil)
+		{
+			[player.deck removeLastObject];
+			
+			[interface drawCard:drawnCard toTarget:[Target targetWithType:TargetTypePlayerHand position:firstNull]];
+			[comunication sendDrawCard:drawnCard];
+			[player.hand replaceObjectAtIndex:firstNull withObject:drawnCard];
+		}
 	}
+		
 	[self callNextPhase];
 }
 
@@ -242,6 +251,7 @@
 	[comunication sendPhaseChange:phase];
 	
 	//calculate opponent damage and restoring player's card with health >0
+	int i = 0;
 	for (Card * card in table.playerPlayArea)
 	{
 		if ([card class] != [NSNull class])
@@ -256,11 +266,14 @@
 			}
 			else
 			{
-				[interface discardFromPlayArea:card];
+				[interface discardFromTarget:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
 			}
+			
+			i++;
 		}
 	}
 	[interface setHP:opponent.health player:PlayerKindOpponent];
+	
 	//restoring opponent's card with health >0
 	for (Card * card in table.opponentPlayArea)
 	{
@@ -272,7 +285,7 @@
 			}
 			else
 			{
-				[interface discardFromPlayArea:card];
+				[interface discardFromTarget:[Target targetWithType:TargetTypeOpponentPlayArea position:i]];
 			}
 		}
 	}	
@@ -460,27 +473,29 @@
 	return NO;
 }
 
--(NSArray*)targetsForCard:(Card*)aCard;
+- (NSArray *)targetsForCardAtTarget:(Target *)aTarget;
 {
 	if (state == GameStatePlayer)
 	{
-		if ([player isCardInHand:aCard]																		//if aCard is in hand
-			&& ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))      //and is the right phase
+		if ((aTarget.type == TargetTypePlayerHand)																//if aCard is in hand
+			&& ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))    //and is the right phase
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
-
-			Target * tableTarget;
-
+			
+			Card * aCard = [self cardForTarget:aTarget];
+			
 			if (aCard.type == CardTypeElement)
 			{
+				int i = 0;
 				for (Card * opponentCard in table.opponentPlayArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if (!([opponentCard class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:opponentCard])
 					{
-						tableTarget = [Target targetWithType:TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
-						[targets addObject:tableTarget];
+						[targets addObject:[Target targetWithType:TargetTypeOpponentPlayArea position:i]];
 					}
+					
+					i++;
 				}
 			}
 			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
@@ -493,23 +508,29 @@
 	}
 	else
 	{
-		if ([player isCardInHand:aCard]
+		if ((aTarget.type == TargetTypePlayerHand)
 			&& phase == GamePhaseAttackOpponent)
 		{
 			NSMutableArray *targets = [[NSMutableArray alloc] init];
-			Target *tableTarget;
+			
+			Card * aCard = [self cardForTarget:aTarget];
+			
 			if (aCard.type == CardTypeElement)
 			{
+				int i = 0;
+				
 				for (Card * opponentCard in table.opponentPlayArea)
 				{
 					//check if i can play aCard vs opponentCard
 					if (!([opponentCard class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:opponentCard])
 					{
-						tableTarget = [Target targetWithType: TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
-						[targets addObject:tableTarget];
+						[targets addObject:[Target targetWithType: TargetTypeOpponentPlayArea position:i]];
 					}
+					
+					i++;
 				}
 			}
+			
 			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
 				[targets addObjectsFromArray:[table playerFreePositions]];
 			
@@ -637,6 +658,39 @@
 -(Card*)didOpponentDrawCard:(Card*)card;
 {
 	return nil;
+}
+
+- (void)willSelectCardAtTarget:(Target *)aTarget;
+{
+	NOT_IMPLEMENTED();
+}
+
+- (void)didSelectCardAtTarget:(Target *)aTarget;
+{
+	NOT_IMPLEMENTED();
+}
+
+- (void)didDiscardCardAtTarget:(Target *)aTarget;
+{
+	NOT_IMPLEMENTED();
+}
+
+- (Card *)cardForTarget:(Target *)t;
+{
+	switch (t.type)
+	{
+		case TargetTypePlayerHand:
+			return [player.hand objectAtIndex:t.position];
+			
+		case TargetTypeOpponentPlayArea:
+			return [table.opponentPlayArea objectAtIndex:t.position];
+
+		case TargetTypePlayerPlayArea:
+			return [table.playerPlayArea objectAtIndex:t.position];
+
+		default:
+			return nil;
+	}
 }
 
 @end
