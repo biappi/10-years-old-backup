@@ -38,5 +38,10 @@
 	
 }
 
+-(void) setLevel:(int) i
+{
+	NSString * level=
+
+}
 
 @end

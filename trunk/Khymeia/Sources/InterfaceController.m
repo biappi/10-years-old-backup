@@ -119,6 +119,7 @@ CGRect cardSlotsRects[] =
 		{
 			[self showText:@"ok now you can start playing" withTitle:@"GameState: PLAY"];
 		}
+	currentState=turn;
 }
 
 -(void) setPhase:(GamePhase) phase;
@@ -126,30 +127,48 @@ CGRect cardSlotsRects[] =
 	switch (phase) {
 		case GamePhaseMainphase:
 			[self showText:@"MainPhase" withTitle:@"gp message"];
-			[self.view addSubview:turnEnded];
-			[turnEnded setCenter:CGPointMake(20,20)];
-			[turnEnded setNeedsDisplay];
+			if(currentState==GameStatePlayer)
+			{
+				[self.view addSubview:turnEnded];
+				[turnEnded setCenter:CGPointMake(20,20)];
+				[turnEnded setNeedsDisplay];
+			}
 			break;
 		case GamePhaseAttackOpponent:
+			if(currentState==GameStateOpponent)
+			{
+				[self.view addSubview:turnEnded];
+				[turnEnded setCenter:CGPointMake(20,20)];
+				[turnEnded setNeedsDisplay];
+			}
+			
 			[self showText:@"AttackPhaseOpponent" withTitle:@"gp message"];
-			[self.view addSubview:turnEnded];
-			[turnEnded setCenter:CGPointMake(20,20)];
 			break;
 		case GamePhaseAttackPlayer:
+			if(currentState==GameStatePlayer)
+			{
+				[self.view addSubview:turnEnded];
+				[turnEnded setCenter:CGPointMake(20,20)];
+				[turnEnded setNeedsDisplay];
+			}			
 			[self showText:@"AttackPhasePlayer" withTitle:@"gp message"];
-			[self.view addSubview:turnEnded];
-			[turnEnded setCenter:CGPointMake(20,20)];
 			break;
 		case GamePhaseCardAttainment:
 			[self showText:@"CardAttainmentPhase" withTitle:@"gp message"];
 			break;
 		case GamePhaseDiscard:
+			if(currentState==GameStatePlayer)
+			{
+				[self.view addSubview:turnEnded];
+				[turnEnded setCenter:CGPointMake(20,20)];
+				[turnEnded setNeedsDisplay];
+			}
+			
 			[self showText:@"DiscardPhase" withTitle:@"gp message"];
 
 			break;
 		case GamePhaseDamageResolution:
 			[self showText:@"DamageResolutionPhase" withTitle:@"gp message"];
-
 			break;
 		case GamePhaseNone:
 			[self showText:@"NonePhase" withTitle:@"gp message"];
@@ -213,6 +232,7 @@ CGRect cardSlotsRects[] =
 		if([card isKindOfClass:[CardLayer class]] && [card.card isEqual:acard])
 		{
 			toRemove=card;
+			//;
 		}
 	}
 	
@@ -346,7 +366,9 @@ CGRect cardSlotsRects[] =
 					{
 						[gameplay willPlayCard: ((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget];
 							currentlyMovingCard.position = l.position;
+							
 							[gameplay didPlayCard:((CardLayer *) currentlyMovingCard).card onTarget:allowedTarget withGesture:NO];
+						[playerHand removeObject:currentlyMovingCard];
 						found=YES;
 					}
 				}

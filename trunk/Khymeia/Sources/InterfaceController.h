@@ -41,7 +41,7 @@ typedef enum
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;
 	NSArray			 * currentTargets;
-	
+	GameState		 currentState;
 	BOOL               interfaceIsBusy;
 	
 	id<InterfaceToGameplayProtocol>	 gameplay;
