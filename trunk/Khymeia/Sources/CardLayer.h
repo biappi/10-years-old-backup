@@ -13,11 +13,15 @@
 {
 	Card * card;
 	NSMutableArray * level;
+
+	BOOL pleaseDoNotMove;
 }
+
+@property (nonatomic, retain) Card * card;
+@property (nonatomic, assign) BOOL pleaseDoNotMove;
 
 + (CardLayer *)cardWithCard:(Card *)theCard;
 
 - (id) initWithCard:(Card *)card;
 
-@property (nonatomic, retain) Card * card;
 @end

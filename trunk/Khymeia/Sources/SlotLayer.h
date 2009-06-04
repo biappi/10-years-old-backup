@@ -10,7 +10,9 @@
 
 @interface SlotLayer : CALayer
 {
-
+	BOOL slotHighlight;
 }
+
+@property(nonatomic, assign) BOOL slotHighlight;
 
 @end

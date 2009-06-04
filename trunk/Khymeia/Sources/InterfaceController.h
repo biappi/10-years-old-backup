@@ -11,6 +11,7 @@
 #import "Player.h"
 #import "Card.h"
 #import "GameState.h"
+#import "CardLayer.h"
 
 typedef enum 
 {
@@ -33,8 +34,12 @@ typedef enum
 	
 	IBOutlet UILabel * playerHealthPointsLabel;
 	IBOutlet UILabel * opponentHealthPointsLabel;
+
+	NSArray          * playerPlayAreaSlots;
+	NSArray          * opponentPlayAreaSlots;
+	NSArray          * playerHandSlots;	
 	
-	CALayer          * currentlyMovingCard;
+	CardLayer        * currentlyMovingCard;
 	CGPoint            currentlyMovingCardOriginalPosition;
 	Target           * currentlyMovingCardTarget;
 	
@@ -43,7 +48,7 @@ typedef enum
 	NSMutableArray   * playerPlayArea;
 	NSMutableArray   * opponentPlayArea;
 	NSArray			 * currentTargets;
-	GameState		 currentState;
+	GameState		   currentState;
 	BOOL               interfaceIsBusy;
 	
 	id<InterfaceToGameplayProtocol>	 gameplay;

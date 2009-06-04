@@ -15,9 +15,10 @@
 
 @end
 
-
 @implementation CardLayer
+
 @synthesize card;
+@synthesize pleaseDoNotMove;
 
 + (CardLayer *)cardWithCard:(Card *)theCard;
 {
@@ -28,29 +29,25 @@
 {
 	if ((self = [super init]) == nil)
 		return nil;
+	
 	self.card=acard;
 	self.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1].CGColor;
 	self.borderColor     = [UIColor blackColor].CGColor;
 	self.borderWidth     = 1;
+	
 	UIImage *img=[UIImage imageNamed:acard.image];	
 	level=[[NSMutableArray alloc] init];
 	[self setContents:(id) [img CGImage]];
 	[self setLevel:card.level];
+	
+	pleaseDoNotMove = YES;
+	
 	return self;
 }
 
 - (CGSize) preferredFrameSize;
 {
 	return CGSizeMake(72, 90);
-}
-
-- (void) setPosition:(CGPoint) point
-{
-	[CATransaction begin]; 
-	[CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
-	[super setPosition:point];
-	[CATransaction commit];
-	
 }
 
 -(void) setLevel:(int)ii;
@@ -77,10 +74,14 @@
 		[level addObject:layCard];
 		[self addSublayer:layCard];
 		[layCard setContents: (id)[img CGImage]];
-		
-		
 	}
-
 }
 
+- (id<CAAction>)actionForKey:(NSString *)aKey;
+{
+   if ([aKey isEqualToString:@"position"] && pleaseDoNotMove == YES)
+	   return nil;
+   
+   return [super actionForKey:aKey];
+}  
 @end

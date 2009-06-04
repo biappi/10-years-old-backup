@@ -77,7 +77,7 @@ Target * TargetHitTest(CGPoint point)
 	}
 
 	result.type = TargetTypePlayerHand;
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		if (CGRectContainsPoint(playerHandTargetRects[i], point))
 		{
@@ -97,6 +97,7 @@ Target * TargetHitTest(CGPoint point)
 - (CGRect) frameRectForNextPlayerHandCard;
 
 - (CardLayer *)cardAtTarget:(Target *)target;
+- (void) setHighlightCurrentTargetSlots:(BOOL)x; //<< not the best api in the world, but i'm quite dead now
 
 @end
 
@@ -160,29 +161,42 @@ Target * TargetHitTest(CGPoint point)
 
 - (void)viewDidLoad;
 {
+	NSMutableArray * temp = [NSMutableArray arrayWithCapacity:5];
+	
 	for (int i = 0; i <= (sizeof(opponentPlayAreaTargetRects) / sizeof(CGRect)); i++)
 	{
 		SlotLayer * l = [[SlotLayer alloc] init];
 		l.frame = opponentPlayAreaTargetRects[i];
 		[self.view.layer addSublayer:l];
+		[temp addObject:l];
 		[l release];
 	}
 
+	opponentPlayAreaSlots = [[NSArray arrayWithArray:temp] retain];
+	temp = [NSMutableArray arrayWithCapacity:5];
+	
 	for (int i = 0; i <= (sizeof(playerPlayAreaTargetRects) / sizeof(CGRect)); i++)
 	{
 		SlotLayer * l = [[SlotLayer alloc] init];
 		l.frame = playerPlayAreaTargetRects[i];
 		[self.view.layer addSublayer:l];
+		[temp addObject:l];
 		[l release];
 	}
+
+	playerPlayAreaSlots = [[NSArray arrayWithArray:temp] retain];
+	temp = [NSMutableArray arrayWithCapacity:5];
 	
 	for (int i = 0; i <= (sizeof(playerHandTargetRects) / sizeof(CGRect)); i++)
 	{
 		SlotLayer * l = [[SlotLayer alloc] init];
 		l.frame = playerHandTargetRects[i];
 		[self.view.layer addSublayer:l];
+		[temp addObject:l];
 		[l release];
 	}
+	
+	playerHandSlots = [[NSArray arrayWithArray:temp] retain];
 }
 
 #pragma mark Gameplay To Interface
@@ -304,7 +318,7 @@ Target * TargetHitTest(CGPoint point)
 		CardLayer * toRemove = [self cardAtTarget:target];
 		[toRemove removeFromSuperlayer];
 		
-		[playerPlayArea replaceObjectAtIndex:target.position withObject:[NSNull null]];		
+		[playerPlayArea replaceObjectAtIndex:target.position withObject:[NSNull null]];
 	}
 	
 	if (target.type == TargetTypeOpponentPlayArea)
@@ -312,7 +326,7 @@ Target * TargetHitTest(CGPoint point)
 		CardLayer * toRemove = [self cardAtTarget:target];
 		[toRemove removeFromSuperlayer];
 		
-		[opponentPlayArea replaceObjectAtIndex:target.position withObject:[NSNull null]];		
+		[opponentPlayArea replaceObjectAtIndex:target.position withObject:[NSNull null]];
 	}
 }
 
@@ -366,12 +380,13 @@ Target * TargetHitTest(CGPoint point)
 	CardLayer * cardHit = [self cardAtTarget:target]; 
 	
 	if (cardHit != nil)
-	{
-		[currentTargets release];
-		
+	{		
 		currentTargets = [[gameplay targetsForCardAtTarget:target] retain];
-		if([currentTargets count]>0)
-		{	
+
+		[self setHighlightCurrentTargetSlots:YES];
+		
+		//if([currentTargets count]>0) (if commented so that you can pick every card, but you just can't put anywhere
+		{
 			currentlyMovingCard = cardHit;
 			currentlyMovingCardOriginalPosition = cardHit.position;
 			currentlyMovingCardTarget = [target retain];
@@ -380,11 +395,8 @@ Target * TargetHitTest(CGPoint point)
 			
 			interfaceIsBusy = YES;
 		}
-		else
-		{
-			currentlyMovingCard=nil;
-		}
 	}
+	
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -413,20 +425,27 @@ Target * TargetHitTest(CGPoint point)
 	Target * target = TargetHitTest(p);
 	if ([currentTargets indexOfObject:target] != NSNotFound)
 	{
-		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
-		currentlyMovingCard.position = CGRectForTarget(target).origin;
-		[gameplay didPlayCardAtTarget:currentlyMovingCardTarget onTarget:target withGesture:NO];
+		// [gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
+		currentlyMovingCard.frame = CGRectForTarget(target);
+		// [gameplay didPlayCardAtTarget:currentlyMovingCardTarget onTarget:target withGesture:NO];
 	} else {
+		currentlyMovingCard.pleaseDoNotMove = NO;
 		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
+		currentlyMovingCard.pleaseDoNotMove = YES;
 	}
-	
+		
 	/*
 	 * Let's control if you're playing a card on a slot on the play area
 	 */
 	[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]-1];
 
+	[self setHighlightCurrentTargetSlots:NO];
+	
 	currentlyMovingCard = nil;
 	interfaceIsBusy = NO;
+	
+	[currentTargets release];
+	currentTargets = nil;
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event;
@@ -437,6 +456,10 @@ Target * TargetHitTest(CGPoint point)
 	currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
 	currentlyMovingCard = nil;
 	interfaceIsBusy = NO;
+	[self setHighlightCurrentTargetSlots:NO];
+	[currentTargets release];
+	currentTargets = nil;
+
 }
 
 #pragma mark Private Methods
@@ -454,6 +477,9 @@ Target * TargetHitTest(CGPoint point)
 - (CardLayer *)cardAtTarget:(Target *)target;
 {
 	NSArray * type;
+	
+	if (target == nil)
+		return nil;
 	
 	switch (target.type)
 	{
@@ -476,6 +502,31 @@ Target * TargetHitTest(CGPoint point)
 		return nil;
 	
 	return object;
+}
+
+- (void) setHighlightCurrentTargetSlots:(BOOL)x;
+{
+	for (Target * t in currentTargets)
+	{
+		NSArray * type;
+		
+		switch (t.type)
+		{
+			case TargetTypePlayerHand:
+				type = playerHandSlots;
+				break;
+				
+			case TargetTypeOpponentPlayArea:
+				type = opponentPlayAreaSlots;
+				break;
+				
+			case TargetTypePlayerPlayArea:
+				type = playerPlayAreaSlots;
+				break;
+		}
+		
+		[[type objectAtIndex:t.position] setSlotHighlight:x];
+	}
 }
 
 @end
