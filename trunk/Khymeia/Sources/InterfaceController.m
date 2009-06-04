@@ -390,7 +390,7 @@ CGRect cardSlotsRects[] =
 		if(CGRectContainsPoint(cardSlotsRects[i],card.position))
 		{
 			
-			return [[Target alloc] targetWithType:TargetTypeOpponentPlayArea position:i+1];
+			return [Target targetWithType:TargetTypeOpponentPlayArea position:i+1];
 		}
 	}
 	for(i=0;i<4;i++)
@@ -398,7 +398,7 @@ CGRect cardSlotsRects[] =
 		if(CGRectContainsPoint(cardSlotsRects[i+4],card.position))
 		{
 			
-			return [[Target alloc] targetWithType:TargetTypePlayerPlayArea position:i+1];
+			return [Target  targetWithType:TargetTypePlayerPlayArea position:i+1];
 		}
 	
 	}

@@ -244,29 +244,35 @@
 	//calculate opponent damage and restoring player's card with health >0
 	for (Card * card in table.playerPlayArea)
 	{
-		if (card.health>0)
+		if ([card class] != [NSNull class])
 		{
-			//apply card damage to opponent
-			opponent.health -= card.health;
-			//restoring healt to card
-			card.health = card.level;
-		}
-		else
-		{
-			[interface discardFromPlayArea:card];
+			if (card.health>0)
+			{
+				//apply card damage to opponent
+				opponent.health -= card.health;
+				//restoring healt to card
+				card.health = card.level;
+			}
+			else
+			{
+				[interface discardFromPlayArea:card];
+			}
 		}
 	}
 	[interface setHP:opponent.health player:PlayerKindOpponent];
 	//restoring opponent's card with health >0
 	for (Card * card in table.opponentPlayArea)
 	{
-		if (card.health>0)
+		if ([card class] != [NSNull class])
 		{
-			card.health = card.level;
-		}
-		else
-		{
-			[interface discardFromPlayArea:card];
+			if (card.health>0)
+			{
+				card.health = card.level;
+			}
+			else
+			{
+				[interface discardFromPlayArea:card];
+			}
 		}
 	}	
 	[self callNextPhase];
@@ -467,9 +473,9 @@
 				for (Card * opponentCard in table.opponentPlayArea)
 				{
 					//check if i can play aCard vs opponentCard
-					if ([self canPlayInstance:aCard onInstance:opponentCard])
+					if (!([opponentCard class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:opponentCard])
 					{
-						tableTarget = [[Target alloc] targetWithType:TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
+						tableTarget = [Target targetWithType:TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
 						[targets addObject:tableTarget];
 					}
 				}
@@ -494,9 +500,9 @@
 				for (Card * opponentCard in table.opponentPlayArea)
 				{
 					//check if i can play aCard vs opponentCard
-					if ([self canPlayInstance:aCard onInstance:opponentCard])
+					if (!([opponentCard class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:opponentCard])
 					{
-						tableTarget = [[Target alloc] targetWithType: TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
+						tableTarget = [Target targetWithType: TargetTypeOpponentPlayArea position:[table.opponentPlayArea indexOfObject:opponentCard]];	
 						[targets addObject:tableTarget];
 					}
 				}

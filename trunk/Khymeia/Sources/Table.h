@@ -19,12 +19,12 @@
 @property(nonatomic, readonly) NSMutableArray * playerPlayArea;
 @property(nonatomic, readonly) NSMutableArray * opponentPlayArea;
 
-// ---- For GP
+// ---- For GamePlay
 
 - (NSArray *)opponentFreePositions;
 - (NSArray *)playerFreePositions;
 
-// ---- For INT
+// ---- For Interface
 
 - (void)addCard:(Card *)aCard toPosition:(Target *)aTarget;
 - (void)discardCardFromPosition:(Target *)aTarget;
