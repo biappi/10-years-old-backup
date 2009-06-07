@@ -14,16 +14,17 @@
 {
 	Player					*player;
 	Player					*opponent;
-	
+	NSInteger				phase;
 	BOOL					isPlayerTargetable;
 	BOOL					isOpponentTargetable;
 }
 
 @property (nonatomic,readonly) Player *player;
 @property (nonatomic,readonly) Player *opponent;
+@property (nonatomic,assign)NSInteger phase;
 @property (nonatomic,assign)   BOOL isPlayerTargetable;
 @property (nonatomic,assign)   BOOL isOpponentTargetable;
 
--(id)initWithPlayer:(Player*)aPlayer andOpponent:(Player*)aOpponent;
+-(id)initWithPlayer:(Player*)aPlayer andOpponent:(Player*)aOpponent andPhase:(NSInteger)phase;
 
 @end

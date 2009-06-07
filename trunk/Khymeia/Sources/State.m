@@ -13,15 +13,17 @@
 
 @synthesize player;
 @synthesize opponent;
+@synthesize phase;
 @synthesize isPlayerTargetable;
 @synthesize isOpponentTargetable;
 
--(id) initWithPlayer:(Player*)aPlayer andOpponent:(Player*)aOpponent;
+-(id) initWithPlayer:(Player*)aPlayer andOpponent:(Player*)aOpponent andPhase:(NSInteger)fase;
 {
     if (self = [super init]) 
 	{
 		player = [[Player playerWithPlayer:aPlayer] retain];
 		opponent = [[Player playerWithPlayer:aOpponent] retain];
+		phase=fase;
 		isPlayerTargetable = YES;
 		isOpponentTargetable = YES;
 	}

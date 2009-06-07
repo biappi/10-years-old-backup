@@ -68,7 +68,7 @@
 	[waterElemental2 release];
 	[earthElemental2 release];
 	[voidElemental2 release];
-	NSMutableArray *handOp=[[NSMutableArray alloc] initWithObjects:fireElementalOp2,windElementalOp2,waterElementalOp2,earthElementalOp2,voidElementalOp2,nil];
+ NSMutableArray *handOp=[[NSMutableArray alloc] initWithObjects:fireElementalOp2,windElementalOp2,waterElementalOp2,earthElementalOp2,voidElementalOp2,nil];
 	[fireElementalOp2 release];
 	[windElementalOp2 release];
 	[waterElementalOp2 release];

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class State;
+
 typedef enum {
 	CardTypeElement,
 	CardTypeMagic
@@ -56,7 +58,7 @@ typedef enum {
  Return an array of targets for card
  /return an array of targets 
  */
--(NSArray*)targets;
+-(NSArray*)targets:(State*)aState;
 
 
 @end

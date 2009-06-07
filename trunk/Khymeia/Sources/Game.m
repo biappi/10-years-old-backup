@@ -8,6 +8,7 @@
 
 #import "Game.h"
 #import "ComunicatioLayer.h"
+#import "State.h"
 
 @interface Game (PrivateMethods)
 
@@ -43,7 +44,7 @@
 
 -(void)callNextPhase;
 
--(BOOL)canPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
+//-(BOOL)canPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 
 - (Card *)cardForTarget:(Target *)t;
 
@@ -354,43 +355,7 @@
 #pragma mark -
 #pragma mark private methods
 
--(BOOL)canPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
-{
-	if (aInstace.element == CardElementVoid)
-	{
-		return YES;
-	}
-	else if (aInstace.element == CardElementEarth)
-	{
-		if (otherInstace.element == CardElementWind)
-			return YES;
-		else
-			return NO;
-	}
-	else if (aInstace.element == CardElementFire)
-	{
-		if (otherInstace.element == CardElementWater)
-			return YES;
-		else
-			return NO;
-	}
-	else if (aInstace.element == CardElementWater)
-	{
-		if (otherInstace.element == CardElementFire)
-			return YES;
-		else
-			return NO;
-	}
-	else if (aInstace.element == CardElementWind)
-	{
-		if (otherInstace.element == CardElementEarth)
-			return YES;
-		else
-			return NO;
-	}
-	NSLog(@"unxpected case in canPlayInstance");
-	return NO;
-}
+
 
 -(void)didPlayInstance:(Card*)aInstace	onInstance:(Card*)otherInstace;
 {
@@ -425,6 +390,7 @@
 {
 	//ND DoBs: now it is useless, but we will need it.
 	[comunication sendWillPlayCardAtTarget:srcTarget onTarget:dstTarget];
+	
 }
 
 - (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
@@ -511,95 +477,16 @@
 
 - (NSArray *)targetsForCardAtTarget:(Target *)aTarget;
 {
-	if (state == GameStatePlayer)
-	{
-		if ((aTarget.type == TargetTypePlayerHand)																//if aCard is in hand
-			&& ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))    //and is the right phase
+	if (aTarget.type == TargetTypePlayerHand &&																						//if card is in hand
+		(state==GameStatePlayer && ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))    // if i am player
+		|| ((phase == GamePhaseAttackOpponent && waitingForOpponentAttack) && state==GameStateOpponent))							// if i am opponent		
 		{
-			NSMutableArray *targets = [[NSMutableArray alloc] init];
-			
-			Card * aCard;
-			if (!(aCard = [self cardForTarget:aTarget]))
+			State *farlockState=[[State alloc] initWithPlayer:player andOpponent:opponent andPhase:state] ;
+			Card *cardPlayed;
+			if(!(cardPlayed = [self cardForTarget:aTarget]))
 				return nil;
-			
-			if (aCard.type == CardTypeElement)
-			{
-				int i = 0;
-				for (Card * opponentCard in opponent.playArea)
-				{
-					//check if i can play aCard vs opponentCard
-					if (!([opponentCard class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:opponentCard])
-					{
-						[targets addObject:[Target targetWithType:TargetTypeOpponentPlayArea position:i]];
-					}
-					
-					i++;
-				}
-				
-				i = 0;
-				for (Card * card in player.playArea)
-				{
-					//check if i can play aCard vs opponentCard
-					if (!([card class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:card])
-					{
-						[targets addObject:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
-					}
-					
-					i++;
-				}
-			}
-			if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
-				[targets addObjectsFromArray:[player playAreaFreePositions]];
-			
-			NSArray *array = [NSArray arrayWithArray:targets];
-			[targets release];
-			return array;
+			return [cardPlayed targets:farlockState];
 		}
-	}
-	else
-	{
-		if ((aTarget.type == TargetTypePlayerHand)
-			&& phase == GamePhaseAttackOpponent)
-		{
-			NSMutableArray *targets = [[NSMutableArray alloc] init];
-			
-			Card * aCard;
-			if (!(aCard = [self cardForTarget:aTarget]))
-				return nil;
-			
-			if (aCard.type == CardTypeElement)
-			{
-				int i = 0;
-				
-				for (Card * opponentCard in opponent.playArea)
-				{
-					//check if i can play aCard vs opponentCard
-					if (!([opponentCard class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:opponentCard])
-					{
-						[targets addObject:[Target targetWithType: TargetTypeOpponentPlayArea position:i]];
-					}
-					
-					i++;
-				}
-				
-				i = 0;
-				for (Card * card in player.playArea)
-				{
-					//check if i can play aCard vs opponentCard
-					if (!([card class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:card])
-					{
-						[targets addObject:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
-					}
-					
-					i++;
-				}
-			}
-			
-			NSArray *array = [NSArray arrayWithArray:targets];
-			[targets release];
-			return array;
-		}
-	}
 	return nil;
 }
 
