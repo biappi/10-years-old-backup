@@ -17,13 +17,13 @@
 @synthesize image;
 @synthesize health;
 
--(id)initWithCard:(Card*)card;
++(id)cardWithCard:(Card*)aCard;
 {
-	if(self=[super init])
-	{
-		
-	}
-	return card;
+	Card *cloneCard = [[Card alloc] initWithName:aCard.name image:aCard.image];
+	cloneCard.type = aCard.type;
+	cloneCard.level = aCard.level;
+	cloneCard.health = aCard.health;
+	return cloneCard;
 }
 
 -(id)initWithName:(NSString*)aName image:(NSString*)aImage;

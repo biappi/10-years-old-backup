@@ -20,12 +20,75 @@
 @synthesize playArea;
 
 +(id)playerWithPlayer:(Player*)aPlayer;
-{
-	Player *clone = [[Player alloc] initWithHand:[NSMutableArray arrayWithArray:aPlayer.hand] playArea:[NSMutableArray arrayWithArray:aPlayer.playArea]];
+{		
+	Player *clone = [[Player alloc] init];
 	clone.name = [NSString stringWithString:aPlayer.name];
+	
+	NSMutableArray *cemetery = [[NSMutableArray alloc] init];
+	NSMutableArray *deck = [[NSMutableArray alloc] init];
+	NSMutableArray *playArea = [[NSMutableArray alloc] init];	
+	NSMutableArray *hand = [[NSMutableArray alloc] init];
+	
+	for (Card * card in aPlayer.hand)
+	{
+		if ([card class] == [NSNull class])
+		{
+			[hand addObject:card];
+		}
+		else
+		{
+			Card * tmp=[[Card cardWithCard:card] retain];
+			[hand addObject:tmp];
+			[tmp release];	
+		}
+	}
+	for (Card * card in aPlayer.deck)
+	{
+		if ([card class] == [NSNull class])
+		{
+			[deck addObject:card];
+		}
+		else
+		{
+			Card * tmp=[[Card cardWithCard:card] retain];
+			[deck addObject:tmp];
+			[tmp release];
+		}
+	}
+	for (Card * card in aPlayer.cemetery)
+	{
+		if ([card class] == [NSNull class])
+		{
+			[cemetery addObject:card];
+		}
+		else
+		{
+			[cemetery addObject:[Card cardWithCard:card]];
+		}
+	}
+	for (Card * card in aPlayer.playArea)
+	{
+		if ([card class] == [NSNull class])
+		{
+			[playArea addObject:card];
+		}
+		else
+		{
+			[playArea addObject:[Card cardWithCard:card]];
+		}
+	}
+	
+	clone.cemetery = cemetery;
+	clone.deck = deck;
+	clone.playArea = playArea;
+	clone.hand = hand;
+	
+	[cemetery release];
+	[deck release];
+	[hand release];
+	[playArea release];
+	
 	clone.health = aPlayer.health;
-	clone.cemetery = [NSMutableArray arrayWithArray:aPlayer.cemetery];
-	clone.deck = [NSMutableArray arrayWithArray:aPlayer.deck];
 	
 	return [clone autorelease];
 }

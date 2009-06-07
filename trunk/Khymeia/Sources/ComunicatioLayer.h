@@ -19,7 +19,7 @@
 	/**
 	 pointer to my gameplay
 	 */
-	id<ComunicationToGameplayProtocol> gameplay;
+	Game *gameplay;
 	
 	/**
 	 pointer to opponent comunication Layer
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic, retain) ComunicatioLayer *comLayer;
-@property (nonatomic, retain) id gameplay;
+@property (nonatomic, retain) Game *gameplay;
 
 /**
  send a message to opponent that a card is played on a specific target
@@ -63,7 +63,7 @@
  send a message to opponent that player has discarded a card
  /param card: the discarded card
  */
--(void)sendDrawCard:(Card *)card;
+-(void)sendDrawCardAtTarget:(Target*)srcTarget placedToTarget:(Target*)dstTarget playerKind:(PlayerKind)aKind;
 
 /**
  send a message in wich player notify to the opponent that he receives a damage
@@ -107,7 +107,7 @@
 /**
  receive a message from player that the opponent has discarded a card
  */
--(void)receiveDrawCard:(Card*)card;
+-(void)receiveDrawCardAtTarget:(Target*)srcTarget placedToTarget:(Target*)dstTarget playerKind:(PlayerKind)aKind;
 
 /**
  receive a message in wich opponent notify to the player that he receives a damage
@@ -121,4 +121,5 @@
  /param card: the card attacked
  */
 -(void)receiveDamage:(NSInteger)damage onCard:(Card*)card;
+
 @end

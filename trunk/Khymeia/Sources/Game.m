@@ -190,16 +190,23 @@
 	int firstNull = [player.hand indexOfObject:[NSNull null]];
 	if (firstNull != NSNotFound)
 	{
-		Card * drawnCard = [player.deck lastObject];
+ 		Card * drawnCard = [[player.deck lastObject] retain];
 		
 		if (drawnCard != nil)
 		{
+			NSInteger lastObjectIndex = [player.deck indexOfObject:drawnCard];
+			NSLog(@"carte rimaste deck %d", [player.deck count]-1);
 			[player.deck removeLastObject];
 			
 			[interface drawCard:drawnCard toTarget:[Target targetWithType:TargetTypePlayerHand position:firstNull]];
-			[comunication sendDrawCard:drawnCard];
+			
+			Target *srcTarget = [Target targetWithType:TargetTypePlayerDeck position:lastObjectIndex];
+			Target *dstTarget = [Target targetWithType:TargetTypePlayerHand position:firstNull];
+			[comunication sendDrawCardAtTarget:srcTarget placedToTarget:dstTarget playerKind:PlayerKindPlayer];
+			
 			[player.hand replaceObjectAtIndex:firstNull withObject:drawnCard];
 		}
+		[drawnCard release];
 	}
 		
 	[self callNextPhase];
@@ -400,13 +407,12 @@
 	{
 		case TargetTypePlayerHand:
 			return [player.hand objectAtIndex:t.position];
-			
+		case TargetTypeOpponentHand:
+			return [opponent.hand objectAtIndex:t.position];
 		case TargetTypeOpponentPlayArea:
-			return [opponent.playArea objectAtIndex:t.position];
-			
+			return [opponent.playArea objectAtIndex:t.position];			
 		case TargetTypePlayerPlayArea:
 			return [player.playArea objectAtIndex:t.position];
-			
 		default:
 			return nil;
 	}
@@ -446,6 +452,8 @@
 			//pass state change to comunication layer
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
+		
+		[interface discardFromTarget:srcTarget];
 	}
 	else if (dstTarget.type == TargetTypePlayerPlayArea && ([[player.playArea objectAtIndex:dstTarget.position] class] != [NSNull class]))
 	{
@@ -455,6 +463,8 @@
 			//pass state change to comunication layer
 			[self didPlayInstance:aCard onInstance:otherCard];
 		}
+		
+		[interface discardFromTarget:srcTarget];
 	}
 	else if (dstTarget.type == TargetTypePlayerPlayArea)
 	{
@@ -616,17 +626,10 @@
 }
 
 -(BOOL)didPlayOpponentCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
-{		
+{	
 	Card *aCard;
 	if (!(aCard = [self cardForTarget:srcTarget]))
 		return NO;
-	
-	Target* tableTarget = [Target targetWithTarget:dstTarget];
-	//convertion from opponent to player
-	if (tableTarget.type == TargetTypeOpponentPlayArea)
-		tableTarget.type = TargetTypePlayerPlayArea;
-	else
-		tableTarget.type= TargetTypeOpponentPlayArea;
 	
 	//remove card from user's hand
 	[opponent removeCardFromHand:aCard];
@@ -634,27 +637,29 @@
 	if (dstTarget.type == TargetTypeOpponentPlayArea)
 	{
 		Card* otherCard = (Card*)[opponent.playArea objectAtIndex:dstTarget.position];
-		if(aCard.type == CardTypeElement && otherCard == CardTypeElement)
+		if(!([otherCard class] == [NSNull class]) && aCard.type == CardTypeElement && otherCard == CardTypeElement)
 		{
 			//pass state change to comunication layer
-			[self didPlayInstance:aCard onInstance:otherCard];
+			[self didPlayInstance:aCard onInstance:otherCard];			
+			[interface discardFromTarget:srcTarget];
+		}
+		else
+		{
+			[opponent addCard:aCard toPosition:dstTarget];
 		}
 	}
 	else if (dstTarget.type == TargetTypePlayerPlayArea && ([[player.playArea objectAtIndex:dstTarget.position] class] != [NSNull class]))
 	{
 		Card* otherCard = (Card*)[player.playArea objectAtIndex:dstTarget.position];
-		if(aCard.type == CardTypeElement && otherCard.type == CardTypeElement && ![otherCard isEqual:aCard])
+		if(!([otherCard class] == [NSNull class]) && aCard.type == CardTypeElement && otherCard.type == CardTypeElement && ![otherCard isEqual:aCard])
 		{
 			//pass state change to comunication layer
-			[self didPlayInstance:aCard onInstance:otherCard];
+			[self didPlayInstance:aCard onInstance:otherCard];			
+			[interface discardFromTarget:srcTarget];
 		}
 	}
-	else if (dstTarget.type == TargetTypePlayerPlayArea)
-	{
-		[opponent addCard:aCard toPosition:dstTarget];
-		
-	}
-	[interface opponentPlaysCard:aCard onTarget:tableTarget];
+	
+	[interface opponentPlaysCard:aCard onTarget:dstTarget];
 	
 	return NO;
 }
@@ -736,8 +741,30 @@
 
 #pragma mark ComunicationLayer & Card methods
 
--(void)drawCardAtTarget:(Target*)aTarget playerKind:(PlayerKind)aKind;
+-(void)drawCardAtTarget:(Target*)srcTarget placedToTarget:(Target*)dstTarget playerKind:(PlayerKind)aKind;
 {
+	if (aKind == PlayerKindOpponent)
+	{
+		if (srcTarget.type == TargetTypeOpponentDeck)
+		{
+			[opponent.hand replaceObjectAtIndex:dstTarget.position withObject:[opponent.deck objectAtIndex:srcTarget.position]];
+			[opponent.deck removeObjectAtIndex:srcTarget.position];
+		}
+		else if (srcTarget.type == TargetTypePlayerDeck)
+		{
+			[player.hand replaceObjectAtIndex:dstTarget.position withObject:[player.deck objectAtIndex:srcTarget.position]];
+			[player.deck removeObjectAtIndex:srcTarget.position];
+		}
+		else
+		{
+			NOT_IMPLEMENTED();
+		}
+			
+	}
+	else
+	{
+		NOT_IMPLEMENTED();
+	}
 }
 
 -(void)applyDamage:(NSInteger)damage fromCard:(Target*)fTarget playerKind:(PlayerKind)aKind;

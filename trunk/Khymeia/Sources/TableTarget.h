@@ -35,4 +35,9 @@ typedef enum
 + (Target *) targetWithType:(TargetTypes)type position:(int)position;
 + (Target *) targetWithTarget:(Target*)theTarget;
 
+/**
+ Convert target point of you. If target type are OpponentSomething, after calling it, target will be PlayerSomething
+ */
+-(void)convertPointOfView;
+
 @end

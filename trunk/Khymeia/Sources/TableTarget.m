@@ -61,4 +61,39 @@ static char * typeStrings[] =
 	return [NSString stringWithFormat:@"<Target: 0x%08x - type: %s position: %d>", self, typeStrings[self.type], self.position];
 }
 
+#pragma mark -
+#pragma mark Convertion methods
+
+-(void)convertPointOfView;
+{
+	switch (self.type)
+	{
+		case TargetTypePlayerHand:
+			self.type = TargetTypeOpponentHand;
+			break;
+		case TargetTypeOpponentHand:
+			self.type = TargetTypePlayerHand;
+			break;
+		case TargetTypePlayerDeck:
+			self.type = TargetTypeOpponentDeck;
+			break;
+		case TargetTypeOpponentDeck:
+			self.type = TargetTypePlayerDeck;
+			break;
+		case TargetTypePlayerCemetery:
+			self.type = TargetTypeOpponentCemetery;
+			break;
+		case TargetTypeOpponentCemetery:
+			self.type = TargetTypePlayerCemetery;
+			break;
+		case TargetTypePlayerPlayArea:
+			self.type = TargetTypeOpponentPlayArea;
+			break;
+		case TargetTypeOpponentPlayArea:
+			self.type = TargetTypePlayerPlayArea;
+			break;
+	}
+}
+
+
 @end

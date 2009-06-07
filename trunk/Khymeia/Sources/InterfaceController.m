@@ -313,6 +313,7 @@ Target * TargetHitTest(CGPoint point)
 		[playerHand replaceObjectAtIndex:target.position withObject:[NSNull null]];
 	}
 	
+	
 	if (target.type == TargetTypePlayerPlayArea)
 	{
 		CardLayer * toRemove = [self cardAtTarget:target];
@@ -344,10 +345,12 @@ Target * TargetHitTest(CGPoint point)
 	{
 		NSAssert(target.position < 4, @"Not Enough Position In Opponent Playarea!!");
 		theCard.frame = opponentPlayAreaTargetRects[target.position];
+		[opponentPlayArea replaceObjectAtIndex:target.position withObject:theCard];
+		[self.view.layer addSublayer:theCard];
+
 	}
 	
-	[self.view.layer addSublayer:theCard];
-	[opponentPlayArea replaceObjectAtIndex:target.position withObject:theCard];
+	
 }
 
 - (void) takeCard:(Card *)card from:(InterfaceModes)interfaceMode;
@@ -385,7 +388,7 @@ Target * TargetHitTest(CGPoint point)
 
 		[self setHighlightCurrentTargetSlots:YES];
 		
-		//if([currentTargets count]>0) (if commented so that you can pick every card, but you just can't put anywhere
+		if(currentTargets && [currentTargets count]>0) //(if commented so that you can pick every card, but you just can't put anywhere
 		{
 			currentlyMovingCard = cardHit;
 			currentlyMovingCardOriginalPosition = cardHit.position;
@@ -427,7 +430,13 @@ Target * TargetHitTest(CGPoint point)
 	{
 		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
 		currentlyMovingCard.frame = CGRectForTarget(target);
+		NSLog(@"did play card");
+
 		[gameplay didPlayCardAtTarget:currentlyMovingCardTarget onTarget:target withGesture:NO];
+		if([playerHand containsObject:currentlyMovingCard])
+		{
+			[playerHand replaceObjectAtIndex:[playerHand indexOfObject:currentlyMovingCard] withObject:[NSNull null]];
+		}
 	} else {
 		currentlyMovingCard.pleaseDoNotMove = NO;
 		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;

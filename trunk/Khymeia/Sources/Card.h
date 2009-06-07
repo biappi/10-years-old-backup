@@ -40,6 +40,8 @@ typedef enum {
 @property(nonatomic, retain) NSString		*name;
 @property(nonatomic, retain) NSString		*image;
 
++(id)cardWithCard:(Card*)aCard;
+
 /**
  Create an instance of Card
  /param aName:

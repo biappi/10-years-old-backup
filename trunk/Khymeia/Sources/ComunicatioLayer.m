@@ -48,9 +48,9 @@
 	[comLayer receivePhaseChange:phase];
 }
 
--(void)sendDrawCard:(Card*)card;
+-(void)sendDrawCardAtTarget:(Target*)srcTarget placedToTarget:(Target*)dstTarget playerKind:(PlayerKind)aKind;
 {
-	[comLayer receiveDrawCard:card];
+	[comLayer receiveDrawCardAtTarget:srcTarget placedToTarget:dstTarget playerKind:aKind];
 }
 
 -(void) sendDamageToOpponent:(NSInteger)damage;
@@ -69,13 +69,21 @@
 
 -(void)receiveWillPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 {
-	[gameplay willPlayOpponentCardAtTarget:srcTarget onTarget:dstTarget];
+	Target * aTarget=[Target targetWithTarget:srcTarget];
+	Target * bTarget=[Target targetWithTarget:dstTarget];
+	[aTarget convertPointOfView];
+	[bTarget convertPointOfView];	
+	[gameplay willPlayOpponentCardAtTarget:aTarget onTarget:bTarget];
 	
 }
 
 -(void)receiveDidPlayCardAtTarget:(Target*)srcTarget onTarget:(Target*)dstTarget;
 {
-	[gameplay didPlayOpponentCardAtTarget:srcTarget onTarget:dstTarget];
+	Target * aTarget=[Target targetWithTarget:srcTarget];
+	Target * bTarget=[Target targetWithTarget:dstTarget];
+	[aTarget convertPointOfView];
+	[bTarget convertPointOfView];
+	[gameplay didPlayOpponentCardAtTarget:aTarget onTarget:bTarget];
 }
 
 -(void)receiveStateChange:(NSInteger)stato;
@@ -93,9 +101,23 @@
 /**
  receive a message from player that the opponent has discarded a card
  */
--(void)receiveDrawCard:(Card*)card;
+-(void)receiveDrawCardAtTarget:(Target*)srcTarget placedToTarget:(Target*)dstTarget playerKind:(PlayerKind)aKind;
 {
-	[gameplay didOpponentDrawCard:card];
+	Target * aTarget=[Target targetWithTarget:srcTarget];
+	Target * bTarget=[Target targetWithTarget:dstTarget];
+	[aTarget convertPointOfView];
+	[bTarget convertPointOfView];
+	
+	if (aKind == PlayerKindPlayer)
+	{
+		aKind = PlayerKindOpponent;
+	}
+	else
+	{
+		aKind = PlayerKindPlayer;
+	}
+	
+	[gameplay drawCardAtTarget:aTarget placedToTarget:bTarget playerKind:aKind];
 }
 
 -(void) receiveDamageFromOpponent:(NSInteger)damage;

@@ -56,7 +56,7 @@
 /**
 Card did draw by a player of kind aKind
  */
--(void)drawCardAtTarget:(Target*)aTarget playerKind:(PlayerKind)aKind;
+-(void)drawCardAtTarget:(Target*)srcTarget placedToTarget:(Target*)dstTarget playerKind:(PlayerKind)aKind;
 
 /**
  apply the damage to other player from card
@@ -68,7 +68,7 @@ Card did draw by a player of kind aKind
  */
 -(void)applyDamage:(NSInteger)damage fromCard:(Target*)fTarget toCard:(Target*)tTarget;
 
-- (void)discardCardAtTarget:(Target *)aTarget;
+-(void)discardCardAtTarget:(Target *)aTarget;
 
 /**
  Called by the interface when user would play the card at position. Interface should show aCard at fullscreen

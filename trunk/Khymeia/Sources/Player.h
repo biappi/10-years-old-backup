@@ -29,9 +29,9 @@ typedef enum {
 @property(nonatomic, retain)   NSString			  *name;
 @property(nonatomic, assign)   NSInteger		  health;
 @property(nonatomic, retain) NSMutableArray     *deck;
-@property(nonatomic, readonly) NSMutableArray     *hand;
+@property(nonatomic, retain) NSMutableArray     *hand;
 @property(nonatomic, retain) NSMutableArray     *cemetery;
-@property(nonatomic, readonly) NSMutableArray     *playArea;
+@property(nonatomic, retain) NSMutableArray     *playArea;
 
 +(id)playerWithPlayer:(Player*)aPlayer;
 
