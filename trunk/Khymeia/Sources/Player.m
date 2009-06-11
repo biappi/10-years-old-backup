@@ -7,7 +7,7 @@
 //
 
 #import "Player.h"
-#import "TableTarget.h"
+#import "Target.h"
 
 
 @implementation Player

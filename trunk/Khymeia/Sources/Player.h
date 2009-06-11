@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
-#import "TableTarget.h"
+#import "Target.h"
 
 typedef enum {
 	PlayerKindPlayer,
 	PlayerKindOpponent,
+	PlayerKindBoth,
 } PlayerKind;
 
 @interface Player : NSObject

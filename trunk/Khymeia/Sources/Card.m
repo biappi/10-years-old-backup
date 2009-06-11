@@ -8,7 +8,7 @@
 
 #import "Card.h"
 #import "Player.h"
-#import "TableTarget.h"
+#import "Target.h"
 #import "State.h"
 #import "GameState.h"
 
@@ -123,7 +123,6 @@
 	NSArray *array = [NSArray arrayWithArray:targets];
 	[targets release];
 	return array;
-
 }
 
 -(BOOL)canPlayOnInstance:(Card*)aInstace;

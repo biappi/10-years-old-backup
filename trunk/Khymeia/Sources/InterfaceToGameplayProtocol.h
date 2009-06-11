@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TableTarget.h"
+#import "Target.h"
 #import "Card.h"
 
 @protocol InterfaceToGameplayProtocol

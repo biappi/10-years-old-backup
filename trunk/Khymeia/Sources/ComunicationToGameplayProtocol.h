@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
-#import "TableTarget.h"
+#import "Target.h"
 
 @protocol ComunicationToGameplayProtocol
 
