@@ -48,6 +48,8 @@
 
 - (Card *)cardForTarget:(Target *)t;
 
+- (void)resetInGameCards;
+
 @end
 
 
@@ -67,13 +69,15 @@
 		player = [aPlayer retain];
 		opponent = [aOpponent retain];
 		//isFirst YES if user is first player, NO otherwise
-		isFirst = iAmFirst; 
+		isFirst = iAmFirst;
+		inGameCards = [[NSMutableSet alloc] initWithCapacity:10];
 	}
 	return self;
 }
 
 -(void)dealloc;
 {
+	[inGameCards release];
 	[player release];
 	[opponent release];
 	[super dealloc];
@@ -166,8 +170,10 @@
 	[interface setState:state];
 	//say to server about state change
 	[comunication sendStateChange:state];
-	[self playerPhaseCardAttainment]; 
-
+	[self playerPhaseCardAttainment];
+	
+	// reset the list of in game cards
+	[inGameCards removeAllObjects];
 }
 
 -(void)opponentStateBegin;
@@ -175,6 +181,9 @@
 	KhymeiaLog([NSString stringWithFormat:@"player %@ Opponent Statebegin", player.name]);
 	state = GameStateOpponent;
 	[interface setState:state];	
+
+	// reset the list of in game cards
+	[inGameCards removeAllObjects];
 }
 	
 #pragma mark -

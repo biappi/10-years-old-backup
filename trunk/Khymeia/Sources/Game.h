@@ -41,6 +41,7 @@
 	//opponent attack phase flag
 	BOOL					opponentDidAttack;
 	
+	NSMutableSet            *inGameCards;
 }
 
 @property (nonatomic, assign) InterfaceController * interface;
