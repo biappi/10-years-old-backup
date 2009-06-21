@@ -18,6 +18,7 @@
 @synthesize numberOfTargets;
 @synthesize cardList;
 @synthesize playerKind;
+@synthesize description;
 
 -(id)initWithPlayer:(PlayerKind)player andNumber:(NSInteger)number; 
 {
@@ -31,13 +32,14 @@
 	return self;
 }
 
--(id)initWithCard:(NSMutableArray*)cards andNumber:(NSInteger)number; 
+-(id)initWithCard:(NSMutableArray*)cards andNumber:(NSInteger)number andDescription:(NSString*)desc; 
 {
 	if (self = [super init])
 	{
 		type=AvailableTargetTypeCard;
 		numberOfTargets=number;
-		cardList=cards;		
+		cardList=cards;	
+		description=desc;
 	}
 	return self;
 }

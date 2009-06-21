@@ -88,10 +88,22 @@
 {
 	
 	NSMutableArray *targets = [[NSMutableArray alloc] init];
-	
-	
 	if (self.type == CardTypeElement)
 	{
+		targets=[self targetForElementWithState:aState];	
+	}
+	if (aState.phase == GamePhaseMainphase && !self.element == CardElementVoid)				
+		[targets addObjectsFromArray:[aState.player playAreaFreePositions]];
+	
+	NSArray *array = [NSArray arrayWithArray:targets];
+	[targets release];
+	return array;
+}
+
+-(NSMutableArray*) targetForElementWithState:(State*)aState;
+{
+	NSMutableArray *targets = [[NSMutableArray alloc] init];
+	
 		int i = 0;
 		for (Card * opponentCard in aState.opponent.playArea)
 		{
@@ -116,13 +128,7 @@
 			
 			i++;
 		}
-	}
-	if (aState.phase == GamePhaseMainphase && !self.element == CardElementVoid)				
-		[targets addObjectsFromArray:[aState.player playAreaFreePositions]];
-	
-	NSArray *array = [NSArray arrayWithArray:targets];
-	[targets release];
-	return array;
+	return targets;
 }
 
 -(BOOL)canPlayOnInstance:(Card*)aInstace;
@@ -162,6 +168,11 @@
 	NSLog(@"unxpected case in canPlayInstance");
 	return NO;
 }
+
+-(void)onPlayCard:(Card*)aCard onAvailableTargets:(NSMutableArray*)anotherCard;
+{
+	
+}
 /*-(NSArray*)targetsWithState:(State*)aState;
 {
 	
@@ -198,90 +209,5 @@
 	}
 	return nil;
 }*/
-
-#pragma mark Card Callbacks
-
-- (void)drawPhaseWillStart;
-{
-}
-
-- (void)drawPhaseDidEnd;
-{
-}
-
-- (void)mainPhaseWillStart;
-{
-}
-
-- (void)mainPhaseDidEnd;
-{
-}
-
-- (void)attackPhaseWillStart;
-{
-}
-
-- (void)attackPhaseDidEnd;
-{
-}
-
-- (void)damagePhaseWillStart;
-{
-}
-
-- (void)damagePhaseDidEnd;
-{
-}
-
-- (void)discardPhaseWillStart;
-{
-}
-
-- (void)discardPhaseDidEnd;
-{
-}
-
-- (void)turnWillBegin;
-{
-}
-
-- (void)turnDidEnd;
-{
-}
-
-#pragma mark Card Callbacks
-
-- (BOOL)willPlayCard:(Card *)card onTarget:(Target *)target;
-{
-	return YES;
-}
-
-- (void)didPlayCard:(Card *)card onTarget:(Target *)target;
-{
-}
-
-- (void)didDiscardCard:(Card *)card;
-{
-}
-
-- (void)didDrawCard:(Card *)card;
-{
-}
-
-- (void)didDiscardCardFromTable:(Card *)card;
-{
-}
-
-- (void)didDrawCardFromCemetery:(Card *)card;
-{
-}
-
-- (void)willApplyDamage;
-{
-}
-
-- (void)didApplyDamage;
-{
-}
 
 @end

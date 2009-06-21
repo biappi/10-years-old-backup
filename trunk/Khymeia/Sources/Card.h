@@ -20,7 +20,8 @@ typedef enum {
 	CardElementWater,
 	CardElementFire,
 	CardElementEarth,
-	CardElementWind
+	CardElementWind,
+	CardElementAny,
 } CardElement;
 
 @interface Card : NSObject
@@ -54,44 +55,14 @@ typedef enum {
 
 -(id)initWithName:(NSString*)aName image:(NSString*)aImage element:(CardElement)elementType type:(CardType)aType level:(NSInteger)aLevel;
 
+-(NSMutableArray*) targetForElementWithState:(State*)aState;
+
 /**
  Return an array of targets for card
  /return an array of targets 
  */
 -(NSArray*)targets:(State*)aState;
 
-// Cards Callbacks (Phases)
-
-- (void)drawPhaseWillStart;
-- (void)drawPhaseDidEnd;
-
-- (void)mainPhaseWillStart;
-- (void)mainPhaseDidEnd;
-
-- (void)attackPhaseWillStart;
-- (void)attackPhaseDidEnd;
-
-- (void)damagePhaseWillStart;
-- (void)damagePhaseDidEnd;
-
-- (void)discardPhaseWillStart;
-- (void)discardPhaseDidEnd;
-
-- (void)turnWillBegin;
-- (void)turnDidEnd;
-
-// Card Callbacks (Game Events)
-
-- (BOOL)willPlayCard:(Card *)card onTarget:(Target *)target;
-- (void)didPlayCard:(Card *)card onTarget:(Target *)target;
-
-- (void)didDiscardCard:(Card *)card;
-- (void)didDrawCard:(Card *)card;
-
-- (void)didDiscardCardFromTable:(Card *)card;
-- (void)didDrawCardFromCemetery:(Card *)card;
-
-- (void)willApplyDamage;
-- (void)didApplyDamage;
+-(void)onPlayCard:(Card*)aCard onAvailableTargets:(NSMutableArray*)anotherCard;		//of AvailableTargets used from interface to gameplay
 
 @end

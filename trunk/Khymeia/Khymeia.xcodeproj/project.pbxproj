@@ -12,7 +12,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		3D47886C0FE1A79A008B8D0F /* Damage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D47886B0FE1A79A008B8D0F /* Damage.m */; };
+		3D4788730FE1AD23008B8D0F /* B30.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4788720FE1AD23008B8D0F /* B30.m */; };
 		3D4E67550FE18DC800C15627 /* AvailableTargets.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E67540FE18DC800C15627 /* AvailableTargets.m */; };
+		3D4E67CF0FE1951000C15627 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E67CE0FE1951000C15627 /* Util.m */; };
 		3DF584290FBC8771003ABD93 /* ComunicatioLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */; };
 		3F2360790FD3CE9100BF2734 /* ScrollerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2360780FD3CE9100BF2734 /* ScrollerViewController.m */; };
 		3F7F96B70FBA271C00F011FD /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7F96B50FBA271C00F011FD /* InterfaceController.m */; };
@@ -55,8 +58,14 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Khymeia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khymeia_Prefix.pch; sourceTree = "<group>"; };
+		3D47886A0FE1A79A008B8D0F /* Damage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Damage.h; sourceTree = "<group>"; };
+		3D47886B0FE1A79A008B8D0F /* Damage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Damage.m; sourceTree = "<group>"; };
+		3D4788710FE1AD23008B8D0F /* B30.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B30.h; sourceTree = "<group>"; };
+		3D4788720FE1AD23008B8D0F /* B30.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = B30.m; sourceTree = "<group>"; };
 		3D4E67530FE18DC800C15627 /* AvailableTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableTargets.h; sourceTree = "<group>"; };
 		3D4E67540FE18DC800C15627 /* AvailableTargets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableTargets.m; sourceTree = "<group>"; };
+		3D4E67CD0FE1951000C15627 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		3D4E67CE0FE1951000C15627 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		3DF584270FBC8771003ABD93 /* ComunicatioLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComunicatioLayer.h; sourceTree = "<group>"; };
 		3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComunicatioLayer.m; sourceTree = "<group>"; };
 		3F2360770FD3CE9100BF2734 /* ScrollerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollerViewController.h; sourceTree = "<group>"; };
@@ -125,6 +134,8 @@
 		080E96DDFE201D6D7F000001 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				3D4E67CC0FE194E200C15627 /* CardsFunction */,
+				3D4E67BA0FE1946800C15627 /* BaseCards */,
 				CF7457E90FBA159400B7C1C8 /* Boilerplate */,
 				3DF584260FBC8732003ABD93 /* Comunication */,
 				3F7F97550FBB7EEA00F011FD /* Additions */,
@@ -175,6 +186,24 @@
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D4E67BA0FE1946800C15627 /* BaseCards */ = {
+			isa = PBXGroup;
+			children = (
+				3D4788710FE1AD23008B8D0F /* B30.h */,
+				3D4788720FE1AD23008B8D0F /* B30.m */,
+			);
+			name = BaseCards;
+			sourceTree = "<group>";
+		};
+		3D4E67CC0FE194E200C15627 /* CardsFunction */ = {
+			isa = PBXGroup;
+			children = (
+				3D4E67CD0FE1951000C15627 /* Util.h */,
+				3D4E67CE0FE1951000C15627 /* Util.m */,
+			);
+			name = CardsFunction;
 			sourceTree = "<group>";
 		};
 		3DF584260FBC8732003ABD93 /* Comunication */ = {
@@ -234,6 +263,8 @@
 				CF23E7580FBA24BB0057A1F9 /* Card.m */,
 				CF23E75B0FBA24BB0057A1F9 /* Player.h */,
 				CF23E75C0FBA24BB0057A1F9 /* Player.m */,
+				3D47886A0FE1A79A008B8D0F /* Damage.h */,
+				3D47886B0FE1A79A008B8D0F /* Damage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -384,6 +415,9 @@
 				3FDA805F0FD3E06000D894A6 /* LoggerView.m in Sources */,
 				CF9D46E90FD88ACC00A66AD8 /* State.m in Sources */,
 				3D4E67550FE18DC800C15627 /* AvailableTargets.m in Sources */,
+				3D4E67CF0FE1951000C15627 /* Util.m in Sources */,
+				3D47886C0FE1A79A008B8D0F /* Damage.m in Sources */,
+				3D4788730FE1AD23008B8D0F /* B30.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
