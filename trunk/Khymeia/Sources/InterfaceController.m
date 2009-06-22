@@ -9,6 +9,12 @@
 #import "InterfaceController.h"
 #import "CardLayer.h"
 #import "SlotLayer.h"
+/*
+ TODO
+	ADD THE TABLE TARGET
+	IMPLEMENT STATE WILLPLAYCARD (ISPLAYING CARD)
+ */
+
 
 CGRect opponentPlayAreaTargetRects[] =
 {
@@ -418,6 +424,7 @@ Target * TargetHitTest(CGPoint point)
 }
 
 
+//Controllare che la carta sia rilasciata sul tavolo per passare target tavolo al gameplay
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
 	if (currentlyMovingCard == nil)
@@ -428,6 +435,7 @@ Target * TargetHitTest(CGPoint point)
 	Target * target = TargetHitTest(p);
 	if ([currentTargets indexOfObject:target] != NSNotFound)
 	{
+		//TODO: se ritorna nulla parte lo stato seleziona "scelta carta" in cui l'utente seleziona carte finchè selectCard non ritorna nil
 		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
 		currentlyMovingCard.frame = CGRectForTarget(target);
 		NSLog(@"did play card");

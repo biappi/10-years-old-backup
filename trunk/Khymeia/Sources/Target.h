@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+//TODO: aggiungere table come target per le magie
+
 typedef enum 
 {
 	TargetTypePlayer,

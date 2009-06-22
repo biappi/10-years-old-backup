@@ -395,8 +395,11 @@
 #pragma mark -
 #pragma mark Interface to Gameplayer methods
 
+//TODO aggiungi selectTarget
+
 - (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
+	//TODO avviare willPlay della carta al target srcTarget, ritorna l'array ottenuto dal willPlayCard...
 	//ND DoBs: now it is useless, but we will need it.
 	[comunication sendWillPlayCardAtTarget:srcTarget onTarget:dstTarget];
 	
@@ -405,7 +408,7 @@
 - (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
 {
 	//set the flag to remeber that the play have attack in AttackPhase
-	
+	//TODO chiamare il didPlayCard... sulla carta al target srcTarget
 	[comunication sendDidPlayCardAtTarget:srcTarget onTarget:dstTarget];
 	Card* aCard;
 	if (!(aCard = [self cardForTarget:srcTarget]))
@@ -490,8 +493,13 @@
 		(state==GameStatePlayer && ((phase == GamePhaseAttackPlayer && !waitingForOpponentAttack) || phase==GamePhaseMainphase))    // if i am player
 		|| ((phase == GamePhaseAttackOpponent && waitingForOpponentAttack) && state==GameStateOpponent))							// if i am opponent		
 		{
-			State *farlockState=[[State alloc] initWithPlayer:player andOpponent:opponent andPhase:state] ;
-			Card *cardPlayed;
+			State *farlockState=[[[State alloc] initWithPlayer:player andOpponent:opponent andPhase:state]autorelease];			
+			/*
+			 
+			 TODO LO STATO DEVE ESSERE MODIFICATO DALLE CARTE ATTIVE!!!!
+			
+			 */
+			 Card *cardPlayed;
 			if(!(cardPlayed = [self cardForTarget:aTarget]))
 				return nil;
 			return [cardPlayed targets:farlockState];

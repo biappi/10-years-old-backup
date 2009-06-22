@@ -12,7 +12,7 @@
 #import "Card.h"
 /**
  * B30
- * Sacrifice an element I; pesca una carta	
+ * Sacrifice an element I; catch a card.
  */
 
 @implementation B30
@@ -21,9 +21,6 @@
  return an array of AvailableTarget
  */
 
-/************************************TODO*****************************************
- **CONVERTIRE DA AVAILABLE TARGETS MULTIPLI A SINGOLE RICHIESTE ALL'INTERFACCIA **
- *********************************************************************************/
 
 -(NSArray*)targets:(State*)aState;
 {
@@ -33,6 +30,7 @@
 	else
 		return nil;
 }
+
 /*
 public void play(bersagli[], gesture) 
 {
