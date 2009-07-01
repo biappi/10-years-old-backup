@@ -411,7 +411,7 @@ Target * TargetHitTest(CGPoint point)
 		if ([currentTargets indexOfObject:target] != NSNotFound)
 		{
 			[currentTargets release];
-			currentTargets=[gameplay didSelectCardAtTarget:target];
+			currentTargets=[gameplay didSelectTarget:target];
 			if(!currentTargets)
 				selectionCardPhase=NO;
 			else {
@@ -453,6 +453,8 @@ Target * TargetHitTest(CGPoint point)
 		
 		//TODO: se ritorna una array parte lo stato "scelta carta" in cui l'utente seleziona carte finchè selectedCard non ritorna nil
 		// se ritorna nill chiama subito didPlayCard
+		[self setHighlightCurrentTargetSlots:NO];
+
 		if(currentTargets)
 			[currentTargets release];
 		
@@ -479,10 +481,7 @@ Target * TargetHitTest(CGPoint point)
 	/*
 	 * Let's control if you're playing a card on a slot on the play area
 	 */
-	[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]-1];
-
-	[self setHighlightCurrentTargetSlots:NO];
-	
+	[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]-1];	
 	currentlyMovingCard = nil;
 	interfaceIsBusy = NO;
 	currentTargets = nil;
