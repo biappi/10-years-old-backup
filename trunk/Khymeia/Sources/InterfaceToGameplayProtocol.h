@@ -17,7 +17,7 @@
  \param srcTarget: target from where user would play
  \param dstTarget: the target witch element in srcTarget will play
  */
-- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
+- (NSArray *)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 
 /**
  Called by the interface when the user did play card from srcTarget
@@ -39,7 +39,7 @@
  Called by interface when user did select aTarget
  \param aTarget: the target did select
  */
-- (void)didSelectCardAtTarget:(Target *)aTarget;
+- (NSArray *)didSelectCardAtTarget:(Target *)aTarget;
 
 /**
  Called by interface when user did discard the element on aTarget

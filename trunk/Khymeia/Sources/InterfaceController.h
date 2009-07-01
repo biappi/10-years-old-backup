@@ -50,6 +50,7 @@ typedef enum
 	NSArray			 * currentTargets;
 	GameState		   currentState;
 	BOOL               interfaceIsBusy;
+	BOOL			   selectionCardPhase;
 	
 	id<InterfaceToGameplayProtocol>	 gameplay;
 }

@@ -137,7 +137,7 @@ Target * TargetHitTest(CGPoint point)
 	[turnEnded addTarget:self action:@selector(endTurn) forControlEvents:UIControlEventTouchDown];
 	
 	interfaceIsBusy = NO;
-	
+	selectionCardPhase = NO;
 	return self;
 }
 
@@ -388,7 +388,7 @@ Target * TargetHitTest(CGPoint point)
 	Target    * target  = TargetHitTest(p);
 	CardLayer * cardHit = [self cardAtTarget:target]; 
 	
-	if (cardHit != nil)
+	if (cardHit != nil && !selectionCardPhase)
 	{		
 		currentTargets = [[gameplay targetsForCardAtTarget:target] retain];
 
@@ -403,6 +403,21 @@ Target * TargetHitTest(CGPoint point)
 			[currentlyMovingCard setZPosition:[currentlyMovingCard zPosition]+1];
 			
 			interfaceIsBusy = YES;
+		}
+	}
+	else if(selectionCardPhase)
+	{
+		Target * target = [TargetHitTest(p) retain];
+		if ([currentTargets indexOfObject:target] != NSNotFound)
+		{
+			[currentTargets release];
+			currentTargets=[gameplay didSelectCardAtTarget:target];
+			if(!currentTargets)
+				selectionCardPhase=NO;
+			else {
+				[self setHighlightCurrentTargetSlots:YES];
+			}
+
 		}
 	}
 	
@@ -435,9 +450,18 @@ Target * TargetHitTest(CGPoint point)
 	Target * target = TargetHitTest(p);
 	if ([currentTargets indexOfObject:target] != NSNotFound)
 	{
+		
 		//TODO: se ritorna una array parte lo stato "scelta carta" in cui l'utente seleziona carte finchè selectedCard non ritorna nil
 		// se ritorna nill chiama subito didPlayCard
-		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
+		if(currentTargets)
+			[currentTargets release];
+		
+		currentTargets=[[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target] retain];
+		if(currentTargets)
+		{
+			[self setHighlightCurrentTargetSlots:YES];
+			selectionCardPhase=YES;
+		}
 		currentlyMovingCard.frame = CGRectForTarget(target);
 		NSLog(@"did play card");
 
@@ -461,8 +485,6 @@ Target * TargetHitTest(CGPoint point)
 	
 	currentlyMovingCard = nil;
 	interfaceIsBusy = NO;
-	
-	[currentTargets release];
 	currentTargets = nil;
 }
 
