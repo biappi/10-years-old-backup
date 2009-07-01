@@ -598,7 +598,7 @@
 	return phase;
 }
 
--(void)notifyDamage:(NSInteger)damage
+-(void)notifyDamage:(NSInteger)damage;
 {
 	//TO CHANGE WHEN SUBTRACT WILL WORK!!!!!!
 	[interface setHP:player.health player:PlayerKindPlayer];

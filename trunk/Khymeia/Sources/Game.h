@@ -81,4 +81,8 @@ Card did draw by a player of kind aKind
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 
 
+-(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
+
+-(void)notifyDamage:(NSInteger)damage;
+
 @end

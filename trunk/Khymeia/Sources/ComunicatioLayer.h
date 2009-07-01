@@ -12,6 +12,7 @@
 #import "Player.h"
 #import "ComunicationToGameplayProtocol.h"
 #import "ComunicatioLayer.h"
+#import "AsyncSocket.h"
 
 
 @interface ComunicatioLayer : NSObject 
@@ -25,10 +26,28 @@
 	 pointer to opponent comunication Layer
 	 */
 	ComunicatioLayer *comLayer;
+	
+	/**
+	 the socket manager
+	 */
+	AsyncSocket *asyncSocket;
 }
 
 @property (nonatomic, retain) ComunicatioLayer *comLayer;
 @property (nonatomic, retain) Game *gameplay;
+
+/**
+ Open the connectio with the server
+ return YES if connection is open
+ NO otherwise
+ */
+-(BOOL) connect;
+
+/**
+ dsconnect from the server
+ */
+
+-(void) disconnect;
 
 /**
  send a message to opponent that a card is played on a specific target

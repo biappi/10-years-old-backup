@@ -12,8 +12,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		3D3764F10FF7EF0D00C081C0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D3764F00FF7EF0D00C081C0 /* CFNetwork.framework */; };
 		3D47886C0FE1A79A008B8D0F /* Damage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D47886B0FE1A79A008B8D0F /* Damage.m */; };
 		3D4788730FE1AD23008B8D0F /* B30.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4788720FE1AD23008B8D0F /* B30.m */; };
+		3D4D872B0FFBEAAD00E15495 /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4D872A0FFBEAAD00E15495 /* AsyncSocket.m */; };
 		3D4E67550FE18DC800C15627 /* AvailableTargets.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E67540FE18DC800C15627 /* AvailableTargets.m */; };
 		3D4E67CF0FE1951000C15627 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D4E67CE0FE1951000C15627 /* Util.m */; };
 		3DF584290FBC8771003ABD93 /* ComunicatioLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */; };
@@ -58,10 +60,13 @@
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Khymeia_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Khymeia_Prefix.pch; sourceTree = "<group>"; };
+		3D3764F00FF7EF0D00C081C0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		3D47886A0FE1A79A008B8D0F /* Damage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Damage.h; sourceTree = "<group>"; };
 		3D47886B0FE1A79A008B8D0F /* Damage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Damage.m; sourceTree = "<group>"; };
 		3D4788710FE1AD23008B8D0F /* B30.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B30.h; sourceTree = "<group>"; };
 		3D4788720FE1AD23008B8D0F /* B30.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = B30.m; sourceTree = "<group>"; };
+		3D4D87290FFBEA9800E15495 /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		3D4D872A0FFBEAAD00E15495 /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
 		3D4E67530FE18DC800C15627 /* AvailableTargets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvailableTargets.h; sourceTree = "<group>"; };
 		3D4E67540FE18DC800C15627 /* AvailableTargets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvailableTargets.m; sourceTree = "<group>"; };
 		3D4E67CD0FE1951000C15627 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -125,6 +130,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				3F7F97660FBB858600F011FD /* QuartzCore.framework in Frameworks */,
+				3D3764F10FF7EF0D00C081C0 /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +186,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D3764F00FF7EF0D00C081C0 /* CFNetwork.framework */,
 				3F7F97650FBB858600F011FD /* QuartzCore.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -209,6 +216,8 @@
 		3DF584260FBC8732003ABD93 /* Comunication */ = {
 			isa = PBXGroup;
 			children = (
+				3D4D87290FFBEA9800E15495 /* AsyncSocket.h */,
+				3D4D872A0FFBEAAD00E15495 /* AsyncSocket.m */,
 				3DF584270FBC8771003ABD93 /* ComunicatioLayer.h */,
 				3DF584280FBC8771003ABD93 /* ComunicatioLayer.m */,
 				CF47D7FC0FBCB84F00DC8026 /* ComunicationToGameplayProtocol.h */,
@@ -418,6 +427,7 @@
 				3D4E67CF0FE1951000C15627 /* Util.m in Sources */,
 				3D47886C0FE1A79A008B8D0F /* Damage.m in Sources */,
 				3D4788730FE1AD23008B8D0F /* B30.m in Sources */,
+				3D4D872B0FFBEAAD00E15495 /* AsyncSocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -435,7 +435,8 @@ Target * TargetHitTest(CGPoint point)
 	Target * target = TargetHitTest(p);
 	if ([currentTargets indexOfObject:target] != NSNotFound)
 	{
-		//TODO: se ritorna nulla parte lo stato seleziona "scelta carta" in cui l'utente seleziona carte finchè selectCard non ritorna nil
+		//TODO: se ritorna una array parte lo stato "scelta carta" in cui l'utente seleziona carte finchè selectedCard non ritorna nil
+		// se ritorna nill chiama subito didPlayCard
 		[gameplay willPlayCardAtTarget:currentlyMovingCardTarget onTarget:target];
 		currentlyMovingCard.frame = CGRectForTarget(target);
 		NSLog(@"did play card");

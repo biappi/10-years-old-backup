@@ -7,7 +7,8 @@
 //
 
 #import "ComunicatioLayer.h"
-
+#define SERVERNAME  @"marco83.kicks-ass.org"
+#define SERVERPORT 8281
 
 @implementation ComunicatioLayer
 
@@ -19,8 +20,27 @@
 {
 	if (self = [super init])
 	{
+		asyncSocket = [[AsyncSocket alloc] initWithDelegate:self];
 	}
 	return self;
+}
+#pragma mark -
+#pragma mark connection management
+
+-(BOOL) connect;
+{
+	NSError *err = nil;
+	if(![asyncSocket connectToHost:SERVERNAME onPort:SERVERPORT error:&err])
+	{
+		NSLog(@"Error: %@", err);
+		return NO;
+	}
+	return YES;
+}
+
+-(void) disconnect;
+{
+	[asyncSocket disconnect];
 }
 
 #pragma mark -
@@ -128,6 +148,12 @@
 -(void)receiveDamage:(NSInteger)damage onCard:(Card*)card;
 {
 	[gameplay notifyDamage:damage toCard:card];
+}
+
+-(void)dealloc
+{
+	[super dealloc];
+	[asyncSocket release];
 }
 
 @end

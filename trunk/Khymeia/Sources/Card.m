@@ -174,6 +174,8 @@
 	
 }
 
+//TODO willPlayCard... se il bersaglio è il tavolo e ci sono da gestire selectCard ritorna nil, altrimenti la lista dei target selezionabili
+
 //TODO:targetsWithState
 /*-(NSArray*)targetsWithState:(State*)aState;
 {
