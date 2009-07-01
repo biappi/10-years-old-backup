@@ -9,6 +9,7 @@
 #import "InterfaceController.h"
 #import "CardLayer.h"
 #import "SlotLayer.h"
+#import "TableLayer.h"
 /*
  TODO
 	ADD THE TABLE TARGET
@@ -53,6 +54,8 @@ CGRect CGRectForTarget(Target * target)
 			
 		case TargetTypePlayerHand:
 			return playerHandTargetRects[target.position];
+		case TargetTypeTable
+			return CGRectMake(204, 115, 72, 90);
 	}
 	
 	return CGRectZero;
@@ -92,7 +95,9 @@ Target * TargetHitTest(CGPoint point)
 		}
 	}
 	
-	return nil;
+	result.type=TargetTypeTable;
+	result.position=0;
+	return result;
 }
 
 @interface InterfaceController (PrivateMethods)
@@ -168,6 +173,10 @@ Target * TargetHitTest(CGPoint point)
 - (void)viewDidLoad;
 {
 	NSMutableArray * temp = [NSMutableArray arrayWithCapacity:5];
+	
+	tableLayer=[[TableLayer alloc] init];
+	tableLayer.frame=self.view.frame;
+	[self.view.layer addSublayer:tableLayer];
 	
 	for (int i = 0; i <= (sizeof(opponentPlayAreaTargetRects) / sizeof(CGRect)); i++)
 	{
@@ -477,7 +486,7 @@ Target * TargetHitTest(CGPoint point)
 		currentlyMovingCard.position = currentlyMovingCardOriginalPosition;
 		currentlyMovingCard.pleaseDoNotMove = YES;
 	}
-		
+	[self setHighlightCurrentTargetSlots:NO];
 	/*
 	 * Let's control if you're playing a card on a slot on the play area
 	 */
@@ -562,9 +571,13 @@ Target * TargetHitTest(CGPoint point)
 			case TargetTypePlayerPlayArea:
 				type = playerPlayAreaSlots;
 				break;
+			case TargetTypeTable:
+				[tableLayer setSlotHighlight:x];
+				break;
 		}
-		
+		if(type)
 		[[type objectAtIndex:t.position] setSlotHighlight:x];
+		
 	}
 }
 

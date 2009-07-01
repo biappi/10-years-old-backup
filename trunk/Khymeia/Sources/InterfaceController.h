@@ -12,7 +12,7 @@
 #import "Card.h"
 #import "GameState.h"
 #import "CardLayer.h"
-
+#import "TableLayer.h"
 typedef enum 
 {
 	InterfaceModesOpponentCardHidden,
@@ -39,6 +39,7 @@ typedef enum
 	NSArray          * opponentPlayAreaSlots;
 	NSArray          * playerHandSlots;	
 	
+	TableLayer		 * tableLayer;
 	CardLayer        * currentlyMovingCard;
 	CGPoint            currentlyMovingCardOriginalPosition;
 	Target           * currentlyMovingCardTarget;
