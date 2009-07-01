@@ -65,8 +65,9 @@ typedef enum
  Called by the gameplay when user would play the card (located in srcTarget) on a dstTarget
  \param srcTarget: target from where user would play
  \param dstTarget: the target witch element in srcTarget will play
+ \return return an array of selectable targets how consequence of play card
  */
-- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
+- (NSArray*)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 
 /**
  Called by the gameplay when the user did play card from srcTarget
@@ -82,8 +83,6 @@ typedef enum
  /return an array of targets 
  */
 -(NSArray*)targets:(State*)aState;
-
--(void)onPlayCard:(Card*)aCard onAvailableTargets:(NSMutableArray*)anotherCard;		//of AvailableTargets used from interface to gameplay
 
 
 

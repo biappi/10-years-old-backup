@@ -310,7 +310,7 @@
 	
 	phase = GamePhaseDiscard;
 	//*******************************************************************************************/
-	//IN THIS VERSION DISCARD PHASE DON'T WORK, SO SET THIS FLAG TO YES, OTHERWISE IT MUST BE NO
+	//TODO: IN THIS VERSION DISCARD PHASE DON'T WORK, SO SET THIS FLAG TO YES, OTHERWISE IT MUST BE NO
 	//*******************************************************************************************/
 	playerDidDiscard = YES;
 	[interface setPhase:phase];
@@ -496,10 +496,10 @@
 			State *farlockState=[[[State alloc] initWithPlayer:player andOpponent:opponent andPhase:state]autorelease];			
 			/*
 			 
-			 TODO LO STATO DEVE ESSERE MODIFICATO DALLE CARTE ATTIVE!!!!
+			 TODO: LO STATO DEVE ESSERE MODIFICATO DALLE CARTE ATTIVE!!!!
 			
 			 */
-			 Card *cardPlayed;
+			Card *cardPlayed;
 			if(!(cardPlayed = [self cardForTarget:aTarget]))
 				return nil;
 			return [cardPlayed targets:farlockState];
@@ -536,6 +536,7 @@
 		return NO;
 	
 	//remove card from user's hand
+	[aCard retain];
 	[opponent removeCardFromHand:aCard];
 	
 	if (dstTarget.type == TargetTypeOpponentPlayArea)
@@ -564,7 +565,7 @@
 	}
 	
 	[interface opponentPlaysCard:aCard onTarget:dstTarget];
-	
+	[aCard release];
 	return NO;
 }
 

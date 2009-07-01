@@ -33,12 +33,12 @@
 
 +(id)cardWithCard:(Card*)aCard;
 {
-	Card *cloneCard = [[Card alloc] initWithName:aCard.name image:aCard.image];
+	Card *cloneCard = [[Card alloc] initWithName:aCard.name image:aCard.image identifier:aCard.identifier];
 	cloneCard.type = aCard.type;
 	cloneCard.level = aCard.level;
 	cloneCard.element= aCard.element;
 	cloneCard.health = aCard.health;
-	return cloneCard;
+	return [cloneCard autorelease];
 }
 
 -(id)initWithName:(NSString*)aName image:(NSString*)aImage identifier:(NSString*)aId;
@@ -144,21 +144,47 @@
 	return NO;
 }
 
--(void)onPlayCard:(Card*)aCard onAvailableTargets:(NSMutableArray*)anotherCard;
-{
-	
-}
-
 #pragma mark Private methods
 
-- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
+- (NSArray*)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
-	
+	return nil;
 }
 
 - (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
 {
 	
+}
+
+-(NSMutableArray*) targetForElementWithState:(State*)aState;
+{
+	NSMutableArray *targets = [[NSMutableArray alloc] init];
+	
+	int i = 0;
+	for (Card * opponentCard in aState.opponent.playArea)
+	{
+		//check if i can play aCard vs opponentCard
+		
+		if (opponentCard &&(!([opponentCard class] == [NSNull class]) && [self canPlayOnInstance:opponentCard]))
+		{
+			[targets addObject:[Target targetWithType:TargetTypeOpponentPlayArea position:i]];
+		}
+		
+		i++;
+	}
+	
+	i = 0;
+	for (Card * card in aState.player.playArea)
+	{
+		//check if i can play aCard vs opponentCard
+		if (card &&!([card class] == [NSNull class])  && [self canPlayOnInstance:card])
+		{
+			[targets addObject:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
+		}
+		
+		i++;
+	}
+	return targets;
 }
 
 @end
