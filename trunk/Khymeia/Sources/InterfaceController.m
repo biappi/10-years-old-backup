@@ -54,7 +54,7 @@ CGRect CGRectForTarget(Target * target)
 			
 		case TargetTypePlayerHand:
 			return playerHandTargetRects[target.position];
-		case TargetTypeTable
+		case TargetTypeTable:
 			return CGRectMake(204, 115, 72, 90);
 	}
 	
