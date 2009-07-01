@@ -93,17 +93,21 @@
 
 -(NSArray*)targets:(State*)aState;
 {	
-	NSMutableArray *targets = [[NSMutableArray alloc] init];
+	NSMutableArray *targets = nil;
 	if (self.type == CardTypeElement)
 	{
 		targets=[self targetForElementWithState:aState];	
 	}
-	if (aState.phase == GamePhaseMainphase && !self.element == CardElementVoid)				
-		[targets addObjectsFromArray:[aState.player playAreaFreePositions]];
-	
-	NSArray *array = [NSArray arrayWithArray:targets];
-	[targets release];
-	return array;
+	else 
+	{
+		targets=[[[NSMutableArray alloc] init] autorelease];	
+	}
+
+	if (aState.phase == GamePhaseMainphase && !self.element == CardElementVoid)	
+	{
+		[targets addObjectsFromArray:[aState.player playAreaFreePositions]];	
+	}
+	return  [NSArray arrayWithArray:targets];
 }
 
 -(BOOL)canPlayOnInstance:(Card*)aInstace;
