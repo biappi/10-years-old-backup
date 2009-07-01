@@ -22,6 +22,7 @@ typedef enum
 	TargetTypeOpponentCemetery,
 	TargetTypePlayerPlayArea,
 	TargetTypeOpponentPlayArea,
+	TargetTypeTable,
 	TargetTypeNumberOfTargetTypes,
 } TargetTypes;
 
