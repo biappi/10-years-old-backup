@@ -25,27 +25,27 @@
 	/*
 	 *Card creation
 	 */
-	Card *fireElemental=[[Card alloc] initWithName:@"fire1" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:1];
-	Card *windElemental=[[Card alloc] initWithName:@"wind1" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:3];
-	Card *waterElemental=[[Card alloc] initWithName:@"water1" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:3];
-	Card *earthElemental=[[Card alloc] initWithName:@"earth1" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:4];
-	Card *voidElemental=[[Card alloc] initWithName:@"void1" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:3];
-	Card *fireElemental2=[[Card alloc] initWithName:@"fire2" image:@"elementale1.png" element:CardElementFire type:CardTypeElement level:4];
-	Card *windElemental2=[[Card alloc] initWithName:@"wind2" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
-	Card *waterElemental2=[[Card alloc] initWithName:@"water2" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElemental2=[[Card alloc] initWithName:@"earth2" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:2];
-	Card *voidElemental2=[[Card alloc] initWithName:@"void2" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:3];
+	Card *fireElemental=[[Card alloc] initWithName:@"fire1" image:@"fire.jpg" identifier:@"B01" element:CardElementFire type:CardTypeElement level:1];
+	Card *windElemental=[[Card alloc] initWithName:@"wind1" image:@"air.jpg" identifier:@"B02"  element:CardElementWind type:CardTypeElement level:3];
+	Card *waterElemental=[[Card alloc] initWithName:@"water1" image:@"water.jpg" identifier:@"B03"  element:CardElementWater type:CardTypeElement level:3];
+	Card *earthElemental=[[Card alloc] initWithName:@"earth1" image:@"earth.jpg" identifier:@"B04"  element:CardElementEarth type:CardTypeElement level:4];
+	Card *voidElemental=[[Card alloc] initWithName:@"void1" image:@"vacuum.jpg" identifier:@"B05"  element:CardElementVoid type:CardTypeElement level:3];
+	Card *fireElemental2=[[Card alloc] initWithName:@"fire2" image:@"elementale1.png" identifier:@"B06"  element:CardElementFire type:CardTypeElement level:4];
+	Card *windElemental2=[[Card alloc] initWithName:@"wind2" image:@"air.jpg" identifier:@"B07"  element:CardElementWind type:CardTypeElement level:1];
+	Card *waterElemental2=[[Card alloc] initWithName:@"water2" image:@"water.jpg" identifier:@"B08"  element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElemental2=[[Card alloc] initWithName:@"earth2" image:@"earth.jpg" identifier:@"B09"  element:CardElementEarth type:CardTypeElement level:2];
+	Card *voidElemental2=[[Card alloc] initWithName:@"void2" image:@"vacuum.jpg" identifier:@"B10"  element:CardElementVoid type:CardTypeElement level:3];
 	
-	Card *fireElementalOp=[[Card alloc] initWithName:@"OpFire1" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:3];
-	Card *windElementalOp=[[Card alloc] initWithName:@"OpWind1" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:1];
-	Card *waterElementalOp=[[Card alloc] initWithName:@"OpWater1" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElementalOp=[[Card alloc] initWithName:@"OpEarth1" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:2];
-	Card *voidElementalOp=[[Card alloc] initWithName:@"OpVoid1" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:2];
-	Card *fireElementalOp2=[[Card alloc] initWithName:@"OpFire2" image:@"fire.jpg" element:CardElementFire type:CardTypeElement level:4];
-	Card *windElementalOp2=[[Card alloc] initWithName:@"OpWind2" image:@"air.jpg" element:CardElementWind type:CardTypeElement level:3];
-	Card *waterElementalOp2=[[Card alloc] initWithName:@"OpBeerDrinker2" image:@"water.jpg" element:CardElementWater type:CardTypeElement level:1];
-	Card *earthElementalOp2=[[Card alloc] initWithName:@"OpEarth2" image:@"earth.jpg" element:CardElementEarth type:CardTypeElement level:2];
-	Card *voidElementalOp2=[[Card alloc] initWithName:@"OpVoid2" image:@"vacuum.jpg" element:CardElementVoid type:CardTypeElement level:1];
+	Card *fireElementalOp=[[Card alloc] initWithName:@"OpFire1" image:@"fire.jpg" identifier:@"B11"  element:CardElementFire type:CardTypeElement level:3];
+	Card *windElementalOp=[[Card alloc] initWithName:@"OpWind1" image:@"air.jpg"  identifier:@"B12" element:CardElementWind type:CardTypeElement level:1];
+	Card *waterElementalOp=[[Card alloc] initWithName:@"OpWater1" image:@"water.jpg" identifier:@"B13"  element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElementalOp=[[Card alloc] initWithName:@"OpEarth1" image:@"earth.jpg" identifier:@"B14"  element:CardElementEarth type:CardTypeElement level:2];
+	Card *voidElementalOp=[[Card alloc] initWithName:@"OpVoid1" image:@"vacuum.jpg" identifier:@"B15"  element:CardElementVoid type:CardTypeElement level:2];
+	Card *fireElementalOp2=[[Card alloc] initWithName:@"OpFire2" image:@"fire.jpg" identifier:@"B16"  element:CardElementFire type:CardTypeElement level:4];
+	Card *windElementalOp2=[[Card alloc] initWithName:@"OpWind2" image:@"air.jpg" identifier:@"B17"  element:CardElementWind type:CardTypeElement level:3];
+	Card *waterElementalOp2=[[Card alloc] initWithName:@"OpBeerDrinker2" image:@"water.jpg" identifier:@"B18"  element:CardElementWater type:CardTypeElement level:1];
+	Card *earthElementalOp2=[[Card alloc] initWithName:@"OpEarth2" image:@"earth.jpg"  identifier:@"B19" element:CardElementEarth type:CardTypeElement level:2];
+	Card *voidElementalOp2=[[Card alloc] initWithName:@"OpVoid2" image:@"vacuum.jpg" identifier:@"B20"  element:CardElementVoid type:CardTypeElement level:1];
 	
 	/*
 	 *	create deck

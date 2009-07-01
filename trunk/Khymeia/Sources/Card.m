@@ -16,6 +16,8 @@
 
 -(BOOL)canPlayOnInstance:(Card*)aInstace;
 
+-(NSMutableArray*) targetForElementWithState:(State*)aState;
+
 @end
 
 
@@ -27,6 +29,7 @@
 @synthesize name;
 @synthesize image;
 @synthesize health;
+@synthesize identifier;
 
 +(id)cardWithCard:(Card*)aCard;
 {
@@ -38,17 +41,18 @@
 	return cloneCard;
 }
 
--(id)initWithName:(NSString*)aName image:(NSString*)aImage;
+-(id)initWithName:(NSString*)aName image:(NSString*)aImage identifier:(NSString*)aId;
 {
 	if (self = [super init])
 	{
 		self.name = aName;
 		self.image = aImage;
+		identifier = [aId retain];
 	}
 	return self;
 }
 
--(id)initWithName:(NSString*)aName image:(NSString*)aImage element:(CardElement)aElement type:(CardType)aType;
+-(id)initWithName:(NSString*)aName image:(NSString*)aImage identifier:(NSString*)aId element:(CardElement)aElement type:(CardType)aType;
 {
 	if (self = [super init])
 	{
@@ -56,11 +60,12 @@
 		self.image = aImage;
 		self.element = aElement;
 		self.type = aType;
+		identifier = [aId retain];
 	}
 	return self;
 }
 
--(id)initWithName:(NSString*)aName image:(NSString*)aImage element:(CardElement)aElement type:(CardType)aType level:(NSInteger)aLevel;
+-(id)initWithName:(NSString*)aName image:(NSString*)aImage identifier:(NSString*)aId element:(CardElement)aElement type:(CardType)aType level:(NSInteger)aLevel;
 {
 	if (self = [super init])
 	{
@@ -70,6 +75,7 @@
 		self.type = aType;
 		self.health = aLevel;
 		self.level = aLevel;
+		identifier = [aId retain];
 	}
 	return self;
 }
@@ -78,6 +84,7 @@
 {
 	[name release];
 	[image release];
+	[identifier release];
 	[super dealloc];
 }
 
@@ -85,8 +92,7 @@
 #pragma mark Gameplay methods
 
 -(NSArray*)targets:(State*)aState;
-{
-	
+{	
 	NSMutableArray *targets = [[NSMutableArray alloc] init];
 	if (self.type == CardTypeElement)
 	{
@@ -98,37 +104,6 @@
 	NSArray *array = [NSArray arrayWithArray:targets];
 	[targets release];
 	return array;
-}
-
--(NSMutableArray*) targetForElementWithState:(State*)aState;
-{
-	NSMutableArray *targets = [[NSMutableArray alloc] init];
-	
-		int i = 0;
-		for (Card * opponentCard in aState.opponent.playArea)
-		{
-			//check if i can play aCard vs opponentCard
-			
-			if (opponentCard &&(!([opponentCard class] == [NSNull class]) && [self canPlayOnInstance:opponentCard]))
-			{
-				[targets addObject:[Target targetWithType:TargetTypeOpponentPlayArea position:i]];
-			}
-			
-			i++;
-		}
-		
-		i = 0;
-		for (Card * card in aState.player.playArea)
-		{
-			//check if i can play aCard vs opponentCard
-			if (card &&!([card class] == [NSNull class])  && [self canPlayOnInstance:card])
-			{
-				[targets addObject:[Target targetWithType:TargetTypePlayerPlayArea position:i]];
-			}
-			
-			i++;
-		}
-	return targets;
 }
 
 -(BOOL)canPlayOnInstance:(Card*)aInstace;
@@ -174,44 +149,16 @@
 	
 }
 
-//TODO willPlayCard... se il bersaglio è il tavolo e ci sono da gestire selectCard ritorna nil, altrimenti la lista dei target selezionabili
+#pragma mark Private methods
 
-//TODO:targetsWithState
-/*-(NSArray*)targetsWithState:(State*)aState;
+- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
 	
-		NSMutableArray *targets = [[NSMutableArray alloc] init];
-		Target *tableTarget;
-		if (aCard.type == CardTypeElement)
-		{
-			for (Card * opponentCard in opponent.playArea)
-			{
-				//check if i can play aCard vs opponentCard
-				if (!([opponentCard class] == [NSNull class]) && [self canPlayInstance:aCard onInstance:opponentCard])
-				{
-					tableTarget = [Target targetWithType:TargetTypeOpponentPlayArea position:[opponent.playArea indexOfObject:opponentCard]];	
-					[targets addObject:tableTarget];
-				}
-			}				
-			
-			for (Card * card in player.playArea)
-			{
-				//check if i can play aCard vs opponentCard
-				if (!([card class] == [NSNull class])  && [self canPlayInstance:aCard onInstance:card])
-				{
-					tableTarget = [Target targetWithType: TargetTypePlayerPlayArea position:[player.playArea indexOfObject:card]];	
-					[targets addObject:tableTarget];
-				}
-			}
-		}
-		if (phase == GamePhaseMainphase && !aCard.element == CardElementVoid)				
-			[targets addObjectsFromArray:[table playerFreePositions]];
-		
-		NSArray *array = [NSArray arrayWithArray:targets];
-		[targets release];
-		return array;
-	}
-	return nil;
-}*/
+}
+
+- (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
+{
+	
+}
 
 @end
