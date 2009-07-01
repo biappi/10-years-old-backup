@@ -397,11 +397,12 @@
 
 //TODO aggiungi selectTarget
 
-- (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
+- (NSArray*)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
 	//TODO avviare willPlay della carta al target srcTarget, ritorna l'array ottenuto dal willPlayCard...
 	//ND DoBs: now it is useless, but we will need it.
 	[comunication sendWillPlayCardAtTarget:srcTarget onTarget:dstTarget];
+	return nil;
 	
 }
 
@@ -634,14 +635,9 @@
 	return nil;
 }
 
-- (void)willSelectCardAtTarget:(Target *)aTarget;
+- (NSArray*)didSelectTarget:(Target *)aTarget;
 {
-	NOT_IMPLEMENTED();
-}
-
-- (void)didSelectCardAtTarget:(Target *)aTarget;
-{
-	NOT_IMPLEMENTED();
+	return nil;
 }
 
 #pragma mark ComunicationLayer & Card methods

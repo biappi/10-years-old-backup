@@ -39,7 +39,7 @@
  Called by interface when user did select aTarget
  \param aTarget: the target did select
  */
-- (NSArray *)didSelectCardAtTarget:(Target *)aTarget;
+- (NSArray*)didSelectTarget:(Target *)aTarget;
 
 /**
  Called by interface when user did discard the element on aTarget

@@ -144,8 +144,6 @@
 	return NO;
 }
 
-#pragma mark Private methods
-
 - (NSArray*)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
 {
 	return nil;
@@ -155,6 +153,8 @@
 {
 	
 }
+
+#pragma mark Private methods
 
 -(NSMutableArray*) targetForElementWithState:(State*)aState;
 {
