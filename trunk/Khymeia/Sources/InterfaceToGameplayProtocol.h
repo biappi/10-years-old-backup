@@ -12,53 +12,40 @@
 
 @protocol InterfaceToGameplayProtocol
 
+/**
+ Called by the interface when user would play the card (located in srcTarget) on a dstTarget
+ \param srcTarget: target from where user would play
+ \param dstTarget: the target witch element in srcTarget will play
+ */
 - (void)willPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget;
+
+/**
+ Called by the interface when the user did play card from srcTarget
+ \param srcTarget: target from where card that user have played
+ \param dstTarget: the target witch element in srcTarget have played
+ \param completed: YES if gesture is completed, NO otherwise
+ \return an array of game elements where aCard is playable
+ */
 - (void)didPlayCardAtTarget:(Target *)srcTarget onTarget:(Target *)dstTarget withGesture:(BOOL)completed;
+
+/**
+ Called by the interface when would to know where aCard is playable
+ \param aCard: the card 
+ \return an array of game elements where aCard is playable
+ */
 - (NSArray *)targetsForCardAtTarget:(Target *)aTarget;
 
-// Correntemente non le chiamo --
-- (void)willSelectCardAtTarget:(Target *)aTarget;
+/**
+ Called by interface when user did select aTarget
+ \param aTarget: the target did select
+ */
 - (void)didSelectCardAtTarget:(Target *)aTarget;
+
+/**
+ Called by interface when user did discard the element on aTarget
+ \param aTarget: the target did select for discard
+ */
 - (void)didDiscardCardAtTarget:(Target *)aTarget;
-// ------------------------------
-
-#if 0
-'
-/**
-Called by the interface when user would play the card on a target (see target class)
-\param aCard: card that user would play
-\param aTarget: the target witch aCard will play
-*/
--(void)willPlayCard:(Card*)aCard onTarget:(Target *)aTarget;
-
-/**
-Called by the interface when the user did play card
-\param aCard: card that user have played
-\param aTarget: the target witch aCard is played
-*/
-
--(void)didPlayCard:(Card*)aCard onTarget:(Target *)aTarget withGesture:(BOOL)completed;
-
-/**
-Called by the interface when would to know where aCard is playable
-\param aCard: the card 
-\return an array of game elements where aCard is playable
-*/
--(NSArray*)targetsForCard:(Card*)aCard;
-
-/**
-Called by the interface when user would select the card
-\param aCard: card that user would select
-*/
--(void)willSelectCard:(Card*)aCard;
-
-/**
-Called by the interface when the user did select card
-\param aCard: card that user have selected
-*/
--(void)didSelectCard:(Card*)aCard;
-'
-#endif
 
 /**
 Ask to next
