@@ -542,8 +542,12 @@ Target * TargetHitTest(CGPoint point)
 		case TargetTypePlayerPlayArea:
 			type = playerPlayArea;
 			break;
+		case TargetTypeTable:
+			type=nil;
+			break;
 	}
-	
+	if(!type)
+		return nil;
 	id object = [type objectAtIndex:target.position];
 	
 	if (object == [NSNull null])
@@ -556,7 +560,7 @@ Target * TargetHitTest(CGPoint point)
 {
 	for (Target * t in currentTargets)
 	{
-		NSArray * type;
+		NSArray * type=nil;
 		
 		switch (t.type)
 		{
@@ -571,6 +575,7 @@ Target * TargetHitTest(CGPoint point)
 			case TargetTypePlayerPlayArea:
 				type = playerPlayAreaSlots;
 				break;
+				
 			case TargetTypeTable:
 				[tableLayer setSlotHighlight:x];
 				break;
