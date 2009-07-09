@@ -19,6 +19,10 @@ typedef enum {
 @interface Player : NSObject
 {
 	NSString            *name;
+	/**
+	 the password is the MD5 code of the password
+	 */
+	NSString		    *psw;
 	NSInteger           health;
 	NSMutableArray      *deck;
 	NSMutableArray      *hand;
@@ -27,8 +31,9 @@ typedef enum {
 }
 
 
-@property(nonatomic, retain)   NSString			  *name;
-@property(nonatomic, assign)   NSInteger		  health;
+@property(nonatomic, retain)   NSString	    	*name;
+@property(nonatomic, retain)   NSString	        *psw;
+@property(nonatomic, assign)   NSInteger		health;
 @property(nonatomic, retain) NSMutableArray     *deck;
 @property(nonatomic, retain) NSMutableArray     *hand;
 @property(nonatomic, retain) NSMutableArray     *cemetery;

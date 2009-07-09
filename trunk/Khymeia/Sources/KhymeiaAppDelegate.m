@@ -68,7 +68,7 @@
 	[waterElemental2 release];
 	[earthElemental2 release];
 	[voidElemental2 release];
- NSMutableArray *handOp=[[NSMutableArray alloc] initWithObjects:fireElementalOp2,windElementalOp2,waterElementalOp2,earthElementalOp2,voidElementalOp2,nil];
+    NSMutableArray *handOp=[[NSMutableArray alloc] initWithObjects:fireElementalOp2,windElementalOp2,waterElementalOp2,earthElementalOp2,voidElementalOp2,nil];
 	[fireElementalOp2 release];
 	[windElementalOp2 release];
 	[waterElementalOp2 release];
@@ -89,7 +89,7 @@
 	
 	/*
 	 * initialize Opponent 
-	 */
+	
 	Player *opponent=[[Player alloc] initWithHand:handOp];
 	opponent.name=[NSString stringWithFormat:@"player2"];
 	opponent.health=100;
@@ -97,33 +97,37 @@
 	[deckOp release];
 	opponent.cemetery=[[[NSMutableArray alloc] init] autorelease];
 	[handOp release];
+	 */
 	
+	ComunicatioLayer *comPlayer=[[[ComunicatioLayer alloc] init]autorelease];
+	[comPlayer connect];
+	//[];
 	/*
 	 * initialize game
 	 */
-	gameplayPlayer =[[Game alloc] initWithPlayer:player opponent:[Player playerWithPlayer:opponent] andImFirst:YES];
-	gameplayOpponent =[[Game alloc] initWithPlayer:opponent opponent:[Player playerWithPlayer:player] andImFirst:NO];
+	//gameplayPlayer =[[Game alloc] initWithPlayer:player opponent:[Player playerWithPlayer:opponent] andImFirst:YES];
+	//gameplayOpponent =[[Game alloc] initWithPlayer:opponent opponent:[Player playerWithPlayer:player] andImFirst:NO];
 	
 	/*
 	 *	release all
 	 */
 	[player release];
-	[opponent release];	
+	//[opponent release];	
 	
-	ComunicatioLayer *comPlayer=[[[ComunicatioLayer alloc] init]autorelease];
-	ComunicatioLayer *comOpponent=[[[ComunicatioLayer alloc] init]autorelease];
+	
+	//ComunicatioLayer *comOpponent=[[[ComunicatioLayer alloc] init]autorelease];
 	
 	/*
 	 * link game play to communication
 	 */
 	comPlayer.gameplay=gameplayPlayer;
-	comPlayer.comLayer=comOpponent;
+	comPlayer.comLayer=comPlayer;
 	
-	comOpponent.gameplay=gameplayOpponent;
-	comOpponent.comLayer=comPlayer;
+	//comOpponent.gameplay=gameplayOpponent;
+	//comOpponent.comLayer=comPlayer;
 
 	gameplayPlayer.comunication=comPlayer;
-	gameplayOpponent.comunication=comOpponent;
+	//gameplayOpponent.comunication=comOpponent;
 	
 	theScroller = [[ScrollerViewController scrollerController] retain];
 	[window addSubview:theScroller.view];
@@ -135,16 +139,16 @@
 	gameplayOpponent.interface = theScroller.playerTwoInterface;
 	
 	[gameplayPlayer setupState];
-	[gameplayOpponent setupState];	
+	//[gameplayOpponent setupState];	
 	
 	[gameplayPlayer start];
-	[gameplayOpponent start];
+	//[gameplayOpponent start];
 }
 
 - (void)dealloc;
 {
 	[gameplayPlayer release];
-	[gameplayOpponent release];
+	//[gameplayOpponent release];
 	[theScroller release];
     [window release];
     [super dealloc];

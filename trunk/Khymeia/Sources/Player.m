@@ -13,11 +13,13 @@
 @implementation Player
 
 @synthesize name;
+@synthesize psw;
 @synthesize health;
 @synthesize deck;
 @synthesize hand;
 @synthesize cemetery;
 @synthesize playArea;
+
 
 +(id)playerWithPlayer:(Player*)aPlayer;
 {		
@@ -92,6 +94,7 @@
 	
 	return [clone autorelease];
 }
+
 
 -(id) init;
 {

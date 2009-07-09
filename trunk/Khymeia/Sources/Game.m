@@ -58,7 +58,7 @@
 
 @synthesize interface;
 @synthesize comunication;
-
+@synthesize player,opponent;
 @synthesize state;
 @synthesize phase;
 
@@ -607,9 +607,9 @@
 	//[interface substractHP:damage player:PlayerKindPlayer];
 }
 
--(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
+-(void)notifyDamage:(NSInteger)damage toTarget:(Target*)t;
 {
-	((Card*)[player.playArea objectAtIndex:[player.playArea indexOfObject:card]]).health+=-damage;
+	((Card*)[player.playArea objectAtIndex:t.position]).health+=-damage;
 	
 	/**************************************************
 	 link to the interface method who update the health

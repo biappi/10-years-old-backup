@@ -44,7 +44,9 @@
 	NSMutableSet            *inGameCards;
 }
 
-@property (nonatomic, assign) InterfaceController * interface;
+@property (nonatomic, assign)   Player *player;
+@property (nonatomic, assign)   Player *opponent;
+@property (nonatomic, assign)	InterfaceController * interface;
 @property (nonatomic, retain)   ComunicatioLayer   *comunication;
 
 @property (nonatomic, readonly) NSInteger	state;
@@ -81,8 +83,10 @@ Card did draw by a player of kind aKind
 -(id)initWithPlayer:(Player*)aPlayer opponent:(Player*)aOpponent andImFirst:(bool)iAmFirst;
 
 
--(void)notifyDamage:(NSInteger)damage toCard:(Card*)card;
+-(void)notifyDamage:(NSInteger)damage toTarget:(Target*)t;
 
 -(void)notifyDamage:(NSInteger)damage;
+
+- (Card *)cardForTarget:(Target *)t;
 
 @end
