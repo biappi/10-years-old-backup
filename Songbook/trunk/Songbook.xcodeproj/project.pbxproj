@@ -34,6 +34,7 @@
 		3FAB13ED0EFF40F60026DED5 /* EditSongController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB13EC0EFF40F60026DED5 /* EditSongController.m */; };
 		3FAB13EF0EFF41300026DED5 /* EditSong.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAB13EE0EFF41300026DED5 /* EditSong.xib */; };
 		3FAB15240EFF6A470026DED5 /* SongsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FAB15230EFF6A470026DED5 /* SongsListController.m */; };
+		3FB3A2461022C7CD00962056 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FB3A2451022C7CD00962056 /* MessageUI.framework */; };
 		3FC2FD490F4DC74C00C6FDB5 /* RotatingTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC2FD480F4DC74C00C6FDB5 /* RotatingTabBarController.m */; };
 		3FE0041A0EFEE7E800C310A2 /* ArtistsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE004190EFEE7E800C310A2 /* ArtistsListController.m */; };
 		3FE004520EFEEFBD00C310A2 /* MainTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE004500EFEEFBD00C310A2 /* MainTabController.m */; };
@@ -81,6 +82,7 @@
 		3FAB13EE0EFF41300026DED5 /* EditSong.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSong.xib; sourceTree = "<group>"; };
 		3FAB15220EFF6A470026DED5 /* SongsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongsListController.h; sourceTree = "<group>"; };
 		3FAB15230EFF6A470026DED5 /* SongsListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongsListController.m; sourceTree = "<group>"; };
+		3FB3A2451022C7CD00962056 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		3FC2FD470F4DC74C00C6FDB5 /* RotatingTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingTabBarController.h; sourceTree = "<group>"; };
 		3FC2FD480F4DC74C00C6FDB5 /* RotatingTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RotatingTabBarController.m; sourceTree = "<group>"; };
 		3FE004180EFEE7E800C310A2 /* ArtistsListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArtistsListController.h; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				3FE004680EFEF51300C310A2 /* libsqlite3.dylib in Frameworks */,
 				3F1678B40F0364D700BC1EF1 /* libicucore.dylib in Frameworks */,
+				3FB3A2461022C7CD00962056 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +181,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				3FB3A2451022C7CD00962056 /* MessageUI.framework */,
 				3FE004670EFEF51300C310A2 /* libsqlite3.dylib */,
 				3F1678B30F0364D700BC1EF1 /* libicucore.dylib */,
 			);

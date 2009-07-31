@@ -12,6 +12,8 @@
 #import "EditSongController.h"
 #import "RotatingTabBarController.h"
 
+#import <MessageUI/MessageUI.h>
+
 @interface UIDevice()
 
 - (void) setOrientation:(UIInterfaceOrientation)x;
@@ -38,7 +40,6 @@
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dbDirty:) name:@"db updated" object:nil];
 
-	self.title = [song objectForKey:@"title"];
 	toolsBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
 																   target:self
 																   action:@selector(tools)];
@@ -127,6 +128,7 @@
 						  destructiveButtonTitle:nil
 							   otherButtonTitles:@"Edit Song",
 												 @"Start Autoscroller",
+												 @"Send By Email",
 												 nil];
 	[tools showInView:self.view];
 	[tools release];
@@ -142,6 +144,10 @@
 
 		case 1:
 			[self scroll];
+			break;
+			
+		case 2:
+			[self sendByEmail];
 			break;
 	}
 }
@@ -218,6 +224,31 @@
 	[sender setEnabled:(scrollingSpeed < 10) forSegmentAtIndex:1];
 	
 	[self scroll];
+}
+
+- (void)sendByEmail;
+{
+	MFMailComposeViewController * mailController;
+	
+	if ([MFMailComposeViewController canSendMail] == NO)
+	{
+		UIAlertView * av = [[UIAlertView alloc] initWithTitle:@"Error"
+													  message:@"Your device seems to be not configured for sending emails."
+													 delegate:nil
+											cancelButtonTitle:@"Dismiss"
+											otherButtonTitles:nil];
+		[av show];
+		[av release];
+		
+		return;
+	}
+	
+	mailController = [[MFMailComposeViewController alloc] init];
+	[mailController setSubject:[NSString stringWithFormat:@"Song \"%@\"", [song objectForKey:@"title"]]];
+	[mailController setMessageBody:[NSString stringWithFormat:@"This is the Chord Pro file for the song \"%@\" by \"%@\".\n\n(Sent using Songbook)", [song objectForKey:@"title"], [song objectForKey:@"artist"]] isHTML:NO];
+	[mailController addAttachmentData:[[song objectForKey:@"chords"] dataUsingEncoding:NSUTF8StringEncoding] mimeType:@"text/plain" fileName:[NSString stringWithFormat:@"%@ - %@.pro", [song objectForKey:@"artist"], [song objectForKey:@"title"]]];
+	[self presentModalViewController:mailController animated:YES];
+	[mailController release];
 }
 
 @end
