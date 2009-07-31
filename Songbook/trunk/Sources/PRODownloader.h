@@ -9,3 +9,4 @@
 #import <Foundation/Foundation.h>
 
 NSDictionary * parseFileAtUrl(NSString * urlString);
+BOOL stringMayBePRO(NSString * s);

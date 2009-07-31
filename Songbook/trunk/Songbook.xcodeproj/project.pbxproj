@@ -13,6 +13,12 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3F1678A70F03624C00BC1EF1 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F1678A50F03624C00BC1EF1 /* RegexKitLite.m */; };
 		3F1678B40F0364D700BC1EF1 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1678B30F0364D700BC1EF1 /* libicucore.dylib */; };
+		3F5168AF10200C3C00295DB4 /* BrowserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F5168AE10200C3C00295DB4 /* BrowserController.m */; };
+		3F5168B810200CB500295DB4 /* Browser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F5168B210200CB500295DB4 /* Browser.xib */; };
+		3F5168B910200CB500295DB4 /* browserBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5168B310200CB500295DB4 /* browserBack.png */; };
+		3F5168BB10200CB500295DB4 /* browserReload.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5168B510200CB500295DB4 /* browserReload.png */; };
+		3F5168BC10200CB500295DB4 /* browserSafari.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5168B610200CB500295DB4 /* browserSafari.png */; };
+		3F5168BD10200CB500295DB4 /* browserStop.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5168B710200CB500295DB4 /* browserStop.png */; };
 		3F5C57940F05836F001B87F6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C57930F05836F001B87F6 /* Icon.png */; };
 		3F5C57B00F058AF1001B87F6 /* n.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C57AF0F058AF1001B87F6 /* n.png */; };
 		3F5C57CA0F058DFF001B87F6 /* a.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F5C57C90F058DFF001B87F6 /* a.png */; };
@@ -47,6 +53,13 @@
 		3F1678A50F03624C00BC1EF1 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		3F1678A60F03624C00BC1EF1 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
 		3F1678B30F0364D700BC1EF1 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		3F5168AD10200C3C00295DB4 /* BrowserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrowserController.h; sourceTree = "<group>"; };
+		3F5168AE10200C3C00295DB4 /* BrowserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrowserController.m; sourceTree = "<group>"; };
+		3F5168B210200CB500295DB4 /* Browser.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Browser.xib; sourceTree = "<group>"; };
+		3F5168B310200CB500295DB4 /* browserBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browserBack.png; sourceTree = "<group>"; };
+		3F5168B510200CB500295DB4 /* browserReload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browserReload.png; sourceTree = "<group>"; };
+		3F5168B610200CB500295DB4 /* browserSafari.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browserSafari.png; sourceTree = "<group>"; };
+		3F5168B710200CB500295DB4 /* browserStop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browserStop.png; sourceTree = "<group>"; };
 		3F5C57930F05836F001B87F6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		3F5C57AF0F058AF1001B87F6 /* n.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = n.png; sourceTree = "<group>"; };
 		3F5C57C90F058DFF001B87F6 /* a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = a.png; sourceTree = "<group>"; };
@@ -140,6 +153,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3F5168B210200CB500295DB4 /* Browser.xib */,
+				3F5168B310200CB500295DB4 /* browserBack.png */,
+				3F5168B510200CB500295DB4 /* browserReload.png */,
+				3F5168B610200CB500295DB4 /* browserSafari.png */,
+				3F5168B710200CB500295DB4 /* browserStop.png */,
 				3FAAC2DC0F066A53007B7A95 /* Default.png */,
 				3FAAC2580F065172007B7A95 /* Info.html */,
 				3F5C57C90F058DFF001B87F6 /* a.png */,
@@ -178,6 +196,8 @@
 		3FE004100EFEE55100C310A2 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				3F5168AD10200C3C00295DB4 /* BrowserController.h */,
+				3F5168AE10200C3C00295DB4 /* BrowserController.m */,
 				3FE004510EFEEFBD00C310A2 /* MainTabController.h */,
 				3FE004500EFEEFBD00C310A2 /* MainTabController.m */,
 				3FE004180EFEE7E800C310A2 /* ArtistsListController.h */,
@@ -258,6 +278,11 @@
 				3FAAC2590F065172007B7A95 /* Info.html in Resources */,
 				3FAAC2940F065888007B7A95 /* i.png in Resources */,
 				3FAAC2DD0F066A53007B7A95 /* Default.png in Resources */,
+				3F5168B810200CB500295DB4 /* Browser.xib in Resources */,
+				3F5168B910200CB500295DB4 /* browserBack.png in Resources */,
+				3F5168BB10200CB500295DB4 /* browserReload.png in Resources */,
+				3F5168BC10200CB500295DB4 /* browserSafari.png in Resources */,
+				3F5168BD10200CB500295DB4 /* browserStop.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +307,7 @@
 				3F1678A70F03624C00BC1EF1 /* RegexKitLite.m in Sources */,
 				3FAAC25D0F0651BE007B7A95 /* InfoViewController.m in Sources */,
 				3FC2FD490F4DC74C00C6FDB5 /* RotatingTabBarController.m in Sources */,
+				3F5168AF10200C3C00295DB4 /* BrowserController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +352,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C4D8B27-F5B3-4BA5-A57F-7C89FB26B8D0";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = "Ad Hoc";
 		};
@@ -353,7 +379,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "791AA84E-4B33-4A5B-B88F-AA25C2BEEE74";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Distribution;
 		};
@@ -372,14 +398,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Debug;
 		};
@@ -393,7 +419,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F5B535AA-6722-4E4C-B02B-CE5A0598BDF8";
-				SDKROOT = iphoneos2.0;
+				SDKROOT = iphoneos3.0;
 			};
 			name = Release;
 		};

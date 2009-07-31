@@ -10,8 +10,9 @@
 #import "EditSongController.h"
 #import "SongbookDB.h"
 #import "PRODownloader.h"
+#import "BrowserController.h"
 
-@interface AddSongController (PrivateMethods)
+@interface AddSongController ()
 
 - (void)tryToDownload;
 
@@ -106,7 +107,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
-	return 2;
+	return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
@@ -115,10 +116,13 @@
 		case 0:
 			return 1;
 		case 1:
+			return 1;
+		case 2:
 			return 3;
 	}
     return 0;
 }
+
 /*
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section;
 {
@@ -135,6 +139,7 @@
 	return nil;
 }
 */
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {    
 	static NSString * cellID    = @"cell";
@@ -142,7 +147,7 @@
 	UITableViewCell * cell      = [tableView dequeueReusableCellWithIdentifier:cellID];
 	NSString        * identfier;
 	
-	if ((indexPath.section == 1) && (indexPath.row == 1))
+	if ((indexPath.section == 2) && (indexPath.row == 1))
 		identfier = fieldID;
 	else
 		identfier = cellID;	
@@ -167,6 +172,11 @@
 				break;
 			
 			case 1:
+				cell.textLabel.text = @"By searching it on the web";
+				cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
+				break;
+				
+			case 2:
 				switch (indexPath.row)
 				{
 					case 0:
@@ -203,6 +213,17 @@
 			break;
 		
 		case 1:
+			if (urlField.editing == NO)
+			{
+				BrowserController * web;
+				web = [[BrowserController alloc] init];
+				[self.navigationController pushViewController:web animated:YES];
+				[web release];
+			}
+			break;
+
+			
+		case 2:
 			if (indexPath.row == 2)
 			{
 				[self tryToDownload];
