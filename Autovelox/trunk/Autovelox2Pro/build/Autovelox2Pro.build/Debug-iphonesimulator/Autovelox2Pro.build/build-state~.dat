@@ -1,659 +1,0 @@
-TAutovelox2Pro
-v7
-r0
-t270371875.741422
-cCheck dependencies
-cProcessInfoPlistFile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Info.plist Autovelox2Pro-Info.plist
-cCompileXIB /Users/pako/Documents/Autovelox2Pro/MainWindow.xib
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxFissi.csv AutoveloxFissi.csv
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxMobili.csv AutoveloxMobili.csv
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/Ecopass.bmp Ecopass.bmp
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/Sicve_Inizio.bmp Sicve_Inizio.bmp
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxM.png autoveloxM.png
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxF.png autoveloxF.png
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxFISSO30.png autoveloxFISSO30.png
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxMOBILE30.png autoveloxMOBILE30.png
-cCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/tachimeter.png tachimeter.png
-cProcessPCH /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch.gch Autovelox2Pro_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-cDataModelCompile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro.mom /Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/main.o /Users/pako/Documents/Autovelox2Pro/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2ProAppDelegate.o /Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Annotation.o /Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/parseCSV.o /Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxProViewController.o /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxViewController.o /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/BottomBarController.o /Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/SetupTableViewController.o /Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-cLd /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro normal i386
-cGenerateDSYMFile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app.dSYM /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro
-cTouch /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk
-c000000004A461C5400000000000000EE
-t1246108756
-s238
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/CoreData.framework/CoreData
-c000000004A0BABDE0000000000181680
-t1242278878
-s1578624
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
-c000000004A0BABD0000000000000046B
-t1242278864
-s1131
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
-c000000004A0BAA26000000000026EE80
-t1242278438
-s2551424
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/CoreLocation.framework/Headers/CoreLocation.h
-c000000004A0CD38600000000000001AF
-t1242354566
-s431
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/Foundation.framework/Foundation
-c000000004A0BAB370000000000261F90
-t1242278711
-s2498448
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
-c000000004A0BAB250000000000001355
-t1242278693
-s4949
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MKReverseGeocoder.h
-c000000004A0BC0FF0000000000000623
-t1242284287
-s1571
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/MapKit.framework/Headers/MapKit.h
-c000000004A0BC0FF000000000000017D
-t1242284287
-s381
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/MapKit.framework/MapKit
-c000000004A0BC11200000000000F36E0
-t1242284306
-s997088
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
-c000000004A0CBEBB000000000000075E
-t1242349243
-s1886
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/System/Library/Frameworks/UIKit.framework/UIKit
-c000000004A0CBF5F0000000001434100
-t1242349407
-s21184768
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/usr/include/Availability.h
-c000000004A0BAC5D00000000000019D8
-t1242279005
-s6616
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/usr/include/fcntl.h
-c000000004748A13100000000000003EA
-t1195942193
-s1002
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/usr/include/stdio.h
-c000000004748A1330000000000003D1D
-t1195942195
-s15645
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/usr/include/string.h
-c000000004748A1330000000000001731
-t1195942195
-s5937
-
-N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk/usr/lib/gcc/i686-apple-darwin10/4.2.1/include/stdbool.h
-c000000004748AF950000000000000644
-t1195945877
-s1604
-
-N/System/Library/Frameworks/CoreLocation.framework/CoreLocation
-c000000004A5843F4000000000003B9E0
-t1247298548
-s244192
-
-N/Users/pako/Documents/Autovelox2Pro/Annotation.h
-c000000004A6C197C000000000000028E
-t1248598396
-s654
-i<CoreData/CoreData.h>
-i<MapKit/MapKit.h>
-
-N/Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel
-c000000004A6C17E50000000000000088
-t1248597989
-s136
-
-N/Users/pako/Documents/Autovelox2Pro/Autovelox2Pro_Prefix.pch
-c000000004A6C1579000000000000016E
-t1248597369
-s366
-i<Availability.h>
-i<Foundation/Foundation.h>
-i<UIKit/UIKit.h>
-i<CoreData/CoreData.h>
-
-N/Users/pako/Documents/Autovelox2Pro/AutoveloxFissi.csv
-c000000004A69EAC5000000000000E703
-t1248455365
-s59139
-
-N/Users/pako/Documents/Autovelox2Pro/AutoveloxMobili.csv
-c000000004A6C12D40000000000096DA3
-t1248596692
-s617891
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m
-c000000004A6C18A700000000000001CB
-t1248598183
-s459
-i"Annotation.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.h
-c000000004A6C4D260000000000000258
-t1248611622
-s600
-i<UIKit/UIKit.h>
-i<MapKit/MapKit.h>
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m
-c000000004A6D4D2A0000000000001FC0
-t1248677162
-s8128
-i"AutoVeloxProViewController.h"
-i"Annotation.h"
-i"parseCSV.h"
-i<CoreLocation/CoreLocation.h>
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.h
-c000000004A6C81C7000000000000039D
-t1248625095
-s925
-i<UIKit/UIKit.h>
-i<CoreLocation/CoreLocation.h>
-i<MapKit/MKReverseGeocoder.h>
-i<MapKit/MapKit.h>
-i"AutoVelox2ProAppDelegate.h"
-i"BottomBarController.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m
-c000000004A6D4C52000000000000114F
-t1248676946
-s4431
-i"AutoVeloxViewController.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.h
-c000000004A6C1579000000000000035A
-t1248597369
-s858
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m
-c000000004A6D53000000000000001782
-t1248678656
-s6018
-i"Autovelox2ProAppDelegate.h"
-i"AutoVeloxProViewController.h"
-i"AutoVeloxViewController.h"
-i"BottomBarController.h"
-i"SetupTableViewController.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.h
-c000000004A6C469C0000000000000137
-t1248609948
-s311
-i<UIKit/UIKit.h>
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m
-c000000004A6C4FD70000000000000838
-t1248612311
-s2104
-i"BottomBarController.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.h
-c000000004A6C80D60000000000000227
-t1248624854
-s551
-i<UIKit/UIKit.h>
-i"Autovelox2ProAppDelegate.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m
-c000000004A6C80E40000000000001284
-t1248624868
-s4740
-i"SetupTableViewController.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.h
-c000000004A69E8380000000000000274
-t1248454712
-s628
-i<UIKit/UIKit.h>
-
-N/Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m
-c0000000049E1C23A0000000000001CA5
-t1239532090
-s7333
-i<stdio.h>
-i<string.h>
-i<fcntl.h>
-i<stdbool.h>
-i"parseCSV.h"
-
-N/Users/pako/Documents/Autovelox2Pro/Ecopass.bmp
-c00000000477ED8480000000000000646
-t1199495240
-s1606
-
-N/Users/pako/Documents/Autovelox2Pro/MainWindow.xib
-c000000004A6C15790000000000001FFB
-t1248597369
-s8187
-
-N/Users/pako/Documents/Autovelox2Pro/Sicve_Inizio.bmp
-c0000000045414EAC000000000000017E
-t1161907884
-s382
-
-N/Users/pako/Documents/Autovelox2Pro/autoveloxF.png
-c000000004A6C5B040000000000001912
-t1248615172
-s6418
-
-N/Users/pako/Documents/Autovelox2Pro/autoveloxFISSO30.png
-c000000004A6C5E040000000000000A78
-t1248615940
-s2680
-
-N/Users/pako/Documents/Autovelox2Pro/autoveloxM.png
-c000000004A6C5AFC00000000000017BC
-t1248615164
-s6076
-
-N/Users/pako/Documents/Autovelox2Pro/autoveloxMOBILE30.png
-c000000004A6C5D520000000000000ACA
-t1248615762
-s2762
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Annotation.o
-t1248679074
-s12296
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxProViewController.o
-t1248679074
-s56452
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxViewController.o
-t1248679074
-s47876
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2Pro.LinkFileList
-c000000004A6D549C0000000000000482
-t1248679068
-s1154
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2ProAppDelegate.o
-t1248679074
-s55684
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/BottomBarController.o
-t1248679074
-s34036
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/SetupTableViewController.o
-t1248679074
-s47960
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/main.o
-t1248679073
-s5936
-
-N/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/parseCSV.o
-t1248679074
-s17672
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app
-t1248679075
-s544
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app.dSYM
-t1248679075
-s102
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro
-t1248679075
-s62376
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro.mom
-t1248679072
-s1479
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxFissi.csv
-t1248679068
-s59139
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxMobili.csv
-t1248679068
-s617891
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Ecopass.bmp
-t1248679068
-s1606
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Info.plist
-t1248679068
-s584
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/MainWindow.nib
-t1248679071
-s1351
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/PkgInfo
-t1248679068
-s8
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Sicve_Inizio.bmp
-t1248679068
-s382
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxF.png
-t1248679068
-s6418
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxFISSO30.png
-t1248679068
-s2680
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxM.png
-t1248679068
-s6076
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxMOBILE30.png
-t1248679068
-s2762
-
-N/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/tachimeter.png
-t1248679068
-s124739
-
-N/Users/pako/Documents/Autovelox2Pro/main.m
-c000000004A6C1579000000000000016F
-t1248597369
-s367
-i<UIKit/UIKit.h>
-
-N/Users/pako/Documents/Autovelox2Pro/tachimeter.png
-c000000004A6B334D000000000001E743
-t1248539469
-s124739
-
-N/var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch.gch
-t1248603208
-s13809840
-
-NAutovelox2Pro-Info.plist
-c000000004A6C2D65000000000000038B
-t1248603493
-s907
-
-CCheck dependencies
-r0
-lSLF07#2@18"Check dependencies270371868#270371868#0(0"0(0#1#0"28992373579448432#0"0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Annotation.o /Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371873.694894
-e270371874.173664
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Annotation.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@67"Compile /Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m270371873#270371874#0(0"0(0#0#59"/Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m4300882496#2041"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/../Annotation.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Annotation.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxProViewController.o /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371874.229565
-e270371874.485000
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxProViewController.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m: In function '-[AutoVeloxProViewController controlNearAutovelox:]':
-o/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m:87: warning: unused variable 'dist'
-lSLF07#2@80"Compile /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m270371874#270371874#0(250"/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m: In function '-[AutoVeloxProViewController controlNearAutovelox:]':/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m:87: warning: unused variable 'dist'1(22@22"Unused variable 'dist'270371874#141#109#0(6@72"/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m270369962#87#0#87#0#19"unused variable '*'0(0#0#72"/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m4300882496#2070"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxProViewController.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxProViewController.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxViewController.o /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371874.485117
-e270371874.598025
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxViewController.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m: In function '-[AutoVeloxViewController reverseGeocoder:didFindPlacemark:]':
-o/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m:115: warning: format not a string literal and no format arguments
-lSLF07#2@77"Compile /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m270371874#270371874#0(283"/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m: In function '-[AutoVeloxViewController reverseGeocoder:didFindPlacemark:]':/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m:115: warning: format not a string literal and no format arguments1(22@51"Format not a string literal and no format arguments270371874#147#136#0(6@69"/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m270369746#115#0#115#0#51"format not a string literal and no format arguments0(0#0#69"/Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m7311153591056674816#2064"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/AutoVeloxViewController.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/AutoVeloxViewController.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2ProAppDelegate.o /Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371872.062817
-e270371874.229442
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2ProAppDelegate.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@78"Compile /Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m270371872#270371874#0(0"0(0#0#70"/Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m4300882496#2066"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/Autovelox2ProAppDelegate.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2ProAppDelegate.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/BottomBarController.o /Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371874.598160
-e270371875.016687
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/BottomBarController.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@73"Compile /Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m270371874#270371875#0(0"0(0#0#65"/Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m4300882496#2056"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/BottomBarController.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/BottomBarController.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/SetupTableViewController.o /Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371874.751982
-e270371875.016910
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/SetupTableViewController.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m: In function '-[SetupTableViewController doneButton]':
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: 'Autovelox2ProAppDelegate' may not respond to '-flip'
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: (Messages without a matching method signature
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: will be assumed to return 'id' and accept
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: '...' as arguments.)
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m: In function '-[SetupTableViewController tableView:didSelectRowAtIndexPath:]':
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:178: warning: 'Autovelox2ProAppDelegate' may not respond to '-flip'
-o/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:199: warning: 'Autovelox2ProAppDelegate' may not respond to '-flip'
-lSLF07#2@78"Compile /Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m270371874#270371875#0(1053"/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m: In function '-[SetupTableViewController doneButton]':/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: 'Autovelox2ProAppDelegate' may not respond to '-flip'/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: (Messages without a matching method signature/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: will be assumed to return 'id' and accept/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:78: warning: '...' as arguments.)/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m: In function '-[SetupTableViewController tableView:didSelectRowAtIndexPath:]':/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:178: warning: 'Autovelox2ProAppDelegate' may not respond to '-flip'/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m:199: warning: 'Autovelox2ProAppDelegate' may not respond to '-flip'4(22@53"'Autovelox2ProAppDelegate' may not respond to '-flip'270371874#126#138#0(6@70"/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m270317668#78#0#78#0#26"'*' may not respond to '*'0(13@108"(Messages without a matching method signature will be assumed to return 'id' and accept '...' as arguments.)270371874#264#130#0(6@70"/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m270317668#78#0#78#0#0"0(22@53"'Autovelox2ProAppDelegate' may not respond to '-flip'270371874#775#139#0(6@70"/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m270317668#178#0#178#0#26"'*' may not respond to '*'0(22@53"'Autovelox2ProAppDelegate' may not respond to '-flip'270371874#914#139#0(6@70"/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m270317668#199#0#199#0#26"'*' may not respond to '*'0(0#0#70"/Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m4300882496#2066"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/SetupTableViewController.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/SetupTableViewController.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/main.o /Users/pako/Documents/Autovelox2Pro/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371871.866057
-e270371873.694590
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/main.o
-x/Users/pako/Documents/Autovelox2Pro/main.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@50"Compile /Users/pako/Documents/Autovelox2Pro/main.m270371871#270371873#0(0"0(0#0#42"/Users/pako/Documents/Autovelox2Pro/main.m4300882496#2018"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/main.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/main.o0#
-
-CCompileC build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/parseCSV.o /Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m normal i386 objective-c com.apple.compilers.gcc.4_2
-s270371874.173790
-e270371874.751834
-r1
-xCompileC
-xbuild/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/parseCSV.o
-x/Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m
-xnormal
-xi386
-xobjective-c
-xcom.apple.compilers.gcc.4_2
-lSLF07#2@62"Compile /Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m270371874#270371874#0(0"0(0#0#54"/Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m4300882496#2034"    cd /Users/pako/Documents/Autovelox2Pro    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30000 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-generated-files.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-own-target-headers.hmap -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-all-target-headers.hmap -iquote /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Autovelox2Pro-project-headers.hmap -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -I/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/include -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources/i386 -I/Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/DerivedSources -include /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch -c /Users/pako/Documents/Autovelox2Pro/Classes/parseCSV.m -o /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/parseCSV.o0#
-
-CCompileXIB /Users/pako/Documents/Autovelox2Pro/MainWindow.xib
-s270371868.578974
-e270371871.864351
-r1
-xCompileXIB
-x/Users/pako/Documents/Autovelox2Pro/MainWindow.xib
-lSLF07#2@25"CompileXIB MainWindow.xib270371868#270371871#0(0"0(0#0#50"/Users/pako/Documents/Autovelox2Pro/MainWindow.xib4300882496#428"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/MainWindow.nib /Users/pako/Documents/Autovelox2Pro/MainWindow.xib0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxFissi.csv AutoveloxFissi.csv
-s270371868.580116
-e270371868.683275
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxFissi.csv
-xAutoveloxFissi.csv
-lSLF07#2@23"Copy AutoveloxFissi.csv270371868#270371868#0(0"0(0#0#54"/Users/pako/Documents/Autovelox2Pro/AutoveloxFissi.csv4300882496#459"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/AutoveloxFissi.csv /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxMobili.csv AutoveloxMobili.csv
-s270371868.580972
-e270371868.970353
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/AutoveloxMobili.csv
-xAutoveloxMobili.csv
-lSLF07#2@24"Copy AutoveloxMobili.csv270371868#270371868#0(0"0(0#0#55"/Users/pako/Documents/Autovelox2Pro/AutoveloxMobili.csv4300882496#460"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/AutoveloxMobili.csv /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/Ecopass.bmp Ecopass.bmp
-s270371868.582845
-e270371868.857331
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/Ecopass.bmp
-xEcopass.bmp
-lSLF07#2@16"Copy Ecopass.bmp270371868#270371868#0(0"0(0#0#47"/Users/pako/Documents/Autovelox2Pro/Ecopass.bmp4300882496#452"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/Ecopass.bmp /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/Sicve_Inizio.bmp Sicve_Inizio.bmp
-s270371868.585321
-e270371868.679009
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/Sicve_Inizio.bmp
-xSicve_Inizio.bmp
-lSLF07#2@21"Copy Sicve_Inizio.bmp270371868#270371868#0(0"0(0#0#52"/Users/pako/Documents/Autovelox2Pro/Sicve_Inizio.bmp4300882496#457"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/Sicve_Inizio.bmp /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxF.png autoveloxF.png
-s270371868.588270
-e270371868.857578
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxF.png
-xautoveloxF.png
-lSLF07#2@19"Copy autoveloxF.png270371868#270371868#0(0"0(0#0#50"/Users/pako/Documents/Autovelox2Pro/autoveloxF.png4300882496#455"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/autoveloxF.png /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxFISSO30.png autoveloxFISSO30.png
-s270371868.589009
-e270371868.669778
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxFISSO30.png
-xautoveloxFISSO30.png
-lSLF07#2@25"Copy autoveloxFISSO30.png270371868#270371868#0(0"0(0#0#56"/Users/pako/Documents/Autovelox2Pro/autoveloxFISSO30.png4300882496#461"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/autoveloxFISSO30.png /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxM.png autoveloxM.png
-s270371868.587419
-e270371868.807341
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxM.png
-xautoveloxM.png
-lSLF07#2@19"Copy autoveloxM.png270371868#270371868#0(0"0(0#0#50"/Users/pako/Documents/Autovelox2Pro/autoveloxM.png4300882496#455"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/autoveloxM.png /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxMOBILE30.png autoveloxMOBILE30.png
-s270371868.591132
-e270371868.806462
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/autoveloxMOBILE30.png
-xautoveloxMOBILE30.png
-lSLF07#2@26"Copy autoveloxMOBILE30.png270371868#270371868#0(0"0(0#0#57"/Users/pako/Documents/Autovelox2Pro/autoveloxMOBILE30.png4300882496#462"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/autoveloxMOBILE30.png /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CCpResource build/Debug-iphonesimulator/Autovelox2Pro.app/tachimeter.png tachimeter.png
-s270371868.592042
-e270371868.881928
-r1
-xCpResource
-xbuild/Debug-iphonesimulator/Autovelox2Pro.app/tachimeter.png
-xtachimeter.png
-lSLF07#2@19"Copy tachimeter.png270371868#270371868#0(0"0(0#0#50"/Users/pako/Documents/Autovelox2Pro/tachimeter.png4300882496#455"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -resolve-src-symlinks /Users/pako/Documents/Autovelox2Pro/tachimeter.png /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
-CDataModelCompile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro.mom /Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel
-s270371871.864801
-e270371872.062667
-r1
-xDataModelCompile
-x/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro.mom
-x/Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel
-lSLF07#2@69"Compile /Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel270371871#270371872#0(0"0(0#0#61"/Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel4300882496#393"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.5 /Users/pako/Documents/Autovelox2Pro/Autovelox2Pro.xcdatamodel /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro.mom0#
-
-CGenerateDSYMFile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app.dSYM /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro
-s270371875.624259
-e270371875.716072
-r1
-xGenerateDSYMFile
-x/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app.dSYM
-x/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro
-lSLF07#2@127"GenerateDSYMFile build/Debug-iphonesimulator/Autovelox2Pro.app.dSYM build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro270371875#270371875#0(0"0(0#0#95"/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro4300882496#392"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro -o /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app.dSYM0#
-
-CLd /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro normal i386
-s270371875.017005
-e270371875.623793
-r1
-xLd
-x/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro
-xnormal
-xi386
-lSLF07#2@100"Link /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro270371875#270371875#0(0"0(0#0#0"4300882496#1013"    cd /Users/pako/Documents/Autovelox2Pro    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.0.sdk -L/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator -F/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator "-F/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks" -filelist /Users/pako/Documents/Autovelox2Pro/build/Autovelox2Pro.build/Debug-iphonesimulator/Autovelox2Pro.build/Objects-normal/i386/Autovelox2Pro.LinkFileList -mmacosx-version-min=10.5 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -framework MapKit -framework CoreLocation -o /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Autovelox2Pro0#
-
-CProcessInfoPlistFile /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Info.plist Autovelox2Pro-Info.plist
-s270371868.551615
-e270371868.578831
-r1
-xProcessInfoPlistFile
-x/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Info.plist
-xAutovelox2Pro-Info.plist
-lSLF07#2@32"Process Autovelox2Pro-Info.plist270371868#270371868#0(0"0(0#0#60"/Users/pako/Documents/Autovelox2Pro/Autovelox2Pro-Info.plist29273878621126700#488"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Autovelox2Pro-Info.plist -genpkginfo /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app/Info.plist0#
-
-CProcessPCH /var/folders/ST/ST8lcYpCE1WWggVij8EQHU+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Autovelox2Pro_Prefix-aihyrnmeajevwbhgzdxrgvihjsmb/Autovelox2Pro_Prefix.pch.gch Autovelox2Pro_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
-r0
-
-CTouch /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app
-s270371875.716187
-e270371875.741123
-r1
-xTouch
-x/Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app
-lSLF07#2@87"Touch /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app270371875#270371875#0(0"0(0#0#0"4300882496#278"    cd /Users/pako/Documents/Autovelox2Pro    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/pako/Documents/Autovelox2Pro/build/Debug-iphonesimulator/Autovelox2Pro.app0#
-
