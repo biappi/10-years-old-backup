@@ -31,6 +31,7 @@
 	BOOL animationStarted;
 	BottomBarController *ava;
 	UIImageView *tac;
+	UIImageView *bar;
 	BOOL topAnimationStarted;
 	BOOL ontop;
 }

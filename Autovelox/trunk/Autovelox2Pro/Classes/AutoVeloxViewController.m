@@ -51,16 +51,17 @@
 	//up.alpha=0.9;
 	self.view=up;
 	self.view.userInteractionEnabled=YES;
-	tac=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 150,150)];
+	tac=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 135,135)];
 	tac.image=[UIImage imageNamed: @"tachimeter.png"];
 	[self.view addSubview:tac];
 	UIView *redGreenLight=[[UIView alloc]init];
 	redGreenLight.backgroundColor=[UIColor greenColor];
-	redGreenLight.frame=CGRectMake(100, 100, 20, 20);
+	redGreenLight.frame=CGRectMake(95, 95, 20, 20);
 	[self.view addSubview:redGreenLight];
-	
 	[self.view sendSubviewToBack:redGreenLight];
-
+	bar=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"slideUp.png"]];
+	bar.frame=CGRectMake(0, 135, 320,15);
+	[self.view addSubview:bar];
 	
 }
 -(void)animation
@@ -143,11 +144,21 @@
 {
 	if(ontop)
 	{
-		self.view.center=CGPointMake(self.view.center.x, self.view.center.y-130);
+		[UIView beginAnimations:@"SlideOff" context:nil];
+		[UIView setAnimationDuration:0.5];
+		self.view.center=CGPointMake(self.view.center.x, self.view.center.y-135);
+		bar.image=[UIImage imageNamed:@"slideDown.png"];
+		[UIView commitAnimations];
+		
 		ontop=NO;
 	}
 	else{
-		self.view.center=CGPointMake(self.view.center.x, self.view.center.y+130);
+		[UIView beginAnimations:@"SlideOn" context:nil];
+		[UIView setAnimationDuration:0.5];
+		self.view.center=CGPointMake(self.view.center.x, self.view.center.y+135);
+		bar.image=[UIImage imageNamed:@"slideUp.png"];
+		[UIView commitAnimations];
+		
 		ontop=YES;
 	
 	}
