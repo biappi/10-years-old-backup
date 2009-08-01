@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* Autovelox2ProAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20A07BAA101C6766004994DC /* Ecopass.bmp */; };
+		20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */; };
+		20C3BA41101C832B00D0971E /* Sicve_Inizio.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */; };
+		20C3BAA7101C93C300D0971E /* autoveloxM.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAA6101C93C300D0971E /* autoveloxM.png */; };
+		20C3BAA9101C93C700D0971E /* autoveloxF.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAA8101C93C700D0971E /* autoveloxF.png */; };
+		20C3BAFF101C967F00D0971E /* autoveloxFISSO30.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */; };
+		20C3BB01101C968800D0971E /* autoveloxMOBILE30.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */; };
+		20C3BB2E101CA40400D0971E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C3BB2D101CA40400D0971E /* CoreLocation.framework */; };
+		20C3BB7B101CAFB900D0971E /* AutoVeloxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */; };
+		20C3BB7C101CAFB900D0971E /* BottomBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB78101CAFB900D0971E /* BottomBarController.m */; };
+		20C3BB7D101CAFB900D0971E /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */; };
+		20C3BB99101CB8CD00D0971E /* tachimeter.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BB98101CB8CD00D0971E /* tachimeter.png */; };
+		20D81B6B101C4F5700FD75A7 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D81B6A101C4F5700FD75A7 /* Annotation.m */; };
+		20D81B6D101C4F8800FD75A7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D81B6C101C4F8800FD75A7 /* MapKit.framework */; };
+		20D81B7B101C506D00FD75A7 /* parseCSV.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D81B78101C506D00FD75A7 /* parseCSV.m */; };
+		20D81B7C101C506D00FD75A7 /* AutoVeloxProViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */; };
+		20D81B7F101C50E800FD75A7 /* AutoveloxFissi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */; };
+		20D81B80101C50E800FD75A7 /* AutoveloxMobili.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28C3AD8A0F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */; };
+		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* Autovelox2ProAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Autovelox2ProAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Autovelox2ProAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Autovelox2Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autovelox2Pro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		20A07BAA101C6766004994DC /* Ecopass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Ecopass.bmp; sourceTree = "<group>"; };
+		20ADED651020E703007622BD /* ControlledAutovelox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlledAutovelox.h; sourceTree = "<group>"; };
+		20ADED661020E703007622BD /* ControlledAutovelox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlledAutovelox.m; sourceTree = "<group>"; };
+		20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Sicve_Inizio.bmp; sourceTree = "<group>"; };
+		20C3BAA6101C93C300D0971E /* autoveloxM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxM.png; sourceTree = "<group>"; };
+		20C3BAA8101C93C700D0971E /* autoveloxF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxF.png; sourceTree = "<group>"; };
+		20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxFISSO30.png; sourceTree = "<group>"; };
+		20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxMOBILE30.png; sourceTree = "<group>"; };
+		20C3BB2D101CA40400D0971E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = /System/Library/Frameworks/CoreLocation.framework; sourceTree = "<absolute>"; };
+		20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoVeloxViewController.h; sourceTree = "<group>"; };
+		20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoVeloxViewController.m; sourceTree = "<group>"; };
+		20C3BB77101CAFB900D0971E /* BottomBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomBarController.h; sourceTree = "<group>"; };
+		20C3BB78101CAFB900D0971E /* BottomBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarController.m; sourceTree = "<group>"; };
+		20C3BB79101CAFB900D0971E /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
+		20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
+		20C3BB98101CB8CD00D0971E /* tachimeter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachimeter.png; sourceTree = "<group>"; };
+		20D81B69101C4F5700FD75A7 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Annotation.h; path = ../Annotation.h; sourceTree = "<group>"; };
+		20D81B6A101C4F5700FD75A7 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Annotation.m; path = ../Annotation.m; sourceTree = "<group>"; };
+		20D81B6C101C4F8800FD75A7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		20D81B77101C506D00FD75A7 /* parseCSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = parseCSV.h; sourceTree = "<group>"; };
+		20D81B78101C506D00FD75A7 /* parseCSV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parseCSV.m; sourceTree = "<group>"; };
+		20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoVeloxProViewController.h; sourceTree = "<group>"; };
+		20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoVeloxProViewController.m; sourceTree = "<group>"; };
+		20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoveloxFissi.csv; sourceTree = "<group>"; };
+		20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoveloxMobili.csv; sourceTree = "<group>"; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Autovelox2Pro.xcdatamodel; sourceTree = "<group>"; };
+		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* Autovelox2Pro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Autovelox2Pro_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+				20D81B6D101C4F8800FD75A7 /* MapKit.framework in Frameworks */,
+				20C3BB2E101CA40400D0971E /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				20D81B77101C506D00FD75A7 /* parseCSV.h */,
+				20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */,
+				20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */,
+				20C3BB77101CAFB900D0971E /* BottomBarController.h */,
+				20C3BB78101CAFB900D0971E /* BottomBarController.m */,
+				20C3BB79101CAFB900D0971E /* SetupTableViewController.h */,
+				20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */,
+				20D81B78101C506D00FD75A7 /* parseCSV.m */,
+				20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */,
+				20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */,
+				20D81B69101C4F5700FD75A7 /* Annotation.h */,
+				20D81B6A101C4F5700FD75A7 /* Annotation.m */,
+				1D3623240D0F684500981E51 /* Autovelox2ProAppDelegate.h */,
+				1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */,
+				20ADED651020E703007622BD /* ControlledAutovelox.h */,
+				20ADED661020E703007622BD /* ControlledAutovelox.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Autovelox2Pro.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+				20D81B6C101C4F8800FD75A7 /* MapKit.framework */,
+				20C3BB2D101CA40400D0971E /* CoreLocation.framework */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* Autovelox2Pro_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
+				20C3BB98101CB8CD00D0971E /* tachimeter.png */,
+				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
+				20C3BAA6101C93C300D0971E /* autoveloxM.png */,
+				20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */,
+				20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */,
+				20A07BAA101C6766004994DC /* Ecopass.bmp */,
+				20C3BAA8101C93C700D0971E /* autoveloxF.png */,
+				28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */,
+				20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+				28D801B30F44B63D00FB423F /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Autovelox2Pro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Autovelox2Pro" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Autovelox2Pro;
+			productName = Autovelox2Pro;
+			productReference = 1D6058910D05DD3D006BFB54 /* Autovelox2Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Autovelox2Pro" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Autovelox2Pro */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				20D81B7F101C50E800FD75A7 /* AutoveloxFissi.csv in Resources */,
+				20D81B80101C50E800FD75A7 /* AutoveloxMobili.csv in Resources */,
+				20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */,
+				20C3BA41101C832B00D0971E /* Sicve_Inizio.bmp in Resources */,
+				20C3BAA7101C93C300D0971E /* autoveloxM.png in Resources */,
+				20C3BAA9101C93C700D0971E /* autoveloxF.png in Resources */,
+				20C3BAFF101C967F00D0971E /* autoveloxFISSO30.png in Resources */,
+				20C3BB01101C968800D0971E /* autoveloxMOBILE30.png in Resources */,
+				20C3BB99101CB8CD00D0971E /* tachimeter.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* Autovelox2ProAppDelegate.m in Sources */,
+				28C3AD8A0F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel in Sources */,
+				20D81B6B101C4F5700FD75A7 /* Annotation.m in Sources */,
+				20D81B7B101C506D00FD75A7 /* parseCSV.m in Sources */,
+				20D81B7C101C506D00FD75A7 /* AutoVeloxProViewController.m in Sources */,
+				20C3BB7B101CAFB900D0971E /* AutoVeloxViewController.m in Sources */,
+				20C3BB7C101CAFB900D0971E /* BottomBarController.m in Sources */,
+				20C3BB7D101CAFB900D0971E /* SetupTableViewController.m in Sources */,
+				20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Autovelox2Pro_Prefix.pch;
+				INFOPLIST_FILE = "Autovelox2Pro-Info.plist";
+				PRODUCT_NAME = Autovelox2Pro;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"/Volumes/Skiiing2/CD/ViewBased/Unknown Path/System/Library/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Autovelox2Pro_Prefix.pch;
+				INFOPLIST_FILE = "Autovelox2Pro-Info.plist";
+				PRODUCT_NAME = Autovelox2Pro;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Autovelox2Pro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Autovelox2Pro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
