@@ -17,6 +17,7 @@
 		206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */ = {isa = PBXBuildFile; fileRef = 206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */; };
 		20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20A07BAA101C6766004994DC /* Ecopass.bmp */; };
 		20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */; };
+		20B8F1451026764200FA4ED8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B8F1441026764200FA4ED8 /* back.png */; };
 		20C3BA41101C832B00D0971E /* Sicve_Inizio.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */; };
 		20C3BAA7101C93C300D0971E /* autoveloxM.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAA6101C93C300D0971E /* autoveloxM.png */; };
 		20C3BAA9101C93C700D0971E /* autoveloxF.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAA8101C93C700D0971E /* autoveloxF.png */; };
@@ -52,6 +53,7 @@
 		20A07BAA101C6766004994DC /* Ecopass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Ecopass.bmp; sourceTree = "<group>"; };
 		20ADED651020E703007622BD /* ControlledAutovelox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlledAutovelox.h; sourceTree = "<group>"; };
 		20ADED661020E703007622BD /* ControlledAutovelox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlledAutovelox.m; sourceTree = "<group>"; };
+		20B8F1441026764200FA4ED8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Sicve_Inizio.bmp; sourceTree = "<group>"; };
 		20C3BAA6101C93C300D0971E /* autoveloxM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxM.png; sourceTree = "<group>"; };
 		20C3BAA8101C93C700D0971E /* autoveloxF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxF.png; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */,
 				2058867E102480E400B69A7A /* slideUp.png */,
 				206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */,
+				20B8F1441026764200FA4ED8 /* back.png */,
 				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
 				20C3BB98101CB8CD00D0971E /* tachimeter.png */,
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
@@ -244,6 +247,7 @@
 				20588680102480E400B69A7A /* slideUp.png in Resources */,
 				206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */,
 				206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */,
+				20B8F1451026764200FA4ED8 /* back.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
