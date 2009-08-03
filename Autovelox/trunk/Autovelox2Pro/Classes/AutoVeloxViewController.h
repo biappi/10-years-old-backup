@@ -34,11 +34,12 @@
 	UIImageView *bar;
 	BOOL topAnimationStarted;
 	BOOL ontop;
+	MKMapView * map;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
 
--(id)initWithController:(BottomBarController*)avad;
+-(id)initWithController:(BottomBarController*)avad withMap:(MKMapView*) map;
 
 -(void)animation;
 

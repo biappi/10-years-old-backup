@@ -65,7 +65,7 @@
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
 	map=[[MKMapView alloc] init];
-	 map.frame=CGRectMake(0, 0, 320, 480);
+	 map.frame=CGRectMake(0, 170, 320, 270);
 	 map.delegate=self;
 	CLLocationCoordinate2D pippo;
 	pippo.latitude=39.37821;
@@ -227,11 +227,11 @@
 	}
 	Annotation * tmp=(Annotation *) annotation;
 	if([tmp.title isEqualToString:@"Autovelox fisso"]){
-			view.image=[UIImage imageNamed:@"autoveloxFISSO30.png"];
+			view.image=[UIImage imageNamed:@"autoVeloxFisso40.png"];
 	}
 	else if([tmp.title isEqualToString:@"Autovelox mobile"])
 	{
-		view.image=[UIImage imageNamed:@"autoveloxMOBILE30.png"];
+		view.image=[UIImage imageNamed:@"autoVeloxMobile40.png"];
 	}
 	return view;
 

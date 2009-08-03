@@ -29,12 +29,7 @@
 		strada.textAlignment=UITextAlignmentCenter;
 		
 		//strada.adjustsFontSizeToFitWidth=YES
-		bottom = [[UIView alloc]init];
-		bottom.frame=CGRectMake(0, 440,320, 40);
-		self.view=bottom;
-		[self.view addSubview:strada];
-		bottom.backgroundColor=[UIColor blackColor];
-		bottom.alpha=0.8;
+
 		
 	
 	}
@@ -42,11 +37,19 @@
 }
 
 
-/*
+
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
 - (void)loadView {
+
+	bottom = [[UIView alloc]init];
+	bottom.frame=CGRectMake(0, 440,320, 40);
+	self.view=bottom;
+	[self.view addSubview:strada];
+	bottom.backgroundColor=[UIColor blackColor];
+	bottom.alpha=0.8;
+	[bottom release];
 }
-*/
+
 
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.

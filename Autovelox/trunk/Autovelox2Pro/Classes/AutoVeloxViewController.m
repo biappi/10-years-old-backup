@@ -20,10 +20,11 @@
 @synthesize animationStarted;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
--(id)initWithController:(BottomBarController*)avad;
+-(id)initWithController:(BottomBarController*)avad withMap:(MKMapView *) m;
 {
     if (self = [super init]) 
 	{
+		map=m;
 		animationStarted=NO;
 		topAnimationStarted=NO;
 		ava=avad;
@@ -40,27 +41,29 @@
 		geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:firstPoint];
 		geoCoder.delegate=self;
 		ontop=YES;
+		[UIView setAnimationDelegate:self];
+		[UIView setAnimationDidStopSelector:@selector(animationDidStop:::)];
 	}
     return self;
 }
 -(void) loadView
 {
 	up=[[UIView alloc]init];
-	up.frame=CGRectMake(0, 20, 320, 150);
+	up.frame=CGRectMake(0, 0, 320, 170);
 	up.backgroundColor=[UIColor blackColor];
 	//up.alpha=0.9;
 	self.view=up;
 	self.view.userInteractionEnabled=YES;
-	tac=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 135,135)];
+	tac=[[UIImageView alloc]initWithFrame:CGRectMake(0, 20, 135,135)];
 	tac.image=[UIImage imageNamed: @"tachimeter.png"];
 	[self.view addSubview:tac];
 	UIView *redGreenLight=[[UIView alloc]init];
 	redGreenLight.backgroundColor=[UIColor greenColor];
-	redGreenLight.frame=CGRectMake(95, 95, 20, 20);
+	redGreenLight.frame=CGRectMake(95, 115, 20, 20);
 	[self.view addSubview:redGreenLight];
 	[self.view sendSubviewToBack:redGreenLight];
 	bar=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"slideUp.png"]];
-	bar.frame=CGRectMake(0, 135, 320,15);
+	bar.frame=CGRectMake(0, 155, 320,15);
 	[self.view addSubview:bar];
 	
 }
@@ -146,24 +149,34 @@
 	{
 		[UIView beginAnimations:@"SlideOff" context:nil];
 		[UIView setAnimationDuration:0.5];
-		self.view.center=CGPointMake(self.view.center.x, self.view.center.y-135);
+		//[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:map cache:NO];
+		[map setFrame:CGRectMake(0, 35, 320, 440)];
+		self.view.frame=CGRectMake(0, -135, 320, 170);
+		//CGPointMake(self.view.center.x, self.view.center.y-135);
 		bar.image=[UIImage imageNamed:@"slideDown.png"];
-		[UIView commitAnimations];
 		
+		[UIView commitAnimations];
 		ontop=NO;
 	}
 	else{
+				
 		[UIView beginAnimations:@"SlideOn" context:nil];
 		[UIView setAnimationDuration:0.5];
-		self.view.center=CGPointMake(self.view.center.x, self.view.center.y+135);
+		[UIView setAnimationTransition:UIViewAnimationTransitionCurlDown forView:map cache:NO];
+		self.view.frame=CGRectMake(0, 0, 320, 170);
 		bar.image=[UIImage imageNamed:@"slideUp.png"];
+		[map setFrame:CGRectMake(0,170, 320, 270)];
 		[UIView commitAnimations];
-		
+	
+
 		ontop=YES;
 	
 	}
 }
-
+ - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
+{
+	NSLog(@"stop");
+}
 - (void)dealloc {
 	//rilascia tutto
     [super dealloc];

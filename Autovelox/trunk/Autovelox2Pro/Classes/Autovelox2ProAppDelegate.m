@@ -46,10 +46,11 @@
 	[window insertSubview:tmpView atIndex:1];
 	[tmpView addSubview:ctr.view];
 	BottomBarController *bt=[[BottomBarController alloc]init];
-	AutoVeloxViewController *av=[[AutoVeloxViewController alloc] initWithController:[bt retain]];
+	AutoVeloxViewController *av=[[AutoVeloxViewController alloc] initWithController:[bt retain] withMap:ctr.view];
 	
 	SetupTableViewController *stvc=[[SetupTableViewController alloc] initWithNibName:nil bundle:nil andController:self andAutoController:ctr];
 	[window insertSubview:stvc.view atIndex:0];
+	//[stvc.view setHidden:YES]; 
 	[tmpView addSubview:av.view];
 	UIButton *info=[UIButton buttonWithType:UIButtonTypeInfoDark];
 	info.frame=CGRectMake(270, 390, 40, 40);
