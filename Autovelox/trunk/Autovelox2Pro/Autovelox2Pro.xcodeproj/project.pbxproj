@@ -11,6 +11,10 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2058867F102480E400B69A7A /* slideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867D102480E400B69A7A /* slideDown.png */; };
+		20588680102480E400B69A7A /* slideUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867E102480E400B69A7A /* slideUp.png */; };
+		206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */ = {isa = PBXBuildFile; fileRef = 206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */; };
+		206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */ = {isa = PBXBuildFile; fileRef = 206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */; };
 		20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20A07BAA101C6766004994DC /* Ecopass.bmp */; };
 		20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */; };
 		20C3BA41101C832B00D0971E /* Sicve_Inizio.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */; };
@@ -41,6 +45,10 @@
 		1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Autovelox2ProAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Autovelox2Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autovelox2Pro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2058867D102480E400B69A7A /* slideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideDown.png; sourceTree = "<group>"; };
+		2058867E102480E400B69A7A /* slideUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideUp.png; sourceTree = "<group>"; };
+		206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoVeloxMobile40.png; sourceTree = "<group>"; };
+		206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoVeloxFisso40.png; sourceTree = "<group>"; };
 		20A07BAA101C6766004994DC /* Ecopass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Ecopass.bmp; sourceTree = "<group>"; };
 		20ADED651020E703007622BD /* ControlledAutovelox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlledAutovelox.h; sourceTree = "<group>"; };
 		20ADED661020E703007622BD /* ControlledAutovelox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlledAutovelox.m; sourceTree = "<group>"; };
@@ -149,6 +157,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2058867D102480E400B69A7A /* slideDown.png */,
+				206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */,
+				2058867E102480E400B69A7A /* slideUp.png */,
+				206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */,
 				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
 				20C3BB98101CB8CD00D0971E /* tachimeter.png */,
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
@@ -228,6 +240,10 @@
 				20C3BAFF101C967F00D0971E /* autoveloxFISSO30.png in Resources */,
 				20C3BB01101C968800D0971E /* autoveloxMOBILE30.png in Resources */,
 				20C3BB99101CB8CD00D0971E /* tachimeter.png in Resources */,
+				2058867F102480E400B69A7A /* slideDown.png in Resources */,
+				20588680102480E400B69A7A /* slideUp.png in Resources */,
+				206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */,
+				206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
