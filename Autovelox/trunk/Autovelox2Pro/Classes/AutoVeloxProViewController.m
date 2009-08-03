@@ -249,7 +249,7 @@
 	NSLog(@"Region with center %f %f and span %f %f",region.center.latitude,region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta);
 	//NSArray * tmp=map.annotations;
 
-	if(map.region.span.latitudeDelta>0.5)
+	if(map.region.span.latitudeDelta>0.1)
 	{
 		if(appoggio &&[appoggio count])
 		{

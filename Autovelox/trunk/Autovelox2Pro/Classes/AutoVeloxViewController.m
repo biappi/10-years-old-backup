@@ -50,9 +50,10 @@
 {
 	up=[[UIView alloc]init];
 	up.frame=CGRectMake(0, 0, 320, 170);
-	up.backgroundColor=[UIColor blackColor];
+	[up addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back.png"]]];
 	//up.alpha=0.9;
 	self.view=up;
+	
 	self.view.userInteractionEnabled=YES;
 	tac=[[UIImageView alloc]initWithFrame:CGRectMake(0, 20, 135,135)];
 	tac.image=[UIImage imageNamed: @"tachimeter.png"];
@@ -150,7 +151,7 @@
 		[UIView beginAnimations:@"SlideOff" context:nil];
 		[UIView setAnimationDuration:0.5];
 		//[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:map cache:NO];
-		[map setFrame:CGRectMake(0, 35, 320, 440)];
+		[map setFrame:CGRectMake(0, 35, 320, 405)];
 		self.view.frame=CGRectMake(0, -135, 320, 170);
 		//CGPointMake(self.view.center.x, self.view.center.y-135);
 		bar.image=[UIImage imageNamed:@"slideDown.png"];
