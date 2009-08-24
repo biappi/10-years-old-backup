@@ -125,7 +125,7 @@
 		fRef = 20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */;
 		name = "AutoVeloxViewController.m: 210";
 		rLen = 0;
-		rLoc = 6256;
+		rLoc = 6287;
 		rType = 0;
 		vrLen = 615;
 		vrLoc = 7235;
@@ -1046,7 +1046,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {964, 1105}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{866, 901}";
+			sepNavVisRange = "{866, 896}";
 		};
 	};
 	20692D04104322DF00F939D1 /* PBXTextBookmark */ = {
@@ -1144,6 +1144,11 @@
 		name = NaviTrackViewController.mm;
 		path = /Users/pako/Documents/trunk/iPhone/iGeoMobileSDK/Sources/NaviTrackViewController.mm;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {873, 8736}}";
+			sepNavSelRange = "{7979, 117}";
+			sepNavVisRange = "{7930, 244}";
+		};
 	};
 	20692D241043245100F939D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1309,6 +1314,33 @@
 		vrLen = 1046;
 		vrLoc = 56;
 	};
+	20692D4F1043270900F939D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */;
+		name = "AutoVeloxProViewController.h: 31";
+		rLen = 0;
+		rLoc = 742;
+		rType = 0;
+		vrLen = 1046;
+		vrLoc = 56;
+	};
+	20692D681043283800F939D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A7F1CD930F97227B00664772 /* NaviTrackViewController.mm */;
+		rLen = 11;
+		rLoc = 8018;
+		rType = 0;
+	};
+	20692D691043283800F939D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20692D231043245100F939D1 /* NaviTrackViewController.mm */;
+		name = "NaviTrackViewController.mm: 289";
+		rLen = 117;
+		rLoc = 7979;
+		rType = 0;
+		vrLen = 244;
+		vrLoc = 7930;
+	};
 	206D582510266D5E000D4AB3 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */;
@@ -1414,7 +1446,7 @@
 		ignoreCount = 0;
 		lineNumber = 281;
 		location = Autovelox2Pro;
-		modificationTime = 272835854.481381;
+		modificationTime = 272836783.585495;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -1607,16 +1639,16 @@
 	};
 	20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {876, 624}}";
-			sepNavSelRange = "{826, 0}";
-			sepNavVisRange = "{208, 779}";
+			sepNavIntBoundsRect = "{{0, 0}, {876, 1079}}";
+			sepNavSelRange = "{1201, 19}";
+			sepNavVisRange = "{1064, 683}";
 		};
 	};
 	20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {971, 4056}}";
-			sepNavSelRange = "{6256, 0}";
-			sepNavVisRange = "{7235, 615}";
+			sepNavIntBoundsRect = "{{0, 0}, {876, 5148}}";
+			sepNavSelRange = "{4674, 0}";
+			sepNavVisRange = "{4529, 851}";
 		};
 	};
 	20C3BB77101CAFB900D0971E /* BottomBarController.h */ = {
@@ -1979,7 +2011,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 20D81B53101C4CFA00FD75A7 /* Autovelox2Pro */;
-		activeSDKPreference = iphonesimulator3.1;
+		activeSDKPreference = iphoneos3.1;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Autovelox2Pro */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Autovelox2Pro */,
@@ -2186,6 +2218,9 @@
 			20692D4A1043253600F939D1 /* PBXTextBookmark */ = 20692D4A1043253600F939D1 /* PBXTextBookmark */;
 			20692D4B1043253600F939D1 /* PBXTextBookmark */ = 20692D4B1043253600F939D1 /* PBXTextBookmark */;
 			20692D4C1043253600F939D1 /* PBXTextBookmark */ = 20692D4C1043253600F939D1 /* PBXTextBookmark */;
+			20692D4F1043270900F939D1 /* PBXTextBookmark */ = 20692D4F1043270900F939D1 /* PBXTextBookmark */;
+			20692D681043283800F939D1 /* PBXTextBookmark */ = 20692D681043283800F939D1 /* PBXTextBookmark */;
+			20692D691043283800F939D1 /* PBXTextBookmark */ = 20692D691043283800F939D1 /* PBXTextBookmark */;
 			206D582510266D5E000D4AB3 = 206D582510266D5E000D4AB3 /* PBXTextBookmark */;
 			206D582610266D5E000D4AB3 = 206D582610266D5E000D4AB3 /* PBXTextBookmark */;
 			206D583510266E67000D4AB3 = 206D583510266E67000D4AB3 /* PBXTextBookmark */;
@@ -2232,6 +2267,18 @@
 			sepNavIntBoundsRect = "{{0, 0}, {764, 334}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 367}";
+		};
+	};
+	A7F1CD930F97227B00664772 /* NaviTrackViewController.mm */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.cpp.objcpp;
+		path = NaviTrackViewController.mm;
+		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {919, 8086}}";
+			sepNavSelRange = "{15358, 0}";
+			sepNavVisRange = "{14460, 543}";
 		};
 	};
 }

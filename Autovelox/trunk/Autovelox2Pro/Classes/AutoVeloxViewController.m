@@ -149,9 +149,12 @@
 - (void)gpsUpdate
 {
 	float interval;
-	if(oldDate!=nil)
+	if(oldDate)
+	{
 		interval=[oldDate timeIntervalSinceNow];
-	oldDate=[NSDate date];
+		[oldDate release];
+	}
+	oldDate=[[NSDate date] retain];
 	if(geoCoder)
 		[geoCoder release];	
 	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
