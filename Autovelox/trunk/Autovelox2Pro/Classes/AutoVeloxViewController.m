@@ -41,11 +41,10 @@
 		topAnimationStarted=NO;
 		ava=avad;
         // Custom initialization
-		locationManager=[[CLLocationManager alloc] init];
+		/*locationManager=[[CLLocationManager alloc] init];
 		locationManager.delegate=self;
 		locationManager.desiredAccuracy=kCLLocationAccuracyNearestTenMeters;
-		
-		[locationManager startUpdatingLocation];
+		[locationManager startUpdatingLocation];*/
 		CLLocationCoordinate2D firstPoint;
 		firstPoint.latitude=0;
 		firstPoint.longitude=0;
@@ -55,6 +54,8 @@
 		ontop=YES;
 		[UIView setAnimationDelegate:self];
 		[UIView setAnimationDidStopSelector:@selector(animationDidStop:::)];
+		gpsManager=[NaviCLLManager defaultCLLManager];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gpsUpdate) name:@"gpsUpdate" object:nil];
 	}
     return self;
 }
@@ -145,7 +146,7 @@
 
 
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+- (void)gpsUpdate
 {
 	float interval;
 	if(oldDate!=nil)
@@ -153,21 +154,21 @@
 	oldDate=[NSDate date];
 	if(geoCoder)
 		[geoCoder release];	
-	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
-	if(newLocation.speed!=speedNumber)
+	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
+	if(gpsManager.newLocation.speed!=speedNumber)
 	{
-		speedNumber=newLocation.speed;
+		speedNumber=gpsManager.newLocation.speed;
 		
-		speedLabel.text =[NSString stringWithFormat:@"%d",newLocation.speed];
+		speedLabel.text =[NSString stringWithFormat:@"%d",gpsManager.newLocation.speed];
 		[speedLabel setNeedsDisplay];
 	}
 	geoCoder.delegate=self;
 	[geoCoder start];
-	if(newLocation.horizontalAccuracy<50)
+	if(gpsManager.newLocation.horizontalAccuracy<50)
 	{
 		signal.image=[UIImage imageNamed:@"gps_green.png"];
 	}
-	else if(newLocation.horizontalAccuracy>50 && newLocation.horizontalAccuracy<200)
+	else if(gpsManager.newLocation.horizontalAccuracy>50 && gpsManager.newLocation.horizontalAccuracy<200)
 	{
 		signal.image=[UIImage imageNamed:@"gps_yellow.png"];
 	}
@@ -175,7 +176,7 @@
 	{
 		signal.image=[UIImage imageNamed:@"gps_red.png"];
 	}
-	//[self averageSpeed:newLocation andOldLoc:(const CLLocation*)oldLocation andTime:interval];
+	[self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
 }
 
 
@@ -352,7 +353,7 @@
 	[self.view addSubview:nDV];
 }
 
-/*-(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
+-(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
 {
 	totalTime+=time;
 	float distance;
@@ -360,9 +361,9 @@
 	{
 		distance=[newLoc getDistanceFrom:oldLoc];
 	}
-	totalDistance+=distance
-	avgSp=
-}*/
+	totalSpace+=distance;
+	return (int)totalSpace/totalTime;
+}
 
 -(void)updateDistance:(int)distance;
 {

@@ -15,18 +15,19 @@
 #import "AlertView.h"
 #import "NormalDetailsView.h"
 #import "TutorAlertDetailsView.h"
-
+#import "NaviCLLManager.h"
 typedef enum 
-	{
-		AlertTypeTutor,
-		AlertTypeAutoVeloxMobile,
-		AlertTypeAutoVeloxFisso,
-		AlertTypeEcopass,		
-	} AlertType;
+{
+	AlertTypeTutor,
+	AlertTypeAutoVeloxMobile,
+	AlertTypeAutoVeloxFisso,
+	AlertTypeEcopass,		
+} AlertType;
 
 
 
-@interface AutoVeloxViewController : UIViewController <CLLocationManagerDelegate,MKReverseGeocoderDelegate>{
+@interface AutoVeloxViewController : UIViewController <MKReverseGeocoderDelegate>
+{
 	CLLocationManager *locationManager;
 	float speed;
 	NSString *street;
@@ -56,6 +57,7 @@ typedef enum
 	NSDate * oldDate;
 	float totalTime;
 	float totalSpace;
+	NaviCLLManager * gpsManager;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
