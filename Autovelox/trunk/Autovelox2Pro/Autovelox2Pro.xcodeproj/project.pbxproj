@@ -41,6 +41,8 @@
 		3D2F14551041854400C75FDF /* speed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14541041854400C75FDF /* speed.png */; };
 		3D2F14D9104193CD00C75FDF /* divieto.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14D8104193CD00C75FDF /* divieto.png */; };
 		3D2F15631041A08000C75FDF /* NormalDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F15621041A08000C75FDF /* NormalDetailsView.m */; };
+		3D2F161D104296C200C75FDF /* TutorAlertDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */; };
+		3D2F162010429BF800C75FDF /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F161F10429BF800C75FDF /* AlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,10 @@
 		3D2F14D8104193CD00C75FDF /* divieto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divieto.png; sourceTree = "<group>"; };
 		3D2F15611041A08000C75FDF /* NormalDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDetailsView.h; sourceTree = "<group>"; };
 		3D2F15621041A08000C75FDF /* NormalDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalDetailsView.m; sourceTree = "<group>"; };
+		3D2F161B104296C200C75FDF /* TutorAlertDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TutorAlertDetailsView.h; sourceTree = "<group>"; };
+		3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorAlertDetailsView.m; sourceTree = "<group>"; };
+		3D2F161E10429BF800C75FDF /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
+		3D2F161F10429BF800C75FDF /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				20D81B77101C506D00FD75A7 /* parseCSV.h */,
+				3D2F161E10429BF800C75FDF /* AlertView.h */,
+				3D2F161F10429BF800C75FDF /* AlertView.m */,
 				20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */,
 				20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */,
 				20C3BB77101CAFB900D0971E /* BottomBarController.h */,
@@ -130,6 +138,8 @@
 				20ADED661020E703007622BD /* ControlledAutovelox.m */,
 				3D2F15611041A08000C75FDF /* NormalDetailsView.h */,
 				3D2F15621041A08000C75FDF /* NormalDetailsView.m */,
+				3D2F161B104296C200C75FDF /* TutorAlertDetailsView.h */,
+				3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -282,6 +292,8 @@
 				20C3BB7D101CAFB900D0971E /* SetupTableViewController.m in Sources */,
 				20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */,
 				3D2F15631041A08000C75FDF /* NormalDetailsView.m in Sources */,
+				3D2F161D104296C200C75FDF /* TutorAlertDetailsView.m in Sources */,
+				3D2F162010429BF800C75FDF /* AlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

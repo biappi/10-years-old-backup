@@ -16,6 +16,9 @@
 #define ANIMDUR 6.0
 #define REPANIM 1000000
 #define TAGSFONDO 777
+#define TAGNDV 111
+#define AVTAG 222
+#define TAVDTAG 333
 
 
 @interface AutoVeloxViewController (PrivateMethods)
@@ -111,6 +114,7 @@
 	
 	
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	nDV.tag=TAGNDV;
 	[self.view addSubview:nDV];
 }
 
@@ -227,7 +231,6 @@
 	//((UIImageView*)[self.view viewWithTag:TAGSFONDO]).backgroundColor=[UIColor clearColor];
 	[UIView commitAnimations];
 	ontop=YES;
-	
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -242,7 +245,16 @@
 	}
 }
 
--(void)alert:(AlertType)type;
+-(void)alertEnd;
+{
+	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	nDV.tag=TAGNDV;
+	[[self.view viewWithTag:AVTAG] removeFromSuperview];
+	[[self.view viewWithTag:AVTAG] release];
+	[self.view addSubview:nDV];
+}
+
+-(void)alert:(AlertType)type withDistance:(int)distance;
 {
 	if(type=AlertTypeTutor)
 	{
@@ -264,19 +276,44 @@
 		if(!ontop)
 			[self animationSlideOn];
 	}
-	
+	av=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
+	av.tag=AVTAG;
+	[[self.view viewWithTag:TAGNDV] removeFromSuperview];
+	[[self.view viewWithTag:TAGNDV] release];
+	[self.view addSubview:av];
+}
+
+-(void)alertTutorBegan;
+{
+	[[self.view viewWithTag:AVTAG] removeFromSuperview];
+	[[self.view viewWithTag:AVTAG] release];
+	tAVD=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	tAVD.tag=TAVDTAG;
+	[self.view addSubview:tAVD];
+}
+
+-(void)alertTutorEnd;
+{
+	[[self.view viewWithTag:TAVDTAG] removeFromSuperview];
+	[[self.view viewWithTag:TAVDTAG] release];
+	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	nDV.tag=TAGNDV;
+	[self.view addSubview:nDV];
 }
 
  - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
 	NSLog(@"stop");
 }
-- (void)dealloc {
+- (void)dealloc 
+{
 	//rilascia tutto
     [super dealloc];
 	[up release];
 	[speedLabel release];
 	[locationManager release];
+	[av release];
+	[tAVD release];
 	[tac release];
 	[bottom release];
 	[geoCoder release];

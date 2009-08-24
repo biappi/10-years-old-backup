@@ -12,7 +12,9 @@
 #import <MapKit/MapKit.h>
 #import "AutoVelox2ProAppDelegate.h"
 #import "BottomBarController.h"
+#import "AlertView.h"
 #import "NormalDetailsView.h"
+#import "TutorAlertDetailsView.h"
 
 typedef enum 
 	{
@@ -37,7 +39,6 @@ typedef enum
 	UIImageView *limit;
 	int speedNumber;
 	MKReverseGeocoder *geoCoder;
-	NormalDetailsView *nDV;
 	UILabel *strada;
 	UILabel *speedLabel;
 	BOOL animationStarted;
@@ -46,7 +47,10 @@ typedef enum
 	UIImageView *bar;
 	BOOL topAnimationStarted;
 	BOOL ontop;
+	AlertView * av;
 	MKMapView * map;
+	NormalDetailsView *nDV;
+	TutorAlertDetailsView *tAVD;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
@@ -56,6 +60,12 @@ typedef enum
 
 -(void)animation;
 
--(void)alert:(AlertType)type;
+-(void)alert:(AlertType)type withDistance:(int)distance;
+
+-(void)alertEnd;
+
+-(void)alertTutorBegan;
+
+-(void)alertTutorEnd;
 
 @end
