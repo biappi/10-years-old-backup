@@ -13,4 +13,6 @@
 	int distance;
 }
 
+@property (nonatomic,assign) int distance;
+
 @end

@@ -11,6 +11,8 @@
 
 @implementation TutorAlertDetailsView
 
+@synthesize distanzaFineTutor,averageSpeed,velocitaConsentita;
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) 
 	{

@@ -68,4 +68,8 @@ typedef enum
 
 -(void)alertTutorEnd;
 
+-(void)updateDistance:(int)distance;
+
+-(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)limit;
+
 @end

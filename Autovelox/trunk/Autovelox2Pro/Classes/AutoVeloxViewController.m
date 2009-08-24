@@ -301,6 +301,20 @@
 	[self.view addSubview:nDV];
 }
 
+-(void)updateDistance:(int)distance;
+{
+	av.distance=distance;
+	[av setNeedsDisplay];
+}
+
+-(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)lim;
+{
+	tAVD.averageSpeed=avS;
+	tAVD.velocitaConsentita=lim;
+	tAVD.distanzaFineTutor=end;
+	[tAVD setNeedsDisplay];
+}
+
  - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context
 {
 	NSLog(@"stop");
