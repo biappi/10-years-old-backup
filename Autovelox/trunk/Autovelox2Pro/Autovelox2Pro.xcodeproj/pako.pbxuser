@@ -1141,6 +1141,7 @@
 	};
 	20692D231043245100F939D1 /* NaviTrackViewController.mm */ = {
 		isa = PBXFileReference;
+		lastKnownFileType = sourcecode.cpp.objcpp;
 		name = NaviTrackViewController.mm;
 		path = /Users/pako/Documents/trunk/iPhone/iGeoMobileSDK/Sources/NaviTrackViewController.mm;
 		sourceTree = "<absolute>";
@@ -1332,6 +1333,16 @@
 		rType = 0;
 	};
 	20692D691043283800F939D1 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20692D231043245100F939D1 /* NaviTrackViewController.mm */;
+		name = "NaviTrackViewController.mm: 289";
+		rLen = 117;
+		rLoc = 7979;
+		rType = 0;
+		vrLen = 244;
+		vrLoc = 7930;
+	};
+	20692D781043290000F939D1 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 20692D231043245100F939D1 /* NaviTrackViewController.mm */;
 		name = "NaviTrackViewController.mm: 289";
@@ -1646,9 +1657,9 @@
 	};
 	20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {876, 5148}}";
+			sepNavIntBoundsRect = "{{0, 0}, {876, 5122}}";
 			sepNavSelRange = "{4674, 0}";
-			sepNavVisRange = "{4529, 851}";
+			sepNavVisRange = "{4478, 896}";
 		};
 	};
 	20C3BB77101CAFB900D0971E /* BottomBarController.h */ = {
@@ -1819,9 +1830,9 @@
 	};
 	20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {901, 5642}}";
-			sepNavSelRange = "{3469, 0}";
-			sepNavVisRange = "{2553, 1300}";
+			sepNavIntBoundsRect = "{{0, 0}, {1132, 5694}}";
+			sepNavSelRange = "{9360, 75}";
+			sepNavVisRange = "{8917, 830}";
 			sepNavWindowFrame = "{{15, 67}, {1230, 711}}";
 		};
 	};
@@ -2221,6 +2232,7 @@
 			20692D4F1043270900F939D1 /* PBXTextBookmark */ = 20692D4F1043270900F939D1 /* PBXTextBookmark */;
 			20692D681043283800F939D1 /* PBXTextBookmark */ = 20692D681043283800F939D1 /* PBXTextBookmark */;
 			20692D691043283800F939D1 /* PBXTextBookmark */ = 20692D691043283800F939D1 /* PBXTextBookmark */;
+			20692D781043290000F939D1 /* PBXTextBookmark */ = 20692D781043290000F939D1 /* PBXTextBookmark */;
 			206D582510266D5E000D4AB3 = 206D582510266D5E000D4AB3 /* PBXTextBookmark */;
 			206D582610266D5E000D4AB3 = 206D582610266D5E000D4AB3 /* PBXTextBookmark */;
 			206D583510266E67000D4AB3 = 206D583510266E67000D4AB3 /* PBXTextBookmark */;
