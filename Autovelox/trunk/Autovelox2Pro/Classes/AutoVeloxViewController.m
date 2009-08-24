@@ -248,7 +248,7 @@
 	[UIView beginAnimations:@"SlideOff" context:nil];
 	[UIView setAnimationDuration:0.5];
 	//[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:map cache:NO];
-	[map setFrame:CGRectMake(0, 35, 320, 405)];
+	[map setFrame:CGRectMake(0, 77, 320, 405)];
 	self.view.frame=CGRectMake(0, -93, 320, 170);	
 	//CGPointMake(self.view.center.x, self.view.center.y-135);
 	bar.image=[UIImage imageNamed:@"slideDown.png"];	

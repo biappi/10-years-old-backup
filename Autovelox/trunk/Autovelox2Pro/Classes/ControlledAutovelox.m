@@ -27,5 +27,6 @@
 -(void) dealloc
 {
 	[autovelox release];
+	[super dealloc];
 }
 @end

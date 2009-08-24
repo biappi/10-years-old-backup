@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "GpsAnnotation.h"
+#import "NaviCLLManager.h"
 @interface AutoVeloxProViewController : UIViewController <MKMapViewDelegate> {
 
 	MKMapView * map;
@@ -20,6 +23,13 @@
 	BOOL mobili;
 	BOOL tutor;
 	BOOL ecopass;
+	BOOL centered;
+	UIButton *centerGps;
+	CLLocationManager * location;
+	CLLocationCoordinate2D lastPosition;
+	NaviCLLManager * manager;
+	GpsAnnotation * gpsAnnotation;
+	MKAnnotationView * gpsView;
 }
 -(void)readAnnotationsFromCSV;
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	

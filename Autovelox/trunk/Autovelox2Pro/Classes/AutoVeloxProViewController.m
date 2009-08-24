@@ -47,6 +47,21 @@
 		else 
 			ecopass =NO;
 		
+		
+		centered=NO;
+		manager=[NaviCLLManager defaultCLLManager];
+		[manager startGp];
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gpsUpdate) name:@"gpsUpdate" object:nil];
+		gpsAnnotation=[[GpsAnnotation alloc] init];
+		CLLocationCoordinate2D pippo;
+		pippo.latitude=39.37821;
+		pippo.longitude=9.04000;
+		[gpsAnnotation setCoord:pippo];
+		pippo.latitude=0;
+		pippo.longitude=0;
+		lastPosition=pippo;
+		
+		
 	}
 	return self;
 }
@@ -60,6 +75,18 @@
     return self;
 }
 */
+- (void)gpsUpdate
+{
+	NSLog(@"Location updated");
+	lastPosition=manager.newLocation.coordinate;
+	[map removeAnnotation:gpsAnnotation];
+	[gpsAnnotation setCoord:manager.newLocation.coordinate];
+	[map addAnnotation:gpsAnnotation];
+	
+	if(centered)
+		[map setCenterCoordinate:manager.newLocation.coordinate animated:NO];
+	
+}
 
 
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -70,16 +97,44 @@
 	CLLocationCoordinate2D pippo;
 	pippo.latitude=39.37821;
 	pippo.longitude=9.04000;
-	map.showsUserLocation=YES;
+	map.showsUserLocation=NO;
 	
 	[map setRegion:MKCoordinateRegionMake(pippo, MKCoordinateSpanMake(1.0, 1.0))];
 	self.view=map;
 	controlledAutoveloxs=[[NSMutableArray alloc] init];
 	[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(controlNearAutovelox:) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(centerMap) userInfo:nil repeats:YES];
+	centerGps=[UIButton buttonWithType:UIButtonTypeInfoDark];
+	[centerGps setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
+	//[centerGps setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateHighlighted];
+	centerGps.frame=CGRectMake(275, 15, 30, 30);
+	[centerGps addTarget:self action:@selector(center) forControlEvents:UIControlEventTouchDown];
+	[map addAnnotation:gpsAnnotation];
+	[self.view addSubview:centerGps];
+}
+-(void) centerMap
+{
+	//[map addAnnotation:gpsAnnotation];
+	if(centered)
+	{
+		[map setCenterCoordinate:gpsAnnotation.coordinate animated:NO];
+	}
+}
+-(void) center;
+{
+	if(!centered)
+	{
+		centered=YES;
+		//[centerGps setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateNormal];
+		[centerGps setAlpha:0.2];
+		[map setCenterCoordinate:gpsAnnotation.coordinate animated:YES];
+	}
+
 }
 
 - (void)controlNearAutovelox:(NSTimer*)theTimer
 {
+	
 	
 	CLLocationCoordinate2D userPosition=[map userLocation].coordinate;
 	
@@ -180,22 +235,6 @@
 		NSLog(@"parse end %@",[NSDate date]);
 }
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-}
-*/
-
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
@@ -211,10 +250,24 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-	if(![annotation isKindOfClass:[Annotation class]])
+	if((![annotation isKindOfClass:[Annotation class]]) && (![annotation isKindOfClass:[GpsAnnotation class]]))
 		return nil;
 	
-	
+		 if([annotation isKindOfClass:[GpsAnnotation class]])
+		 {
+			 MKAnnotationView * view=[mapView dequeueReusableAnnotationViewWithIdentifier:@"gps"];
+			 if(!view)
+			 {
+				 view=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"gps"];
+				 view.canShowCallout=NO;
+				 
+			 }
+			 view.image=[UIImage imageNamed:@"CarSmall.png"];
+			 gpsView=view;
+			 double radians=(manager.newLocation.course * 3.14159)/180;
+			 view.transform=CGAffineTransformMakeRotation(radians);
+			 return view;
+		 }
 	MKAnnotationView * view=[mapView dequeueReusableAnnotationViewWithIdentifier:@"autovelox"];
 	if(!view)
 	{
@@ -239,11 +292,30 @@
 
 - (void)dealloc {
     [super dealloc];
+	[centerGps release];
 	if(appoggio)
 		[appoggio release];
 }
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
+	
+	double latmap=map.centerCoordinate.latitude;
+	double userlat=gpsAnnotation.coordinate.latitude;
+	double controllo=latmap- userlat;
+	if(controllo<0)
+		controllo*=-1;
+	
+	latmap=map.centerCoordinate.longitude;
+	userlat=gpsAnnotation.coordinate.longitude;
+	double controllo2=latmap- userlat;
+	if(controllo2<0)
+		controllo2*=-1;
+	if(controllo >(map.region.span.latitudeDelta/100.0) || controllo2>(map.region.span.longitudeDelta/100.0))
+	{
+		centered=NO;
+		centerGps.alpha=1;
+	}
+	
 	NSLog(@"Did change");
 	MKCoordinateRegion region=[mapView region];
 	NSLog(@"Region with center %f %f and span %f %f",region.center.latitude,region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta);
@@ -274,7 +346,7 @@
 	NSNumber * latmin=[NSNumber numberWithDouble:( region.center.latitude - (latspan/2))];
 	NSNumber * lonmax=[NSNumber numberWithDouble:( region.center.longitude + (lonspan/2))];
 	NSNumber * lonmin=[NSNumber numberWithDouble:( region.center.longitude - (lonspan/2))];
-	NSString * predicString=[NSString stringWithFormat:@"latitude > %@ && latitude < %@ &&longitude <%@ && longitude > %@ ", latmin,latmax,lonmax,lonmin];
+	NSString * predicString=[NSString stringWithFormat:@"latitude > %@ && latitude < %@ &&longitude < %@ && longitude > %@ ", latmin,latmax,lonmax,lonmin];
 	BOOL firstAnd=YES;
 	if(!fissi && !mobili && !ecopass && !tutor)
 		return;
@@ -356,7 +428,7 @@
 	[appoggio addObjectsFromArray:newAnn];
 	[newAnn release];
 	[oldAnn release];
-	
+
 }
 
 @end

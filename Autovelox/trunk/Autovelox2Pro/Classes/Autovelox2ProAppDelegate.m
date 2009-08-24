@@ -53,6 +53,8 @@
 	//[stvc.view setHidden:YES]; 
 	[tmpView addSubview:av.view];
 	UIButton *info=[UIButton buttonWithType:UIButtonTypeInfoDark];
+	//[info setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
+	//[info setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateHighlighted];
 	info.frame=CGRectMake(270, 390, 40, 40);
 	[info addTarget:self action:@selector(flip) forControlEvents:UIControlEventTouchUpInside];
 	[tmpView addSubview:info];

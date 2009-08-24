@@ -13,7 +13,8 @@
 typedef enum{
 	AUTOVELOXFISSO,
 	AUTOVELOXMOBILE,
-	ECOPASS
+	ECOPASS,
+	TUTOR
 } AUTOVELOXTYPE;
 
 @interface Annotation :  NSManagedObject <MKAnnotation> 
