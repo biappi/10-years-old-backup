@@ -51,6 +51,11 @@ typedef enum
 	MKMapView * map;
 	NormalDetailsView *nDV;
 	TutorAlertDetailsView *tAVD;
+	UIImageView *signal;
+	int avgSp;
+	NSDate * oldDate;
+	float totalTime;
+	float totalSpace;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;

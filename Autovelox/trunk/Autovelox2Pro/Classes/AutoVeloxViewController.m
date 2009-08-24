@@ -25,7 +25,7 @@
 //- (void) updateSpeed:(int)sp;
 -(void)animationSlideOn;
 -(void)animationSlideOff;
-
+-(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
 @end
 
 @implementation AutoVeloxViewController
@@ -98,12 +98,13 @@
 	UIFont * fo=[UIFont fontWithName:@"Arial" size:50.0];
 	speedLabel.font=fo;
 	speedLabel.backgroundColor=[UIColor clearColor];
-	speedLabel.text=@"0";
+	speedLabel.text=@"000";
+	
 	
 	
 	limit=[[UIImageView alloc] init];
 	limit.frame=CGRectMake(32, 23, 75, 67);
-	limit.image=[UIImage imageNamed:@"divieto.png"];
+	limit.image=[UIImage imageNamed:@"arrow.png"];
 	[self.view addSubview:limit];
 	//[self.view addSubview:tac];
 	[self.view addSubview:speedLabel];
@@ -116,6 +117,11 @@
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	nDV.tag=TAGNDV;
 	[self.view addSubview:nDV];
+	signal=[[UIImageView alloc] initWithFrame:CGRectMake(0, 12, 40, 40)];
+	signal.image=[UIImage imageNamed:@"gps_red.png"];
+	signal.backgroundColor=[UIColor clearColor];
+	[self.view addSubview:signal];
+	
 }
 
 -(void)animation
@@ -134,14 +140,17 @@
 	ava.strada.frame=move;
 	[UIView commitAnimations]; 
 	ava.strada.frame=CGRectMake(0, 10, LABWIDT ,20 );
-	animationStarted=YES;
-	
+	animationStarted=YES;	
 }
 
 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
+	float interval;
+	if(oldDate!=nil)
+		interval=[oldDate timeIntervalSinceNow];
+	oldDate=[NSDate date];
 	if(geoCoder)
 		[geoCoder release];	
 	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:newLocation.coordinate];
@@ -154,7 +163,19 @@
 	}
 	geoCoder.delegate=self;
 	[geoCoder start];
-	
+	if(newLocation.horizontalAccuracy<50)
+	{
+		signal.image=[UIImage imageNamed:@"gps_green.png"];
+	}
+	else if(newLocation.horizontalAccuracy>50 && newLocation.horizontalAccuracy<200)
+	{
+		signal.image=[UIImage imageNamed:@"gps_yellow.png"];
+	}
+	else
+	{
+		signal.image=[UIImage imageNamed:@"gps_red.png"];
+	}
+	//[self averageSpeed:newLocation andOldLoc:(const CLLocation*)oldLocation andTime:interval];
 }
 
 
@@ -174,8 +195,29 @@
 	postalCode = placemark.postalCode;
 	region = placemark.administrativeArea;
 	country = placemark.country;
-	NSLog([NSString stringWithFormat:@"strada: %@\nCodice postale: %@\nCity: %@\nRegion: %@\nCountry: %@\n",street,postalCode,city,region,country ]);
-	NSString *newText=[NSString stringWithFormat:@"%@, %@, %@, %@, %@.",street,postalCode,city,region,country ];
+	//NSLog([NSString stringWithFormat:@"strada: %@\nCodice postale: %@\nCity: %@\nRegion: %@\nCountry: %@\n",street,postalCode,city,region,country ]);
+	if(street==nil)
+		street=@"";
+	else
+		street=[street stringByAppendingString:@","];
+	if(postalCode==nil)
+		postalCode=@"";
+	else
+		postalCode = [postalCode stringByAppendingString:@","];
+	if(city==nil)
+		city=@"";
+	else
+		city = [city stringByAppendingString:@","];
+	if(region == nil)
+		region=@"";
+	else
+		region= [region stringByAppendingString:@","];
+	if(country == nil)
+		country=@"";
+	else
+		country= [country stringByAppendingString:@"."];
+	NSString *newText=[NSString stringWithFormat:@"%@ %@ %@ %@ %@",street,postalCode,city,region,country ];
+	
 	if(![newText isEqualToString:@", , , ."] &&![newText isEqualToString:@""]&& ![strada.text isEqualToString:newText])
 	{
 		ava.strada.text=newText;
@@ -184,13 +226,12 @@
 	}
 	if(!animationStarted)
 		[self animation];
-
-	
 }
 
 
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning 
+{
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
@@ -208,14 +249,14 @@
 	[UIView setAnimationDuration:0.5];
 	//[UIView setAnimationTransition:UIViewAnimationTransitionNone forView:map cache:NO];
 	[map setFrame:CGRectMake(0, 35, 320, 405)];
-	self.view.frame=CGRectMake(0, -93, 320, 170);
+	self.view.frame=CGRectMake(0, -93, 320, 170);	
 	//CGPointMake(self.view.center.x, self.view.center.y-135);
 	bar.image=[UIImage imageNamed:@"slideDown.png"];	
-	nDV.frame=CGRectMake(145, 85, 160, 160);		
+	nDV.frame=CGRectMake(145, 85, 160, 160);	
 	[UIView commitAnimations];
 	((UIImageView*)[self.view viewWithTag:TAGSFONDO]).image=nil;
 	ontop=NO;
-	
+	signal.frame=CGRectMake(98, 105, 40, 40);
 }
 
 -(void)animationSlideOn;
@@ -227,9 +268,13 @@
 	bar.image=[UIImage imageNamed:@"slideUp.png"];
 	[map setFrame:CGRectMake(0,170, 320, 270)];		
 	nDV.frame=CGRectMake(145, 0, 160, 160);
+	
 	((UIImageView*)[self.view viewWithTag:TAGSFONDO]).image=[UIImage imageNamed:@"back.png"];
 	//((UIImageView*)[self.view viewWithTag:TAGSFONDO]).backgroundColor=[UIColor clearColor];
+	
 	[UIView commitAnimations];
+
+	signal.frame=CGRectMake(0, 12, 40, 40);
 	ontop=YES;
 }
 
@@ -237,12 +282,13 @@
 {
 	if(ontop)
 	{
-		[self animationSlideOff];
+		[self animationSlideOff];		
 	}
 	else
-	{				
+	{	
 		[self animationSlideOn];
 	}
+	
 }
 
 -(void)alertEnd;
@@ -280,6 +326,8 @@
 	av.tag=AVTAG;
 	[[self.view viewWithTag:TAGNDV] removeFromSuperview];
 	[[self.view viewWithTag:TAGNDV] release];
+	limit.image=[UIImage imageNamed:@"divieto.png"];
+	[limit setNeedsDisplay];
 	[self.view addSubview:av];
 }
 
@@ -287,6 +335,7 @@
 {
 	[[self.view viewWithTag:AVTAG] removeFromSuperview];
 	[[self.view viewWithTag:AVTAG] release];
+	
 	tAVD=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	tAVD.tag=TAVDTAG;
 	[self.view addSubview:tAVD];
@@ -298,8 +347,22 @@
 	[[self.view viewWithTag:TAVDTAG] release];
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	nDV.tag=TAGNDV;
+	limit.image=[UIImage imageNamed:@"arrow.png"];
+	[limit setNeedsDisplay];
 	[self.view addSubview:nDV];
 }
+
+/*-(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
+{
+	totalTime+=time;
+	float distance;
+	if(newLoc.horizontalAccuracy<50)
+	{
+		distance=[newLoc getDistanceFrom:oldLoc];
+	}
+	totalDistance+=distance
+	avgSp=
+}*/
 
 -(void)updateDistance:(int)distance;
 {

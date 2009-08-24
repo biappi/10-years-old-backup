@@ -27,7 +27,6 @@
 		20C3BB7B101CAFB900D0971E /* AutoVeloxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */; };
 		20C3BB7C101CAFB900D0971E /* BottomBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB78101CAFB900D0971E /* BottomBarController.m */; };
 		20C3BB7D101CAFB900D0971E /* SetupTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */; };
-		20C3BB99101CB8CD00D0971E /* tachimeter.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BB98101CB8CD00D0971E /* tachimeter.png */; };
 		20D81B6B101C4F5700FD75A7 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D81B6A101C4F5700FD75A7 /* Annotation.m */; };
 		20D81B6D101C4F8800FD75A7 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20D81B6C101C4F8800FD75A7 /* MapKit.framework */; };
 		20D81B7B101C506D00FD75A7 /* parseCSV.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D81B78101C506D00FD75A7 /* parseCSV.m */; };
@@ -43,6 +42,10 @@
 		3D2F15631041A08000C75FDF /* NormalDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F15621041A08000C75FDF /* NormalDetailsView.m */; };
 		3D2F161D104296C200C75FDF /* TutorAlertDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */; };
 		3D2F162010429BF800C75FDF /* AlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F161F10429BF800C75FDF /* AlertView.m */; };
+		3D2F16BC1042E6E100C75FDF /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16BB1042E6E100C75FDF /* arrow.png */; };
+		3D2F16CC1042F22E00C75FDF /* gps_red.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16C91042F22E00C75FDF /* gps_red.png */; };
+		3D2F16CD1042F22E00C75FDF /* gps_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16CA1042F22E00C75FDF /* gps_green.png */; };
+		3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16CB1042F22E00C75FDF /* gps_yellow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,7 +74,6 @@
 		20C3BB78101CAFB900D0971E /* BottomBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomBarController.m; sourceTree = "<group>"; };
 		20C3BB79101CAFB900D0971E /* SetupTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTableViewController.h; sourceTree = "<group>"; };
 		20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTableViewController.m; sourceTree = "<group>"; };
-		20C3BB98101CB8CD00D0971E /* tachimeter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tachimeter.png; sourceTree = "<group>"; };
 		20D81B69101C4F5700FD75A7 /* Annotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Annotation.h; path = ../Annotation.h; sourceTree = "<group>"; };
 		20D81B6A101C4F5700FD75A7 /* Annotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Annotation.m; path = ../Annotation.m; sourceTree = "<group>"; };
 		20D81B6C101C4F8800FD75A7 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -95,6 +97,10 @@
 		3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TutorAlertDetailsView.m; sourceTree = "<group>"; };
 		3D2F161E10429BF800C75FDF /* AlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertView.h; sourceTree = "<group>"; };
 		3D2F161F10429BF800C75FDF /* AlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertView.m; sourceTree = "<group>"; };
+		3D2F16BB1042E6E100C75FDF /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		3D2F16C91042F22E00C75FDF /* gps_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps_red.png; sourceTree = "<group>"; };
+		3D2F16CA1042F22E00C75FDF /* gps_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps_green.png; sourceTree = "<group>"; };
+		3D2F16CB1042F22E00C75FDF /* gps_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps_yellow.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,13 +185,16 @@
 			isa = PBXGroup;
 			children = (
 				2058867D102480E400B69A7A /* slideDown.png */,
+				3D2F16C91042F22E00C75FDF /* gps_red.png */,
+				3D2F16CA1042F22E00C75FDF /* gps_green.png */,
+				3D2F16CB1042F22E00C75FDF /* gps_yellow.png */,
 				206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */,
+				3D2F16BB1042E6E100C75FDF /* arrow.png */,
 				3D2F14D8104193CD00C75FDF /* divieto.png */,
 				2058867E102480E400B69A7A /* slideUp.png */,
 				206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */,
 				20B8F1441026764200FA4ED8 /* back.png */,
 				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
-				20C3BB98101CB8CD00D0971E /* tachimeter.png */,
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
 				20C3BAA6101C93C300D0971E /* autoveloxM.png */,
 				20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */,
@@ -263,7 +272,6 @@
 				20C3BAA9101C93C700D0971E /* autoveloxF.png in Resources */,
 				20C3BAFF101C967F00D0971E /* autoveloxFISSO30.png in Resources */,
 				20C3BB01101C968800D0971E /* autoveloxMOBILE30.png in Resources */,
-				20C3BB99101CB8CD00D0971E /* tachimeter.png in Resources */,
 				2058867F102480E400B69A7A /* slideDown.png in Resources */,
 				20588680102480E400B69A7A /* slideUp.png in Resources */,
 				206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */,
@@ -271,6 +279,10 @@
 				20B8F1451026764200FA4ED8 /* back.png in Resources */,
 				3D2F14551041854400C75FDF /* speed.png in Resources */,
 				3D2F14D9104193CD00C75FDF /* divieto.png in Resources */,
+				3D2F16BC1042E6E100C75FDF /* arrow.png in Resources */,
+				3D2F16CC1042F22E00C75FDF /* gps_red.png in Resources */,
+				3D2F16CD1042F22E00C75FDF /* gps_green.png in Resources */,
+				3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
