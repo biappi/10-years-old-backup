@@ -38,6 +38,9 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28C3AD8A0F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
+		3D2F14551041854400C75FDF /* speed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14541041854400C75FDF /* speed.png */; };
+		3D2F14D9104193CD00C75FDF /* divieto.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14D8104193CD00C75FDF /* divieto.png */; };
+		3D2F15631041A08000C75FDF /* NormalDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F15621041A08000C75FDF /* NormalDetailsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +85,10 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Autovelox2Pro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Autovelox2Pro_Prefix.pch; sourceTree = "<group>"; };
+		3D2F14541041854400C75FDF /* speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed.png; sourceTree = "<group>"; };
+		3D2F14D8104193CD00C75FDF /* divieto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divieto.png; sourceTree = "<group>"; };
+		3D2F15611041A08000C75FDF /* NormalDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDetailsView.h; sourceTree = "<group>"; };
+		3D2F15621041A08000C75FDF /* NormalDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalDetailsView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,6 +128,8 @@
 				1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */,
 				20ADED651020E703007622BD /* ControlledAutovelox.h */,
 				20ADED661020E703007622BD /* ControlledAutovelox.m */,
+				3D2F15611041A08000C75FDF /* NormalDetailsView.h */,
+				3D2F15621041A08000C75FDF /* NormalDetailsView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -161,6 +170,7 @@
 			children = (
 				2058867D102480E400B69A7A /* slideDown.png */,
 				206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */,
+				3D2F14D8104193CD00C75FDF /* divieto.png */,
 				2058867E102480E400B69A7A /* slideUp.png */,
 				206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */,
 				20B8F1441026764200FA4ED8 /* back.png */,
@@ -171,6 +181,7 @@
 				20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */,
 				20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */,
 				20A07BAA101C6766004994DC /* Ecopass.bmp */,
+				3D2F14541041854400C75FDF /* speed.png */,
 				20C3BAA8101C93C700D0971E /* autoveloxF.png */,
 				28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */,
 				20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */,
@@ -248,6 +259,8 @@
 				206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */,
 				206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */,
 				20B8F1451026764200FA4ED8 /* back.png in Resources */,
+				3D2F14551041854400C75FDF /* speed.png in Resources */,
+				3D2F14D9104193CD00C75FDF /* divieto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +281,7 @@
 				20C3BB7C101CAFB900D0971E /* BottomBarController.m in Sources */,
 				20C3BB7D101CAFB900D0971E /* SetupTableViewController.m in Sources */,
 				20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */,
+				3D2F15631041A08000C75FDF /* NormalDetailsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
