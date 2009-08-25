@@ -25,11 +25,11 @@
 //- (void) updateSpeed:(int)sp;
 -(void)animationSlideOn;
 -(void)animationSlideOff;
--(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
+-(int) averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
 @end
 
 @implementation AutoVeloxViewController
-@synthesize animationStarted,speedNumber;
+@synthesize animationStarted,speedNumber,limitTutor,distanceFromTutor;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 -(id)initWithController:(BottomBarController*)avad withMap:(MKMapView *) m;
@@ -99,7 +99,7 @@
 	UIFont * fo=[UIFont fontWithName:@"Arial" size:50.0];
 	speedLabel.font=fo;
 	speedLabel.backgroundColor=[UIColor clearColor];
-	speedLabel.text=@"000";
+	speedLabel.text=@"0";
 	
 	
 	
@@ -144,7 +144,11 @@
 	animationStarted=YES;	
 }
 
-
+-(void)updateAutoveloxNumber:(int)num;
+{
+	nDV.numberOfAutovelox=num;
+	[nDV setNeedsDisplay];
+}
 
 - (void)gpsUpdate
 {
@@ -162,7 +166,7 @@
 	{
 		speedNumber=gpsManager.newLocation.speed;
 		
-		speedLabel.text =[NSString stringWithFormat:@"%d",gpsManager.newLocation.speed];
+		speedLabel.text =[NSString stringWithFormat:@"%f.0",gpsManager.newLocation.speed];
 		[speedLabel setNeedsDisplay];
 	}
 	geoCoder.delegate=self;
@@ -179,17 +183,20 @@
 	{
 		signal.image=[UIImage imageNamed:@"gps_red.png"];
 	}
-	[self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
+	avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
+	[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
 }
 
 
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
+	
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
 {
+	
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
@@ -271,11 +278,9 @@
 	self.view.frame=CGRectMake(0, 0, 320, 170);
 	bar.image=[UIImage imageNamed:@"slideUp.png"];
 	[map setFrame:CGRectMake(0,170, 320, 270)];		
-	nDV.frame=CGRectMake(145, 0, 160, 160);
-	
+	nDV.frame=CGRectMake(145, 0, 160, 160);	
 	((UIImageView*)[self.view viewWithTag:TAGSFONDO]).image=[UIImage imageNamed:@"back.png"];
-	//((UIImageView*)[self.view viewWithTag:TAGSFONDO]).backgroundColor=[UIColor clearColor];
-	
+	//((UIImageView*)[self.view viewWithTag:TAGSFONDO]).backgroundColor=[UIColor clearColor];	
 	[UIView commitAnimations];
 
 	signal.frame=CGRectMake(0, 12, 40, 40);
@@ -358,13 +363,9 @@
 
 -(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
 {
-	totalTime+=time;
-	float distance;
-	if(newLoc.horizontalAccuracy<50)
-	{
-		distance=[newLoc getDistanceFrom:oldLoc];
-	}
-	totalSpace+=distance;
+	totalTime += time;
+	float distance = [newLoc getDistanceFrom:oldLoc];
+	totalSpace += distance;
 	return (int)totalSpace/totalTime;
 }
 

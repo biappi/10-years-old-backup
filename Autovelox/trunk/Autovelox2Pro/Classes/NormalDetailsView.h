@@ -13,6 +13,6 @@
 	int numberOfAutovelox;
 }
 
-@property (nonatomic,assign) int numberOfAutovelox;;
+@property (nonatomic,assign) int numberOfAutovelox;
 
 @end

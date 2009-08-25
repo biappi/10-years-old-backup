@@ -29,39 +29,45 @@ typedef enum
 @interface AutoVeloxViewController : UIViewController <MKReverseGeocoderDelegate>
 {
 	CLLocationManager *locationManager;
-	float speed;
+	NaviCLLManager * gpsManager;
+	MKReverseGeocoder *geoCoder;
+	MKMapView * map;
+	UIView *up;
+	UIView *bottom;
+	UIImageView *limit;
+	UIImageView *signal;	
+	UIImageView *tac;
+	UIImageView *bar;
+	UILabel *strada;
+	UILabel *speedLabel;
+	NormalDetailsView *nDV;
+	TutorAlertDetailsView *tAVD;
+	AlertView * av;
+	BottomBarController *ava;
+	NSDate * oldDate;
 	NSString *street;
 	NSString *city;
 	NSString *region;
 	NSString *postalCode;
 	NSString *country;
-	UIView *up;
-	UIView *bottom;
-	UIImageView *limit;
-	int speedNumber;
-	MKReverseGeocoder *geoCoder;
-	UILabel *strada;
-	UILabel *speedLabel;
-	BOOL animationStarted;
-	BottomBarController *ava;
-	UIImageView *tac;
-	UIImageView *bar;
-	BOOL topAnimationStarted;
-	BOOL ontop;
-	AlertView * av;
-	MKMapView * map;
-	NormalDetailsView *nDV;
-	TutorAlertDetailsView *tAVD;
-	UIImageView *signal;
-	int avgSp;
-	NSDate * oldDate;
 	float totalTime;
 	float totalSpace;
-	NaviCLLManager * gpsManager;
+	float speed;
+	int distanceFromTutor;
+	int limitTutor;
+	int speedNumber;
+	int avgSp;
+	BOOL topAnimationStarted;
+	BOOL ontop;
+	BOOL animationStarted;
+	int autoveloxNumber;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
 @property(nonatomic,readonly) int speedNumber;
+@property(nonatomic,readonly) int distanceFromTutor;
+@property(nonatomic,readonly) int limitTutor;
+
 
 -(id)initWithController:(BottomBarController*)avad withMap:(MKMapView*) map;
 
