@@ -26,7 +26,7 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 	UILabel *noa=[[UILabel alloc]initWithFrame:CGRectMake(5, 15, 185, 65)];
-	noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 10Km: %d00",numberOfAutovelox];
+	noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 10Km: %d",numberOfAutovelox];
 	noa.numberOfLines=2;
 	noa.backgroundColor=[UIColor clearColor];
 	noa.textColor=[UIColor whiteColor];

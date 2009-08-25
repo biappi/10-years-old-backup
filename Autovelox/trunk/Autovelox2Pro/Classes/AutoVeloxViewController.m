@@ -118,7 +118,12 @@
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	nDV.tag=TAGNDV;
 	[self.view addSubview:nDV];
-	signal=[[UIImageView alloc] initWithFrame:CGRectMake(0, 12, 40, 40)];
+	/*TutorAlertDetailsView *tdv=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	[self.view addSubview:tdv];
+	AlertView *a=[[AlertView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	[self.view addSubview:a];*/
+	
+	signal=[[UIImageView alloc] initWithFrame:CGRectMake(0, 21, 40, 20)];
 	signal.image=[UIImage imageNamed:@"gps_red.png"];
 	signal.backgroundColor=[UIColor clearColor];
 	[self.view addSubview:signal];
@@ -166,7 +171,7 @@
 	{
 		speedNumber=gpsManager.newLocation.speed;
 		
-		speedLabel.text =[NSString stringWithFormat:@"%f.0",gpsManager.newLocation.speed];
+		speedLabel.text =[NSString stringWithFormat:@"%.0f",gpsManager.newLocation.speed];
 		[speedLabel setNeedsDisplay];
 	}
 	geoCoder.delegate=self;
@@ -183,8 +188,13 @@
 	{
 		signal.image=[UIImage imageNamed:@"gps_red.png"];
 	}
-	avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
-	[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
+	if(tAVD!=nil)
+	{
+		avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
+		if(avgSp>limitTutor)
+			tAVD.alert=YES;
+		[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
+	}
 }
 
 
@@ -267,7 +277,7 @@
 	[UIView commitAnimations];
 	((UIImageView*)[self.view viewWithTag:TAGSFONDO]).image=nil;
 	ontop=NO;
-	signal.frame=CGRectMake(98, 105, 40, 40);
+	signal.frame=CGRectMake(98, 113, 40, 20);
 }
 
 -(void)animationSlideOn;
@@ -283,7 +293,7 @@
 	//((UIImageView*)[self.view viewWithTag:TAGSFONDO]).backgroundColor=[UIColor clearColor];	
 	[UIView commitAnimations];
 
-	signal.frame=CGRectMake(0, 12, 40, 40);
+	signal.frame=CGRectMake(0, 21, 40, 20);
 	ontop=YES;
 }
 

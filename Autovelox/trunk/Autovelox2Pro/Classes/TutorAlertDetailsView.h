@@ -14,10 +14,12 @@
 	int averageSpeed;
 	int distanzaFineTutor;
 	int velocitaConsentita;
+	BOOL alert;
 }
 
 @property (nonatomic,assign) int averageSpeed;
 @property (nonatomic,assign) int distanzaFineTutor;
 @property (nonatomic,assign) int velocitaConsentita;
+@property (nonatomic,assign) BOOL alert;
 
 @end
