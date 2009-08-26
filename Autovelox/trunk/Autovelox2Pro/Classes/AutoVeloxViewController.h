@@ -40,6 +40,7 @@ typedef enum
 	UIImageView *bar;
 	UILabel *strada;
 	UILabel *speedLabel;
+	UILabel *limitSpeed;
 	NormalDetailsView *nDV;
 	TutorAlertDetailsView *tAVD;
 	AlertView * av;

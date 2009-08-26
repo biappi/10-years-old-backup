@@ -22,10 +22,15 @@
 
 
 @interface AutoVeloxViewController (PrivateMethods)
-//- (void) updateSpeed:(int)sp;
+
 -(void)animationSlideOn;
+
 -(void)animationSlideOff;
+
 -(int) averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
+
+-(void)setLimit;
+
 @end
 
 @implementation AutoVeloxViewController
@@ -169,7 +174,8 @@
 	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
 	if(gpsManager.newLocation.speed!=speedNumber)
 	{
-		speedNumber=gpsManager.newLocation.speed;
+		if(gpsManager.newLocation.speed>0)
+			speedNumber=gpsManager.newLocation.speed;
 		
 		speedLabel.text =[NSString stringWithFormat:@"%.0f",gpsManager.newLocation.speed];
 		[speedLabel setNeedsDisplay];
@@ -301,11 +307,15 @@
 {
 	if(ontop)
 	{
-		[self animationSlideOff];		
+		//[self animationSlideOff];	
+		[self alert:AlertTypeTutor withDistance:800];
+		//sleep(2);
+		[self alertTutorBegan];
 	}
 	else
 	{	
-		[self animationSlideOn];
+		//[self animationSlideOn];
+		[self alertTutorEnd];
 	}
 	
 }
@@ -350,11 +360,38 @@
 	[self.view addSubview:av];
 }
 
+-(void) setLimit;
+{
+	if(limitTutor>0)
+	{
+		UIFont * fo;
+		limit.image = [UIImage imageNamed:@"divieto.png"];
+		if(limitTutor<100)
+		{
+			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(33, 23, 75, 67)];
+			fo=[UIFont fontWithName:@"Arial" size:35.0];
+		}
+		else
+		{
+			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(32, 23, 75, 67)];
+			fo=[UIFont fontWithName:@"Arial" size:30.0];
+		}
+		limitSpeed.textAlignment=UITextAlignmentCenter;
+		limitSpeed.textColor=[UIColor blackColor];
+		limitSpeed.font=fo;
+		limitSpeed.backgroundColor=[UIColor clearColor];
+		
+		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
+		[self.view addSubview:limitSpeed];
+	}
+}
+
 -(void)alertTutorBegan;
 {
+	limitTutor=80;
+	[self setLimit];	
 	[[self.view viewWithTag:AVTAG] removeFromSuperview];
-	[[self.view viewWithTag:AVTAG] release];
-	
+	[[self.view viewWithTag:AVTAG] release];	
 	tAVD=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	tAVD.tag=TAVDTAG;
 	[self.view addSubview:tAVD];

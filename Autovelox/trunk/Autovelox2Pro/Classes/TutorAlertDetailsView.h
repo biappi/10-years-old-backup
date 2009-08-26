@@ -11,6 +11,12 @@
 
 @interface TutorAlertDetailsView : UIView 
 {
+	UILabel *avSpeed;
+	UILabel *numberSpeed;
+	UILabel *distFin;
+	UILabel *dis;
+	UILabel *unitDis;
+	UILabel *unit;
 	int averageSpeed;
 	int distanzaFineTutor;
 	int velocitaConsentita;

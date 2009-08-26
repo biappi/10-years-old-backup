@@ -11,6 +11,7 @@
 
 @interface NormalDetailsView : UIView {
 	int numberOfAutovelox;
+	UILabel *noa;
 }
 
 @property (nonatomic,assign) int numberOfAutovelox;

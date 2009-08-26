@@ -11,6 +11,9 @@
 
 @interface AlertView : UIView {
 	int distance;
+	UILabel *dist;
+	UILabel *uniN;
+	UILabel *distN;
 }
 
 @property (nonatomic,assign) int distance;
