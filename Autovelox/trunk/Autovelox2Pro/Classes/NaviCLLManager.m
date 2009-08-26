@@ -36,7 +36,7 @@ static NaviCLLManager * defaultManager;
 }
 
 
-- (void) init;
+- (id) init;
 {	
 	lman=[[CLLocationManager alloc] init];
 	lman.delegate=self;

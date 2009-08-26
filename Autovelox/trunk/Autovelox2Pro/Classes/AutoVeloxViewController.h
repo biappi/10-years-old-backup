@@ -54,9 +54,9 @@ typedef enum
 	float totalTime;
 	float totalSpace;
 	float speed;
+	float speedNumber;
 	int distanceFromTutor;
-	int limitTutor;
-	int speedNumber;
+	int limitTutor;	
 	int avgSp;
 	BOOL topAnimationStarted;
 	BOOL ontop;
@@ -65,9 +65,9 @@ typedef enum
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
-@property(nonatomic,readonly) int speedNumber;
+/*@property(nonatomic,readonly) float speedNumber;
 @property(nonatomic,readonly) int distanceFromTutor;
-@property(nonatomic,readonly) int limitTutor;
+@property(nonatomic,readonly) int limitTutor;*/
 
 
 -(id)initWithController:(BottomBarController*)avad withMap:(MKMapView*) map;

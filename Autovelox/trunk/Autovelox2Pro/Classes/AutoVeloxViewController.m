@@ -34,7 +34,8 @@
 @end
 
 @implementation AutoVeloxViewController
-@synthesize animationStarted,speedNumber,limitTutor,distanceFromTutor;
+
+@synthesize animationStarted;//,speedNumber,limitTutor,distanceFromTutor;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 -(id)initWithController:(BottomBarController*)avad withMap:(MKMapView *) m;
@@ -177,16 +178,16 @@
 		if(gpsManager.newLocation.speed>0)
 			speedNumber=gpsManager.newLocation.speed;
 		
-		speedLabel.text =[NSString stringWithFormat:@"%.0f",gpsManager.newLocation.speed];
+		speedLabel.text =[NSString stringWithFormat:@"%.0f",speedNumber];
 		[speedLabel setNeedsDisplay];
 	}
 	geoCoder.delegate=self;
 	[geoCoder start];
-	if(gpsManager.newLocation.horizontalAccuracy<50)
+	if(gpsManager.newLocation.horizontalAccuracy<20)
 	{
 		signal.image=[UIImage imageNamed:@"gps_green.png"];
 	}
-	else if(gpsManager.newLocation.horizontalAccuracy>50 && gpsManager.newLocation.horizontalAccuracy<200)
+	else if(gpsManager.newLocation.horizontalAccuracy>20 && gpsManager.newLocation.horizontalAccuracy<100)
 	{
 		signal.image=[UIImage imageNamed:@"gps_yellow.png"];
 	}
