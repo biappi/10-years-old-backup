@@ -36,9 +36,8 @@ static NaviCLLManager * defaultManager;
 }
 
 
-- (id) init;
-{
-	
+- (void) init;
+{	
 	lman=[[CLLocationManager alloc] init];
 	lman.delegate=self;
 	gpsOn = NO;
