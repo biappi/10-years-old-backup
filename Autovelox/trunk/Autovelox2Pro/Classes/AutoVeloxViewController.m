@@ -430,6 +430,12 @@
 	[av setNeedsDisplay];
 }
 
+-(void)autoveloxNumberInTenKm:(int)num;
+{
+	nDV.numberOfAutovelox=num;
+	[nDV setNeedsDisplay];
+}
+
 -(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)lim;
 {
 	tAVD.averageSpeed=avS;

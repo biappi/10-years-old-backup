@@ -69,10 +69,7 @@ typedef enum
 
 @property(nonatomic,readonly) BOOL animationStarted;
 
-/*@property(nonatomic,readonly) float speedNumber;
->>>>>>> .r28
-@property(nonatomic,readonly) int distanceFromTutor;
-@property(nonatomic,readonly) int limitTutor;*/
+
 
 
 -(id)initWithController:(BottomBarController*)avad withMap:(MKMapView*) map;
@@ -90,5 +87,7 @@ typedef enum
 -(void)updateDistance:(int)distance;
 
 -(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)limit;
+
+-(void)autoveloxNumberInTenKm;
 
 @end
