@@ -142,32 +142,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				20D81B77101C506D00FD75A7 /* parseCSV.h */,
-				3D2F161E10429BF800C75FDF /* AlertView.h */,
-				3D2F161F10429BF800C75FDF /* AlertView.m */,
-				20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */,
-				20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */,
-				20C3BB77101CAFB900D0971E /* BottomBarController.h */,
-				20C3BB78101CAFB900D0971E /* BottomBarController.m */,
-				20C3BB79101CAFB900D0971E /* SetupTableViewController.h */,
-				20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */,
-				20D81B78101C506D00FD75A7 /* parseCSV.m */,
-				20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */,
-				20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */,
-				20D81B69101C4F5700FD75A7 /* Annotation.h */,
-				20D81B6A101C4F5700FD75A7 /* Annotation.m */,
+				3D3AC23C10480E9500C99273 /* AlertView */,
+				3D3AC23F10480F0C00C99273 /* Data Management */,
+				3D3AC24210480F4500C99273 /* Home */,
+				3D3AC24710480F6F00C99273 /* Localizzation */,
+				3D3AC24110480F3300C99273 /* Setup */,
 				1D3623240D0F684500981E51 /* Autovelox2ProAppDelegate.h */,
 				1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */,
-				20692D011043229100F939D1 /* NaviCLLManager.h */,
-				20692D021043229100F939D1 /* NaviCLLManager.m */,
-				20ADED651020E703007622BD /* ControlledAutovelox.h */,
-				20ADED661020E703007622BD /* ControlledAutovelox.m */,
-				3D2F15611041A08000C75FDF /* NormalDetailsView.h */,
-				3D2F15621041A08000C75FDF /* NormalDetailsView.m */,
-				3D2F161B104296C200C75FDF /* TutorAlertDetailsView.h */,
-				3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */,
-				20692C4E10430F5600F939D1 /* GpsAnnotation.h */,
-				20692C4F10430F5600F939D1 /* GpsAnnotation.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -247,6 +228,73 @@
 				28D801B30F44B63D00FB423F /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3D3AC23C10480E9500C99273 /* AlertView */ = {
+			isa = PBXGroup;
+			children = (
+				3D2F161B104296C200C75FDF /* TutorAlertDetailsView.h */,
+				3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */,
+				3D2F161E10429BF800C75FDF /* AlertView.h */,
+				3D2F161F10429BF800C75FDF /* AlertView.m */,
+				3D2F15611041A08000C75FDF /* NormalDetailsView.h */,
+				3D2F15621041A08000C75FDF /* NormalDetailsView.m */,
+			);
+			name = AlertView;
+			sourceTree = "<group>";
+		};
+		3D3AC23E10480ED200C99273 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */,
+				20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */,
+				20D81B69101C4F5700FD75A7 /* Annotation.h */,
+				20D81B6A101C4F5700FD75A7 /* Annotation.m */,
+				20692C4E10430F5600F939D1 /* GpsAnnotation.h */,
+				20692C4F10430F5600F939D1 /* GpsAnnotation.m */,
+			);
+			name = Chart;
+			sourceTree = "<group>";
+		};
+		3D3AC23F10480F0C00C99273 /* Data Management */ = {
+			isa = PBXGroup;
+			children = (
+				20D81B77101C506D00FD75A7 /* parseCSV.h */,
+				20D81B78101C506D00FD75A7 /* parseCSV.m */,
+			);
+			name = "Data Management";
+			sourceTree = "<group>";
+		};
+		3D3AC24110480F3300C99273 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				20C3BB79101CAFB900D0971E /* SetupTableViewController.h */,
+				20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */,
+			);
+			name = Setup;
+			sourceTree = "<group>";
+		};
+		3D3AC24210480F4500C99273 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3D3AC23E10480ED200C99273 /* Chart */,
+				20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */,
+				20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */,
+				20C3BB77101CAFB900D0971E /* BottomBarController.h */,
+				20C3BB78101CAFB900D0971E /* BottomBarController.m */,
+				20ADED651020E703007622BD /* ControlledAutovelox.h */,
+				20ADED661020E703007622BD /* ControlledAutovelox.m */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		3D3AC24710480F6F00C99273 /* Localizzation */ = {
+			isa = PBXGroup;
+			children = (
+				20692D011043229100F939D1 /* NaviCLLManager.h */,
+				20692D021043229100F939D1 /* NaviCLLManager.m */,
+			);
+			name = Localizzation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

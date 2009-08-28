@@ -46,11 +46,8 @@
 		animationStarted=NO;
 		topAnimationStarted=NO;
 		ava=avad;
-        // Custom initialization
-		/*locationManager=[[CLLocationManager alloc] init];
-		locationManager.delegate=self;
-		locationManager.desiredAccuracy=kCLLocationAccuracyNearestTenMeters;
-		[locationManager startUpdatingLocation];*/
+		
+		iter=0; 		
 		CLLocationCoordinate2D firstPoint;
 		firstPoint.latitude=0;
 		firstPoint.longitude=0;
@@ -122,7 +119,6 @@
 	
 	
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-	nDV.tag=TAGNDV;
 	[self.view addSubview:nDV];
 	/*TutorAlertDetailsView *tdv=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	[self.view addSubview:tdv];
@@ -172,7 +168,14 @@
 	oldDate=[[NSDate date] retain];
 	if(geoCoder)
 		[geoCoder release];	
-	geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
+	
+	if(iter%5==0)
+	{
+		geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
+		geoCoder.delegate=self;
+		[geoCoder start];
+	}
+	iter++;
 	if(gpsManager.newLocation.speed!=speedNumber)
 	{
 		if(gpsManager.newLocation.speed>0)
@@ -181,8 +184,7 @@
 		speedLabel.text =[NSString stringWithFormat:@"%.0f",speedNumber];
 		[speedLabel setNeedsDisplay];
 	}
-	geoCoder.delegate=self;
-	[geoCoder start];
+	
 	if(gpsManager.newLocation.horizontalAccuracy<20)
 	{
 		signal.image=[UIImage imageNamed:@"gps_green.png"];
@@ -308,15 +310,15 @@
 {
 	if(ontop)
 	{
-		//[self animationSlideOff];	
-		[self alert:AlertTypeTutor withDistance:800];
+		[self animationSlideOff];	
+		//[self alert:AlertTypeTutor withDistance:800];
 		//sleep(2);
-		[self alertTutorBegan];
+		//[self alertTutorBegan];
 	}
 	else
 	{	
-		//[self animationSlideOn];
-		[self alertTutorEnd];
+		[self animationSlideOn];
+		//[self alertTutorEnd];
 	}
 	
 }
@@ -324,9 +326,8 @@
 -(void)alertEnd;
 {
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-	nDV.tag=TAGNDV;
-	[[self.view viewWithTag:AVTAG] removeFromSuperview];
-	[[self.view viewWithTag:AVTAG] release];
+	[av removeFromSuperview];
+	[av release];
 	[self.view addSubview:nDV];
 }
 
@@ -353,9 +354,8 @@
 			[self animationSlideOn];
 	}
 	av=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
-	av.tag=AVTAG;
-	[[self.view viewWithTag:TAGNDV] removeFromSuperview];
-	[[self.view viewWithTag:TAGNDV] release];
+	[nDV removeFromSuperview];
+	[nDV release];
 	limit.image=[UIImage imageNamed:@"divieto.png"];
 	[limit setNeedsDisplay];
 	[self.view addSubview:av];
@@ -391,19 +391,19 @@
 {
 	limitTutor=80;
 	[self setLimit];	
-	[[self.view viewWithTag:AVTAG] removeFromSuperview];
-	[[self.view viewWithTag:AVTAG] release];	
+	[av removeFromSuperview];
+	[av release];	
 	tAVD=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-	tAVD.tag=TAVDTAG;
+
 	[self.view addSubview:tAVD];
 }
 
 -(void)alertTutorEnd;
 {
-	[[self.view viewWithTag:TAVDTAG] removeFromSuperview];
-	[[self.view viewWithTag:TAVDTAG] release];
+	[tAVD removeFromSuperview];
+	[tAVD release];
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-	nDV.tag=TAGNDV;
+
 	limit.image=[UIImage imageNamed:@"arrow.png"];
 	[limit setNeedsDisplay];
 	[self.view addSubview:nDV];
@@ -411,10 +411,17 @@
 
 -(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
 {
-	totalTime += time;
-	float distance = [newLoc getDistanceFrom:oldLoc];
-	totalSpace += distance;
-	return (int)totalSpace/totalTime;
+	if(newLoc && oldLoc)
+	{
+		totalTime += time;
+		float distance;
+		
+		distance = [newLoc getDistanceFrom:oldLoc];
+		totalSpace += distance;
+		return (int)totalSpace/totalTime;
+	}
+	else 
+		return 0;
 }
 
 -(void)updateDistance:(int)distance;
@@ -443,7 +450,8 @@
 	[speedLabel release];
 	[locationManager release];
 	[av release];
-	[tAVD release];
+	if(tAVD)
+		[tAVD release];
 	[tac release];
 	[bottom release];
 	[geoCoder release];

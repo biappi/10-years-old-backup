@@ -64,6 +64,7 @@ typedef enum
 	BOOL ontop;
 	BOOL animationStarted;
 	int autoveloxNumber;
+	int iter;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
