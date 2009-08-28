@@ -19,7 +19,7 @@
 		lastDistance=10000;
 		goodEuristicResults=0;
 		autovelox=[an retain];
-		loc=[[CLLocation alloc] init];
+		loc=[[CLLocation alloc] initWithCoordinate:autovelox.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:[NSDate date]];
 		//loc.coordinate=autovelox.coordinate;
 	}
 	return self;

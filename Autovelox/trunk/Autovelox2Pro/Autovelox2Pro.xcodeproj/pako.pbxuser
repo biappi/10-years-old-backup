@@ -89,7 +89,7 @@
 		fRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */;
 		name = "ControlledAutovelox.m: 23";
 		rLen = 0;
-		rLoc = 476;
+		rLoc = 586;
 		rType = 0;
 		vrLen = 614;
 		vrLoc = 0;
@@ -389,7 +389,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 141";
 		rLen = 0;
-		rLoc = 3944;
+		rLoc = 5154;
 		rType = 0;
 		vrLen = 1103;
 		vrLoc = 3805;
@@ -399,7 +399,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 140";
 		rLen = 0;
-		rLoc = 3944;
+		rLoc = 5154;
 		rType = 0;
 		vrLen = 1107;
 		vrLoc = 3805;
@@ -409,7 +409,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 143";
 		rLen = 0;
-		rLoc = 3973;
+		rLoc = 5183;
 		rType = 0;
 		vrLen = 1020;
 		vrLoc = 3805;
@@ -419,7 +419,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 140";
 		rLen = 0;
-		rLoc = 3944;
+		rLoc = 5154;
 		rType = 0;
 		vrLen = 1022;
 		vrLoc = 3805;
@@ -429,7 +429,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 140";
 		rLen = 0;
-		rLoc = 3944;
+		rLoc = 5154;
 		rType = 0;
 		vrLen = 1153;
 		vrLoc = 3805;
@@ -439,7 +439,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 140";
 		rLen = 0;
-		rLoc = 3944;
+		rLoc = 5154;
 		rType = 0;
 		vrLen = 1152;
 		vrLoc = 3805;
@@ -449,7 +449,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 438";
 		rLen = 0;
-		rLoc = 14521;
+		rLoc = 17567;
 		rType = 0;
 		vrLen = 1355;
 		vrLoc = 13060;
@@ -479,7 +479,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 65";
 		rLen = 0;
-		rLoc = 1674;
+		rLoc = 2884;
 		rType = 0;
 		vrLen = 1255;
 		vrLoc = 1077;
@@ -489,7 +489,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 435";
 		rLen = 75;
-		rLoc = 14110;
+		rLoc = 17156;
 		rType = 0;
 		vrLen = 1112;
 		vrLoc = 13669;
@@ -499,7 +499,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 181";
 		rLen = 0;
-		rLoc = 6151;
+		rLoc = 7482;
 		rType = 0;
 		vrLen = 1585;
 		vrLoc = 4502;
@@ -520,7 +520,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 417;
+		rLoc = 494;
 		rType = 1;
 	};
 	20753EB21048672A00F00662 /* PBXTextBookmark */ = {
@@ -528,7 +528,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 450";
 		rLen = 0;
-		rLoc = 14191;
+		rLoc = 17237;
 		rType = 0;
 		vrLen = 1129;
 		vrLoc = 14335;
@@ -538,7 +538,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 450";
 		rLen = 0;
-		rLoc = 14191;
+		rLoc = 17237;
 		rType = 0;
 		vrLen = 1129;
 		vrLoc = 14335;
@@ -548,7 +548,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 445";
 		rLen = 0;
-		rLoc = 14109;
+		rLoc = 17155;
 		rType = 0;
 		vrLen = 1116;
 		vrLoc = 14099;
@@ -558,7 +558,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 452";
 		rLen = 0;
-		rLoc = 14207;
+		rLoc = 17253;
 		rType = 0;
 		vrLen = 1154;
 		vrLoc = 14180;
@@ -568,7 +568,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 437";
 		rLen = 0;
-		rLoc = 14109;
+		rLoc = 17155;
 		rType = 0;
 		vrLen = 1057;
 		vrLoc = 11465;
@@ -593,6 +593,145 @@
 		vrLen = 945;
 		vrLoc = 416;
 	};
+	20753F341048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */;
+		name = "AutoVeloxProViewController.h: 38";
+		rLen = 0;
+		rLoc = 960;
+		rType = 0;
+		vrLen = 946;
+		vrLoc = 416;
+	};
+	20753F351048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B69101C4F5700FD75A7 /* Annotation.h */;
+		name = "Annotation.h: 21";
+		rLen = 310;
+		rLoc = 343;
+		rType = 0;
+		vrLen = 661;
+		vrLoc = 0;
+	};
+	20753F361048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */;
+		name = "ControlledAutovelox.m: 22";
+		rLen = 0;
+		rLoc = 583;
+		rType = 0;
+		vrLen = 719;
+		vrLoc = 3;
+	};
+	20753F371048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */;
+		name = "AutoVeloxViewController.m: 432";
+		rLen = 0;
+		rLoc = 11634;
+		rType = 0;
+		vrLen = 632;
+		vrLoc = 11236;
+	};
+	20753F381048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20ADED651020E703007622BD /* ControlledAutovelox.h */;
+		name = "ControlledAutovelox.h: 23";
+		rLen = 0;
+		rLoc = 555;
+		rType = 0;
+		vrLen = 603;
+		vrLoc = 0;
+	};
+	20753F391048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 326";
+		rLen = 0;
+		rLoc = 12789;
+		rType = 0;
+		vrLen = 546;
+		vrLoc = 10342;
+	};
+	20753F3A1048793300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 326";
+		rLen = 0;
+		rLoc = 12789;
+		rType = 0;
+		vrLen = 570;
+		vrLoc = 10318;
+	};
+	20753F6C10487E7200F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20C3BB7A101CAFB900D0971E /* SetupTableViewController.m */;
+		name = "SetupTableViewController.m: 229";
+		rLen = 0;
+		rLoc = 5055;
+		rType = 0;
+		vrLen = 121;
+		vrLoc = 4974;
+	};
+	20753F6D10487E7200F00662 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'ppoint' undeclared (first use in this function)";
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 337;
+		rType = 1;
+	};
+	20753F6E10487E7200F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 342";
+		rLen = 0;
+		rLoc = 11795;
+		rType = 0;
+		vrLen = 304;
+		vrLoc = 11508;
+	};
+	20753F8E104883AC00F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 320";
+		rLen = 0;
+		rLoc = 11760;
+		rType = 0;
+		vrLen = 863;
+		vrLoc = 10027;
+	};
+	20753F8F104883AC00F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 349";
+		rLen = 0;
+		rLoc = 11965;
+		rType = 0;
+		vrLen = 1161;
+		vrLoc = 11798;
+	};
+	20753F931048896300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 370";
+		rLen = 0;
+		rLoc = 12783;
+		rType = 0;
+		vrLen = 1076;
+		vrLoc = 11798;
+	};
+	20753F941048896300F00662 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 353";
+		rLen = 0;
+		rLoc = 12121;
+		rType = 0;
+		vrLen = 973;
+		vrLoc = 12110;
+	};
 	2075BD4D10485A31002CFC59 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 2009C637104859A20086E4FA /* CustomImagePicker.m */;
@@ -608,7 +747,7 @@
 		fRef = 20513C941045D95F00949598 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 119";
 		rLen = 0;
-		rLoc = 3886;
+		rLoc = 5096;
 		rType = 0;
 		vrLen = 970;
 		vrLoc = 6474;
@@ -618,7 +757,7 @@
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
 		name = "AutoVeloxProViewController.m: 143";
 		rLen = 0;
-		rLoc = 4017;
+		rLoc = 5227;
 		rType = 0;
 		vrLen = 1119;
 		vrLoc = 3808;
@@ -635,16 +774,16 @@
 	};
 	20ADED651020E703007622BD /* ControlledAutovelox.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {899, 430}}";
+			sepNavIntBoundsRect = "{{0, 0}, {899, 396}}";
 			sepNavSelRange = "{555, 0}";
 			sepNavVisRange = "{0, 603}";
 		};
 	};
 	20ADED661020E703007622BD /* ControlledAutovelox.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {439, 455}}";
-			sepNavSelRange = "{480, 0}";
-			sepNavVisRange = "{329, 227}";
+			sepNavIntBoundsRect = "{{0, 0}, {1048, 468}}";
+			sepNavSelRange = "{583, 0}";
+			sepNavVisRange = "{3, 719}";
 		};
 	};
 	20ADED8A102182BE007622BD /* PBXTextBookmark */ = {
@@ -676,9 +815,9 @@
 	};
 	20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1146, 6409}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 6435}}";
 			sepNavSelRange = "{11634, 0}";
-			sepNavVisRange = "{11204, 664}";
+			sepNavVisRange = "{11236, 632}";
 		};
 	};
 	20C3BB77101CAFB900D0971E /* BottomBarController.h */ = {
@@ -794,7 +933,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {899, 455}}";
 			sepNavSelRange = "{343, 310}";
-			sepNavVisRange = "{0, 662}";
+			sepNavVisRange = "{0, 661}";
 			sepNavWindowFrame = "{{15, 68}, {1230, 710}}";
 		};
 	};
@@ -822,15 +961,15 @@
 	20D81B79101C506D00FD75A7 /* AutoVeloxProViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {992, 637}}";
-			sepNavSelRange = "{944, 0}";
-			sepNavVisRange = "{416, 945}";
+			sepNavSelRange = "{960, 0}";
+			sepNavVisRange = "{416, 946}";
 		};
 	};
 	20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1440, 7891}}";
-			sepNavSelRange = "{14101, 0}";
-			sepNavVisRange = "{11465, 1057}";
+			sepNavIntBoundsRect = "{{0, 0}, {899, 9074}}";
+			sepNavSelRange = "{12121, 0}";
+			sepNavVisRange = "{12110, 973}";
 			sepNavWindowFrame = "{{15, 67}, {1230, 711}}";
 		};
 	};
@@ -1010,7 +1149,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 20D81B53101C4CFA00FD75A7 /* Autovelox2Pro */;
-		activeSDKPreference = iphoneos3.1;
+		activeSDKPreference = iphoneos3.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Autovelox2Pro */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* Autovelox2Pro */,
@@ -1047,7 +1186,7 @@
 				);
 			};
 			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
-				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingDirectionKey = 1;
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
@@ -1137,6 +1276,20 @@
 			20753EC9104868FA00F00662 /* PBXTextBookmark */ = 20753EC9104868FA00F00662 /* PBXTextBookmark */;
 			20753ECA104868FA00F00662 /* PBXTextBookmark */ = 20753ECA104868FA00F00662 /* PBXTextBookmark */;
 			20753ECB104868FA00F00662 /* PBXTextBookmark */ = 20753ECB104868FA00F00662 /* PBXTextBookmark */;
+			20753F341048793300F00662 /* PBXTextBookmark */ = 20753F341048793300F00662 /* PBXTextBookmark */;
+			20753F351048793300F00662 /* PBXTextBookmark */ = 20753F351048793300F00662 /* PBXTextBookmark */;
+			20753F361048793300F00662 /* PBXTextBookmark */ = 20753F361048793300F00662 /* PBXTextBookmark */;
+			20753F371048793300F00662 /* PBXTextBookmark */ = 20753F371048793300F00662 /* PBXTextBookmark */;
+			20753F381048793300F00662 /* PBXTextBookmark */ = 20753F381048793300F00662 /* PBXTextBookmark */;
+			20753F391048793300F00662 /* PBXTextBookmark */ = 20753F391048793300F00662 /* PBXTextBookmark */;
+			20753F3A1048793300F00662 /* PBXTextBookmark */ = 20753F3A1048793300F00662 /* PBXTextBookmark */;
+			20753F6C10487E7200F00662 /* PBXTextBookmark */ = 20753F6C10487E7200F00662 /* PBXTextBookmark */;
+			20753F6D10487E7200F00662 /* XCBuildMessageTextBookmark */ = 20753F6D10487E7200F00662 /* XCBuildMessageTextBookmark */;
+			20753F6E10487E7200F00662 /* PBXTextBookmark */ = 20753F6E10487E7200F00662 /* PBXTextBookmark */;
+			20753F8E104883AC00F00662 /* PBXTextBookmark */ = 20753F8E104883AC00F00662 /* PBXTextBookmark */;
+			20753F8F104883AC00F00662 /* PBXTextBookmark */ = 20753F8F104883AC00F00662 /* PBXTextBookmark */;
+			20753F931048896300F00662 /* PBXTextBookmark */ = 20753F931048896300F00662 /* PBXTextBookmark */;
+			20753F941048896300F00662 /* PBXTextBookmark */ = 20753F941048896300F00662 /* PBXTextBookmark */;
 			2075BD4D10485A31002CFC59 = 2075BD4D10485A31002CFC59 /* PBXTextBookmark */;
 			2075BD4E10485A31002CFC59 = 2075BD4E10485A31002CFC59 /* PBXTextBookmark */;
 			2075BD6110485B70002CFC59 = 2075BD6110485B70002CFC59 /* PBXTextBookmark */;

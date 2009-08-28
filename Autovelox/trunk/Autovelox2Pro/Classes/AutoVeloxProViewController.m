@@ -11,7 +11,27 @@
 #import "parseCSV.h"
 #import "ControlledAutovelox.h"
 #import <CoreLocation/CoreLocation.h>
+#define SQR2            1.414213562    /* square root of 2              */
+#define FLN2             0.69314718    /*  ln(2) : frequently used      */
 
+#define RR0F              6378388.0    /*  earth radius  floating.p     */
+#define GR           57.29577951308    /*  qty of degrees = 1 radians   */
+#define GR_RR0   8.982799339438E-06    /*  GR divided by RR0            */
+
+#define DFPI            6.283185308    /*  pi greco * 2                 */
+#define FPI             3.141592654    /*  pi greco                     */
+#define HFPI            1.570796327    /*  pi greco / 2  ( half )       */
+#define QFPI            0.785398163    /*  pi greco / 4  ( quarter )    */
+#define FPI32            4.71238898    /*  pi greco * 3/2               */
+
+#define KC             1.0067642927    /*  internal conv. constant      */
+
+#define SCMILES            10800.00    /*  miles of the half earth circum. */
+#define NML60             111136.20    /*  NML * 60  ( meters for 1 deg. ) */
+
+#define RR0                6378388L    /*  earth radius                 */
+#define SCMM              20038300L    /*  earth half circumpherence    */
+#define CMM               40076600L    /*  earth circumpherence         */
 @implementation AutoVeloxProViewController
 
 @synthesize fissi,mobili,tutor,ecopass;
@@ -168,6 +188,7 @@
 	controlledAutoveloxs=[[NSMutableArray alloc] init];
 	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(controlNearAutovelox:) userInfo:nil repeats:YES];
 	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(centerMap) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(evaluateCandidates) userInfo:nil repeats:YES];
 	centerGps=[UIButton buttonWithType:UIButtonTypeInfoDark];
 	[centerGps setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
 	//[centerGps setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateHighlighted];
@@ -296,23 +317,79 @@
 	[autoView setAutoveloxNumberInTenKm:[controlledAutoveloxs count]];
 	[array release];
 }
-
--(void) evaluateCandidates
+-(CGPoint) latLongToMM:(CLLocationCoordinate2D)coordinate
 {
+	double intd;
+	CGPoint point;
+	intd = atan(tan(coordinate.latitude / GR) / KC) + HFPI;
+	
+	point.y = (int)(log(tan(intd / 2.0)) * RR0F);
+	
+	
+		point.x = (int)(coordinate.longitude * RR0F / GR);
+		
+		/*-----------------------------------------------*/
+		/* Possible numeric errors must be filtered here */
+		/*-----------------------------------------------*/
+		if (point.x > SCMM)
+		{
+            point.x = SCMM;
+		}
+		else if (point.x < -SCMM)
+		{
+            point.x = -SCMM;
+		}
+		return point;
+	
+}
+	-(void) evaluateCandidates
+{
+	CGPoint mmUserPos=[self latLongToMM:manager.newLocation.coordinate];
 	NSMutableArray * autoToRemove=[[NSMutableArray alloc] init];
+	//NSLog(@"controlling %d autoveloxs",[controlledAutoveloxs count]);
 	for(ControlledAutovelox * a in controlledAutoveloxs)
 	{
+		BOOL checkAngle=NO;
+		float angleDir;
+		//if(manager.newLocation.course>0)
+		if(YES)
+		{
+			CGPoint mmCoordinate=[self latLongToMM:a.loc.coordinate];
+			float denomY=mmCoordinate.y-mmUserPos.y;
+			float denomX=mmCoordinate.x-mmUserPos.x;	
+			angleDir=(atan(denomY/denomX)*57.2957795131);
+			if(mmUserPos.x<mmCoordinate.x && mmUserPos.y<mmCoordinate.y)
+				angleDir= 90-angleDir;
+			else if(mmUserPos.x>mmCoordinate.x && mmUserPos.y<mmCoordinate.y)
+				angleDir= 270-angleDir;
+			else if(mmUserPos.x>mmCoordinate.x && mmUserPos.y>mmCoordinate.y)
+				angleDir= 270-angleDir;
+			else if(mmUserPos.x<mmCoordinate.x && mmUserPos.y>mmCoordinate.y)
+				angleDir= 90-angleDir;
+			checkAngle=YES;
+		}		
+		
+		
 		double currDist=[manager.newLocation getDistanceFrom: a.loc];
 		if(currDist>5000)
 		{
 			[autoToRemove addObject:a];
 		}
 		else {
-			
-			if(currDist<1000)
+			//double dist=[a.loc getDistanceFrom:manager.newLocation];
+			if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance)
 			{
-				//CALL ALARM
-				[autoToRemove addObject:a];
+				a.goodEuristicResults=a.goodEuristicResults+1;
+			
+			}
+			else {
+				if(checkAngle)
+					a.goodEuristicResults=0;
+			}
+			a.lastDistance=currDist;
+			if(a.lastDistance<1000 && a.goodEuristicResults>0)
+			{
+				//ALARM!!!!!!!!
 			}
 		}
 		
