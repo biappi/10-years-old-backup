@@ -24,12 +24,14 @@
 	BOOL tutor;
 	BOOL ecopass;
 	BOOL centered;
+	BOOL regionChangeRequested;
 	UIButton *centerGps;
 	CLLocationManager * location;
 	CLLocationCoordinate2D lastPosition;
 	NaviCLLManager * manager;
 	GpsAnnotation * gpsAnnotation;
 	MKAnnotationView * gpsView;
+	double angle;
 }
 -(void)readAnnotationsFromCSV;
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	

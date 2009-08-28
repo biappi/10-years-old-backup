@@ -176,7 +176,7 @@
 	if(gpsManager.newLocation.speed!=speedNumber)
 	{
 		if(gpsManager.newLocation.speed>0)
-			speedNumber=gpsManager.newLocation.speed;
+			speedNumber=gpsManager.newLocation.speed*3.6;
 		
 		speedLabel.text =[NSString stringWithFormat:@"%.0f",speedNumber];
 		[speedLabel setNeedsDisplay];

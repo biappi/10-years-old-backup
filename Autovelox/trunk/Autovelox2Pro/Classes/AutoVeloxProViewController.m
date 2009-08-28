@@ -60,8 +60,8 @@
 		pippo.latitude=0;
 		pippo.longitude=0;
 		lastPosition=pippo;
-		
-		
+		angle=0.0;
+		regionChangeRequested=NO;
 	}
 	return self;
 }
@@ -79,13 +79,16 @@
 {
 	NSLog(@"Location updated");
 	lastPosition=manager.newLocation.coordinate;
-	[map removeAnnotation:gpsAnnotation];
-	[gpsAnnotation setCoord:manager.newLocation.coordinate];
-	[map addAnnotation:gpsAnnotation];
+	//[map removeAnnotation:gpsAnnotation];
+	//[gpsAnnotation setCoord:manager.newLocation.coordinate];
+	//[map addAnnotation:gpsAnnotation];
 	
-	if(centered)
-		[map setCenterCoordinate:manager.newLocation.coordinate animated:NO];
+	//if(centered)
+	//	[map setCenterCoordinate:manager.newLocation.coordinate animated:YES];
+	if(manager.newLocation.course>0)
+		angle=manager.newLocation.course;
 	
+	[gpsView setTransform:CGAffineTransformMakeRotation((angle * 3.14159)/180)];
 }
 
 
@@ -97,27 +100,48 @@
 	CLLocationCoordinate2D pippo;
 	pippo.latitude=39.37821;
 	pippo.longitude=9.04000;
-	map.showsUserLocation=NO;
+	map.showsUserLocation=YES;
 	
 	[map setRegion:MKCoordinateRegionMake(pippo, MKCoordinateSpanMake(1.0, 1.0))];
 	self.view=map;
 	controlledAutoveloxs=[[NSMutableArray alloc] init];
 	[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(controlNearAutovelox:) userInfo:nil repeats:YES];
-	[NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(centerMap) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(centerMap) userInfo:nil repeats:YES];
 	centerGps=[UIButton buttonWithType:UIButtonTypeInfoDark];
 	[centerGps setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
 	//[centerGps setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateHighlighted];
 	centerGps.frame=CGRectMake(275, 15, 30, 30);
 	[centerGps addTarget:self action:@selector(center) forControlEvents:UIControlEventTouchDown];
-	[map addAnnotation:gpsAnnotation];
+	//[map addAnnotation:gpsAnnotation];
 	[self.view addSubview:centerGps];
 }
 -(void) centerMap
 {
 	//[map addAnnotation:gpsAnnotation];
+	//angle+=0.3;
+
 	if(centered)
 	{
-		[map setCenterCoordinate:gpsAnnotation.coordinate animated:NO];
+		//[map setCenterCoordinate:gpsAnnotation.coordinate animated:NO];
+		//[map setCenterCoordinate:manager.newLocation.coordinate animated:YES];
+		double latmap=map.centerCoordinate.latitude;
+		//double userlat=gpsAnnotation.coordinate.latitude;
+		double userlat=manager.newLocation.coordinate.latitude;
+		double controllo=latmap- userlat;
+		if(controllo<0)
+			controllo*=-1;
+		
+		latmap=map.centerCoordinate.longitude;
+		//userlat=gpsAnnotation.coordinate.longitude;
+		userlat=manager.newLocation.coordinate.longitude;
+		double controllo2=latmap- userlat;
+		if(controllo2<0)
+			controllo2*=-1;
+		if(controllo >(map.region.span.latitudeDelta/100.0) || controllo2>(map.region.span.longitudeDelta/100.0))
+		{
+			[map setCenterCoordinate:manager.newLocation.coordinate animated:YES];
+		}
+		regionChangeRequested=YES;
 	}
 }
 -(void) center;
@@ -127,7 +151,26 @@
 		centered=YES;
 		//[centerGps setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateNormal];
 		[centerGps setAlpha:0.2];
-		[map setCenterCoordinate:gpsAnnotation.coordinate animated:YES];
+		//[map setCenterCoordinate:gpsAnnotation.coordinate animated:YES];
+		double latmap=map.centerCoordinate.latitude;
+		//double userlat=gpsAnnotation.coordinate.latitude;
+		double userlat=manager.newLocation.coordinate.latitude;
+		double controllo=latmap- userlat;
+		if(controllo<0)
+			controllo*=-1;
+		
+		latmap=map.centerCoordinate.longitude;
+		//userlat=gpsAnnotation.coordinate.longitude;
+		userlat=manager.newLocation.coordinate.longitude;
+		double controllo2=latmap- userlat;
+		if(controllo2<0)
+			controllo2*=-1;
+		if(controllo >(map.region.span.latitudeDelta/100.0) || controllo2>(map.region.span.longitudeDelta/100.0))
+		{
+			[map setCenterCoordinate:manager.newLocation.coordinate animated:YES];
+			regionChangeRequested=YES;
+		}
+		
 	}
 
 }
@@ -250,11 +293,12 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
-	if((![annotation isKindOfClass:[Annotation class]]) && (![annotation isKindOfClass:[GpsAnnotation class]]))
-		return nil;
+	//if((![annotation isKindOfClass:[Annotation class]]) && (![annotation isKindOfClass:[GpsAnnotation class]]))
+	//	return nil;
 	
-		 if([annotation isKindOfClass:[GpsAnnotation class]])
+		 if(![annotation isKindOfClass:[Annotation class]])
 		 {
+			 return nil;
 			 MKAnnotationView * view=[mapView dequeueReusableAnnotationViewWithIdentifier:@"gps"];
 			 if(!view)
 			 {
@@ -264,8 +308,9 @@
 			 }
 			 view.image=[UIImage imageNamed:@"CarSmall.png"];
 			 gpsView=view;
-			 double radians=(manager.newLocation.course * 3.14159)/180;
-			 view.transform=CGAffineTransformMakeRotation(radians);
+			// double radians=(angle * 3.14159)/180;
+			 //view.transform=CGAffineTransformMakeRotation(radians);
+			 [view setNeedsDisplay];
 			 return view;
 		 }
 	MKAnnotationView * view=[mapView dequeueReusableAnnotationViewWithIdentifier:@"autovelox"];
@@ -286,6 +331,7 @@
 	{
 		view.image=[UIImage imageNamed:@"autoVeloxMobile40.png"];
 	}
+	[view setNeedsDisplay];
 	return view;
 
 }
@@ -299,22 +345,32 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
 	
-	double latmap=map.centerCoordinate.latitude;
-	double userlat=gpsAnnotation.coordinate.latitude;
+	/*double latmap=map.centerCoordinate.latitude;
+	//double userlat=gpsAnnotation.coordinate.latitude;
+	double userlat=manager.newLocation.coordinate.latitude;
 	double controllo=latmap- userlat;
 	if(controllo<0)
 		controllo*=-1;
 	
 	latmap=map.centerCoordinate.longitude;
-	userlat=gpsAnnotation.coordinate.longitude;
+	//userlat=gpsAnnotation.coordinate.longitude;
+	userlat=manager.newLocation.coordinate.longitude;
 	double controllo2=latmap- userlat;
 	if(controllo2<0)
 		controllo2*=-1;
-	if(controllo >(map.region.span.latitudeDelta/100.0) || controllo2>(map.region.span.longitudeDelta/100.0))
-	{
+	//if(controllo >(map.region.span.latitudeDelta/100.0) || controllo2>(map.region.span.longitudeDelta/100.0))
+	//{
+	//	centered=NO;
+	//	centerGps.alpha=1;
+	//}
+	*/
+	if(regionChangeRequested)
+		regionChangeRequested=NO;
+	else {
 		centered=NO;
-		centerGps.alpha=1;
+			centerGps.alpha=1;
 	}
+
 	
 	NSLog(@"Did change");
 	MKCoordinateRegion region=[mapView region];

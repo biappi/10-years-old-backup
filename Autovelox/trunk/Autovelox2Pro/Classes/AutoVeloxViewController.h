@@ -56,7 +56,9 @@ typedef enum
 	float speed;
 	float speedNumber;
 	int distanceFromTutor;
+
 	int limitTutor;	
+
 	int avgSp;
 	BOOL topAnimationStarted;
 	BOOL ontop;
@@ -65,7 +67,9 @@ typedef enum
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
+
 /*@property(nonatomic,readonly) float speedNumber;
+>>>>>>> .r28
 @property(nonatomic,readonly) int distanceFromTutor;
 @property(nonatomic,readonly) int limitTutor;*/
 
