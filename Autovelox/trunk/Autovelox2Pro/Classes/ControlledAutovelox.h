@@ -15,7 +15,11 @@
 	double lastDistance;
 	int goodEuristicResults;
 	Annotation * autovelox;
+	CLLocation * loc;
 }
 @property(nonatomic,assign) Annotation * autovelox;
+@property(readonly) CLLocation * loc;
+@property(nonatomic, assign) double lastDistance;
+@property(nonatomic, assign) int goodEuristicResults;
 -(id) initWithAnnotation:(Annotation*)an;
 @end

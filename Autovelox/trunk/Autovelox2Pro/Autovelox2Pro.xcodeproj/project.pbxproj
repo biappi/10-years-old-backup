@@ -11,6 +11,8 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2009C5B010482EB00086E4FA /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2009C5AF10482EB00086E4FA /* icon2.png */; };
+		20513D4610482B8900949598 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20513D4510482B8900949598 /* icon.png */; };
 		2058867F102480E400B69A7A /* slideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867D102480E400B69A7A /* slideDown.png */; };
 		20588680102480E400B69A7A /* slideUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867E102480E400B69A7A /* slideUp.png */; };
 		20692C0D10429CD700F939D1 /* mirinoUnpressedsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */; };
@@ -63,6 +65,8 @@
 		1D3623250D0F684500981E51 /* Autovelox2ProAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Autovelox2ProAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Autovelox2Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autovelox2Pro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2009C5AF10482EB00086E4FA /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		20513D4510482B8900949598 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2058867D102480E400B69A7A /* slideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideDown.png; sourceTree = "<group>"; };
 		2058867E102480E400B69A7A /* slideUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideUp.png; sourceTree = "<group>"; };
 		20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mirinoUnpressedsmall.png; sourceTree = "<group>"; };
@@ -198,6 +202,7 @@
 				20692CB21043149A00F939D1 /* mirinoUnpressed.png */,
 				20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */,
 				2058867D102480E400B69A7A /* slideDown.png */,
+				20513D4510482B8900949598 /* icon.png */,
 				3D2F16C91042F22E00C75FDF /* gps_red.png */,
 				3D2F16CA1042F22E00C75FDF /* gps_green.png */,
 				3D2F16CB1042F22E00C75FDF /* gps_yellow.png */,
@@ -207,6 +212,7 @@
 				2058867E102480E400B69A7A /* slideUp.png */,
 				206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */,
 				20B8F1441026764200FA4ED8 /* back.png */,
+				2009C5AF10482EB00086E4FA /* icon2.png */,
 				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
 				20C3BAA6101C93C300D0971E /* autoveloxM.png */,
@@ -378,6 +384,8 @@
 				3D2F16CC1042F22E00C75FDF /* gps_red.png in Resources */,
 				3D2F16CD1042F22E00C75FDF /* gps_green.png in Resources */,
 				3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */,
+				20513D4610482B8900949598 /* icon.png in Resources */,
+				2009C5B010482EB00086E4FA /* icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

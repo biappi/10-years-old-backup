@@ -45,9 +45,7 @@
 		map=m;
 		animationStarted=NO;
 		topAnimationStarted=NO;
-		ava=avad;
-		
-		iter=0; 		
+		ava=avad;		
 		CLLocationCoordinate2D firstPoint;
 		firstPoint.latitude=0;
 		firstPoint.longitude=0;
@@ -129,7 +127,8 @@
 	signal.image=[UIImage imageNamed:@"gps_red.png"];
 	signal.backgroundColor=[UIColor clearColor];
 	[self.view addSubview:signal];
-	
+	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(geoCode) userInfo:nil repeats:YES];
+
 }
 
 -(void)animation
@@ -156,7 +155,15 @@
 	nDV.numberOfAutovelox=num;
 	[nDV setNeedsDisplay];
 }
-
+-(void) geoCode;
+{
+	if(gpsManager.newLocation)
+	{
+		geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
+		geoCoder.delegate=self;
+		[geoCoder start];
+	}
+}
 - (void)gpsUpdate
 {
 	float interval;
@@ -166,16 +173,7 @@
 		[oldDate release];
 	}
 	oldDate=[[NSDate date] retain];
-	if(geoCoder)
-		[geoCoder release];	
-	
-	if(iter%5==0)
-	{
-		geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:gpsManager.newLocation.coordinate];
-		geoCoder.delegate=self;
-		[geoCoder start];
-	}
-	iter++;
+
 	if(gpsManager.newLocation.speed!=speedNumber)
 	{
 		if(gpsManager.newLocation.speed>0)
@@ -215,7 +213,7 @@
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error
 {
-	
+	[geocoder release];
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark
@@ -256,6 +254,7 @@
 	}
 	if(!animationStarted)
 		[self animation];
+	[geocoder release];
 }
 
 
@@ -430,7 +429,7 @@
 	[av setNeedsDisplay];
 }
 
--(void)autoveloxNumberInTenKm:(int)num;
+-(void)setAutoveloxNumberInTenKm:(int)num;
 {
 	nDV.numberOfAutovelox=num;
 	[nDV setNeedsDisplay];

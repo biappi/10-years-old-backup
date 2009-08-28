@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "GpsAnnotation.h"
 #import "NaviCLLManager.h"
+#import "AutoVeloxViewController.h"
 @interface AutoVeloxProViewController : UIViewController <MKMapViewDelegate> {
 
 	MKMapView * map;
@@ -32,10 +33,13 @@
 	GpsAnnotation * gpsAnnotation;
 	MKAnnotationView * gpsView;
 	double angle;
+	AutoVeloxViewController * autoView;
+	//UIImageView * tmp;
+	//UIView *overlay;
 }
 -(void)readAnnotationsFromCSV;
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	
-
+-(void) setAutoView:(AutoVeloxViewController *) vc;
 @property (nonatomic, assign) BOOL fissi;
 @property (nonatomic, assign) BOOL mobili;
 @property (nonatomic, assign) BOOL tutor;

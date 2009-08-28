@@ -10,15 +10,17 @@
 
 
 @implementation ControlledAutovelox
-@synthesize autovelox;
+@synthesize autovelox, loc,goodEuristicResults,lastDistance;
 -(id) initWithAnnotation:(Annotation *) an
 {
 	if(self=[super init])
 	{
 		roadName=@"";
-		lastDistance=-1.0;
+		lastDistance=10000;
 		goodEuristicResults=0;
 		autovelox=[an retain];
+		loc=[[CLLocation alloc] init];
+		//loc.coordinate=autovelox.coordinate;
 	}
 	return self;
 
@@ -26,6 +28,7 @@
 
 -(void) dealloc
 {
+	[loc release];
 	[autovelox release];
 	[super dealloc];
 }

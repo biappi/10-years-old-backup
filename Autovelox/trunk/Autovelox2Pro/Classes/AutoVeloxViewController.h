@@ -64,7 +64,6 @@ typedef enum
 	BOOL ontop;
 	BOOL animationStarted;
 	int autoveloxNumber;
-	int iter;
 }
 
 @property(nonatomic,readonly) BOOL animationStarted;
@@ -88,6 +87,6 @@ typedef enum
 
 -(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)limit;
 
--(void)autoveloxNumberInTenKm;
+-(void)setAutoveloxNumberInTenKm:(int)num;
 
 @end

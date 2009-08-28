@@ -5,17 +5,18 @@
 //  Created by Pasquale Anatriello on 24/07/09.
 //  Copyright Navionics 2009. All rights reserved.
 //
-
+#import <QuartzCore/QuartzCore.h>
 #import "AutoVeloxProViewController.h"
 #import "Annotation.h"
 #import "parseCSV.h"
 #import "ControlledAutovelox.h"
 #import <CoreLocation/CoreLocation.h>
+
 @implementation AutoVeloxProViewController
 
 @synthesize fissi,mobili,tutor,ecopass;
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC ;	
 {
 	if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
 	{
@@ -62,6 +63,8 @@
 		lastPosition=pippo;
 		angle=0.0;
 		regionChangeRequested=NO;
+		
+		
 	}
 	return self;
 }
@@ -75,9 +78,67 @@
     return self;
 }
 */
+
+-(NSString *)stringPad:(int)numPad {
+	NSMutableString *pad = [NSMutableString stringWithCapacity:1024];
+	for (int i=0; i<numPad; i++) {
+		[pad appendString:@"  "];
+	}
+	return pad; 
+}
+
+
+
+-(void)inspectView: (UIView *)theView depth:(int)depth path:(NSString *)path {
+	
+	if (depth==0) {
+		NSLog(@"-------------------- <view hierarchy> -------------------");
+	}
+	
+	NSString *pad = [self stringPad:depth];
+	
+	// print some information about the current view
+	//
+	NSLog([NSString stringWithFormat:@"%@.description: %@",pad,[theView description]]);
+	if ([theView isKindOfClass:[UIImageView class]]) {
+		NSLog([NSString stringWithFormat:@"%@.class: UIImageView",pad]);
+	} else if ([theView isKindOfClass:[UILabel class]]) {
+		NSLog([NSString stringWithFormat:@"%@.class: UILabel",pad]);
+		NSLog([NSString stringWithFormat:@"%@.text: ",pad,[(UILabel *)theView text]]);		
+	} else if ([theView isKindOfClass:[UIButton class]]) {
+		NSLog([NSString stringWithFormat:@"%@.class: UIButton",pad]);
+		NSLog([NSString stringWithFormat:@"%@.title: ",pad,[(UIButton *)theView titleForState:UIControlStateNormal]]);		
+	}
+	NSLog([NSString stringWithFormat:@"%@.frame: %.0f, %.0f, %.0f, %.0f", pad, theView.frame.origin.x, theView.frame.origin.y,
+		   theView.frame.size.width, theView.frame.size.height]);
+	NSLog([NSString stringWithFormat:@"%@.subviews: %d",pad, [theView.subviews count]]);
+	NSLog(@" ");
+	
+	// gotta love recursion: call this method for all subviews
+	//
+	for (int i=0; i<[theView.subviews count]; i++) {
+		NSString *subPath = [NSString stringWithFormat:@"%@/%d",path,i];
+		NSLog([NSString stringWithFormat:@"%@--subview-- %@",pad,subPath]);		
+		[self inspectView:[theView.subviews objectAtIndex:i]  depth:depth+1 path:subPath];
+	}
+	
+	if (depth==0) {
+		NSLog(@"-------------------- </view hierarchy> -------------------");
+	}
+	
+}
+
+-(void) setAutoView:(AutoVeloxViewController *) vc;
+{
+	autoView=vc;
+}
 - (void)gpsUpdate
 {
+	
+	
 	NSLog(@"Location updated");
+
+	//[self inspectView:map depth:0 path:@""];
 	lastPosition=manager.newLocation.coordinate;
 	//[map removeAnnotation:gpsAnnotation];
 	//[gpsAnnotation setCoord:manager.newLocation.coordinate];
@@ -88,7 +149,7 @@
 	if(manager.newLocation.course>0)
 		angle=manager.newLocation.course;
 	
-	[gpsView setTransform:CGAffineTransformMakeRotation((angle * 3.14159)/180)];
+	//[tmp setTransform:CGAffineTransformMakeRotation((angle * 3.14159)/180)];
 }
 
 
@@ -105,7 +166,7 @@
 	[map setRegion:MKCoordinateRegionMake(pippo, MKCoordinateSpanMake(1.0, 1.0))];
 	self.view=map;
 	controlledAutoveloxs=[[NSMutableArray alloc] init];
-	[NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(controlNearAutovelox:) userInfo:nil repeats:YES];
+	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(controlNearAutovelox:) userInfo:nil repeats:YES];
 	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(centerMap) userInfo:nil repeats:YES];
 	centerGps=[UIButton buttonWithType:UIButtonTypeInfoDark];
 	[centerGps setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
@@ -114,6 +175,11 @@
 	[centerGps addTarget:self action:@selector(center) forControlEvents:UIControlEventTouchDown];
 	//[map addAnnotation:gpsAnnotation];
 	[self.view addSubview:centerGps];
+//	tmp=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"CarSmall.png"]];
+	//[map addSubview:tmp];
+	//[[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1] addSubview:tmp];
+	//tmp.center=[map convertPoint:CGPointMake(100, 100) toView:[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1]];
+	//overlay=[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1];
 }
 -(void) centerMap
 {
@@ -184,10 +250,10 @@
 	//[map setCenterCoordinate:userPosition];
 	//CLLocation * user=[[CLLocation alloc] initWithLatitude:userPosition.latitude longitude:userPosition.longitude];
 
-	NSNumber * latmax=[NSNumber numberWithDouble:( userPosition.latitude + (0.1))];
-	NSNumber * latmin=[NSNumber numberWithDouble:( userPosition.latitude - (0.1))];
-	NSNumber * lonmax=[NSNumber numberWithDouble:( userPosition.longitude + (0.1))];
-	NSNumber * lonmin=[NSNumber numberWithDouble:( userPosition.longitude - (0.1))];
+	NSNumber * latmax=[NSNumber numberWithDouble:( userPosition.latitude + (0.05))];
+	NSNumber * latmin=[NSNumber numberWithDouble:( userPosition.latitude - (0.05))];
+	NSNumber * lonmax=[NSNumber numberWithDouble:( userPosition.longitude + (0.05))];
+	NSNumber * lonmin=[NSNumber numberWithDouble:( userPosition.longitude - (0.05))];
 	
 	//NSLog(@"searching latmax %@ latmin %@ lonMax %@ lonmin %@",latmax,latmin,lonmax,lonmin );
 	
@@ -227,8 +293,33 @@
 			[a release];
 		}
 	}
-	
+	[autoView setAutoveloxNumberInTenKm:[controlledAutoveloxs count]];
 	[array release];
+}
+
+-(void) evaluateCandidates
+{
+	NSMutableArray * autoToRemove=[[NSMutableArray alloc] init];
+	for(ControlledAutovelox * a in controlledAutoveloxs)
+	{
+		double currDist=[manager.newLocation getDistanceFrom: a.loc];
+		if(currDist>5000)
+		{
+			[autoToRemove addObject:a];
+		}
+		else {
+			
+			if(currDist<1000)
+			{
+				//CALL ALARM
+				[autoToRemove addObject:a];
+			}
+		}
+		
+	}
+	
+	[controlledAutoveloxs removeObjectsInArray:autoToRemove];
+	[autoToRemove release];
 }
 
 -(void) readAnnotationsFromCSV
@@ -338,12 +429,20 @@
 
 - (void)dealloc {
     [super dealloc];
+	[autoView release];
 	[centerGps release];
 	if(appoggio)
 		[appoggio release];
 }
+
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 {
+	//if(animated)
+	//[overlay addSubview:tmp];
+	//CGPoint center=[map convertCoordinate:manager.newLocation.coordinate toPointToView:overlay];
+	//tmp.center=center;
+	//[[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1] bringSubviewToFront:tmp];
+	//tmp.layer.zPosition=1000000;
 	
 	/*double latmap=map.centerCoordinate.latitude;
 	//double userlat=gpsAnnotation.coordinate.latitude;
@@ -484,7 +583,8 @@
 	[appoggio addObjectsFromArray:newAnn];
 	[newAnn release];
 	[oldAnn release];
-
+	//[[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0] bringSubviewToFront:[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1]];
+	//[self inspectView:map depth:0 path:@""];
 }
 
 @end
