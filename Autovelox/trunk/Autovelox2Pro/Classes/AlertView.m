@@ -24,19 +24,32 @@
     return self;
 }
 
-
-- (void)drawRect:(CGRect)rect 
+- (void)layoutSubviews
 {
-    // Drawing code	
-	
 	dist.text=[NSString stringWithFormat:@"Distanza rimanente:"];
 	dist.textColor=[UIColor whiteColor];
 	dist.backgroundColor=[UIColor clearColor];
 	[self addSubview:dist];
 	
-
+	
 	UIFont * fo = [UIFont fontWithName:@"Arial" size:50.0];
 	distN.font = fo;
+	
+	distN.textAlignment=UITextAlignmentRight;
+	distN.textColor=[UIColor redColor];
+	distN.backgroundColor=[UIColor clearColor];
+	[self addSubview:distN];
+	
+	uniN.textAlignment=UITextAlignmentLeft;
+	uniN.textColor=[UIColor whiteColor];
+	uniN.backgroundColor=[UIColor clearColor];
+	[self addSubview:uniN];
+}
+
+
+- (void)drawRect:(CGRect)rect 
+{
+    // Drawing code	
 	if(distance>=1000)
 	{
 		float d = distance/1000;
@@ -44,25 +57,14 @@
 	}
 	else
 		distN.text=[NSString stringWithFormat:@"%d",distance];
-	distN.textAlignment=UITextAlignmentRight;
-	distN.textColor=[UIColor redColor];
-	distN.backgroundColor=[UIColor clearColor];
-	[self addSubview:distN];
-	
-	
-	
+
 	if(distance>=1000)
 	{
 		float d = distance/1000;
 		uniN.text=[NSString stringWithFormat:@"Km",d];
 	}
 	else
-		uniN.text=[NSString stringWithFormat:@"m",distance];
-	uniN.textAlignment=UITextAlignmentLeft;
-	uniN.textColor=[UIColor whiteColor];
-	uniN.backgroundColor=[UIColor clearColor];
-	[self addSubview:uniN];
-		
+		uniN.text=[NSString stringWithFormat:@"m",distance];	
 }
 
 

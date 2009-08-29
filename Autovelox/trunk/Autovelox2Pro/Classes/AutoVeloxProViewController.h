@@ -40,10 +40,11 @@
 	//UIView *overlay;
 }
 
-+(void) readAnnotationsFromCSV:(LoadDataView *)ldv andManagedObjectCont:(NSManagedObjectContext *) managedO;
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	
+
 -(void) setAutoView:(AutoVeloxViewController *) vc;
+
 @property (nonatomic, assign) BOOL fissi;
 @property (nonatomic, assign) BOOL mobili;
 @property (nonatomic, assign) BOOL tutor;

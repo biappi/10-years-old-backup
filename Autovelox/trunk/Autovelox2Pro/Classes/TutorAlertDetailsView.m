@@ -29,23 +29,18 @@
     return self;
 }
 
-
-- (void)drawRect:(CGRect)rect 
+- (void)layoutSubviews
 {
-	
 	avSpeed.text=[NSString stringWithFormat:@"Velocità media:"];
 	avSpeed.textAlignment=UITextAlignmentLeft;
 	avSpeed.textColor=[UIColor whiteColor];
 	avSpeed.backgroundColor=[UIColor clearColor];
 	
-	numberSpeed.text=[NSString stringWithFormat:@"%d",averageSpeed];
+	
 	UIFont * fo=[UIFont fontWithName:@"Arial" size:50.0];
 	numberSpeed.font=fo;
 	numberSpeed.textAlignment=UITextAlignmentRight;
-	if(!alert)
-		numberSpeed.textColor=[UIColor whiteColor];
-	else
-		numberSpeed.textColor=[UIColor redColor];
+	
 	numberSpeed.backgroundColor=[UIColor clearColor];
 	
 	unit.backgroundColor=[UIColor clearColor];
@@ -53,34 +48,49 @@
 	unit.textColor=[UIColor whiteColor];
 	unit.text=@"Km/h";
 	[self addSubview:avSpeed];
-
+	
 	[self addSubview:numberSpeed];
-
+	
 	[self addSubview:unit];
-
+	
 	
 	
 	distFin.text=[NSString stringWithFormat:@"Distanza fine tutor:"];
 	distFin.textColor=[UIColor whiteColor];
 	distFin.backgroundColor=[UIColor clearColor];
 	[self addSubview:distFin];
-
 	
+	
+	
+	dis.textColor=[UIColor whiteColor];
+	dis.font=fo;
+	dis.backgroundColor=[UIColor clearColor];
+	dis.textAlignment=UITextAlignmentRight;
+	[self addSubview:dis];
+	
+	
+	unitDis.textColor=[UIColor whiteColor];
+	unitDis.backgroundColor=[UIColor clearColor];
+	unitDis.textAlignment=UITextAlignmentLeft;
+	[self addSubview:unitDis];
+}
+	
+- (void)drawRect:(CGRect)rect 
+{
+	
+	numberSpeed.text=[NSString stringWithFormat:@"%d",averageSpeed];
+	if(!alert)
+		numberSpeed.textColor=[UIColor whiteColor];
+	else
+		numberSpeed.textColor=[UIColor redColor];
 	
 	if(distanzaFineTutor>=1000)
 		if(distanzaFineTutor>=10000)
 			dis.text=[NSString stringWithFormat:@"%.0d",distanzaFineTutor/1000];
 		else 
 			dis.text=[NSString stringWithFormat:@"%1.1f",(float)distanzaFineTutor/1000];
-	else
-		dis.text=[NSString stringWithFormat:@"%d",distanzaFineTutor];
-	dis.textColor=[UIColor whiteColor];
-	dis.font=fo;
-	dis.backgroundColor=[UIColor clearColor];
-	dis.textAlignment=UITextAlignmentRight;
-	[self addSubview:dis];
-
-	
+		else
+			dis.text=[NSString stringWithFormat:@"%d",distanzaFineTutor];
 	if(distanzaFineTutor>=1000)
 		if(distanzaFineTutor>=10000)
 			unitDis.text=[NSString stringWithFormat:@"Km",distanzaFineTutor/1000];
@@ -88,11 +98,8 @@
 			unitDis.text=[NSString stringWithFormat:@"Km",(float)distanzaFineTutor/1000];
 		else
 			unitDis.text=[NSString stringWithFormat:@"m",distanzaFineTutor];
-	unitDis.textColor=[UIColor whiteColor];
-	unitDis.backgroundColor=[UIColor clearColor];
-	unitDis.textAlignment=UITextAlignmentLeft;
-	[self addSubview:unitDis];
-
+	
+	
 
 	//rilascia
 }

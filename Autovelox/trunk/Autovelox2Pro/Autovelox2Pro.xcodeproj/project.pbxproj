@@ -61,6 +61,8 @@
 		3D3AC4A81048917600C99273 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4A71048917600C99273 /* RootViewController.m */; };
 		3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4AA1048918E00C99273 /* SetupViewController.m */; };
 		3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC7231048A55E00C99273 /* MainWindow.xib */; };
+		3DB4BA6E10499C98001141F8 /* HomeScreenItaly.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */; };
+		3DB4BA9F10499F5A001141F8 /* CarSmallLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		3D3AC4A91048918E00C99273 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		3D3AC4AA1048918E00C99273 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		3D3AC7231048A55E00C99273 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HomeScreenItaly.png; sourceTree = "<group>"; };
+		3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarSmallLeft.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,10 +227,12 @@
 				3D2F14D8104193CD00C75FDF /* divieto.png */,
 				2058867E102480E400B69A7A /* slideUp.png */,
 				206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */,
+				3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */,
 				20B8F1441026764200FA4ED8 /* back.png */,
 				2009C5AF10482EB00086E4FA /* icon2.png */,
 				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
+				3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */,
 				20C3BAA6101C93C300D0971E /* autoveloxM.png */,
 				20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */,
 				20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */,
@@ -405,6 +411,8 @@
 				2009C5B010482EB00086E4FA /* icon2.png in Resources */,
 				3D3AC4A010488FAD00C99273 /* wait.png in Resources */,
 				3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */,
+				3DB4BA6E10499C98001141F8 /* HomeScreenItaly.png in Resources */,
+				3DB4BA9F10499F5A001141F8 /* CarSmallLeft.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,8 +12,16 @@
 @interface LoadDataView : UIImageView {
 
 	int line;
+	int lines;
+	double animDur;
+	int partial;
+	UIImageView *car;
 }
 
+	-(void)animat;
+
+@property (nonatomic,assign) double animDur;
 @property (nonatomic,assign) int line;
+@property (nonatomic,assign) int lines;
 
 @end

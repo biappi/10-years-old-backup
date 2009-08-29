@@ -10,17 +10,7 @@
 #import "SetupTableViewController.h"
 
 @implementation RootViewController
-
-/*
- // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
-
+@synthesize ld,totaLines;
 -(id) initWithContext:(NSManagedObjectContext *)c;
 {
 	if (self = [super initWithNibName:nil bundle:nil]) {
@@ -67,15 +57,24 @@
 	}
 	else
 	{
+		LoadDataView * ldv=(LoadDataView*) ld.view;
+		ldv.line=1;
+		ldv.lines=1;
+		ldv.animDur=1.0;
+		[ldv animat];
 		[self performSelector:@selector(readFinished) withObject:nil afterDelay:1.5];	}
 		[tmpView release];
 	
 
 }
+
 -(void) read
 {
-	[AutoVeloxProViewController readAnnotationsFromCSV:self andManagedObjectCont:managedObjectContext];
+	//[self readAnnotationsFromCSV];
+	[NSThread detachNewThreadSelector:@selector(readAnnotationsFromCSV) toTarget:self withObject:nil];
+	//[self  readAnnotationsFromCSV:(LoadDataView* ) ld.view andManagedObjectCont:managedObjectContext];
 }
+
 -(void) readFinished
 {
 	//UIViewAnimationTransition  trans = UIViewAnimationCurveEaseOut;
@@ -86,14 +85,14 @@
 	[UIView setAnimationDuration:1.0];
 	[ld.view setAlpha:0.0];
 	[UIView commitAnimations];
-	
-	//[ld.view removeFromSuperview];
+
 }
 -(void) removeLD
 {
 	[ld.view removeFromSuperview];
 
 }
+
 -(void) flip
 {
 	SetupTableViewController * stv=[[SetupTableViewController alloc] initWithNibName:nil bundle:nil];
@@ -108,22 +107,136 @@
 	[self.view addSubview:stv.view];
 	[UIView commitAnimations];
 }
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
+
+-(void) readAnnotationsFromCSV
+{
+	NSAutoreleasePool * pool=[[NSAutoreleasePool alloc] init];
+	NSManagedObjectContext * managedO=[managedObjectContext retain];
+	LoadDataView * ldv=[ld.view retain];
+
+	NSLog(@"parse begun %@",[NSDate date]);
+	NSString * path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AutoveloxFissi.csv"];
+	CSVParser *parserF = [CSVParser new];
+	[parserF setDelimiter:','];
+	[parserF openFile: path];
+	NSMutableArray *csvContentF = [parserF parseFile];
+	totaLines+=[csvContentF count];
+	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AutoveloxMobili.csv"];
+	CSVParser *parserM = [CSVParser new];
+	[parserM setDelimiter:','];
+	[parserM openFile: path];
+	NSMutableArray *csvContentM = [parserM parseFile];
+	totaLines+=[csvContentM count];
+	((LoadDataView*)(ldv)).line=1;
+	//uguale perr tutor e ecopass
+	
+	
+	ldv.lines=totaLines;
+	
+	int c;
+	int iter=0;
+	NSLog(@"Fissi: %d",[csvContentF count]);
+	for (c = 0; c < [csvContentF count]; c++) 
+	{
+		
+		NSArray * content=[csvContentF objectAtIndex: c];
+		CLLocationCoordinate2D pippo;
+		pippo.latitude=[[content objectAtIndex:1] doubleValue];
+		pippo.longitude=[[content objectAtIndex:0] doubleValue];
+		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];		
+		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+		annotation.title=@"Autovelox fisso";
+		annotation.subtitle=[content objectAtIndex:3];
+		//NSLog(@"Parsing %d",c);
+		if(c%(totaLines/20)==0)
+		{
+			((LoadDataView*)(ldv)).line=c;
+			[ldv performSelectorOnMainThread:@selector(animat) withObject:nil waitUntilDone:YES];
+
+		}
+	}
+	iter+=[csvContentF count];
+	
+	NSLog(@"Mobili: %d",[csvContentM count]);
+	for (c = 0; c < [csvContentM count]; c++) 
+	{
+		
+		NSArray * content=[csvContentM objectAtIndex: c];
+		CLLocationCoordinate2D pippo;
+		pippo.latitude=[[content objectAtIndex:1] doubleValue];
+		pippo.longitude=[[content objectAtIndex:0] doubleValue];
+		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];
+		
+		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+		annotation.title=@"Autovelox mobile";
+		annotation.subtitle=[content objectAtIndex:2];	
+		//NSLog(@"Parsing %d",c);
+		if((c+iter)%(totaLines/20)==0)
+		{
+			ldv.line=c+iter;
+			[ldv performSelectorOnMainThread:@selector(animat) withObject:nil waitUntilDone:YES];
+		}
+	}
+	/*
+	 //Ecopass
+	 path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Ecopass.csv"];
+	 [parser openFile: path];
+	 csvContent = [parser parseFile];
+	 NSLog(@"Ecopass: %d",[csvContent count]);
+	 for (c = 0; c < [csvContent count]; c++) 
+	 {
+	 
+	 NSArray * content=[csvContent objectAtIndex: c];
+	 CLLocationCoordinate2D pippo;
+	 pippo.latitude=[[content objectAtIndex:1] doubleValue];
+	 pippo.longitude=[[content objectAtIndex:0] doubleValue];
+	 Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];
+	 
+	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+	 annotation.title=@"Ecopass";
+	 annotation.subtitle=[content objectAtIndex:2];	
+	 //NSLog(@"Parsing %d",c);
+	 }
+	 
+	 //Tutor
+	 path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Tutor.csv"];
+	 [parser openFile: path];
+	 csvContent = [parser parseFile];
+	 NSLog(@"tutor: %d",[csvContent count]);
+	 
+	 for (c = 0; c < [csvContent count]; c++) 
+	 {
+	 NSArray * content=[csvContent objectAtIndex: c];
+	 CLLocationCoordinate2D pippo;
+	 pippo.latitude=[[content objectAtIndex:1] doubleValue];
+	 pippo.longitude=[[content objectAtIndex:0] doubleValue];
+	 Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];
+	 
+	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+	 annotation.title=@"Tutor";
+	 annotation.subtitle=[content objectAtIndex:2];	
+	 //NSLog(@"Parsing %d",c);
+	 }
+	 
+	 */
+	[parserM release];
+	[parserF release];
+	
+//NSError *error;
+//	if (![managedO save:&error]) {
+//		NSLog(@"ERROR ADDING AUTOVELOXS");
+//	}
+	[managedO performSelectorOnMainThread:@selector(save:) withObject:nil waitUntilDone:YES];
+	NSLog(@"parse end %@",[NSDate date]);
+	[self performSelectorOnMainThread:@selector(readFinished) withObject:nil waitUntilDone:NO];
+	[managedO release];
+	[ldv release];
+	[pool release];
 }
-*/
-
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-
 
 - (void)dealloc {
     [super dealloc];

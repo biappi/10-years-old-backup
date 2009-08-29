@@ -23,15 +23,20 @@
     return self;
 }
 
-
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-
+- (void)layoutSubviews
+{
 	noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 10Km: %d",numberOfAutovelox];
 	noa.numberOfLines=2;
 	noa.backgroundColor=[UIColor clearColor];
 	noa.textColor=[UIColor whiteColor];
 	[self addSubview:noa];
+}
+
+- (void)drawRect:(CGRect)rect 
+{
+    // Drawing code
+	noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 10Km: %d",numberOfAutovelox];
+	
 }
 
 

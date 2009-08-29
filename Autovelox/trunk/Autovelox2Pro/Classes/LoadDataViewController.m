@@ -16,7 +16,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
-		ldv=[[LoadDataView alloc] initWithFrame:CGRectMake(0,0, 320, 480)];
+		ldv=[[LoadDataView alloc] initWithFrame:CGRectMake(0,20, 320, 460)];
 		
     }
     return self;
