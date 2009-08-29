@@ -9,11 +9,11 @@
 #import <UIKit/UIKit.h>
 
 
-@interface LoadDataView : UIView {
-	UIImageView *back;
-	int lines;
+@interface LoadDataView : UIImageView {
+
+	int line;
 }
 
-@property (nonatomic,assign) int lines;
+@property (nonatomic,assign) int line;
 
 @end

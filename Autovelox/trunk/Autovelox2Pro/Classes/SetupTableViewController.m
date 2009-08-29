@@ -30,11 +30,11 @@
 	CGRect frame = CGRectMake(0,0,320,480);
 	self.view = [[[UIView alloc] initWithFrame:frame] autorelease];
 	self.view.backgroundColor=[UIColor blackColor];
-	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,10,320,480) style:UITableViewStyleGrouped];
+	tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0,320,480) style:UITableViewStyleGrouped];
 	tableView.delegate = self;
 	tableView.dataSource = self;
 	
-	tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	tableView.autoresizingMask =UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	
 	[self.view addSubview:tableView];
 	fissi=[[UISwitch alloc] initWithFrame:CGRectMake(200, 10, 80, 20) ];
@@ -79,11 +79,11 @@
 }
 
 // Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+/*- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
 	
     return NO;
-}
+}*/
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
@@ -226,7 +226,12 @@
 		autoContr.ecopass=NO;
 	}
 	
-	[controller flip];
+	UIViewAnimationTransition  trans = UIViewAnimationTransitionFlipFromRight;
+	[UIView beginAnimations: nil context: nil];
+	[UIView setAnimationTransition: trans forView:[self.view window]  cache: YES];
+	[UIView setAnimationDuration:1.0];
+	[self.view removeFromSuperview];
+	[UIView commitAnimations];
 			 
 		   
 }

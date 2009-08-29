@@ -11,8 +11,9 @@
 #import "AutoVeloxViewController.h"
 #import "BottomBarController.h"
 #import "SetupTableViewController.h"
-
+#import "RootViewController.h"
 #define LABWIDT 720
+#define NUMBEROFAUTOVELOX 12500; //DA SETTARE QUANDO SI AGGIORNA IL DB
 
 @implementation Autovelox2ProAppDelegate
 
@@ -24,12 +25,10 @@
 
 + (void)initialize;
 {
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated: NO];	
-	
-	NSMutableDictionary * defaults;
-	
+	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated: NO];		
+	NSMutableDictionary * defaults;	
 	defaults = [NSMutableDictionary dictionary];
-	[defaults setObject:[NSNumber numberWithInt:1]    forKey:@"DBLoaded"   ];
+	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"DBLoaded"   ];
 	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"Fissi"];
 	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"Mobili"];
 	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"Tutor"];
@@ -37,39 +36,30 @@
  	[[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }	
 
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-    
-    // Override point for customization after app launch    
-	AutoVeloxProViewController * ctr=[[AutoVeloxProViewController alloc]  initWithNibName:nil bundle:(NSBundle *)nil withManagedContext:self.managedObjectContext];	
-	
-	UIView * tmpView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-	[window insertSubview:tmpView atIndex:1];
-	[tmpView addSubview:ctr.view];
-	BottomBarController *bt=[[BottomBarController alloc]init];
-	AutoVeloxViewController *av=[[AutoVeloxViewController alloc] initWithController:[bt retain] withMap:((MKMapView*)ctr.view)];
 	
 	
-	[ctr setAutoView:av];
-	SetupTableViewController *stvc=[[SetupTableViewController alloc] initWithNibName:nil bundle:nil andController:self andAutoController:ctr];
-	[window insertSubview:stvc.view atIndex:0];
+   
+	//SetupTableViewController *stvc=[[SetupTableViewController alloc] initWithNibName:nil bundle:nil andController:self andAutoController:ctr];
+	//[window insertSubview:stvc.view atIndex:0];
 	//[stvc.view setHidden:YES]; 
-	[tmpView addSubview:av.view];
-	UIButton *info=[UIButton buttonWithType:UIButtonTypeInfoDark];
-	//[info setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
-	//[info setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateHighlighted];
-	info.frame=CGRectMake(270, 390, 40, 40);
-	[info addTarget:self action:@selector(flip) forControlEvents:UIControlEventTouchUpInside];
-	[tmpView addSubview:info];
-	[tmpView addSubview:bt.view];
+	//window=nil;
+	//window=[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	window.frame=[[UIScreen mainScreen] bounds];
 	[window makeKeyAndVisible];
-	 NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
-	int loadDb=[u integerForKey:@"DBLoaded"];
-	if(loadDb)
-	{
-		[ctr readAnnotationsFromCSV];
-		[u setInteger:0 forKey:@"DBLoaded"];
-	}
-	[ctr.view bringSubviewToFront:av.view];
+	RootViewController * root=[[RootViewController alloc] initWithContext:self.managedObjectContext];
+	//ld.ap=root;
+	[window addSubview:root.view];
+	/*		ldvC=[[LoadDataViewController alloc] initWithNibName:nil bundle:nil];
+		 ldvC.managedObjectC=managedObjectContext;
+		 ldvC.view.backgroundColor=[UIColor clearColor];
+		 [window addSubview:ldvC.view];
+		 [u setInteger:0 forKey:@"DBLoaded"];
+		 [AutoVeloxProViewController readAnnotationsFromCSV:nil andManagedObjectCont:self.managedObjectContext];
+	}*/
+	
 }
 
 /**
@@ -178,7 +168,7 @@
     return basePath;
 }
 
--(void)flip;
+/*-(void)flip;
 {
 	CGContextRef context = UIGraphicsGetCurrentContext(); 
 	[UIView beginAnimations:nil context:context]; 
@@ -191,7 +181,7 @@
 	[UIView commitAnimations]; 
 	
 }
-
+*/
 
 #pragma mark -
 #pragma mark Memory management
@@ -201,7 +191,7 @@
     [managedObjectContext release];
     [managedObjectModel release];
     [persistentStoreCoordinator release];
-    
+    [ctr release];
 	[window release];
 	[super dealloc];
 }

@@ -447,6 +447,7 @@
 {
 	NSLog(@"stop");
 }
+
 - (void)dealloc 
 {
 	//rilascia tutto

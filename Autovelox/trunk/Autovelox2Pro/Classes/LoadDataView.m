@@ -11,21 +11,18 @@
 
 @implementation LoadDataView
 
-@synthesize lines;
+@synthesize line;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
-		back=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+		//back=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+		self.image=[UIImage imageNamed:@"wait.png"];
     }
     return self;
 }
 
 
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-	[self addSubview:back];
-}
 
 
 - (void)dealloc {

@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "GpsAnnotation.h"
 #import "NaviCLLManager.h"
+#import "LoadDataView.h"
+
 #import "AutoVeloxViewController.h"
 @interface AutoVeloxProViewController : UIViewController <MKMapViewDelegate> {
 
@@ -37,7 +39,9 @@
 	//UIImageView * tmp;
 	//UIView *overlay;
 }
--(void)readAnnotationsFromCSV;
+
++(void) readAnnotationsFromCSV:(LoadDataView *)ldv andManagedObjectCont:(NSManagedObjectContext *) managedO;
+
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	
 -(void) setAutoView:(AutoVeloxViewController *) vc;
 @property (nonatomic, assign) BOOL fissi;

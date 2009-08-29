@@ -5,6 +5,8 @@
 //  Created by Pasquale Anatriello on 26/07/09.
 //  Copyright Navionics 2009. All rights reserved.
 //
+#import "AutoVeloxProViewController.h"
+#import "LoadDataViewController.h"
 
 @interface Autovelox2ProAppDelegate : NSObject <UIApplicationDelegate> {
 
@@ -12,6 +14,8 @@
     NSManagedObjectContext *managedObjectContext;	    
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
     UIWindow *window;
+	AutoVeloxProViewController * ctr;
+	LoadDataViewController *ldvC;
 }
 
 - (IBAction)saveAction:sender;
@@ -22,7 +26,7 @@
 
 @property (nonatomic, readonly) NSString *applicationDocumentsDirectory;
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) UIWindow *window;
 
 @end
 

@@ -10,12 +10,13 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MKReverseGeocoder.h>
 #import <MapKit/MapKit.h>
-#import "AutoVelox2ProAppDelegate.h"
+//#import "AutoVelox2ProAppDelegate.h"
 #import "BottomBarController.h"
 #import "AlertView.h"
 #import "NormalDetailsView.h"
 #import "TutorAlertDetailsView.h"
 #import "NaviCLLManager.h"
+
 typedef enum 
 {
 	AlertTypeTutor,

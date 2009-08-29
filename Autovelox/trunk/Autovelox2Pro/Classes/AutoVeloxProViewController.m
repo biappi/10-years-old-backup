@@ -317,6 +317,7 @@
 	[autoView setAutoveloxNumberInTenKm:[controlledAutoveloxs count]];
 	[array release];
 }
+
 -(CGPoint) latLongToMM:(CLLocationCoordinate2D)coordinate
 {
 	double intd;
@@ -326,23 +327,23 @@
 	point.y = (int)(log(tan(intd / 2.0)) * RR0F);
 	
 	
-		point.x = (int)(coordinate.longitude * RR0F / GR);
-		
-		/*-----------------------------------------------*/
-		/* Possible numeric errors must be filtered here */
-		/*-----------------------------------------------*/
-		if (point.x > SCMM)
-		{
-            point.x = SCMM;
-		}
-		else if (point.x < -SCMM)
-		{
-            point.x = -SCMM;
-		}
-		return point;
+	point.x = (int)(coordinate.longitude * RR0F / GR);
+	
+	/*-----------------------------------------------*/
+	/* Possible numeric errors must be filtered here */
+	/*-----------------------------------------------*/
+	if (point.x > SCMM)
+	{
+		point.x = SCMM;
+	}
+	else if (point.x < -SCMM)
+	{
+		point.x = -SCMM;
+	}
+	return point;
 	
 }
-	-(void) evaluateCandidates
+-(void) evaluateCandidates
 {
 	CGPoint mmUserPos=[self latLongToMM:manager.newLocation.coordinate];
 	NSMutableArray * autoToRemove=[[NSMutableArray alloc] init];
@@ -367,7 +368,7 @@
 			else if(mmUserPos.x<mmCoordinate.x && mmUserPos.y>mmCoordinate.y)
 				angleDir= 90-angleDir;
 			checkAngle=YES;
-		}		
+		}	
 		
 		
 		double currDist=[manager.newLocation getDistanceFrom: a.loc];
@@ -380,7 +381,7 @@
 			if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance)
 			{
 				a.goodEuristicResults=a.goodEuristicResults+1;
-			
+				
 			}
 			else {
 				if(checkAngle)
@@ -399,7 +400,7 @@
 	[autoToRemove release];
 }
 
--(void) readAnnotationsFromCSV
++(void) readAnnotationsFromCSV:(UIViewController *)ldv andManagedObjectCont:(NSManagedObjectContext *) managedO;
 {
 	NSLog(@"parse begun %@",[NSDate date]);
 	NSString * path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AutoveloxFissi.csv"];
@@ -408,12 +409,15 @@
 	[parser openFile: path];
 	NSMutableArray *csvContent = [parser parseFile];
 	int c;
-	for (c = 0; c < [csvContent count]; c++) {
+	NSLog(@"Fissi: %d",[csvContent count]);
+	for (c = 0; c < [csvContent count]; c++) 
+	{
+		
 		NSArray * content=[csvContent objectAtIndex: c];
 		CLLocationCoordinate2D pippo;
 		pippo.latitude=[[content objectAtIndex:1] doubleValue];
 		pippo.longitude=[[content objectAtIndex:0] doubleValue];
-		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];		
+		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];		
 		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 		annotation.title=@"Autovelox fisso";
@@ -424,7 +428,31 @@
 	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/AutoveloxMobili.csv"];
 	[parser openFile: path];
 	csvContent = [parser parseFile];
-	for (c = 0; c < [csvContent count]; c++) {
+	NSLog(@"Mobili: %d",[csvContent count]);
+	for (c = 0; c < [csvContent count]; c++) 
+	{
+		
+		NSArray * content=[csvContent objectAtIndex: c];
+		CLLocationCoordinate2D pippo;
+		pippo.latitude=[[content objectAtIndex:1] doubleValue];
+		pippo.longitude=[[content objectAtIndex:0] doubleValue];
+		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];
+		
+		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+		annotation.title=@"Autovelox mobile";
+		annotation.subtitle=[content objectAtIndex:2];	
+		//NSLog(@"Parsing %d",c);
+	}
+	/*
+	//Ecopass
+	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Ecopass.csv"];
+	[parser openFile: path];
+	csvContent = [parser parseFile];
+	 NSLog(@"Ecopass: %d",[csvContent count]);
+	for (c = 0; c < [csvContent count]; c++) 
+	{
+		
 		NSArray * content=[csvContent objectAtIndex: c];
 		CLLocationCoordinate2D pippo;
 		pippo.latitude=[[content objectAtIndex:1] doubleValue];
@@ -433,17 +461,41 @@
 		
 		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
-		annotation.title=@"Autovelox mobile";
+		annotation.title=@"Ecopass";
 		annotation.subtitle=[content objectAtIndex:2];	
 		//NSLog(@"Parsing %d",c);
 	}
+	
+	//Tutor
+	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Tutor.csv"];
+	[parser openFile: path];
+	csvContent = [parser parseFile];
+	 NSLog(@"tutor: %d",[csvContent count]);
+
+	for (c = 0; c < [csvContent count]; c++) 
+	{
+		NSArray * content=[csvContent objectAtIndex: c];
+		CLLocationCoordinate2D pippo;
+		pippo.latitude=[[content objectAtIndex:1] doubleValue];
+		pippo.longitude=[[content objectAtIndex:0] doubleValue];
+		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];
+		
+		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+		annotation.title=@"Tutor";
+		annotation.subtitle=[content objectAtIndex:2];	
+		//NSLog(@"Parsing %d",c);
+	}
+	
+	*/
 	[parser release];
 
 	NSError *error;
-	if (![managedObjectC save:&error]) {
+	if (![managedO save:&error]) {
 		NSLog(@"ERROR ADDING AUTOVELOXS");
 	}
 		NSLog(@"parse end %@",[NSDate date]);
+	[ldv readFinished];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -548,9 +600,9 @@
 	}
 
 	
-	NSLog(@"Did change");
+	//NSLog(@"Did change");
 	MKCoordinateRegion region=[mapView region];
-	NSLog(@"Region with center %f %f and span %f %f",region.center.latitude,region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta);
+	//NSLog(@"Region with center %f %f and span %f %f",region.center.latitude,region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta);
 	//NSArray * tmp=map.annotations;
 
 	if(map.region.span.latitudeDelta>0.1)
@@ -573,7 +625,6 @@
 	
 	double latspan=region.span.latitudeDelta;
 	double lonspan=region.span.longitudeDelta;
-	NSLog(@"latspan %f longspan %f",latspan, lonspan);
 	NSNumber * latmax=[NSNumber numberWithDouble:( region.center.latitude + (latspan/2))];
 	NSNumber * latmin=[NSNumber numberWithDouble:( region.center.latitude - (latspan/2))];
 	NSNumber * lonmax=[NSNumber numberWithDouble:( region.center.longitude + (lonspan/2))];
@@ -653,7 +704,7 @@
 		   [oldAnn addObject:ann];
 	}
 	
-	NSLog(@"Annotations found %d",[newAnn count]);
+//	NSLog(@"Annotations found %d",[newAnn count]);
 	[map addAnnotations:newAnn];
 	[map removeAnnotations:oldAnn];
 	[appoggio removeObjectsInArray:oldAnn];

@@ -44,7 +44,6 @@
 		20D81B7F101C50E800FD75A7 /* AutoveloxFissi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */; };
 		20D81B80101C50E800FD75A7 /* AutoveloxMobili.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28C3AD8A0F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
 		3D2F14551041854400C75FDF /* speed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14541041854400C75FDF /* speed.png */; };
@@ -57,6 +56,11 @@
 		3D2F16CD1042F22E00C75FDF /* gps_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16CA1042F22E00C75FDF /* gps_green.png */; };
 		3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16CB1042F22E00C75FDF /* gps_yellow.png */; };
 		3D3AC27F10483B9D00C99273 /* LoadDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC27E10483B9D00C99273 /* LoadDataView.m */; };
+		3D3AC35A104876F700C99273 /* LoadDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC359104876F700C99273 /* LoadDataViewController.m */; };
+		3D3AC4A010488FAD00C99273 /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC49F10488FAD00C99273 /* wait.png */; };
+		3D3AC4A81048917600C99273 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4A71048917600C99273 /* RootViewController.m */; };
+		3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4AA1048918E00C99273 /* SetupViewController.m */; };
+		3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC7231048A55E00C99273 /* MainWindow.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,7 +111,6 @@
 		20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoveloxFissi.csv; sourceTree = "<group>"; };
 		20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoveloxMobili.csv; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Autovelox2Pro.xcdatamodel; sourceTree = "<group>"; };
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -126,6 +129,14 @@
 		3D2F16CB1042F22E00C75FDF /* gps_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps_yellow.png; sourceTree = "<group>"; };
 		3D3AC27D10483B9D00C99273 /* LoadDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDataView.h; sourceTree = "<group>"; };
 		3D3AC27E10483B9D00C99273 /* LoadDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadDataView.m; sourceTree = "<group>"; };
+		3D3AC358104876F700C99273 /* LoadDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDataViewController.h; sourceTree = "<group>"; };
+		3D3AC359104876F700C99273 /* LoadDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadDataViewController.m; sourceTree = "<group>"; };
+		3D3AC49F10488FAD00C99273 /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
+		3D3AC4A61048917600C99273 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		3D3AC4A71048917600C99273 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		3D3AC4A91048918E00C99273 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
+		3D3AC4AA1048918E00C99273 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
+		3D3AC7231048A55E00C99273 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +206,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3D3AC7231048A55E00C99273 /* MainWindow.xib */,
 				20692CAF1043149A00F939D1 /* autoveloxfisso.png */,
 				20692CB01043149A00F939D1 /* autoveloxmobile.png */,
 				20692CD11043182E00F939D1 /* CarSmall.png */,
@@ -222,8 +234,8 @@
 				3D2F14541041854400C75FDF /* speed.png */,
 				20C3BAA8101C93C700D0971E /* autoveloxF.png */,
 				28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */,
+				3D3AC49F10488FAD00C99273 /* wait.png */,
 				20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */,
 			);
 			name = Resources;
@@ -294,6 +306,10 @@
 				20C3BB78101CAFB900D0971E /* BottomBarController.m */,
 				20ADED651020E703007622BD /* ControlledAutovelox.h */,
 				20ADED661020E703007622BD /* ControlledAutovelox.m */,
+				3D3AC4A61048917600C99273 /* RootViewController.h */,
+				3D3AC4A71048917600C99273 /* RootViewController.m */,
+				3D3AC4A91048918E00C99273 /* SetupViewController.h */,
+				3D3AC4AA1048918E00C99273 /* SetupViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -312,6 +328,8 @@
 			children = (
 				3D3AC27D10483B9D00C99273 /* LoadDataView.h */,
 				3D3AC27E10483B9D00C99273 /* LoadDataView.m */,
+				3D3AC358104876F700C99273 /* LoadDataViewController.h */,
+				3D3AC359104876F700C99273 /* LoadDataViewController.m */,
 			);
 			name = "Loading View";
 			sourceTree = "<group>";
@@ -358,7 +376,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				20D81B7F101C50E800FD75A7 /* AutoveloxFissi.csv in Resources */,
 				20D81B80101C50E800FD75A7 /* AutoveloxMobili.csv in Resources */,
 				20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */,
@@ -386,6 +403,8 @@
 				3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */,
 				20513D4610482B8900949598 /* icon.png in Resources */,
 				2009C5B010482EB00086E4FA /* icon2.png in Resources */,
+				3D3AC4A010488FAD00C99273 /* wait.png in Resources */,
+				3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +431,9 @@
 				20692C5010430F5600F939D1 /* GpsAnnotation.m in Sources */,
 				20692D031043229100F939D1 /* NaviCLLManager.m in Sources */,
 				3D3AC27F10483B9D00C99273 /* LoadDataView.m in Sources */,
+				3D3AC35A104876F700C99273 /* LoadDataViewController.m in Sources */,
+				3D3AC4A81048917600C99273 /* RootViewController.m in Sources */,
+				3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
