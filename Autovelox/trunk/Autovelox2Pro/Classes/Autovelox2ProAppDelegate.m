@@ -52,6 +52,8 @@
 	RootViewController * root=[[RootViewController alloc] initWithContext:self.managedObjectContext];
 	//ld.ap=root;
 	[window addSubview:root.view];
+	//disable the stand by
+	[UIApplication sharedApplication].idleTimerDisabled = TRUE;
 	/*		ldvC=[[LoadDataViewController alloc] initWithNibName:nil bundle:nil];
 		 ldvC.managedObjectC=managedObjectContext;
 		 ldvC.view.backgroundColor=[UIColor clearColor];
