@@ -61,6 +61,14 @@
 		3D3AC4A81048917600C99273 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4A71048917600C99273 /* RootViewController.m */; };
 		3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4AA1048918E00C99273 /* SetupViewController.m */; };
 		3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC7231048A55E00C99273 /* MainWindow.xib */; };
+		3D954B29104BF67100A57A15 /* SoundAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D954B28104BF67100A57A15 /* SoundAlert.m */; };
+		3D954B6E104BF90800A57A15 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D954B6D104BF90800A57A15 /* AudioToolbox.framework */; };
+		3D954BA1104D621900A57A15 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D954BA0104D621900A57A15 /* AVFoundation.framework */; };
+		3D954BA7104D63BB00A57A15 /* sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3D954BA6104D63BB00A57A15 /* sample.m4a */; };
+		3D954BBD104D663900A57A15 /* rooster.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D954BBC104D663900A57A15 /* rooster.mp3 */; };
+		3D954C06104D6C2000A57A15 /* alarm_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D954C05104D6C2000A57A15 /* alarm_1.mp3 */; };
+		3D954C14104D6C3600A57A15 /* attention.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D954C13104D6C3600A57A15 /* attention.wav */; };
+		3D954C39104DBC3500A57A15 /* houston.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D954C38104DBC3500A57A15 /* houston.wav */; };
 		3DB4BA6E10499C98001141F8 /* HomeScreenItaly.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */; };
 		3DB4BA9F10499F5A001141F8 /* CarSmallLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */; };
 /* End PBXBuildFile section */
@@ -139,6 +147,15 @@
 		3D3AC4A91048918E00C99273 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
 		3D3AC4AA1048918E00C99273 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		3D3AC7231048A55E00C99273 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		3D954B27104BF67100A57A15 /* SoundAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundAlert.h; sourceTree = "<group>"; };
+		3D954B28104BF67100A57A15 /* SoundAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundAlert.m; sourceTree = "<group>"; };
+		3D954B6D104BF90800A57A15 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3D954BA0104D621900A57A15 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3D954BA6104D63BB00A57A15 /* sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.m4a; sourceTree = "<group>"; };
+		3D954BBC104D663900A57A15 /* rooster.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rooster.mp3; sourceTree = "<group>"; };
+		3D954C05104D6C2000A57A15 /* alarm_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_1.mp3; sourceTree = "<group>"; };
+		3D954C13104D6C3600A57A15 /* attention.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = attention.wav; sourceTree = "<group>"; };
+		3D954C38104DBC3500A57A15 /* houston.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = houston.wav; sourceTree = "<group>"; };
 		3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HomeScreenItaly.png; sourceTree = "<group>"; };
 		3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarSmallLeft.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
@@ -155,6 +172,8 @@
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
 				20D81B6D101C4F8800FD75A7 /* MapKit.framework in Frameworks */,
 				20C3BB2E101CA40400D0971E /* CoreLocation.framework in Frameworks */,
+				3D954B6E104BF90800A57A15 /* AudioToolbox.framework in Frameworks */,
+				3D954BA1104D621900A57A15 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,8 +183,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				3D3AC27C10483B7B00C99273 /* Loading View */,
+				3D954B26104BF64900A57A15 /* AlertSound */,
 				3D3AC23C10480E9500C99273 /* AlertView */,
+				3D3AC27C10483B7B00C99273 /* Loading View */,
 				3D3AC23F10480F0C00C99273 /* Data Management */,
 				3D3AC24210480F4500C99273 /* Home */,
 				3D3AC24710480F6F00C99273 /* Localizzation */,
@@ -210,6 +230,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3D954BBC104D663900A57A15 /* rooster.mp3 */,
+				3D954C38104DBC3500A57A15 /* houston.wav */,
+				3D954C05104D6C2000A57A15 /* alarm_1.mp3 */,
+				3D954C13104D6C3600A57A15 /* attention.wav */,
+				3D954BA6104D63BB00A57A15 /* sample.m4a */,
 				3D3AC7231048A55E00C99273 /* MainWindow.xib */,
 				20692CAF1043149A00F939D1 /* autoveloxfisso.png */,
 				20692CB01043149A00F939D1 /* autoveloxmobile.png */,
@@ -250,6 +275,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3D954BA0104D621900A57A15 /* AVFoundation.framework */,
+				3D954B6D104BF90800A57A15 /* AudioToolbox.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -340,6 +367,15 @@
 			name = "Loading View";
 			sourceTree = "<group>";
 		};
+		3D954B26104BF64900A57A15 /* AlertSound */ = {
+			isa = PBXGroup;
+			children = (
+				3D954B27104BF67100A57A15 /* SoundAlert.h */,
+				3D954B28104BF67100A57A15 /* SoundAlert.m */,
+			);
+			name = AlertSound;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -413,6 +449,11 @@
 				3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */,
 				3DB4BA6E10499C98001141F8 /* HomeScreenItaly.png in Resources */,
 				3DB4BA9F10499F5A001141F8 /* CarSmallLeft.png in Resources */,
+				3D954BA7104D63BB00A57A15 /* sample.m4a in Resources */,
+				3D954BBD104D663900A57A15 /* rooster.mp3 in Resources */,
+				3D954C06104D6C2000A57A15 /* alarm_1.mp3 in Resources */,
+				3D954C14104D6C3600A57A15 /* attention.wav in Resources */,
+				3D954C39104DBC3500A57A15 /* houston.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +483,7 @@
 				3D3AC35A104876F700C99273 /* LoadDataViewController.m in Sources */,
 				3D3AC4A81048917600C99273 /* RootViewController.m in Sources */,
 				3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */,
+				3D954B29104BF67100A57A15 /* SoundAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

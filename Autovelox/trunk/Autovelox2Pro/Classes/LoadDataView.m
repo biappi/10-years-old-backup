@@ -20,8 +20,10 @@
 
 @synthesize line,lines,animDur;
 
-- (id)initWithFrame:(CGRect)frame {
-    if (self = [super initWithFrame:frame]) {
+- (id)initWithFrame:(CGRect)frame 
+{
+    if (self = [super initWithFrame:frame]) 
+	{
         // Initialization code
 		//back=[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
 		self.image=[UIImage imageNamed:@"HomeScreenItaly.png"];

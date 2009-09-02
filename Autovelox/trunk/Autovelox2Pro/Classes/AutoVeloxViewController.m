@@ -7,7 +7,7 @@
 //
 
 #import "AutoVeloxViewController.h"
-
+#import "SoundAlert.h"
 
 
 #define ANIMOFFS 200
@@ -23,13 +23,13 @@
 
 @interface AutoVeloxViewController (PrivateMethods)
 
--(void)animationSlideOn;
+- (void)	animationSlideOn;
 
--(void)animationSlideOff;
+- (void)	animationSlideOff;
 
--(int) averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
+- (int)		averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
 
--(void)setLimit;
+- (void)	setLimit;
 
 @end
 
@@ -307,8 +307,11 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+	SoundAlert * sa=[[SoundAlert alloc]init];
 	if(ontop)
 	{
+		
+		[sa playButtonPressed];
 		[self animationSlideOff];	
 		//[self alert:AlertTypeTutor withDistance:800];
 		//sleep(2);
