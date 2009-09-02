@@ -200,29 +200,47 @@
 	 annotation.subtitle=[content objectAtIndex:2];	
 	 //NSLog(@"Parsing %d",c);
 	 }
-	 
+	 */
 	 //Tutor
-	 path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Tutor.csv"];
-	 [parser openFile: path];
-	 csvContent = [parser parseFile];
-	 NSLog(@"tutor: %d",[csvContent count]);
+	 path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Sicve_Inizio.csv"];
+	 [parserF openFile: path];
+	 csvContentF = [parserF parseFile];
+	 NSLog(@"tutor: %d",[csvContentF count]);
 	 
-	 for (c = 0; c < [csvContent count]; c++) 
+	 for (c = 0; c < [csvContentF count]; c++) 
 	 {
-	 NSArray * content=[csvContent objectAtIndex: c];
+	 NSArray * content=[csvContentF objectAtIndex: c];
 	 CLLocationCoordinate2D pippo;
 	 pippo.latitude=[[content objectAtIndex:1] doubleValue];
 	 pippo.longitude=[[content objectAtIndex:0] doubleValue];
-	 Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];
+	 Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];
 	 
 	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
-	 annotation.title=@"Tutor";
-	 annotation.subtitle=[content objectAtIndex:2];	
-	 //NSLog(@"Parsing %d",c);
+	 annotation.title=@"Tutor Inizio";
+	 annotation.subtitle=[content objectAtIndex:3];	
+		 
+			 //NSLog(@"Parsing %d",c);
 	 }
+	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Sicve_Fine.csv"];
+	[parserF openFile: path];
+	csvContentF = [parserF parseFile];
+	NSLog(@"tutor: %d",[csvContentF count]);
+	
+	for (c = 0; c < [csvContentF count]; c++) 
+	{
+		NSArray * content=[csvContentF objectAtIndex: c];
+		CLLocationCoordinate2D pippo;
+		pippo.latitude=[[content objectAtIndex:1] doubleValue];
+		pippo.longitude=[[content objectAtIndex:0] doubleValue];
+		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];
+		
+		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
+		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+		annotation.title=@"Tutor Fine";
+		annotation.subtitle=[content objectAtIndex:3];	
+	}		
 	 
-	 */
 	[parserM release];
 	[parserF release];
 	

@@ -390,7 +390,11 @@
 			a.lastDistance=currDist;
 			if(a.lastDistance<1000 && a.goodEuristicResults>0)
 			{
-				//ALARM!!!!!!!!
+				UIAlertView *alert = [[UIAlertView alloc] init];
+				[alert setTitle:@"Autovelox"];
+				[alert setMessage:a.autovelox.subtitle];
+				[alert show];
+				[autoView alert:AlertTypeAutoVeloxFisso withDistance:a.lastDistance]; 
 			}
 		}
 		
@@ -453,6 +457,16 @@
 	{
 		view.image=[UIImage imageNamed:@"autoVeloxMobile40.png"];
 	}
+	else if([tmp.title isEqualToString:@"Tutor Inizio"])
+	{
+		view.image=[UIImage imageNamed:@"tutorsmall.png"];
+	}
+	else if([tmp.title isEqualToString:@"Tutor Fine"])
+	{
+		view.image=[UIImage imageNamed:@"tutorFineSmall.png"];
+	}
+	
+	
 	[view setNeedsDisplay];
 	return view;
 
@@ -563,10 +577,10 @@
 		if(firstAnd)
 		{
 			firstAnd=NO;
-			predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Tutor')"];
+			predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Tutor*')"];
 		}
 		else {
-			predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Tutor')"];
+			predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Tutor*')"];
 		}
 	}
 	if(ecopass)
