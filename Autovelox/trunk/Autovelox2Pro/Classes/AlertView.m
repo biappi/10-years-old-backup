@@ -31,7 +31,6 @@
 	dist.backgroundColor=[UIColor clearColor];
 	[self addSubview:dist];
 	
-	
 	UIFont * fo = [UIFont fontWithName:@"Arial" size:50.0];
 	distN.font = fo;
 	

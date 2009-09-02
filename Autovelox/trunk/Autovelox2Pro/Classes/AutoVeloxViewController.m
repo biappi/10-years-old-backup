@@ -307,11 +307,9 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-	SoundAlert * sa=[[SoundAlert alloc]init];
+	
 	if(ontop)
 	{
-		
-		[sa playButtonPressed];
 		[self animationSlideOff];	
 		//[self alert:AlertTypeTutor withDistance:800];
 		//sleep(2);
@@ -335,6 +333,8 @@
 
 -(void)alert:(AlertType)type withDistance:(int)distance;
 {
+	SoundAlert * sa=[[SoundAlert alloc]init];
+	[sa playButtonPressed];
 	if(type=AlertTypeTutor)
 	{
 		if(!ontop)
@@ -361,6 +361,7 @@
 	limit.image=[UIImage imageNamed:@"divieto.png"];
 	[limit setNeedsDisplay];
 	[self.view addSubview:av];
+	[sa release];
 }
 
 -(void) setLimit;
