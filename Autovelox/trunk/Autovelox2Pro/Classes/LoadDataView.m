@@ -49,6 +49,7 @@
 
 - (void)dealloc {
     [super dealloc];
+	[car release];
 }
 
 

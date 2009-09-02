@@ -75,6 +75,11 @@
 - (void)dealloc 
 {
 	[controller release];
+	[tableView release];
+	[fissi release];
+	[mobili release];
+	[tutor release];
+	[ecopass release];	
     [super dealloc];
 }
 
@@ -167,21 +172,6 @@
 	return cell;
 }
 
-
-- (void)tableView:(UITableView *)tableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
-{
-	switch (indexPath.section) {
-
-		case 0:
-			break;
-		case 1:
-			[self done];
-			break;	
-		default:
-			break;
-	}
-}
-
 -(void) done
 {
 	NSUserDefaults * def=[NSUserDefaults standardUserDefaults];
@@ -232,8 +222,24 @@
 	[UIView setAnimationDuration:1.0];
 	[self.view removeFromSuperview];
 	[UIView commitAnimations];
-			 
-		   
+	
+	
+}
+
+
+
+- (void)tableView:(UITableView *)tableview didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+	switch (indexPath.section) {
+
+		case 0:
+			break;
+		case 1:
+			[self done];
+			break;	
+		default:
+			break;
+	}
 }
 
 

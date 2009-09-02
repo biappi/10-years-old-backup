@@ -459,9 +459,12 @@
 	[up release];
 	[speedLabel release];
 	[locationManager release];
-	[av release];
 	if(tAVD)
 		[tAVD release];
+	if(nDV)
+		[nDV release];
+	if(av)
+		[av release];
 	[tac release];
 	[bottom release];
 	[geoCoder release];

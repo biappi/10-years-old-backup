@@ -34,13 +34,16 @@
 	AutoVeloxViewController *av=[[AutoVeloxViewController alloc] initWithController:[bt retain] withMap:((MKMapView*)ctr.view)];
 	[ctr setAutoView:av];
 	[tmpView addSubview:av.view];
+	[av release];
 	UIButton *info=[UIButton buttonWithType:UIButtonTypeInfoDark];
 	//[info setImage:[UIImage imageNamed:@"mirinoUnpressedsmall.png"] forState:UIControlStateNormal];
 	//[info setImage:[UIImage imageNamed:@"mirinoPressedsmall.png"] forState:UIControlStateHighlighted];
 	info.frame=CGRectMake(270, 390, 40, 40);
 	[info addTarget:self action:@selector(flip) forControlEvents:UIControlEventTouchUpInside];
 	[tmpView addSubview:info];
+		
 	[tmpView addSubview:bt.view];
+	[bt release];
 	self.view=tmpView;
 	self.view.autoresizingMask =UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	ld=[[LoadDataViewController alloc] initWithNibName:nil bundle:nil];
@@ -62,8 +65,10 @@
 		ldv.lines=1;
 		ldv.animDur=1.0;
 		[ldv animat];
-		[self performSelector:@selector(readFinished) withObject:nil afterDelay:1.5];	}
-		[tmpView release];
+		[self performSelector:@selector(readFinished) withObject:nil afterDelay:1.5];	
+	}
+	[tmpView release];
+
 	
 
 }
@@ -258,6 +263,9 @@
 
 - (void)dealloc {
     [super dealloc];
+	[managedObjectContext release];
+	[ctr release];
+    [ld release];
 }
 
 

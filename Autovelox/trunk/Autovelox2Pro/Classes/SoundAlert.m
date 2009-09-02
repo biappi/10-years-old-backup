@@ -97,7 +97,10 @@
 	[self startPlayback];
 }
 
-
+-(void)dealloc
+{
+	[_player release]; 
+}
 
 
 @end

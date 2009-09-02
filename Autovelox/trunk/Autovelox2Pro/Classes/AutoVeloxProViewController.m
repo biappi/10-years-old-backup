@@ -397,6 +397,7 @@
 				[autoView alert:AlertTypeAutoVeloxFisso withDistance:a.lastDistance]; 
 			}
 		}
+
 		
 	}
 	
@@ -422,29 +423,15 @@
 	//if((![annotation isKindOfClass:[Annotation class]]) && (![annotation isKindOfClass:[GpsAnnotation class]]))
 	//	return nil;
 	
-		 if(![annotation isKindOfClass:[Annotation class]])
-		 {
-			 return nil;
-			 MKAnnotationView * view=[mapView dequeueReusableAnnotationViewWithIdentifier:@"gps"];
-			 if(!view)
-			 {
-				 view=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"gps"];
-				 view.canShowCallout=NO;
-				 
-			 }
-			 view.image=[UIImage imageNamed:@"CarSmall.png"];
-			 gpsView=view;
-			// double radians=(angle * 3.14159)/180;
-			 //view.transform=CGAffineTransformMakeRotation(radians);
-			 [view setNeedsDisplay];
-			 return view;
-		 }
+	if(![annotation isKindOfClass:[Annotation class]])
+	{
+		return nil;
+	}
 	MKAnnotationView * view=[mapView dequeueReusableAnnotationViewWithIdentifier:@"autovelox"];
 	if(!view)
 	{
-	view=[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"autovelox"];
-	view.canShowCallout=YES;
-	
+		view=[[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"autovelox"] autorelease];
+		view.canShowCallout=YES;
 	}
 	else {
 		view.annotation=annotation;
@@ -476,6 +463,8 @@
     [super dealloc];
 	[autoView release];
 	[centerGps release];
+	[annotationsArray release];
+	[gpsAnnotation release];
 	if(appoggio)
 		[appoggio release];
 }
