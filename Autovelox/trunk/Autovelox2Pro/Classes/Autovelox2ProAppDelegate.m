@@ -129,6 +129,7 @@
 	
     if (managedObjectModel != nil) {
         return managedObjectModel;
+		
     }
     managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
     return managedObjectModel;
@@ -142,11 +143,20 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
 	
     if (persistentStoreCoordinator != nil) {
-        return persistentStoreCoordinator;
+		
+		return persistentStoreCoordinator;
     }
-	
-    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Autovelox2Pro.sqlite"]];
-	
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	int loadDb=[u integerForKey:@"DBLoaded"];
+	NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Autovelox2Pro.sqlite"]];
+	if(loadDb!=0)
+	{
+		if(	[[NSFileManager defaultManager] fileExistsAtPath:[storeUrl path]])
+		{
+			[[NSFileManager defaultManager] removeItemAtPath:storeUrl.path error:nil];
+		}
+		
+	}
 	NSError *error;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {

@@ -531,6 +531,10 @@
 		return;
 	
 	}
+	if(map.region.span.latitudeDelta<0.004189)
+	{
+		[map setRegion:MKCoordinateRegionMake(map.centerCoordinate, MKCoordinateSpanMake(0.0042, map.region.span.longitudeDelta)) animated:YES];
+	}
 	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
 	
 	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Annotation"
