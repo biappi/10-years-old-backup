@@ -16,20 +16,24 @@
 #import "NormalDetailsView.h"
 #import "TutorAlertDetailsView.h"
 #import "NaviCLLManager.h"
+#import "Annotation.h"
+#import "SoundAlert.h"
 
-typedef enum 
+/*typedef enum 
 {
 	AlertTypeTutor,
 	AlertTypeAutoVeloxMobile,
 	AlertTypeAutoVeloxFisso,
 	AlertTypeEcopass,		
-} AlertType;
+} AlertType;*/
 
 
 
 @interface AutoVeloxViewController : UIViewController <MKReverseGeocoderDelegate>
 {
+	SoundAlert * sa;
 	CLLocationManager *locationManager;
+	CLLocation *old;
 	NaviCLLManager * gpsManager;
 	MKReverseGeocoder *geoCoder;
 	MKMapView * map;
@@ -59,7 +63,7 @@ typedef enum
 	int distanceFromTutor;
 
 	int limitTutor;	
-
+	int i;
 	int avgSp;
 	BOOL topAnimationStarted;
 	BOOL ontop;
@@ -76,7 +80,7 @@ typedef enum
 
 -(void)animation;
 
--(void)alert:(AlertType)type withDistance:(int)distance;
+-(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione :andLimit:(int) lim;
 
 -(void)alertEnd;
 

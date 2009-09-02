@@ -7,7 +7,7 @@
 //
 
 #import "AutoVeloxViewController.h"
-#import "SoundAlert.h"
+
 
 
 #define ANIMOFFS 200
@@ -49,7 +49,7 @@
 		CLLocationCoordinate2D firstPoint;
 		firstPoint.latitude=0;
 		firstPoint.longitude=0;
-		
+		i=1;
 		geoCoder=[[MKReverseGeocoder alloc] initWithCoordinate:firstPoint];
 		geoCoder.delegate=self;
 		ontop=YES;
@@ -115,8 +115,20 @@
 	bar.frame=CGRectMake(0, 155, 320,15);
 	[self.view addSubview:bar];
 	
-	
-	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	int al=[u integerForKey:@"AlertStatus"];
+	if(al==0)
+	{
+		nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	}
+	else if (al==1)
+	{ 
+		totalTime=[u integerForKey:@"TotalTime"];
+		totalSpace=[u integerForKey:@"TotalDistance"];
+		old=[u objectForKey:@"OldLocation"];
+		i=0;
+		[self alertTutorBegan];
+	}
 	[self.view addSubview:nDV];
 	/*TutorAlertDetailsView *tdv=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	[self.view addSubview:tdv];
@@ -197,7 +209,18 @@
 	}
 	if(tAVD!=nil)
 	{
-		avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
+		NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+		int al=[u integerForKey:@"AlertStatus"];
+		if(al && i==0)
+		{
+			avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:old  andTime:interval];
+			i++;
+		}
+		else
+		{
+			avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
+			i++;
+		}
 		if(avgSp>limitTutor)
 			tAVD.alert=YES;
 		[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
@@ -311,7 +334,7 @@
 	if(ontop)
 	{
 		[self animationSlideOff];	
-		//[self alert:AlertTypeTutor withDistance:800];
+		//[self alert:TUTOR_INIZIO withDistance:800];
 		//sleep(2);
 		//[self alertTutorBegan];
 	}
@@ -327,45 +350,54 @@
 {
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	[av removeFromSuperview];
+	av=nil;
 	[av release];
 	[self.view addSubview:nDV];
+	[sa release];
 }
 
--(void)alert:(AlertType)type withDistance:(int)distance;
+-(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione :andLimit:(int) lim;
 {
-	SoundAlert * sa=[[SoundAlert alloc]init];
+	sa=[[SoundAlert alloc]init];
+	limitTutor=lim;
 	[sa playButtonPressed];
-	if(type=AlertTypeTutor)
-	{
-		if(!ontop)
-			[self animationSlideOn];
-	}
-	else if(type=AlertTypeAutoVeloxMobile)
-	{
-		if(!ontop)
-			[self animationSlideOn];
-	}
-	else if(type=AlertTypeAutoVeloxFisso)
-	{
-		if(!ontop)
-			[self animationSlideOn];
-	}
-	else if(type=AlertTypeEcopass)
-	{
-		if(!ontop)
-			[self animationSlideOn];
-	}
 	av=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
+	if(type=TUTOR_INIZIO)
+	{
+		if(!ontop)
+			[self animationSlideOn];
+		av.tipo=@"Tutor";
+	}
+	else if(type=AUTOVELOXMOBILE)
+	{
+		if(!ontop)
+			[self animationSlideOn];
+		av.tipo=@"AutoVelox Mobile";
+	}
+	else if(type=AUTOVELOXFISSO)
+	{
+		if(!ontop)
+			[self animationSlideOn];
+		av.tipo=@"AutoVelox Fisso";
+	}
+/*	else if(type=AlertTypeEcopass)
+	{
+		if(!ontop)
+			[self animationSlideOn];
+	}*/
+	
 	[nDV removeFromSuperview];
+	nDV=nil;
 	[nDV release];
 	limit.image=[UIImage imageNamed:@"divieto.png"];
 	[limit setNeedsDisplay];
 	[self.view addSubview:av];
-	[sa release];
+	
 }
 
 -(void) setLimit;
 {
+	
 	if(limitTutor>0)
 	{
 		UIFont * fo;
@@ -388,13 +420,46 @@
 		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
 		[self.view addSubview:limitSpeed];
 	}
+	else
+	{
+		UIFont * fo;
+		limit.image = [UIImage imageNamed:@"divieto.png"];
+		if(limitTutor<100)
+		{
+			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(33, 23, 75, 67)];
+			fo=[UIFont fontWithName:@"Arial" size:35.0];
+		}
+		else
+		{
+			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(32, 23, 75, 67)];
+			fo=[UIFont fontWithName:@"Arial" size:30.0];
+		}
+		limitSpeed.textAlignment=UITextAlignmentCenter;
+		limitSpeed.textColor=[UIColor blackColor];
+		limitSpeed.font=fo;
+		limitSpeed.backgroundColor=[UIColor clearColor];
+		
+		limitSpeed.text=@"N.A.";
+		[self.view addSubview:limitSpeed];
+	}
 }
 
 -(void)alertTutorBegan;
 {
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	int al=[u integerForKey:@"AlertStatus"];
+	if(!al)
+	{
+		[u setInteger:1 forKey:@"AlertStatus"];
+		
+	}
+	else
+	{
+	}
 	limitTutor=80;
 	[self setLimit];	
 	[av removeFromSuperview];
+	av=nil;
 	[av release];	
 	tAVD=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 
@@ -403,7 +468,15 @@
 
 -(void)alertTutorEnd;
 {
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	int al=[u integerForKey:@"AlertStatus"];
+	if(al)
+	{
+		[u setInteger:0 forKey:@"AlertStatus"];
+		
+	}
 	[tAVD removeFromSuperview];
+	tAVD=nil;
 	[tAVD release];
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 
@@ -422,6 +495,10 @@
 		distance = [newLoc getDistanceFrom:oldLoc];
 		totalSpace += distance;
 		return (int)totalSpace/totalTime;
+		NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+		[u setFloat:totalSpace forKey:@"TotalDistance"];
+		[u setFloat:totalTime forKey:@"TotalTime"];
+		[u setObject:oldLoc forKey:@"OldLocation"];
 	}
 	else 
 		return 0;
@@ -429,22 +506,31 @@
 
 -(void)updateDistance:(int)distance;
 {
-	av.distance=distance;
-	[av setNeedsDisplay];
+	if(av)
+	{
+		av.distance=distance;
+		[av setNeedsDisplay];
+	}
 }
 
 -(void)setAutoveloxNumberInTenKm:(int)num;
 {
-	nDV.numberOfAutovelox=num;
-	[nDV setNeedsDisplay];
+	if(nDV)
+	{
+		nDV.numberOfAutovelox=num;
+		[nDV setNeedsDisplay];
+	}
 }
 
 -(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)lim;
 {
-	tAVD.averageSpeed=avS;
-	tAVD.velocitaConsentita=lim;
-	tAVD.distanzaFineTutor=end;
-	[tAVD setNeedsDisplay];
+	if(tAVD)
+	{
+		tAVD.averageSpeed=avS;
+		tAVD.velocitaConsentita=lim;
+		tAVD.distanzaFineTutor=end;
+		[tAVD setNeedsDisplay];
+	}
 }
 
  - (void)animationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context

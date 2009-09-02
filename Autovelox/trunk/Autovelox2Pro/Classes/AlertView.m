@@ -11,15 +11,17 @@
 
 @implementation AlertView
 
-@synthesize distance;
+@synthesize distance,tipo,descr;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         // Initialization code
 		self.backgroundColor=[UIColor clearColor];
-		dist=[[UILabel alloc] initWithFrame:CGRectMake(5, 5, 185, 65)];
-		uniN=[[UILabel alloc] initWithFrame:CGRectMake(105, 48,70, 65)];
-		distN=[[UILabel alloc] initWithFrame:CGRectMake(35, 38,70, 65)];
+		dist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 185, 65)];
+		uniN = [[UILabel alloc] initWithFrame:CGRectMake(105, 48,70, 65)];
+		distN= [[UILabel alloc] initWithFrame:CGRectMake(35, 38,70, 65)];
+		type = [[UILabel alloc]initWithFrame:CGRectMake(5, 75, 185, 65)];
+		description=[[UILabel alloc]initWithFrame:CGRectMake(5, 75, 185, 65)];
     }
     return self;
 }
@@ -38,6 +40,19 @@
 	distN.textColor=[UIColor redColor];
 	distN.backgroundColor=[UIColor clearColor];
 	[self addSubview:distN];
+	
+	type.text=tipo;
+	type.textAlignment=UITextAlignmentCenter;
+	type.textColor=[UIColor whiteColor];
+	type.backgroundColor=[UIColor clearColor];
+	[self addSubview:type];
+	
+	description.text=descr;
+	description.textAlignment=UITextAlignmentCenter;
+	description.textColor=[UIColor whiteColor];
+	description.backgroundColor=[UIColor clearColor];
+	[self addSubview:description];
+	
 	
 	uniN.textAlignment=UITextAlignmentLeft;
 	uniN.textColor=[UIColor whiteColor];
@@ -72,6 +87,8 @@
 	[uniN release];
 	[distN release];
 	[dist release];
+	[type release];
+	[description release];
 
 }
 

@@ -394,7 +394,7 @@
 				[alert setTitle:@"Autovelox"];
 				[alert setMessage:a.autovelox.subtitle];
 				[alert show];
-				[autoView alert:AlertTypeAutoVeloxFisso withDistance:a.lastDistance]; 
+				[autoView alert:AUTOVELOXFISSO withDistance:a.lastDistance]; 
 			}
 		}
 

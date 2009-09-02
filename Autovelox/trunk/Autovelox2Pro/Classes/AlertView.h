@@ -14,8 +14,14 @@
 	UILabel *dist;
 	UILabel *uniN;
 	UILabel *distN;
+	UILabel *type;
+	NSString *tipo;
+	NSString *descr;
+	UILabel *description;
 }
 
 @property (nonatomic,assign) int distance;
+@property (nonatomic,retain) NSString * tipo;
+@property (nonatomic,retain) NSString * descr;
 
 @end
