@@ -12,8 +12,9 @@
 #import "GpsAnnotation.h"
 #import "NaviCLLManager.h"
 #import "LoadDataView.h"
-
+#import "ControlledAutovelox.h"
 #import "AutoVeloxViewController.h"
+
 @interface AutoVeloxProViewController : UIViewController <MKMapViewDelegate> {
 
 	MKMapView * map;
@@ -36,6 +37,8 @@
 	MKAnnotationView * gpsView;
 	double angle;
 	AutoVeloxViewController * autoView;
+	ControlledAutovelox * currentAlarm;
+	
 	//UIImageView * tmp;
 	//UIView *overlay;
 }
@@ -44,6 +47,8 @@
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withManagedContext:(NSManagedObjectContext *) managedOC;	
 
 -(void) setAutoView:(AutoVeloxViewController *) vc;
+
+-(void) updateAnnotationViews;
 
 @property (nonatomic, assign) BOOL fissi;
 @property (nonatomic, assign) BOOL mobili;

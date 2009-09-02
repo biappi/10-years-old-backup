@@ -15,7 +15,7 @@
 @dynamic latitude;
 @dynamic subtitle;
 @dynamic longitude;
-
+@dynamic limit;
 -(CLLocationCoordinate2D) coordinate
 {
 	CLLocationCoordinate2D pippo;
@@ -23,5 +23,17 @@
 	pippo.longitude=[self.longitude doubleValue];
 	return pippo;
 }
-
+-(AUTOVELOXTYPE) getType;
+{
+	if([self.title isEqualToString:@"Autovelox mobile"])
+		return AUTOVELOXMOBILE;
+	if([self.title isEqualToString:@"Autovelox fisso"])
+		return AUTOVELOXFISSO;
+	if([self.title isEqualToString:@"Tutor Inizio"])
+		return TUTOR_INIZIO;
+	if([self.title isEqualToString:@"Tutor Fine"])
+		return TUTOR_FINE;
+	
+	return ECOPASS;
+}
 @end

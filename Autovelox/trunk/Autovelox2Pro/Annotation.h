@@ -23,8 +23,11 @@ typedef enum{
 	CLLocationCoordinate2D coordinate;
 }
 
+-(AUTOVELOXTYPE) getType;
+
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSNumber * limit;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSString * subtitle;
 @property (nonatomic, retain) NSNumber * longitude;

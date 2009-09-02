@@ -12,6 +12,7 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2009C5B010482EB00086E4FA /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2009C5AF10482EB00086E4FA /* icon2.png */; };
+		204A8DDB104F1814008A56DB /* cameraTutor.png in Resources */ = {isa = PBXBuildFile; fileRef = 204A8DDA104F1814008A56DB /* cameraTutor.png */; };
 		20513D4610482B8900949598 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20513D4510482B8900949598 /* icon.png */; };
 		2058867F102480E400B69A7A /* slideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867D102480E400B69A7A /* slideDown.png */; };
 		20588680102480E400B69A7A /* slideUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867E102480E400B69A7A /* slideUp.png */; };
@@ -84,6 +85,7 @@
 		1D6058910D05DD3D006BFB54 /* Autovelox2Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autovelox2Pro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2009C5AF10482EB00086E4FA /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
+		204A8DDA104F1814008A56DB /* cameraTutor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraTutor.png; sourceTree = "<group>"; };
 		20513D4510482B8900949598 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2058867D102480E400B69A7A /* slideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideDown.png; sourceTree = "<group>"; };
 		2058867E102480E400B69A7A /* slideUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideUp.png; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
 				3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */,
 				20C3BAA6101C93C300D0971E /* autoveloxM.png */,
+				204A8DDA104F1814008A56DB /* cameraTutor.png */,
 				20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */,
 				20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */,
 				20753FD81049E93300F00662 /* Sicve_Inizio.csv */,
@@ -470,6 +473,7 @@
 				3D954C06104D6C2000A57A15 /* alarm_1.mp3 in Resources */,
 				3D954C14104D6C3600A57A15 /* attention.wav in Resources */,
 				3D954C39104DBC3500A57A15 /* houston.wav in Resources */,
+				204A8DDB104F1814008A56DB /* cameraTutor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

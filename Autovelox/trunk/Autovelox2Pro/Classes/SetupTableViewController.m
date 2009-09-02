@@ -215,15 +215,13 @@
 		[def setInteger:0 forKey:@"Ecopass"];
 		autoContr.ecopass=NO;
 	}
-	
+	[autoContr updateAnnotationViews];
 	UIViewAnimationTransition  trans = UIViewAnimationTransitionFlipFromRight;
 	[UIView beginAnimations: nil context: nil];
 	[UIView setAnimationTransition: trans forView:[self.view window]  cache: YES];
 	[UIView setAnimationDuration:1.0];
 	[self.view removeFromSuperview];
 	[UIView commitAnimations];
-	
-	
 }
 
 

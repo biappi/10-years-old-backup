@@ -100,7 +100,7 @@
 
 -(void) flip
 {
-	SetupTableViewController * stv=[[SetupTableViewController alloc] initWithNibName:nil bundle:nil];
+	SetupTableViewController * stv=[[SetupTableViewController alloc] initWithNibName:nil bundle:nil andController:nil andAutoController:ctr];
 	/*[self presentModalViewController:stv animated:YES];
 	//[self.view setFrame:CGRectMake(0, 0, 320, 480)];
 	[stv release];*/
@@ -153,6 +153,22 @@
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 		annotation.title=@"Autovelox fisso";
 		annotation.subtitle=[content objectAtIndex:3];
+		if([content count]>5)
+		{
+			NSObject * tmp=[content objectAtIndex:4];
+			int lim=[[content objectAtIndex:4] intValue];
+			if(lim)
+				annotation.limit=[NSNumber numberWithInt:lim];
+			else {
+				annotation.limit=[NSNumber numberWithInt:-1];
+			}
+
+			NSLog(@"Read %@",[content objectAtIndex:4]);
+		}
+		else {
+			annotation.limit=[NSNumber numberWithInt:-1];
+		}
+
 		//NSLog(@"Parsing %d",c);
 		if(c%(totaLines/20)==0)
 		{
@@ -177,6 +193,15 @@
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 		annotation.title=@"Autovelox mobile";
 		annotation.subtitle=[content objectAtIndex:2];	
+		if([content count]>4)
+		{
+			NSLog(@"Read %@",[content objectAtIndex:3]);
+			NSObject * tmp=[content objectAtIndex:3];
+			annotation.limit=[NSNumber numberWithInt:[[content objectAtIndex:3] intValue]];
+		}
+		else {
+			annotation.limit=[NSNumber numberWithInt:-1];
+		}
 		//NSLog(@"Parsing %d",c);
 		if((c+iter)%(totaLines/20)==0)
 		{
@@ -224,7 +249,7 @@
 	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 	 annotation.title=@"Tutor Inizio";
 	 annotation.subtitle=[content objectAtIndex:3];	
-		 
+	 annotation.limit=[NSNumber numberWithInt:-1];
 			 //NSLog(@"Parsing %d",c);
 	 }
 	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Sicve_Fine.csv"];
@@ -244,6 +269,8 @@
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 		annotation.title=@"Tutor Fine";
 		annotation.subtitle=[content objectAtIndex:3];	
+		annotation.limit=[NSNumber numberWithInt:-1];
+
 	}		
 	 
 	[parserM release];

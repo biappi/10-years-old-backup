@@ -83,7 +83,7 @@
 		lastPosition=pippo;
 		angle=0.0;
 		regionChangeRequested=NO;
-		
+		currentAlarm =nil;
 		
 	}
 	return self;
@@ -345,6 +345,19 @@
 }
 -(void) evaluateCandidates
 {
+	if(currentAlarm!=nil)
+	{
+		double currDist=[manager.newLocation getDistanceFrom: currentAlarm.loc];
+		[autoView updateDistance:(int) currDist];
+		if(currDist>(currentAlarm.lastDistance+200) ||currDist < 30)
+		{
+			[autoView alertEnd];
+			[currentAlarm release];
+			currentAlarm=nil;
+		}
+		return;
+	}
+	
 	CGPoint mmUserPos=[self latLongToMM:manager.newLocation.coordinate];
 	NSMutableArray * autoToRemove=[[NSMutableArray alloc] init];
 	//NSLog(@"controlling %d autoveloxs",[controlledAutoveloxs count]);
@@ -390,11 +403,9 @@
 			a.lastDistance=currDist;
 			if(a.lastDistance<1000 && a.goodEuristicResults>0)
 			{
-				UIAlertView *alert = [[UIAlertView alloc] init];
-				[alert setTitle:@"Autovelox"];
-				[alert setMessage:a.autovelox.subtitle];
-				[alert show];
-				[autoView alert:AUTOVELOXFISSO withDistance:a.lastDistance]; 
+
+				currentAlarm=[a retain];
+				[autoView alert:[a.autovelox getType] withDistance:a.lastDistance]; 
 			}
 		}
 
@@ -623,5 +634,8 @@
 	//[[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0] bringSubviewToFront:[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1]];
 	//[self inspectView:map depth:0 path:@""];
 }
-
+-(void) updateAnnotationViews;
+{
+	[map setRegion:map.region];
+}
 @end
