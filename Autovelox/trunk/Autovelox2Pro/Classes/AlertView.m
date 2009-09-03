@@ -20,8 +20,8 @@
 		dist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 185, 65)];
 		uniN = [[UILabel alloc] initWithFrame:CGRectMake(105, 48,70, 65)];
 		distN= [[UILabel alloc] initWithFrame:CGRectMake(35, 38,70, 65)];
-		type = [[UILabel alloc]initWithFrame:CGRectMake(5, 75, 185, 65)];
-		description=[[UILabel alloc]initWithFrame:CGRectMake(5, 75, 185, 65)];
+		type = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 185, 65)];
+		description=[[UILabel alloc]initWithFrame:CGRectMake(5, 93, 185, 65)];
     }
     return self;
 }
@@ -41,15 +41,19 @@
 	distN.backgroundColor=[UIColor clearColor];
 	[self addSubview:distN];
 	
+	
+	fo = [UIFont fontWithName:@"Arial" size:20.0];
+	type.font = fo;
 	type.text=tipo;
 	type.textAlignment=UITextAlignmentCenter;
-	type.textColor=[UIColor whiteColor];
+	type.textColor=[UIColor redColor];
 	type.backgroundColor=[UIColor clearColor];
 	[self addSubview:type];
 	
 	description.text=descr;
 	description.textAlignment=UITextAlignmentCenter;
 	description.textColor=[UIColor whiteColor];
+	description.numberOfLines=2;
 	description.backgroundColor=[UIColor clearColor];
 	[self addSubview:description];
 	

@@ -334,13 +334,14 @@
 	if(ontop)
 	{
 		//[self animationSlideOff];	
-		[self alert:TUTOR_INIZIO withDistance:800 andText:@"autovelox" andLimit:80];
+		[self alert:TUTOR_INIZIO withDistance:800 andText:@"autovelox" andLimit:0];
 		//sleep(2);
 		//[self alertTutorBegan];
 	}
 	else
 	{	
-		[self animationSlideOn];
+		//[self animationSlideOn];
+		[self alertEnd];
 		//[self alertTutorEnd];
 	}
 	
@@ -362,35 +363,36 @@
 	limitTutor=lim;
 	[sa playButtonPressed];
 	av=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
-	if(type=TUTOR_INIZIO)
+	if(type==TUTOR_INIZIO)
 	{
 		if(!ontop)
 			[self animationSlideOn];
 		av.tipo=@"Tutor";
+		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
+		[limit setNeedsDisplay];
+
 	}
-	else if(type=AUTOVELOXMOBILE)
+	else if(type==AUTOVELOXMOBILE)
 	{
 		if(!ontop)
 			[self animationSlideOn];
 		av.tipo=@"AutoVelox Mobile";
+		limit.image=[UIImage imageNamed:@"divieto.png"];
+		[limit setNeedsDisplay];
 	}
-	else if(type=AUTOVELOXFISSO)
+	else if(type==AUTOVELOXFISSO)
 	{
 		if(!ontop)
 			[self animationSlideOn];
 		av.tipo=@"AutoVelox Fisso";
+		limit.image=[UIImage imageNamed:@"divieto.png"];
+		[limit setNeedsDisplay];
 	}
-/*	else if(type=AlertTypeEcopass)
-	{
-		if(!ontop)
-			[self animationSlideOn];
-	}*/
-	
+	av.descr=descrizione;
+	[self setLimit];
 	[nDV removeFromSuperview];
 	nDV=nil;
 	[nDV release];
-	limit.image=[UIImage imageNamed:@"divieto.png"];
-	[limit setNeedsDisplay];
 	[self.view addSubview:av];
 	
 }
@@ -420,7 +422,7 @@
 		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
 		[self.view addSubview:limitSpeed];
 	}
-	else
+	else if(limitTutor<0) //limit not available
 	{
 		UIFont * fo;
 		limit.image = [UIImage imageNamed:@"divieto.png"];
@@ -441,6 +443,10 @@
 		
 		limitSpeed.text=@"N.A.";
 		[self.view addSubview:limitSpeed];
+	}
+	else if(limitTutor==0)//tutor management
+	{
+		limit.image = [UIImage imageNamed:@"cameraTutor.png"];
 	}
 }
 
