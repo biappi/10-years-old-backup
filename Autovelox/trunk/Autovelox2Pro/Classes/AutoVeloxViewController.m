@@ -333,8 +333,8 @@
 	
 	if(ontop)
 	{
-		[self animationSlideOff];	
-		//[self alert:TUTOR_INIZIO withDistance:800];
+		//[self animationSlideOff];	
+		[self alert:TUTOR_INIZIO withDistance:800 andText:@"autovelox" andLimit:80];
 		//sleep(2);
 		//[self alertTutorBegan];
 	}
@@ -356,7 +356,7 @@
 	[sa release];
 }
 
--(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione :andLimit:(int) lim;
+-(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
 {
 	sa=[[SoundAlert alloc]init];
 	limitTutor=lim;

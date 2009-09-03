@@ -61,7 +61,6 @@
 	float speed;
 	float speedNumber;
 	int distanceFromTutor;
-
 	int limitTutor;	
 	int i;
 	int avgSp;
@@ -73,14 +72,11 @@
 
 @property(nonatomic,readonly) BOOL animationStarted;
 
-
-
-
 -(id)initWithController:(BottomBarController*)avad withMap:(MKMapView*) map;
 
 -(void)animation;
 
--(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione :andLimit:(int) lim;
+-(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
 
 -(void)alertEnd;
 
