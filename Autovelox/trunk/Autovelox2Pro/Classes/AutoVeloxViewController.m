@@ -51,6 +51,7 @@
 		[UIView setAnimationDidStopSelector:@selector(animationDidStop:::)];
 		gpsManager=[NaviCLLManager defaultCLLManager];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(gpsUpdate) name:@"gpsUpdate" object:nil];
+		sa=[[SoundAlert alloc]init];
 	}
     return self;
 }
@@ -201,7 +202,7 @@
 	{
 		signal.image=[UIImage imageNamed:@"gps_red.png"];
 	}
-	if(tAVD!=nil)
+	if(tutor)
 	{
 		NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 		int al=[u integerForKey:@"AlertStatus"];
@@ -274,7 +275,16 @@
 	[geocoder release];
 }
 
-
+-(void)resetAvgSpeed;
+{
+	totalTime=0;
+	totalSpace=0;
+	old=gpsManager.newLocation;
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	[u setFloat:totalSpace forKey:@"TotalDistance"];
+	[u setFloat:totalTime forKey:@"TotalTime"];
+	[u setObject:old forKey:@"OldLocation"];
+}
 
 - (void)didReceiveMemoryWarning 
 {
@@ -317,7 +327,6 @@
 	((UIImageView*)[self.view viewWithTag:TAGSFONDO]).image=[UIImage imageNamed:@"back.png"];
 	//((UIImageView*)[self.view viewWithTag:TAGSFONDO]).backgroundColor=[UIColor clearColor];	
 	[UIView commitAnimations];
-
 	signal.frame=CGRectMake(0, 21, 40, 20);
 	ontop=YES;
 }
@@ -327,35 +336,58 @@
 	
 	if(ontop)
 	{
-		[self animationSlideOff];	
-		//[self alert:TUTOR_INIZIO withDistance:800 andText:@"autovelox" andLimit:0];
-		//sleep(2);
-		//[self alertTutorBegan];
+		[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
+		[self alertTutorBegan];
+	//	[self animationSlideOff];	
 	}
 	else
 	{	
-		[self animationSlideOn];
-		//[self alertEnd];
-		//[self alertTutorEnd];
+	//	[self animationSlideOn];
 	}
 	
 }
 
 -(void)alertEnd;
 {
+	if(tAVD)
+	{
+		tAVD.alpha=1;
+	}
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	[av removeFromSuperview];
 	av=nil;
 	[av release];
 	[self.view addSubview:nDV];
-	[sa release];
+	
 }
 
--(void)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
+-(void)setAlarmView:(AlertView*)alv;
 {
-	sa=[[SoundAlert alloc]init];
-	limitTutor=lim;
+	if(tAVD)
+	{
+		tAVD.alpha=0;
+	}
+	av.alpha=0;
+	[av release];
+	[av removeFromSuperview];
+	av=nil;
+	av=[alv retain];
+	[self.view addSubview:av];
+}
+
+-(void) doSound;
+{
 	[sa playButtonPressed];
+}
+
+-(AlertView*)alert:(AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
+{
+	if(tAVD)
+	{
+		tAVD.alpha=0;
+	}
+	limitTutor=lim;
+	[self doSound];
 	av=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
 	if(type==TUTOR_INIZIO)
 	{
@@ -387,12 +419,12 @@
 	nDV=nil;
 	[nDV release];
 	[self.view addSubview:av];
+	return av;
 	
 }
 
 -(void) setLimit;
-{
-	
+{	
 	if(limitTutor>0)
 	{
 		UIFont * fo;
@@ -445,34 +477,33 @@
 
 -(void)alertTutorBegan;
 {
+	tutor=YES;
 	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	int al=[u integerForKey:@"AlertStatus"];
 	if(!al)
 	{
-		[u setInteger:1 forKey:@"AlertStatus"];
-		
+		[u setInteger:1 forKey:@"AlertStatus"];		
 	}
 	else
 	{
 	}
-	limitTutor=80;
+	//limitTutor=80;
 	[self setLimit];	
 	[av removeFromSuperview];
 	av=nil;
 	[av release];	
 	tAVD=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-
 	[self.view addSubview:tAVD];
 }
 
 -(void)alertTutorEnd;
 {
+	tutor=NO;
 	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	int al=[u integerForKey:@"AlertStatus"];
 	if(al)
 	{
-		[u setInteger:0 forKey:@"AlertStatus"];
-		
+		[u setInteger:0 forKey:@"AlertStatus"];		
 	}
 	[tAVD removeFromSuperview];
 	tAVD=nil;
@@ -554,6 +585,7 @@
 	[bottom release];
 	[geoCoder release];
 	[ava release]; //perchè è passato in retain
+	[sa release];
 }
 
 

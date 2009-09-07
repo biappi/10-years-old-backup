@@ -405,7 +405,7 @@
 			{
 
 				currentAlarm=[a retain];
-				[autoView alert:[a.autovelox getType] withDistance:a.lastDistance]; 
+				//	[autoView alert:[a.autovelox getType] withDistance:a.lastDistance]; 
 			}
 		}
 

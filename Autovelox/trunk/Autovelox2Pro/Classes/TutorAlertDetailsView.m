@@ -55,7 +55,7 @@
 	
 	
 	
-	distFin.text=[NSString stringWithFormat:@"Distanza fine tutor:"];
+	distFin.text=[NSString stringWithFormat:@"Distanza controllo:"];
 	distFin.textColor=[UIColor whiteColor];
 	distFin.backgroundColor=[UIColor clearColor];
 	[self addSubview:distFin];

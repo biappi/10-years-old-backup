@@ -99,6 +99,7 @@
 
 -(void)dealloc
 {
+	[super dealloc];
 	[_player release]; 
 }
 
