@@ -336,13 +336,13 @@
 	
 	if(ontop)
 	{
-		[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
-		[self alertTutorBegan];
-	//	[self animationSlideOff];	
+		//[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
+		//[self alertTutorBegan];
+		[self animationSlideOff];	
 	}
 	else
 	{	
-	//	[self animationSlideOn];
+		[self animationSlideOn];
 	}
 	
 }
