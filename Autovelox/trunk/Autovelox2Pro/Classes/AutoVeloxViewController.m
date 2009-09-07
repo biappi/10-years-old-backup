@@ -8,18 +8,12 @@
 
 #import "AutoVeloxViewController.h"
 
-
-
 #define ANIMOFFS 200
 #define VIAOFFS 100
 #define LABWIDT 720
 #define ANIMDUR 6.0
 #define REPANIM 1000000
 #define TAGSFONDO 777
-#define TAGNDV 111
-#define AVTAG 222
-#define TAVDTAG 333
-
 
 @interface AutoVeloxViewController (PrivateMethods)
 
@@ -333,15 +327,15 @@
 	
 	if(ontop)
 	{
-		//[self animationSlideOff];	
-		[self alert:TUTOR_INIZIO withDistance:800 andText:@"autovelox" andLimit:0];
+		[self animationSlideOff];	
+		//[self alert:TUTOR_INIZIO withDistance:800 andText:@"autovelox" andLimit:0];
 		//sleep(2);
 		//[self alertTutorBegan];
 	}
 	else
 	{	
-		//[self animationSlideOn];
-		[self alertEnd];
+		[self animationSlideOn];
+		//[self alertEnd];
 		//[self alertTutorEnd];
 	}
 	
@@ -370,7 +364,6 @@
 		av.tipo=@"Tutor";
 		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
 		[limit setNeedsDisplay];
-
 	}
 	else if(type==AUTOVELOXMOBILE)
 	{
