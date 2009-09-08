@@ -65,7 +65,7 @@
 		ldv.lines=1;
 		ldv.animDur=1.0;
 		[ldv animat];
-		[self performSelector:@selector(readFinished) withObject:nil afterDelay:1.5];	
+		[self performSelector:@selector(readFinished) withObject:nil afterDelay:0];	
 	}
 	[tmpView release];
 
@@ -163,7 +163,7 @@
 				annotation.limit=[NSNumber numberWithInt:-1];
 			}
 
-			NSLog(@"Read %@",[content objectAtIndex:4]);
+		//	NSLog(@"Read %@",[content objectAtIndex:4]);
 		}
 		else {
 			annotation.limit=[NSNumber numberWithInt:-1];
@@ -195,7 +195,7 @@
 		annotation.subtitle=[content objectAtIndex:2];	
 		if([content count]>4)
 		{
-			NSLog(@"Read %@",[content objectAtIndex:3]);
+		//	NSLog(@"Read %@",[content objectAtIndex:3]);
 			NSObject * tmp=[content objectAtIndex:3];
 			annotation.limit=[NSNumber numberWithInt:[[content objectAtIndex:3] intValue]];
 		}
@@ -270,9 +270,7 @@
 		annotation.title=@"Tutor Fine";
 		annotation.subtitle=[content objectAtIndex:3];	
 		annotation.limit=[NSNumber numberWithInt:-1];
-
 	}		
-	 
 	[parserM release];
 	[parserF release];
 	
