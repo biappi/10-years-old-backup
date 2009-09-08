@@ -25,6 +25,8 @@
 
 - (void)	setLimit;
 
+-(void)		updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)limit;
+
 @end
 
 @implementation AutoVeloxViewController
@@ -552,6 +554,12 @@
 		nDV.numberOfAutovelox=num;
 		[nDV setNeedsDisplay];
 	}
+}
+
+-(void) updateTutorDistance:(int)dist;
+{
+	tAVD.distanzaFineTutor=dist;
+	[tAVD setNeedsDisplay];
 }
 
 -(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)lim;

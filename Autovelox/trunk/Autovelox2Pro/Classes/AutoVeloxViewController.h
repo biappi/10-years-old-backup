@@ -95,17 +95,36 @@
  */
 -(void)alertEnd;
 
+/**
+allarme da lanciare quando inizia il tutor
+ */
 -(void)alertTutorBegan;
-
+/**
+da lanciare quando termina un allarme
+ */
 -(void)alertTutorEnd;
 
+/**
+ fa l'update della schermata di allerta 
+ */
 -(void)updateDistance:(int)distance;
 
--(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)limit;
+/**
+fa l'update della schermata di allerta del tutor
+ */
+-(void) updateTutorDistance:(int)dist;
 
+/**
+ resetta la velocità media tra due punti intermedi del tutor
+ */
+-(void)resetAvgSpeed;
+
+/**
+ setta il numero di autovelox nel raggio di 5 km
+ */
 -(void)setAutoveloxNumberInTenKm:(int)num;
 
--(void)resetAvgSpeed;
+
 
 -(void) doSound;
 

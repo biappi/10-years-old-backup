@@ -13,15 +13,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		2009C5B010482EB00086E4FA /* icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 2009C5AF10482EB00086E4FA /* icon2.png */; };
 		204A8DDB104F1814008A56DB /* cameraTutor.png in Resources */ = {isa = PBXBuildFile; fileRef = 204A8DDA104F1814008A56DB /* cameraTutor.png */; };
-		20513D4610482B8900949598 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 20513D4510482B8900949598 /* icon.png */; };
 		2058867F102480E400B69A7A /* slideDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867D102480E400B69A7A /* slideDown.png */; };
 		20588680102480E400B69A7A /* slideUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 2058867E102480E400B69A7A /* slideUp.png */; };
 		20692C0D10429CD700F939D1 /* mirinoUnpressedsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */; };
 		20692C5010430F5600F939D1 /* GpsAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 20692C4F10430F5600F939D1 /* GpsAnnotation.m */; };
-		20692CB31043149A00F939D1 /* autoveloxfisso.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692CAF1043149A00F939D1 /* autoveloxfisso.png */; };
-		20692CB41043149A00F939D1 /* autoveloxmobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692CB01043149A00F939D1 /* autoveloxmobile.png */; };
-		20692CB51043149A00F939D1 /* mirinoPressedsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692CB11043149A00F939D1 /* mirinoPressedsmall.png */; };
-		20692CB61043149A00F939D1 /* mirinoUnpressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692CB21043149A00F939D1 /* mirinoUnpressed.png */; };
 		20692CD21043182E00F939D1 /* CarSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20692CD11043182E00F939D1 /* CarSmall.png */; };
 		20692D031043229100F939D1 /* NaviCLLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20692D021043229100F939D1 /* NaviCLLManager.m */; };
 		206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */ = {isa = PBXBuildFile; fileRef = 206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */; };
@@ -29,14 +24,8 @@
 		20753FD91049E93300F00662 /* Sicve_Inizio.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20753FD81049E93300F00662 /* Sicve_Inizio.csv */; };
 		20753FDB1049E94B00F00662 /* Sicve_Fine.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20753FDA1049E94B00F00662 /* Sicve_Fine.csv */; };
 		20754078104A010500F00662 /* tutorFineSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20754077104A010500F00662 /* tutorFineSmall.png */; };
-		20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20A07BAA101C6766004994DC /* Ecopass.bmp */; };
 		20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */; };
 		20B8F1451026764200FA4ED8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B8F1441026764200FA4ED8 /* back.png */; };
-		20C3BA41101C832B00D0971E /* Sicve_Inizio.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */; };
-		20C3BAA7101C93C300D0971E /* autoveloxM.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAA6101C93C300D0971E /* autoveloxM.png */; };
-		20C3BAA9101C93C700D0971E /* autoveloxF.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAA8101C93C700D0971E /* autoveloxF.png */; };
-		20C3BAFF101C967F00D0971E /* autoveloxFISSO30.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */; };
-		20C3BB01101C968800D0971E /* autoveloxMOBILE30.png in Resources */ = {isa = PBXBuildFile; fileRef = 20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */; };
 		20C3BB2E101CA40400D0971E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C3BB2D101CA40400D0971E /* CoreLocation.framework */; };
 		20C3BB7B101CAFB900D0971E /* AutoVeloxViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */; };
 		20C3BB7C101CAFB900D0971E /* BottomBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20C3BB78101CAFB900D0971E /* BottomBarController.m */; };
@@ -50,7 +39,6 @@
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
-		3D2F14551041854400C75FDF /* speed.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14541041854400C75FDF /* speed.png */; };
 		3D2F14D9104193CD00C75FDF /* divieto.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F14D8104193CD00C75FDF /* divieto.png */; };
 		3D2F15631041A08000C75FDF /* NormalDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F15621041A08000C75FDF /* NormalDetailsView.m */; };
 		3D2F161D104296C200C75FDF /* TutorAlertDetailsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2F161C104296C200C75FDF /* TutorAlertDetailsView.m */; };
@@ -61,7 +49,6 @@
 		3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D2F16CB1042F22E00C75FDF /* gps_yellow.png */; };
 		3D3AC27F10483B9D00C99273 /* LoadDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC27E10483B9D00C99273 /* LoadDataView.m */; };
 		3D3AC35A104876F700C99273 /* LoadDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC359104876F700C99273 /* LoadDataViewController.m */; };
-		3D3AC4A010488FAD00C99273 /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC49F10488FAD00C99273 /* wait.png */; };
 		3D3AC4A81048917600C99273 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4A71048917600C99273 /* RootViewController.m */; };
 		3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC7231048A55E00C99273 /* MainWindow.xib */; };
 		3D954B29104BF67100A57A15 /* SoundAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D954B28104BF67100A57A15 /* SoundAlert.m */; };
@@ -81,16 +68,11 @@
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2009C5AF10482EB00086E4FA /* icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon2.png; sourceTree = "<group>"; };
 		204A8DDA104F1814008A56DB /* cameraTutor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraTutor.png; sourceTree = "<group>"; };
-		20513D4510482B8900949598 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		2058867D102480E400B69A7A /* slideDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideDown.png; sourceTree = "<group>"; };
 		2058867E102480E400B69A7A /* slideUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slideUp.png; sourceTree = "<group>"; };
 		20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mirinoUnpressedsmall.png; sourceTree = "<group>"; };
 		20692C4E10430F5600F939D1 /* GpsAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GpsAnnotation.h; sourceTree = "<group>"; };
 		20692C4F10430F5600F939D1 /* GpsAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GpsAnnotation.m; sourceTree = "<group>"; };
-		20692CAF1043149A00F939D1 /* autoveloxfisso.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxfisso.png; sourceTree = "<group>"; };
-		20692CB01043149A00F939D1 /* autoveloxmobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxmobile.png; sourceTree = "<group>"; };
-		20692CB11043149A00F939D1 /* mirinoPressedsmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mirinoPressedsmall.png; sourceTree = "<group>"; };
-		20692CB21043149A00F939D1 /* mirinoUnpressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mirinoUnpressed.png; sourceTree = "<group>"; };
 		20692CD11043182E00F939D1 /* CarSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarSmall.png; sourceTree = "<group>"; };
 		20692D011043229100F939D1 /* NaviCLLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NaviCLLManager.h; sourceTree = "<group>"; };
 		20692D021043229100F939D1 /* NaviCLLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NaviCLLManager.m; sourceTree = "<group>"; };
@@ -99,15 +81,9 @@
 		20753FD81049E93300F00662 /* Sicve_Inizio.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sicve_Inizio.csv; sourceTree = "<group>"; };
 		20753FDA1049E94B00F00662 /* Sicve_Fine.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sicve_Fine.csv; sourceTree = "<group>"; };
 		20754077104A010500F00662 /* tutorFineSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorFineSmall.png; sourceTree = "<group>"; };
-		20A07BAA101C6766004994DC /* Ecopass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Ecopass.bmp; sourceTree = "<group>"; };
 		20ADED651020E703007622BD /* ControlledAutovelox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlledAutovelox.h; sourceTree = "<group>"; };
 		20ADED661020E703007622BD /* ControlledAutovelox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlledAutovelox.m; sourceTree = "<group>"; };
 		20B8F1441026764200FA4ED8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
-		20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Sicve_Inizio.bmp; sourceTree = "<group>"; };
-		20C3BAA6101C93C300D0971E /* autoveloxM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxM.png; sourceTree = "<group>"; };
-		20C3BAA8101C93C700D0971E /* autoveloxF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxF.png; sourceTree = "<group>"; };
-		20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxFISSO30.png; sourceTree = "<group>"; };
-		20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoveloxMOBILE30.png; sourceTree = "<group>"; };
 		20C3BB2D101CA40400D0971E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = /System/Library/Frameworks/CoreLocation.framework; sourceTree = "<absolute>"; };
 		20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoVeloxViewController.h; sourceTree = "<group>"; };
 		20C3BB76101CAFB900D0971E /* AutoVeloxViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoVeloxViewController.m; sourceTree = "<group>"; };
@@ -129,7 +105,6 @@
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* Autovelox2Pro_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Autovelox2Pro_Prefix.pch; sourceTree = "<group>"; };
-		3D2F14541041854400C75FDF /* speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = speed.png; sourceTree = "<group>"; };
 		3D2F14D8104193CD00C75FDF /* divieto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divieto.png; sourceTree = "<group>"; };
 		3D2F15611041A08000C75FDF /* NormalDetailsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalDetailsView.h; sourceTree = "<group>"; };
 		3D2F15621041A08000C75FDF /* NormalDetailsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalDetailsView.m; sourceTree = "<group>"; };
@@ -145,7 +120,6 @@
 		3D3AC27E10483B9D00C99273 /* LoadDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadDataView.m; sourceTree = "<group>"; };
 		3D3AC358104876F700C99273 /* LoadDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadDataViewController.h; sourceTree = "<group>"; };
 		3D3AC359104876F700C99273 /* LoadDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadDataViewController.m; sourceTree = "<group>"; };
-		3D3AC49F10488FAD00C99273 /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		3D3AC4A61048917600C99273 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3D3AC4A71048917600C99273 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		3D3AC7231048A55E00C99273 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -232,15 +206,10 @@
 				3D954C05104D6C2000A57A15 /* alarm_1.mp3 */,
 				3D3AC7231048A55E00C99273 /* MainWindow.xib */,
 				20754077104A010500F00662 /* tutorFineSmall.png */,
-				20692CAF1043149A00F939D1 /* autoveloxfisso.png */,
 				3DB534BD10569DB9007A97CC /* tutorInizioSmall.png */,
-				20692CB01043149A00F939D1 /* autoveloxmobile.png */,
 				20692CD11043182E00F939D1 /* CarSmall.png */,
-				20692CB11043149A00F939D1 /* mirinoPressedsmall.png */,
-				20692CB21043149A00F939D1 /* mirinoUnpressed.png */,
 				20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */,
 				2058867D102480E400B69A7A /* slideDown.png */,
-				20513D4510482B8900949598 /* icon.png */,
 				3D2F16C91042F22E00C75FDF /* gps_red.png */,
 				3D2F16CA1042F22E00C75FDF /* gps_green.png */,
 				3D2F16CB1042F22E00C75FDF /* gps_yellow.png */,
@@ -255,18 +224,10 @@
 				20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */,
 				20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */,
 				3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */,
-				20C3BAA6101C93C300D0971E /* autoveloxM.png */,
 				204A8DDA104F1814008A56DB /* cameraTutor.png */,
-				20C3BAFE101C967F00D0971E /* autoveloxFISSO30.png */,
-				20C3BA40101C832B00D0971E /* Sicve_Inizio.bmp */,
 				20753FD81049E93300F00662 /* Sicve_Inizio.csv */,
-				20A07BAA101C6766004994DC /* Ecopass.bmp */,
 				20753FDA1049E94B00F00662 /* Sicve_Fine.csv */,
-				3D2F14541041854400C75FDF /* speed.png */,
-				20C3BAA8101C93C700D0971E /* autoveloxF.png */,
 				28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */,
-				3D3AC49F10488FAD00C99273 /* wait.png */,
-				20C3BB00101C968800D0971E /* autoveloxMOBILE30.png */,
 				8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */,
 			);
 			name = Resources;
@@ -418,32 +379,19 @@
 			files = (
 				20D81B7F101C50E800FD75A7 /* AutoveloxFissi.csv in Resources */,
 				20D81B80101C50E800FD75A7 /* AutoveloxMobili.csv in Resources */,
-				20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */,
-				20C3BA41101C832B00D0971E /* Sicve_Inizio.bmp in Resources */,
-				20C3BAA7101C93C300D0971E /* autoveloxM.png in Resources */,
-				20C3BAA9101C93C700D0971E /* autoveloxF.png in Resources */,
-				20C3BAFF101C967F00D0971E /* autoveloxFISSO30.png in Resources */,
-				20C3BB01101C968800D0971E /* autoveloxMOBILE30.png in Resources */,
 				2058867F102480E400B69A7A /* slideDown.png in Resources */,
 				20588680102480E400B69A7A /* slideUp.png in Resources */,
 				206D57FE10266B73000D4AB3 /* autoVeloxMobile40.png in Resources */,
 				206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */,
 				20B8F1451026764200FA4ED8 /* back.png in Resources */,
-				3D2F14551041854400C75FDF /* speed.png in Resources */,
 				3D2F14D9104193CD00C75FDF /* divieto.png in Resources */,
 				20692C0D10429CD700F939D1 /* mirinoUnpressedsmall.png in Resources */,
-				20692CB31043149A00F939D1 /* autoveloxfisso.png in Resources */,
-				20692CB41043149A00F939D1 /* autoveloxmobile.png in Resources */,
-				20692CB51043149A00F939D1 /* mirinoPressedsmall.png in Resources */,
-				20692CB61043149A00F939D1 /* mirinoUnpressed.png in Resources */,
 				20692CD21043182E00F939D1 /* CarSmall.png in Resources */,
 				3D2F16BC1042E6E100C75FDF /* arrow.png in Resources */,
 				3D2F16CC1042F22E00C75FDF /* gps_red.png in Resources */,
 				3D2F16CD1042F22E00C75FDF /* gps_green.png in Resources */,
 				3D2F16CE1042F22E00C75FDF /* gps_yellow.png in Resources */,
-				20513D4610482B8900949598 /* icon.png in Resources */,
 				2009C5B010482EB00086E4FA /* icon2.png in Resources */,
-				3D3AC4A010488FAD00C99273 /* wait.png in Resources */,
 				3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */,
 				20753FD91049E93300F00662 /* Sicve_Inizio.csv in Resources */,
 				20753FDB1049E94B00F00662 /* Sicve_Fine.csv in Resources */,
