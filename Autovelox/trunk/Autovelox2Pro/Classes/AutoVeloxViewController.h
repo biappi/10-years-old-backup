@@ -129,8 +129,9 @@ fa l'update della schermata di allerta del tutor
  */
 -(void)setAutoveloxNumberInTenKm:(int)num;
 
-
-
+/**
+ esegue il suono di allarme se
+ */
 -(void) doSound;
 
 @end
