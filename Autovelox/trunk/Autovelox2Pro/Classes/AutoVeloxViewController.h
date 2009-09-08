@@ -91,6 +91,11 @@
 -(AlertView*)alert:( AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
 
 /**
+ usato per settare la view di allarme
+ */
+-(void)setAlarmView:(AlertView*)alv;
+
+/**
  invocato per segnalere la fine di un allarme
  */
 -(void)alertEnd;
