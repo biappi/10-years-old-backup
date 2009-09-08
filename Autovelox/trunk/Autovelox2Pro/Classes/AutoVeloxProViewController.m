@@ -457,7 +457,7 @@
 	}
 	else if([tmp.title isEqualToString:@"Tutor Inizio"])
 	{
-		view.image=[UIImage imageNamed:@"tutorsmall.png"];
+		view.image=[UIImage imageNamed:@"tutorInizioSmall.png"];
 	}
 	else if([tmp.title isEqualToString:@"Tutor Fine"])
 	{

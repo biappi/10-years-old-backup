@@ -367,9 +367,8 @@
 	{
 		tAVD.alpha=0;
 	}
-	av.alpha=0;
-	[av release];
 	[av removeFromSuperview];
+	[av release];
 	av=nil;
 	av=[alv retain];
 	[self.view addSubview:av];

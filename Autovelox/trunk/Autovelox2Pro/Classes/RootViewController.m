@@ -65,7 +65,7 @@
 		ldv.lines=1;
 		ldv.animDur=1.0;
 		[ldv animat];
-		[self performSelector:@selector(readFinished) withObject:nil afterDelay:0];	
+		[self performSelector:@selector(readFinished) withObject:nil afterDelay:1.5];	
 	}
 	[tmpView release];
 

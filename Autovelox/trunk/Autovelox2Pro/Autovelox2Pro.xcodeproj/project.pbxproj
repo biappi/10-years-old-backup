@@ -28,7 +28,6 @@
 		206D580010266B7B000D4AB3 /* autoVeloxFisso40.png in Resources */ = {isa = PBXBuildFile; fileRef = 206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */; };
 		20753FD91049E93300F00662 /* Sicve_Inizio.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20753FD81049E93300F00662 /* Sicve_Inizio.csv */; };
 		20753FDB1049E94B00F00662 /* Sicve_Fine.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20753FDA1049E94B00F00662 /* Sicve_Fine.csv */; };
-		207540531049F6DC00F00662 /* tutorsmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 207540521049F6DC00F00662 /* tutorsmall.png */; };
 		20754078104A010500F00662 /* tutorFineSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20754077104A010500F00662 /* tutorFineSmall.png */; };
 		20A07BAB101C6766004994DC /* Ecopass.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 20A07BAA101C6766004994DC /* Ecopass.bmp */; };
 		20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */; };
@@ -72,6 +71,7 @@
 		3D954C06104D6C2000A57A15 /* alarm_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D954C05104D6C2000A57A15 /* alarm_1.mp3 */; };
 		3DB4BA6E10499C98001141F8 /* HomeScreenItaly.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */; };
 		3DB4BA9F10499F5A001141F8 /* CarSmallLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */; };
+		3DB534BE10569DB9007A97CC /* tutorInizioSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DB534BD10569DB9007A97CC /* tutorInizioSmall.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,7 +99,6 @@
 		206D57FF10266B7B000D4AB3 /* autoVeloxFisso40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = autoVeloxFisso40.png; sourceTree = "<group>"; };
 		20753FD81049E93300F00662 /* Sicve_Inizio.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sicve_Inizio.csv; sourceTree = "<group>"; };
 		20753FDA1049E94B00F00662 /* Sicve_Fine.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sicve_Fine.csv; sourceTree = "<group>"; };
-		207540521049F6DC00F00662 /* tutorsmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorsmall.png; sourceTree = "<group>"; };
 		20754077104A010500F00662 /* tutorFineSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorFineSmall.png; sourceTree = "<group>"; };
 		20A07BAA101C6766004994DC /* Ecopass.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = Ecopass.bmp; sourceTree = "<group>"; };
 		20ADED651020E703007622BD /* ControlledAutovelox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlledAutovelox.h; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		3D954C05104D6C2000A57A15 /* alarm_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm_1.mp3; sourceTree = "<group>"; };
 		3DB4BA6D10499C98001141F8 /* HomeScreenItaly.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HomeScreenItaly.png; sourceTree = "<group>"; };
 		3DB4BA9E10499F5A001141F8 /* CarSmallLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CarSmallLeft.png; sourceTree = "<group>"; };
+		3DB534BD10569DB9007A97CC /* tutorInizioSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorInizioSmall.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Autovelox2Pro-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,7 +236,7 @@
 				3D3AC7231048A55E00C99273 /* MainWindow.xib */,
 				20754077104A010500F00662 /* tutorFineSmall.png */,
 				20692CAF1043149A00F939D1 /* autoveloxfisso.png */,
-				207540521049F6DC00F00662 /* tutorsmall.png */,
+				3DB534BD10569DB9007A97CC /* tutorInizioSmall.png */,
 				20692CB01043149A00F939D1 /* autoveloxmobile.png */,
 				20692CD11043182E00F939D1 /* CarSmall.png */,
 				20692CB11043149A00F939D1 /* mirinoPressedsmall.png */,
@@ -454,10 +454,10 @@
 				20753FDB1049E94B00F00662 /* Sicve_Fine.csv in Resources */,
 				3DB4BA6E10499C98001141F8 /* HomeScreenItaly.png in Resources */,
 				3DB4BA9F10499F5A001141F8 /* CarSmallLeft.png in Resources */,
-				207540531049F6DC00F00662 /* tutorsmall.png in Resources */,
 				20754078104A010500F00662 /* tutorFineSmall.png in Resources */,
 				3D954C06104D6C2000A57A15 /* alarm_1.mp3 in Resources */,
 				204A8DDB104F1814008A56DB /* cameraTutor.png in Resources */,
+				3DB534BE10569DB9007A97CC /* tutorInizioSmall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
