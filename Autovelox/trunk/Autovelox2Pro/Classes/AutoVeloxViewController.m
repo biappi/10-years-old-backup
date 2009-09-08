@@ -112,12 +112,13 @@
 	bar.frame=CGRectMake(0, 155, 320,15);
 	[self.view addSubview:bar];
 	
-	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	int al=[u integerForKey:@"AlertStatus"];
 	if(al==0)
-	{
-		nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-	}
+	{*/
+	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	[self.view addSubview:nDV];
+	/*}
 	else if (al==1)
 	{ 
 		totalTime=[u integerForKey:@"TotalTime"];
@@ -125,8 +126,8 @@
 		old=[u objectForKey:@"OldLocation"];
 		i=0;
 		[self alertTutorBegan];
-	}
-	[self.view addSubview:nDV];
+	}*/
+	
 	/*TutorAlertDetailsView *tdv=[[TutorAlertDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
 	[self.view addSubview:tdv];
 	AlertView *a=[[AlertView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
@@ -206,7 +207,7 @@
 	}
 	if(tutor)
 	{
-		NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+		/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 		int al=[u integerForKey:@"AlertStatus"];
 		if(al && i==0)
 		{
@@ -214,10 +215,10 @@
 			i++;
 		}
 		else
-		{
+		{*/
 			avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
-			i++;
-		}
+		/*	i++;
+		}*/
 		if(avgSp>limitTutor)
 			tAVD.alert=YES;
 		[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
@@ -282,10 +283,10 @@
 	totalTime=0;
 	totalSpace=0;
 	old=gpsManager.newLocation;
-	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	[u setFloat:totalSpace forKey:@"TotalDistance"];
 	[u setFloat:totalTime forKey:@"TotalTime"];
-	[u setObject:old forKey:@"OldLocation"];
+	[u setObject:old forKey:@"OldLocation"];*/
 }
 
 - (void)didReceiveMemoryWarning 
@@ -482,7 +483,7 @@
 -(void)alertTutorBegan;
 {
 	tutor=YES;
-	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	int al=[u integerForKey:@"AlertStatus"];
 	if(!al)
 	{
@@ -490,7 +491,7 @@
 	}
 	else
 	{
-	}
+	}*/
 	//limitTutor=80;
 	[self setLimit];	
 	[av removeFromSuperview];
@@ -503,12 +504,12 @@
 -(void)alertTutorEnd;
 {
 	tutor=NO;
-	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	int al=[u integerForKey:@"AlertStatus"];
 	if(al)
 	{
 		[u setInteger:0 forKey:@"AlertStatus"];		
-	}
+	}*/
 	[tAVD removeFromSuperview];
 	tAVD=nil;
 	[tAVD release];
@@ -529,10 +530,10 @@
 		distance = [newLoc getDistanceFrom:oldLoc];
 		totalSpace += distance;
 		return (int)totalSpace/totalTime;
-		NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+		/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 		[u setFloat:totalSpace forKey:@"TotalDistance"];
 		[u setFloat:totalTime forKey:@"TotalTime"];
-		[u setObject:oldLoc forKey:@"OldLocation"];
+		[u setObject:oldLoc forKey:@"OldLocation"];*/
 	}
 	else 
 		return 0;
