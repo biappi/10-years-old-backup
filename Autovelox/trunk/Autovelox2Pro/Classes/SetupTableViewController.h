@@ -15,6 +15,7 @@
 	UISwitch *mobili;
 	UISwitch *ecopass;
 	UISwitch *tutor;
+	UISwitch *sound;
 	Autovelox2ProAppDelegate *controller;
 	AutoVeloxProViewController * autoContr;
 	UITableView *tableView;	

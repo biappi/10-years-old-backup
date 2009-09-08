@@ -63,7 +63,6 @@
 		3D3AC35A104876F700C99273 /* LoadDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC359104876F700C99273 /* LoadDataViewController.m */; };
 		3D3AC4A010488FAD00C99273 /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC49F10488FAD00C99273 /* wait.png */; };
 		3D3AC4A81048917600C99273 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4A71048917600C99273 /* RootViewController.m */; };
-		3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D3AC4AA1048918E00C99273 /* SetupViewController.m */; };
 		3D3AC7241048A55E00C99273 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3D3AC7231048A55E00C99273 /* MainWindow.xib */; };
 		3D954B29104BF67100A57A15 /* SoundAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D954B28104BF67100A57A15 /* SoundAlert.m */; };
 		3D954B6E104BF90800A57A15 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D954B6D104BF90800A57A15 /* AudioToolbox.framework */; };
@@ -149,8 +148,6 @@
 		3D3AC49F10488FAD00C99273 /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		3D3AC4A61048917600C99273 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3D3AC4A71048917600C99273 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		3D3AC4A91048918E00C99273 /* SetupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupViewController.h; sourceTree = "<group>"; };
-		3D3AC4AA1048918E00C99273 /* SetupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupViewController.m; sourceTree = "<group>"; };
 		3D3AC7231048A55E00C99273 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		3D954B27104BF67100A57A15 /* SoundAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundAlert.h; sourceTree = "<group>"; };
 		3D954B28104BF67100A57A15 /* SoundAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundAlert.m; sourceTree = "<group>"; };
@@ -344,8 +341,6 @@
 				20ADED661020E703007622BD /* ControlledAutovelox.m */,
 				3D3AC4A61048917600C99273 /* RootViewController.h */,
 				3D3AC4A71048917600C99273 /* RootViewController.m */,
-				3D3AC4A91048918E00C99273 /* SetupViewController.h */,
-				3D3AC4AA1048918E00C99273 /* SetupViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -486,7 +481,6 @@
 				3D3AC27F10483B9D00C99273 /* LoadDataView.m in Sources */,
 				3D3AC35A104876F700C99273 /* LoadDataViewController.m in Sources */,
 				3D3AC4A81048917600C99273 /* RootViewController.m in Sources */,
-				3D3AC4AB1048918E00C99273 /* SetupViewController.m in Sources */,
 				3D954B29104BF67100A57A15 /* SoundAlert.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

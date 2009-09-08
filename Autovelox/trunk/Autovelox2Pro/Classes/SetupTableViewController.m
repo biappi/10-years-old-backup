@@ -19,6 +19,12 @@
 	{
 		controller=avad;
 		autoContr=c;
+		NSUserDefaults * def=[NSUserDefaults standardUserDefaults];
+		if([def integerForKey:@"firstTime"]==0)
+		{
+			[def setInteger:1 forKey:@"firstTime"];
+			[def setInteger:1 forKey:@"Sound"];
+		}
 	}
     return self;
 }
@@ -41,6 +47,7 @@
 	mobili=[[UISwitch alloc] initWithFrame:CGRectMake(200, 10, 80, 20) ];
 	tutor=[[UISwitch alloc] initWithFrame:CGRectMake(200, 10, 80, 20) ];
 	ecopass=[[UISwitch alloc] initWithFrame:CGRectMake(200, 10, 80, 20) ];
+	sound=[[UISwitch alloc] initWithFrame:CGRectMake(200, 10, 80, 20) ];
 	NSUserDefaults * def=[NSUserDefaults standardUserDefaults];
 	int i=[def integerForKey:@"Fissi"];
 	if(i)
@@ -62,7 +69,11 @@
 		[ecopass setOn:YES];
 	else 
 		[ecopass setOn:NO];
-
+	i=[def integerForKey:@"Sound"];
+	if(i)
+		[sound setOn:YES];
+	else 
+		[sound setOn:NO];
 }
 
 
@@ -80,6 +91,7 @@
 	[mobili release];
 	[tutor release];
 	[ecopass release];	
+	[sound release];
     [super dealloc];
 }
 
@@ -92,7 +104,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;
 {
-	return 2;		//Il +1 a causa dell'aggiunta del setting dei parametri della mail e del login di facebook
+	return 3;		//Il +1 a causa dell'aggiunta del setting dei parametri della mail e del login di facebook
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
@@ -104,6 +116,8 @@
 		case 0:
 			return 4;
 		case 1:
+			return 1;
+		case 2:
 			return 1;	
 	}
 	
@@ -118,6 +132,8 @@
 		case 0:
 			return @"Seleziona la tipologia di punti di interesse che vuoi visualizzare.";
 		case 1:
+			return @"Sound settings";
+		case 2:
 			return @"\n";
 			
 	}
@@ -162,6 +178,13 @@
 			}	
 			break;
 		case 1:
+			if(indexPath.row==0)
+			{
+				cell.textLabel.text=@"Suono abilitato";
+				[cell addSubview:sound];
+			}
+			break;
+		case 2:
 			cell.selectionStyle=UITableViewCellSelectionStyleBlue;
 			cell.textLabel.textAlignment=UITextAlignmentCenter;
 			cell.textLabel.text=@"Torna alla mappa";
@@ -215,6 +238,15 @@
 		[def setInteger:0 forKey:@"Ecopass"];
 		autoContr.ecopass=NO;
 	}
+	if([sound isOn])
+	{
+		[def setInteger:1 forKey:@"Sound"];
+
+	}
+	else
+	{
+		[def setInteger:0 forKey:@"Sound"];
+	}
 	[autoContr updateAnnotationViews];
 	UIViewAnimationTransition  trans = UIViewAnimationTransitionFlipFromRight;
 	[UIView beginAnimations: nil context: nil];
@@ -233,6 +265,8 @@
 		case 0:
 			break;
 		case 1:
+			break;
+		case 2:
 			[self done];
 			break;	
 		default:

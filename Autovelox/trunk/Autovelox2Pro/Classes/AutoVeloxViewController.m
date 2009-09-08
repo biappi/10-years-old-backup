@@ -336,9 +336,9 @@
 	
 	if(ontop)
 	{
-		//[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
+		[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
 		//[self alertTutorBegan];
-		[self animationSlideOff];	
+		//[self animationSlideOff];	
 	}
 	else
 	{	
@@ -376,7 +376,10 @@
 
 -(void) doSound;
 {
-	[sa playButtonPressed];
+	NSUserDefaults * def=[NSUserDefaults standardUserDefaults];
+	int sound=[def integerForKey:@"Sound"];
+	if(sound==1)
+		[sa playButtonPressed];
 }
 
 -(AlertView*)alert:(AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
