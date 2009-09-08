@@ -336,9 +336,9 @@
 	
 	if(ontop)
 	{
-		[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
+		//[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
 		//[self alertTutorBegan];
-		//[self animationSlideOff];	
+		[self animationSlideOff];	
 	}
 	else
 	{	
