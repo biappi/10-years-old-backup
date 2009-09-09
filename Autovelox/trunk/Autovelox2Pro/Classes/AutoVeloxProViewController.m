@@ -109,7 +109,7 @@
 }
 - (void)gpsUpdate
 {
-	NSLog(@"Location updated");
+	//NSLog(@"Location updated");
 	
 	//[self inspectView:map depth:0 path:@""];
 	lastPosition=manager.newLocation.coordinate;
@@ -314,6 +314,7 @@
 			//ADDING A TUTOR
 			if([an.title isEqualToString:@"Tutor Inizio"])
 			{
+				NSLog(@"Adding tutor %@ with index %d",[an subtitle],[an index]);
 				int indice=[[an index] intValue];
 				predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Inizio')"];
 				NSString * toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') && (index== %d)",[an subtitle],indice+1];
@@ -333,11 +334,14 @@
 				NSArray *arrayPrev = [[managedObjectC executeFetchRequest:request error:&err] retain];
 				ControlledTutor * a=[[ControlledTutor alloc] initWithAnnotation:an];
 				if([arrayPrev count])
+				{
 					a.previous=[arrayPrev objectAtIndex:0];
+					NSLog(@"previous found named %@",a.previous.subtitle);
+				}
 				if([arrayNext count]==0)
 				{
 					predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Fine')"];
-					toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') ",[an subtitle]];
+					toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@')",[an subtitle]];
 					predicString=[predicString stringByAppendingString:toAppend];
 					//predicString=[predicString stringByAppendingString:@" && (index== %d)",indice+1];
 					predicate = [NSPredicate predicateWithFormat:predicString];
@@ -345,10 +349,18 @@
 					[request setPredicate:predicate];
 					NSArray *arrayNext = [[managedObjectC executeFetchRequest:request error:&err] retain];
 					if([arrayNext count])
+					{
 						a.next=[arrayNext objectAtIndex:0];
+						NSLog(@"Next found and is the end named %@",a.next.subtitle);
+					}
+					else{
+						NSLog(@"Next not found");
+					}
 				}
 				else {
+					
 					a.next=[arrayNext objectAtIndex:0];
+					NSLog(@"Next found named %@",a.next.subtitle);
 				}
 				[controlledAutoveloxs addObject:a];
 				[a release];
@@ -405,8 +417,7 @@
 }
 -(void) evaluateCandidates
 {
-	if([currentAlarms count])
-	{
+	
 #pragma mark CONTROL AND UPDATE THE TUTOR
 		if(inTutor)
 		{
@@ -434,9 +445,9 @@
 			{
 				[autoView doSound];
 			}*/
-			if(currDist<50)
+			if(currDist<40)
 			{
-				if([currentTutor.next.subtitle isEqualToString:@"Tutor Fine"])
+				if([currentTutor.next.title isEqualToString:@"Tutor Fine"])
 				{
 					[autoView alertTutorEnd];
 					inTutor=NO;
@@ -505,12 +516,15 @@
 		/*
 		 Setto un nuovo allarme (lo stesso se c'è solo un allarme) aggiorno e controllo se eliminarlo
 		 */  
+	if([alarmViews count])
+	{
 		currAlarmIndex++;
 		currAlarmIndex=currAlarmIndex%([alarmViews count]);
 		[autoView setAlarmView:((AlertView*)((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).alarmView)];
 		double currDist=[manager.newLocation getDistanceFrom: ((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).loc];
 		[autoView updateDistance:(int) currDist];
-	
+		NSLog(@"Setted distance from alarm to %f",currDist);
+	}
 		/*
 		 Controllo tra gli altri allarmi se c'è qualcuno da eliminare
 		 */
@@ -518,7 +532,7 @@
 		for(ControlledAutovelox * a in alarmViews)
 		{
 			double currDi=[manager.newLocation getDistanceFrom:a.loc];
-			if(currDi<50)
+			if(currDi<40)
 			{
 				[toRem addObject:a];
 				if([alarmViews indexOfObject:a]==currAlarmIndex)
@@ -544,43 +558,34 @@
 					}
 				}
 			}
-			if(currDist>a.lastDistance)
+			else 
 			{
-				
-				/*if ([a isKindOfClass:[ControlledTutor class]]) {
-					ControlledTutor * ct=(ControlledTutor*) a;
-					ct.lastFarDistance+=(currDist-ct.lastDistance);
-					ct.lastDistance=currDi;
-					if(ct.lastFarDistance>3000)
-					{
-						if(inTutor)
-						[autoView alertTutorEnd];
-						inTutor=NO;
-						[toRem addObject:a];
-					}
-				}
-				else{*/
+				if(currDi>a.lastDistance+10)
+				{
+					
 					if([alarmViews indexOfObject:a]==currAlarmIndex)
 					{
 						[autoView alertEnd];
 					}
-				[toRem addObject:a];
-				//}
+					[toRem addObject:a];
+					NSLog(@"Removed alarm %@ distance increased",a.autovelox.subtitle);
 				
+				}
+				else{
+					a.lastDistance=currDi;
+					/*if ([a isKindOfClass:[ControlledTutor class]]) {
+					 ((ControlledTutor *) a).lastFarDistance=0;
+					 }*/
+				}
 			}
-			else{
-				a.lastDistance=currDi;
-				/*if ([a isKindOfClass:[ControlledTutor class]]) {
-					((ControlledTutor *) a).lastFarDistance=0;
-				}*/
-			}
-			[alarmViews removeObjectsInArray:toRem];
-			[toRem release];
+			
 #pragma mark REMOVE CLOSED ALARMS DONE
 #pragma mark REMOVE TUTOR ALARM IF NEW TUTOR OR IF OUTSIDE THE TUTOR
 			//SWITCH THE ALARMS CONTROL THE TUTOR
 		}
-		
+		[alarmViews removeObjectsInArray:toRem];
+		[toRem release];
+		//HERE
 		CGPoint mmUserPos=[self latLongToMM:manager.newLocation.coordinate];
 		NSMutableArray * autoToRemove=[[NSMutableArray alloc] init];
 		//NSLog(@"controlling %d autoveloxs",[controlledAutoveloxs count]);
@@ -626,12 +631,14 @@
 					{
 						distFromPrev=[manager.newLocation getDistanceFrom: [[[CLLocation alloc] initWithCoordinate:tut.next.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:0] autorelease]];
 					}
-					if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance && distFromNext<=tut.lastDistFromNext && distFromPrev>=tut.lastDistFromPrev)
+					
+					//MAKE SOME CHANGES HERE NOW SHOULD WORK BUT MUST BE TESTED
+					if(checkAngle && (abs(manager.newLocation.course -angleDir)<6) && currDist<a.lastDistance && distFromNext<tut.lastDistFromNext && distFromPrev>=tut.lastDistFromPrev)
 					{
 						a.goodEuristicResults=a.goodEuristicResults+1;
 					}
 					else {
-						if(checkAngle)
+						if(checkAngle && distFromNext!=tut.lastDistFromNext)
 							a.goodEuristicResults=0;
 						a.lastDistance=currDist;
 						tut.lastDistFromNext=distFromNext;
@@ -642,7 +649,7 @@
 				}
 				else{
 					
-					if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance)
+					if(checkAngle && (abs(manager.newLocation.course -angleDir)<6) && currDist<a.lastDistance)
 					{
 						a.goodEuristicResults=a.goodEuristicResults+1;
 					}
@@ -652,7 +659,7 @@
 					}
 					a.lastDistance=currDist;
 				}
-				if(a.lastDistance<1000 && a.goodEuristicResults>0)
+				if(a.lastDistance<400 && a.goodEuristicResults>0)
 				{
 #pragma mark THROW GPSGENERICALARM
 					[currentAlarms addObject:a];
@@ -669,10 +676,7 @@
 						[alarmViews addObject:a];
 						currAlarmIndex=[alarmViews indexOfObject:a];
 					}
-					else if([a.autovelox.title isEqualToString:@"Tutor Inizio"]){
-						
-						
-						
+					else if([a.autovelox.title isEqualToString:@"Tutor Inizio"] &&!inTutor){
 						UIView *toAdd=[autoView alert:TUTOR_INIZIO withDistance:a.lastDistance andText:a.autovelox.subtitle andLimit:[a.autovelox.limit intValue]];
 						a.alarmView=toAdd;
 						[alarmViews addObject:a];
@@ -682,13 +686,13 @@
 				}
 				
 			}
+		}	
 			
-			
-		}
+
 		
 		[controlledAutoveloxs removeObjectsInArray:autoToRemove];
 		[autoToRemove release];
-	}
+	
 }
 	
 	- (void)didReceiveMemoryWarning {

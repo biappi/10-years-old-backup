@@ -25,55 +25,53 @@
 
         // Initialization code
 		self.backgroundColor=[UIColor clearColor];
+		avSpeed.text=[NSString stringWithFormat:@"Velocità media:"];
+		avSpeed.textAlignment=UITextAlignmentLeft;
+		avSpeed.textColor=[UIColor whiteColor];
+		avSpeed.backgroundColor=[UIColor clearColor];
+		
+		
+		UIFont * fo=[UIFont fontWithName:@"Arial" size:50.0];
+		numberSpeed.font=fo;
+		numberSpeed.textAlignment=UITextAlignmentRight;
+		
+		numberSpeed.backgroundColor=[UIColor clearColor];
+		
+		unit.backgroundColor=[UIColor clearColor];
+		unit.textAlignment=UITextAlignmentRight;
+		unit.textColor=[UIColor whiteColor];
+		unit.text=@"Km/h";
+		[self addSubview:avSpeed];
+		
+		[self addSubview:numberSpeed];
+		
+		[self addSubview:unit];
+		
+		
+		
+		distFin.text=[NSString stringWithFormat:@"Distanza controllo:"];
+		distFin.textColor=[UIColor whiteColor];
+		distFin.backgroundColor=[UIColor clearColor];
+		[self addSubview:distFin];
+		
+		
+		
+		dis.textColor=[UIColor whiteColor];
+		dis.font=fo;
+		dis.backgroundColor=[UIColor clearColor];
+		dis.textAlignment=UITextAlignmentRight;
+		[self addSubview:dis];
+		
+		
+		unitDis.textColor=[UIColor whiteColor];
+		unitDis.backgroundColor=[UIColor clearColor];
+		unitDis.textAlignment=UITextAlignmentLeft;
+		[self addSubview:unitDis];
     }
     return self;
 }
 
-- (void)layoutSubviews
-{
-	avSpeed.text=[NSString stringWithFormat:@"Velocità media:"];
-	avSpeed.textAlignment=UITextAlignmentLeft;
-	avSpeed.textColor=[UIColor whiteColor];
-	avSpeed.backgroundColor=[UIColor clearColor];
-	
-	
-	UIFont * fo=[UIFont fontWithName:@"Arial" size:50.0];
-	numberSpeed.font=fo;
-	numberSpeed.textAlignment=UITextAlignmentRight;
-	
-	numberSpeed.backgroundColor=[UIColor clearColor];
-	
-	unit.backgroundColor=[UIColor clearColor];
-	unit.textAlignment=UITextAlignmentRight;
-	unit.textColor=[UIColor whiteColor];
-	unit.text=@"Km/h";
-	[self addSubview:avSpeed];
-	
-	[self addSubview:numberSpeed];
-	
-	[self addSubview:unit];
-	
-	
-	
-	distFin.text=[NSString stringWithFormat:@"Distanza controllo:"];
-	distFin.textColor=[UIColor whiteColor];
-	distFin.backgroundColor=[UIColor clearColor];
-	[self addSubview:distFin];
-	
-	
-	
-	dis.textColor=[UIColor whiteColor];
-	dis.font=fo;
-	dis.backgroundColor=[UIColor clearColor];
-	dis.textAlignment=UITextAlignmentRight;
-	[self addSubview:dis];
-	
-	
-	unitDis.textColor=[UIColor whiteColor];
-	unitDis.backgroundColor=[UIColor clearColor];
-	unitDis.textAlignment=UITextAlignmentLeft;
-	[self addSubview:unitDis];
-}
+
 	
 - (void)drawRect:(CGRect)rect 
 {

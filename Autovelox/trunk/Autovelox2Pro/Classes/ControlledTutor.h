@@ -20,7 +20,7 @@
 }
 
 @property (nonatomic, retain) Annotation * next;
-@property (nonatomic,retain) Annotation * previous;
+@property (nonatomic, retain) Annotation * previous;
 @property (nonatomic, assign) double lastDistFromNext;
 @property (nonatomic, assign) double lastDistFromPrev;
 @property (nonatomic, assign) double lastFarDistance;

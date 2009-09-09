@@ -393,12 +393,12 @@
 	}
 	limitTutor=lim;
 	[self doSound];
-	av=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
+	AlertView * tmp=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
 	if(type==TUTOR_INIZIO)
 	{
 		if(!ontop)
 			[self animationSlideOn];
-		av.tipo=@"Tutor";
+		tmp.tipo=@"Tutor";
 		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
 		[limit setNeedsDisplay];
 	}
@@ -406,7 +406,7 @@
 	{
 		if(!ontop)
 			[self animationSlideOn];
-		av.tipo=@"AutoVelox Mobile";
+		tmp.tipo=@"AutoVelox Mobile";
 		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[limit setNeedsDisplay];
 	}
@@ -414,17 +414,17 @@
 	{
 		if(!ontop)
 			[self animationSlideOn];
-		av.tipo=@"AutoVelox Fisso";
+		tmp.tipo=@"AutoVelox Fisso";
 		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[limit setNeedsDisplay];
 	}
-	av.descr=descrizione;
+	tmp.descr=descrizione;
 	[self setLimit];
 	[nDV removeFromSuperview];
-	nDV=nil;
 	[nDV release];
-	[self.view addSubview:av];
-	return av;
+	nDV=nil;
+	[self setAlarmView:tmp];
+	return tmp;
 	
 }
 
@@ -492,7 +492,7 @@
 	else
 	{
 	}*/
-	//limitTutor=80;
+	limitTutor=0;
 	[self setLimit];	
 	[av removeFromSuperview];
 	av=nil;
@@ -543,8 +543,12 @@
 {
 	if(av)
 	{
+		NSLog(@"called set distance %d",distance);
 		av.distance=distance;
 		[av setNeedsDisplay];
+	}
+	else{
+		NSLog(@"called set distance %d but the view was not allocated",distance);
 	}
 }
 
