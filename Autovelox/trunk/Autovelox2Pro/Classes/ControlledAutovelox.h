@@ -16,10 +16,12 @@
 	int goodEuristicResults;
 	Annotation * autovelox;
 	CLLocation * loc;
+	UIView * alarmView;
 }
 @property(nonatomic,assign) Annotation * autovelox;
 @property(readonly) CLLocation * loc;
 @property(nonatomic, assign) double lastDistance;
 @property(nonatomic, assign) int goodEuristicResults;
+@property(nonatomic, retain) UIView * alarmView;
 -(id) initWithAnnotation:(Annotation*)an;
 @end

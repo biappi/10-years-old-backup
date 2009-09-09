@@ -250,6 +250,7 @@
 	 annotation.title=@"Tutor Inizio";
 	 annotation.subtitle=[content objectAtIndex:3];	
 	 annotation.limit=[NSNumber numberWithInt:-1];
+	 annotation.index=[NSNumber numberWithInt:[[content objectAtIndex:4] intValue]];
 			 //NSLog(@"Parsing %d",c);
 	 }
 	path = [[[NSBundle mainBundle] resourcePath] stringByAppendingString:@"/Sicve_Fine.csv"];
@@ -270,14 +271,10 @@
 		annotation.title=@"Tutor Fine";
 		annotation.subtitle=[content objectAtIndex:3];	
 		annotation.limit=[NSNumber numberWithInt:-1];
+		annotation.index=[NSNumber numberWithInt:-1];
 	}		
 	[parserM release];
 	[parserF release];
-	
-//NSError *error;
-//	if (![managedO save:&error]) {
-//		NSLog(@"ERROR ADDING AUTOVELOXS");
-//	}
 	[managedO performSelectorOnMainThread:@selector(save:) withObject:nil waitUntilDone:YES];
 	NSLog(@"parse end %@",[NSDate date]);
 	[self performSelectorOnMainThread:@selector(readFinished) withObject:nil waitUntilDone:NO];

@@ -16,6 +16,7 @@
 @dynamic subtitle;
 @dynamic longitude;
 @dynamic limit;
+@dynamic index;
 -(CLLocationCoordinate2D) coordinate
 {
 	CLLocationCoordinate2D pippo;

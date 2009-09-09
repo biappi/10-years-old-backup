@@ -10,7 +10,7 @@
 
 
 @implementation ControlledAutovelox
-@synthesize autovelox, loc,goodEuristicResults,lastDistance;
+@synthesize autovelox, loc,goodEuristicResults,lastDistance,alarmView;
 -(id) initWithAnnotation:(Annotation *) an
 {
 	if(self=[super init])
@@ -20,7 +20,6 @@
 		goodEuristicResults=0;
 		autovelox=[an retain];
 		loc=[[CLLocation alloc] initWithCoordinate:autovelox.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:[NSDate date]];
-		//loc.coordinate=autovelox.coordinate;
 	}
 	return self;
 

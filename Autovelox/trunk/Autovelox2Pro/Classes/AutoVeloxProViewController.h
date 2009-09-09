@@ -14,6 +14,7 @@
 #import "LoadDataView.h"
 #import "ControlledAutovelox.h"
 #import "AutoVeloxViewController.h"
+#import "ControlledTutor.h"
 
 @interface AutoVeloxProViewController : UIViewController <MKMapViewDelegate> {
 
@@ -37,10 +38,12 @@
 	MKAnnotationView * gpsView;
 	double angle;
 	AutoVeloxViewController * autoView;
-	ControlledAutovelox * currentAlarm;
-	
-	//UIImageView * tmp;
-	//UIView *overlay;
+	NSMutableArray * currentAlarms;
+	BOOL inTutor;
+	BOOL alertNoNet;
+	NSMutableArray * alarmViews;
+	int currAlarmIndex;
+	ControlledTutor * currentTutor;
 }
 
 
