@@ -82,23 +82,16 @@
 	else
 		numberSpeed.textColor=[UIColor redColor];
 	
-	if(distanzaFineTutor>=1000)
-		if(distanzaFineTutor>=10000)
-			dis.text=[NSString stringWithFormat:@"%.0d",distanzaFineTutor/1000];
-		else 
-			dis.text=[NSString stringWithFormat:@"%1.1f",(float)distanzaFineTutor/1000];
-		else
-			dis.text=[NSString stringWithFormat:@"%d",distanzaFineTutor];
-	if(distanzaFineTutor>=1000)
-		if(distanzaFineTutor>=10000)
-			unitDis.text=[NSString stringWithFormat:@"Km",distanzaFineTutor/1000];
-		else 
-			unitDis.text=[NSString stringWithFormat:@"Km",(float)distanzaFineTutor/1000];
-		else
-			unitDis.text=[NSString stringWithFormat:@"m",distanzaFineTutor];
-	
-	
-
+	if(distanzaFineTutor<1000)	
+	{
+		dis.text=[NSString stringWithFormat:@"%.0d",distanzaFineTutor];
+		unitDis.text=[NSString stringWithFormat:@"m"];
+	}
+	else 
+	{
+		dis.text=[NSString stringWithFormat:@"%1.1f",(float)(distanzaFineTutor/1000)];
+		unitDis.text=[NSString stringWithFormat:@"Km"];
+	}
 	//rilascia
 }
 

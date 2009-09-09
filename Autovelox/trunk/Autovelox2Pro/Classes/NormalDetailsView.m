@@ -19,17 +19,13 @@
 		numberOfAutovelox=0;
 		noa=[[UILabel alloc]initWithFrame:CGRectMake(5, 15, 185, 65)];
 		self.backgroundColor = [UIColor clearColor];
+		noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 5Km: %d",numberOfAutovelox];
+		noa.numberOfLines=2;
+		noa.backgroundColor=[UIColor clearColor];
+		noa.textColor=[UIColor whiteColor];
+		[self addSubview:noa];
     }
     return self;
-}
-
-- (void)layoutSubviews
-{
-	noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 5Km: %d",numberOfAutovelox];
-	noa.numberOfLines=2;
-	noa.backgroundColor=[UIColor clearColor];
-	noa.textColor=[UIColor whiteColor];
-	[self addSubview:noa];
 }
 
 - (void)drawRect:(CGRect)rect 

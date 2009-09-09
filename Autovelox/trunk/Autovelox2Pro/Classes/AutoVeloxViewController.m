@@ -99,6 +99,13 @@
 	speedLabel.backgroundColor=[UIColor clearColor];
 	speedLabel.text=@"0";
 	
+	limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(33, 23, 75, 67)];
+	limitSpeed.textAlignment=UITextAlignmentCenter;
+	limitSpeed.textColor=[UIColor blackColor];
+	limitSpeed.backgroundColor=[UIColor clearColor];
+	
+	limitSpeed.text=@"";
+	[self.view addSubview:limitSpeed];
 	
 	
 	limit=[[UIImageView alloc] init];
@@ -357,6 +364,8 @@
 		tAVD.alpha=1;
 	}
 	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+	limit.image=[UIImage imageNamed:@"arrow.png"];
+	limitSpeed.text=@"";
 	[av removeFromSuperview];
 	av=nil;
 	[av release];
@@ -436,43 +445,24 @@
 		limit.image = [UIImage imageNamed:@"divieto.png"];
 		if(limitTutor<100)
 		{
-			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(33, 23, 75, 67)];
+			limitSpeed.frame = CGRectMake(33, 23, 75, 67);
 			fo=[UIFont fontWithName:@"Arial" size:35.0];
 		}
 		else
 		{
-			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(32, 23, 75, 67)];
+			limitSpeed.frame = CGRectMake(32, 23, 75, 67);
 			fo=[UIFont fontWithName:@"Arial" size:30.0];
 		}
-		limitSpeed.textAlignment=UITextAlignmentCenter;
-		limitSpeed.textColor=[UIColor blackColor];
-		limitSpeed.font=fo;
-		limitSpeed.backgroundColor=[UIColor clearColor];
-		
 		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
-		[self.view addSubview:limitSpeed];
+		
 	}
 	else if(limitTutor<0) //limit not available
 	{
 		UIFont * fo;
 		limit.image = [UIImage imageNamed:@"divieto.png"];
-		if(limitTutor<100)
-		{
-			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(33, 23, 75, 67)];
-			fo=[UIFont fontWithName:@"Arial" size:35.0];
-		}
-		else
-		{
-			limitSpeed = [[UILabel alloc] initWithFrame:CGRectMake(32, 23, 75, 67)];
-			fo=[UIFont fontWithName:@"Arial" size:30.0];
-		}
-		limitSpeed.textAlignment=UITextAlignmentCenter;
-		limitSpeed.textColor=[UIColor blackColor];
-		limitSpeed.font=fo;
-		limitSpeed.backgroundColor=[UIColor clearColor];
-		
+		limitSpeed.frame = CGRectMake(32, 23, 75, 67);
+		fo=[UIFont fontWithName:@"Arial" size:30.0];
 		limitSpeed.text=@"N.A.";
-		[self.view addSubview:limitSpeed];
 	}
 	else if(limitTutor==0)//tutor management
 	{
