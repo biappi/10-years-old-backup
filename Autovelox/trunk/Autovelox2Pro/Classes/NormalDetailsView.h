@@ -13,7 +13,7 @@
 	int numberOfAutovelox;
 	UILabel *noa;
 }
-
+- (void) update; 
 @property (nonatomic,assign) int numberOfAutovelox;
 
 @end

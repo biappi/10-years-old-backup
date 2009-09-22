@@ -44,6 +44,7 @@
 	NSMutableArray * alarmViews;
 	int currAlarmIndex;
 	ControlledTutor * currentTutor;
+	BOOL gpsUpdated;
 }
 
 

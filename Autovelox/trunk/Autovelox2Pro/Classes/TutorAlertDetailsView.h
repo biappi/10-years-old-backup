@@ -22,7 +22,7 @@
 	int velocitaConsentita;
 	BOOL alert;
 }
-
+-(void) update;
 @property (nonatomic,assign) int averageSpeed;
 @property (nonatomic,assign) int distanzaFineTutor;
 @property (nonatomic,assign) int velocitaConsentita;

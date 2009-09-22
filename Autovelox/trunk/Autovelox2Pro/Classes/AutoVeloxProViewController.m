@@ -41,6 +41,7 @@
 {
 	if(self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
 	{
+		gpsUpdated=NO;
 		alertNoNet=NO;
 		annotationsArray=[[NSMutableArray alloc] init];
 		
@@ -93,30 +94,16 @@
 	return self;
 }
 
-/*
- // The designated initializer. Override to perform setup that is required before the view is loaded.
- - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
- if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
- // Custom initialization
- }
- return self;
- }
- */
-
 -(void) setAutoView:(AutoVeloxViewController *) vc;
 {
 	autoView=vc;
 }
 - (void)gpsUpdate
 {
-	//NSLog(@"Location updated");
-	
-	//[self inspectView:map depth:0 path:@""];
 	lastPosition=manager.newLocation.coordinate;
-	
 	if(manager.newLocation.course>0)
 		angle=manager.newLocation.course;
-	
+	gpsUpdated=YES;
 }
 
 
@@ -214,10 +201,6 @@
 	
 	
 	CLLocationCoordinate2D userPosition=[map userLocation].coordinate;
-	
-	//[map setCenterCoordinate:userPosition];
-	//CLLocation * user=[[CLLocation alloc] initWithLatitude:userPosition.latitude longitude:userPosition.longitude];
-	
 	NSNumber * latmax=[NSNumber numberWithDouble:( userPosition.latitude + (0.05))];
 	NSNumber * latmin=[NSNumber numberWithDouble:( userPosition.latitude - (0.05))];
 	NSNumber * lonmax=[NSNumber numberWithDouble:( userPosition.longitude + (0.05))];
@@ -382,7 +365,6 @@
 	if(!alertNoNet)
 	{
 		alertNoNet=YES;
-		//UIAlertView * a=[[UIAlertView alloc] initWithTitle:@"Rete dati non disponibile" message:@" Verranno visualizzati \n la posizione ed i Poi \n ma non la mappa \n il programma funzionera' comunque \n normalmente" delegate:nil cancelButton:@"Cancella" otherButtons:nil];
 		UIAlertView * a=[[UIAlertView alloc] initWithTitle:@"Rete dati non disponibile" message:@" Verranno visualizzati la posizione ed i PDI ma non la mappa il programma funzionera' comunque normalmente" delegate:nil cancelButtonTitle:@"Cancella" otherButtonTitles:nil];
 		[a show];
 		[a release];
@@ -400,10 +382,7 @@
 	
 	
 	point.x = (int)(coordinate.longitude * RR0F / GR);
-	
-	/*-----------------------------------------------*/
-	/* Possible numeric errors must be filtered here */
-	/*-----------------------------------------------*/
+
 	if (point.x > SCMM)
 	{
 		point.x = SCMM;
@@ -418,6 +397,9 @@
 -(void) evaluateCandidates
 {
 	
+	if(gpsUpdated)
+	{
+		gpsUpdated=NO;
 #pragma mark CONTROL AND UPDATE THE TUTOR
 		if(inTutor)
 		{
@@ -426,16 +408,16 @@
 			CLLocation * loc=[[CLLocation alloc] initWithCoordinate:currentTutor.next.coordinate altitude:0 horizontalAccuracy:0 verticalAccuracy:0 timestamp:0];
 			double currDist=[manager.newLocation getDistanceFrom:loc];
 			[autoView updateTutorDistance:(int) currDist];
-			NSLog(@"Sono in un tutor ho settato la distanza dal prossimo a %f",currDist);
+			//NSLog(@"Sono in un tutor ho settato la distanza dal prossimo a %f",currDist);
 			if(currDist> currentTutor.lastDistFromNext)
 			{
 				currentTutor.lastFarDistance+=(currDist-currentTutor.lastDistFromNext);
 				currentTutor.lastDistFromNext=currDist;
-				if(currentTutor.lastFarDistance>3000)
+				if(currentTutor.lastFarDistance>2000)
 				{
 					[autoView alertTutorEnd];
 					inTutor=NO;
-					NSLog(@"Mi sono allontanato consecutivamente per 3km esco dal modo tutor");
+					NSLog(@"Mi sono allontanato consecutivamente per 2km esco dal modo tutor");
 				}
 			}
 			else if(currDist<currentTutor.lastDistFromNext){
@@ -692,6 +674,7 @@
 		
 		[controlledAutoveloxs removeObjectsInArray:autoToRemove];
 		[autoToRemove release];
+	}
 	
 }
 	
@@ -701,12 +684,6 @@
 		
 		// Release any cached data, images, etc that aren't in use.
 	}
-	
-	- (void)viewDidUnload {
-		// Release any retained subviews of the main view.
-		// e.g. self.myOutlet = nil;
-	}
-	
 	
 	- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
 	{
@@ -742,6 +719,10 @@
 		{
 			view.image=[UIImage imageNamed:@"tutorFineSmall.png"];
 		}
+		else if([tmp.title isEqualToString:@"Ecopass"])
+		{
+			view.image=[UIImage imageNamed:@"tutorFineSmall.png"];
+		}
 		
 		
 		[view setNeedsDisplay];
@@ -758,35 +739,12 @@
 		if(appoggio)
 			[appoggio release];
 	}
-	
+
+
 	- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated
 	{
-		//if(animated)
-		//[overlay addSubview:tmp];
-		//CGPoint center=[map convertCoordinate:manager.newLocation.coordinate toPointToView:overlay];
-		//tmp.center=center;
-		//[[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1] bringSubviewToFront:tmp];
-		//tmp.layer.zPosition=1000000;
-		
-		/*double latmap=map.centerCoordinate.latitude;
-		 //double userlat=gpsAnnotation.coordinate.latitude;
-		 double userlat=manager.newLocation.coordinate.latitude;
-		 double controllo=latmap- userlat;
-		 if(controllo<0)
-		 controllo*=-1;
-		 
-		 latmap=map.centerCoordinate.longitude;
-		 //userlat=gpsAnnotation.coordinate.longitude;
-		 userlat=manager.newLocation.coordinate.longitude;
-		 double controllo2=latmap- userlat;
-		 if(controllo2<0)
-		 controllo2*=-1;
-		 //if(controllo >(map.region.span.latitudeDelta/100.0) || controllo2>(map.region.span.longitudeDelta/100.0))
-		 //{
-		 //	centered=NO;
-		 //	centerGps.alpha=1;
-		 //}
-		 */
+	
+				
 		if(regionChangeRequested)
 			regionChangeRequested=NO;
 		else {
@@ -794,13 +752,12 @@
 			centerGps.alpha=1;
 		}
 		
-		
 		//NSLog(@"Did change");
 		MKCoordinateRegion region=[mapView region];
 		//NSLog(@"Region with center %f %f and span %f %f",region.center.latitude,region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta);
 		//NSArray * tmp=map.annotations;
 		
-		if(map.region.span.latitudeDelta>0.1)
+	/*	if(map.region.span.latitudeDelta>0.1)
 		{
 			if(appoggio &&[appoggio count])
 			{
@@ -809,7 +766,7 @@
 			}
 			return;
 			
-		}
+		}*/
 		if(map.region.span.latitudeDelta<0.004189)
 		{
 			[map setRegion:MKCoordinateRegionMake(map.centerCoordinate, MKCoordinateSpanMake(0.0042, map.region.span.longitudeDelta)) animated:YES];

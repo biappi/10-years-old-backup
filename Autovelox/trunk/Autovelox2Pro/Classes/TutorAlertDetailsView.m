@@ -73,7 +73,7 @@
 
 
 	
-- (void)drawRect:(CGRect)rect 
+- (void)update
 {
 	
 	numberSpeed.text=[NSString stringWithFormat:@"%d",averageSpeed];

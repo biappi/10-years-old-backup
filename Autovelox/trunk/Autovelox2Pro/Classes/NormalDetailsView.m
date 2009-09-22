@@ -28,7 +28,7 @@
     return self;
 }
 
-- (void)drawRect:(CGRect)rect 
+- (void) update; 
 {
     // Drawing code
 	noa.text=[NSString stringWithFormat:@"N° di autovelox nel raggio di 5Km: %d",numberOfAutovelox];

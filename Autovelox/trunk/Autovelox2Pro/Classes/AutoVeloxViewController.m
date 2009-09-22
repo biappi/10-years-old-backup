@@ -111,7 +111,9 @@
 	limit=[[UIImageView alloc] init];
 	limit.frame=CGRectMake(32, 23, 75, 67);
 	limit.image=[UIImage imageNamed:@"arrow.png"];
+	
 	[self.view addSubview:limit];
+	[limitSpeed bringSubviewToFront:limit];
 	//[self.view addSubview:tac];
 	[self.view addSubview:speedLabel];
 	[redGreenLight sendSubviewToBack:tac];
@@ -170,7 +172,7 @@
 -(void)updateAutoveloxNumber:(int)num;
 {
 	nDV.numberOfAutovelox=num;
-	[nDV setNeedsDisplay];
+	[nDV update];
 }
 -(void) geoCode;
 {
@@ -183,14 +185,14 @@
 }
 - (void)gpsUpdate
 {
-	float interval;
-	if(oldDate)
-	{
-		interval=[oldDate timeIntervalSinceNow];
-		[oldDate release];
-	}
-	oldDate=[[NSDate date] retain];
+	double interval;
 
+	if(!old)
+	{
+		old=[gpsManager.newLocation retain];
+		NSLog(@"created old");
+	}
+	
 	if(gpsManager.newLocation.speed!=speedNumber)
 	{
 		if(gpsManager.newLocation.speed>0)
@@ -214,6 +216,20 @@
 	}
 	if(tutor)
 	{
+		if(old.coordinate.latitude!=gpsManager.newLocation.coordinate.latitude ||old.coordinate.longitude !=gpsManager.newLocation.coordinate.longitude)
+		{
+			if(oldDate)
+			{
+				interval= -1 *[oldDate timeIntervalSinceNow];
+				NSLog(@"intervallo : %f",interval);
+				avgSp = 3.6* [self averageSpeed:gpsManager.newLocation andOldLoc:old andTime:interval];
+				[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
+				[oldDate release];
+			}
+			oldDate=[[NSDate date] retain];
+			[old release];
+			old=[gpsManager.newLocation retain];
+		}
 		/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 		int al=[u integerForKey:@"AlertStatus"];
 		if(al && i==0)
@@ -223,12 +239,11 @@
 		}
 		else
 		{*/
-			avgSp = [self averageSpeed:gpsManager.newLocation andOldLoc:(const CLLocation*)gpsManager.oldLocation andTime:interval];
+			
 		/*	i++;
 		}*/
-		if(avgSp>limitTutor)
-			tAVD.alert=YES;
-		[self updateTutorAvgSpeed:avgSp andDistanceFromTutorEnd:distanceFromTutor withLimit:limitTutor];
+		/*if(avgSp>limitTutor)
+			tAVD.alert=YES;*/
 	}
 }
 
@@ -289,8 +304,13 @@
 {
 	totalTime=0;
 	totalSpace=0;
-	old=gpsManager.newLocation;
-	/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	if(old)
+	{
+		[old release];
+
+	}
+	old=[gpsManager.newLocation retain];
+		/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 	[u setFloat:totalSpace forKey:@"TotalDistance"];
 	[u setFloat:totalTime forKey:@"TotalTime"];
 	[u setObject:old forKey:@"OldLocation"];*/
@@ -482,6 +502,12 @@
 	else
 	{
 	}*/
+	if(nDV)
+	{
+		[nDV removeFromSuperview];
+		[nDV release];
+		nDV=nil;
+	}
 	limitTutor=0;
 	[self setLimit];	
 	[av removeFromSuperview];
@@ -518,8 +544,12 @@
 		float distance;
 		
 		distance = [newLoc getDistanceFrom:oldLoc];
+		NSLog(@"distance %f ",distance);
+		
 		totalSpace += distance;
-		return (int)totalSpace/totalTime;
+		NSLog(@"Total space %f ",totalSpace);
+		NSLog(@"Total time %f ",totalTime);
+		return ((int) (totalSpace/totalTime));
 		/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
 		[u setFloat:totalSpace forKey:@"TotalDistance"];
 		[u setFloat:totalTime forKey:@"TotalTime"];
@@ -554,7 +584,7 @@
 -(void) updateTutorDistance:(int)dist;
 {
 	tAVD.distanzaFineTutor=dist;
-	[tAVD setNeedsDisplay];
+	[tAVD update];
 }
 
 -(void)updateTutorAvgSpeed:(int)avS andDistanceFromTutorEnd:(int)end withLimit:(int)lim;
@@ -562,9 +592,9 @@
 	if(tAVD)
 	{
 		tAVD.averageSpeed=avS;
-		tAVD.velocitaConsentita=lim;
-		tAVD.distanzaFineTutor=end;
-		[tAVD setNeedsDisplay];
+		//tAVD.velocitaConsentita=lim;
+		//tAVD.distanzaFineTutor=end;
+		[tAVD update];
 	}
 }
 

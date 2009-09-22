@@ -26,45 +26,42 @@
 		[self addSubview:type];
 		[self addSubview:description];
 		[self addSubview:uniN];
+		dist.text=[NSString stringWithFormat:@"Distanza rimanente:"];
+		dist.textColor=[UIColor whiteColor];
+		dist.backgroundColor=[UIColor clearColor];
+		[self addSubview:dist];
+		
+		UIFont * fo = [UIFont fontWithName:@"Arial" size:30.0];
+		distN.font = fo;
+		
+		distN.textAlignment=UITextAlignmentRight;
+		distN.textColor=[UIColor redColor];
+		distN.backgroundColor=[UIColor clearColor];
+		
+		
+		fo = [UIFont fontWithName:@"Arial" size:20.0];
+		type.font = fo;
+		type.text=tipo;
+		type.textAlignment=UITextAlignmentCenter;
+		type.textColor=[UIColor redColor];
+		type.backgroundColor=[UIColor clearColor];
+		
+		description.text=descr;
+		description.textAlignment=UITextAlignmentCenter;
+		description.textColor=[UIColor whiteColor];
+		description.numberOfLines=2;
+		description.backgroundColor=[UIColor clearColor];
+		
+		
+		
+		uniN.textAlignment=UITextAlignmentLeft;
+		uniN.textColor=[UIColor whiteColor];
+		uniN.backgroundColor=[UIColor clearColor];
 
     }
     return self;
 }
 
-- (void)layoutSubviews
-{
-	dist.text=[NSString stringWithFormat:@"Distanza rimanente:"];
-	dist.textColor=[UIColor whiteColor];
-	dist.backgroundColor=[UIColor clearColor];
-	[self addSubview:dist];
-	
-	UIFont * fo = [UIFont fontWithName:@"Arial" size:30.0];
-	distN.font = fo;
-	
-	distN.textAlignment=UITextAlignmentRight;
-	distN.textColor=[UIColor redColor];
-	distN.backgroundColor=[UIColor clearColor];
-		
-	
-	fo = [UIFont fontWithName:@"Arial" size:20.0];
-	type.font = fo;
-	type.text=tipo;
-	type.textAlignment=UITextAlignmentCenter;
-	type.textColor=[UIColor redColor];
-	type.backgroundColor=[UIColor clearColor];
-	
-	description.text=descr;
-	description.textAlignment=UITextAlignmentCenter;
-	description.textColor=[UIColor whiteColor];
-	description.numberOfLines=2;
-	description.backgroundColor=[UIColor clearColor];
-	
-	
-	
-	uniN.textAlignment=UITextAlignmentLeft;
-	uniN.textColor=[UIColor whiteColor];
-	uniN.backgroundColor=[UIColor clearColor];
-	}
 
 -(void) setDistance:(int)x
 {
@@ -87,7 +84,29 @@
 		uniN.text=@"m";	
 	
 }
+-(void) setDescr:(NSString *) des
+{
+	if(descr)
+	{
+		[descr release];
+		descr=nil;
+	}
+	
+	descr=[des retain];
+	description.text=des;
+}
 
+-(void) setTipo:(NSString *) ti
+{
+	if(tipo)
+	{
+		[tipo release];
+		tipo=nil;
+	}
+	
+	tipo=[ti retain];
+	type.text=ti;
+}
 - (int) distance
 {
 	return distance;
