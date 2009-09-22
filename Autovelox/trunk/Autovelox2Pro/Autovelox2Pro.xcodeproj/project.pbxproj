@@ -37,6 +37,7 @@
 		20D81B7C101C506D00FD75A7 /* AutoVeloxProViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */; };
 		20D81B7F101C50E800FD75A7 /* AutoveloxFissi.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */; };
 		20D81B80101C50E800FD75A7 /* AutoveloxMobili.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */; };
+		20F1222E1067AC34000BE2A8 /* Ecopass.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20F1222D1067AC34000BE2A8 /* Ecopass.csv */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28C3AD8A0F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */; };
 		28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28D801B30F44B63D00FB423F /* CoreData.framework */; };
@@ -103,6 +104,7 @@
 		20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoVeloxProViewController.m; sourceTree = "<group>"; };
 		20D81B7D101C50E800FD75A7 /* AutoveloxFissi.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoveloxFissi.csv; sourceTree = "<group>"; };
 		20D81B7E101C50E800FD75A7 /* AutoveloxMobili.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoveloxMobili.csv; sourceTree = "<group>"; };
+		20F1222D1067AC34000BE2A8 /* Ecopass.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Ecopass.csv; sourceTree = "<group>"; };
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28C3AD890F43EF2300507BA6 /* Autovelox2Pro.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = Autovelox2Pro.xcdatamodel; sourceTree = "<group>"; };
 		28D801B30F44B63D00FB423F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -212,6 +214,7 @@
 				3DB534BD10569DB9007A97CC /* tutorInizioSmall.png */,
 				20692CD11043182E00F939D1 /* CarSmall.png */,
 				20692C0C10429CD700F939D1 /* mirinoUnpressedsmall.png */,
+				20F1222D1067AC34000BE2A8 /* Ecopass.csv */,
 				2058867D102480E400B69A7A /* slideDown.png */,
 				3D2F16C91042F22E00C75FDF /* gps_red.png */,
 				3D2F16CA1042F22E00C75FDF /* gps_green.png */,
@@ -406,6 +409,7 @@
 				3D954C06104D6C2000A57A15 /* alarm_1.mp3 in Resources */,
 				204A8DDB104F1814008A56DB /* cameraTutor.png in Resources */,
 				3DB534BE10569DB9007A97CC /* tutorInizioSmall.png in Resources */,
+				20F1222E1067AC34000BE2A8 /* Ecopass.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
