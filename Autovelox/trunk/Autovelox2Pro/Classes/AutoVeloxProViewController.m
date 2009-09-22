@@ -219,10 +219,12 @@
 		if(firstAnd)
 		{
 			firstAnd=NO;
-			predicString=[predicString stringByAppendingString:@" &&( (title LIKE[cd] 'Autovelox fisso')"];
+			NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",AUTOVELOXFISSO];
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 		else {
-			predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Autovelox fisso')"];
+			NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",AUTOVELOXFISSO];
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 		
 	}
@@ -231,10 +233,14 @@
 		if(firstAnd)
 		{
 			firstAnd=NO;
-			predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Autovelox mobile')"];
+			NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",AUTOVELOXMOBILE];
+
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 		else {
-			predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Autovelox mobile')"];
+			NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",AUTOVELOXMOBILE];
+
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 	}
 	if(tutor)
@@ -242,10 +248,13 @@
 		if(firstAnd)
 		{
 			firstAnd=NO;
-			predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Tutor Inizio')"];
+			NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",TUTOR_INIZIO];
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 		else {
-			predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Tutor Inizio')"];
+			NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",TUTOR_INIZIO];
+
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 	}
 	if(ecopass)
@@ -253,10 +262,12 @@
 		if(firstAnd)
 		{
 			firstAnd=NO;
-			predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Ecopass')"];
+			NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",ECOPASS];
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 		else {
-			predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Ecopass')"];
+			NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",ECOPASS];
+			predicString=[predicString stringByAppendingString:toApp];
 		}
 	}
 	predicString=[predicString stringByAppendingString:@")"];
@@ -299,8 +310,8 @@
 			{
 				NSLog(@"Adding tutor %@ with index %d",[an subtitle],[an index]);
 				int indice=[[an index] intValue];
-				predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Inizio')"];
-				NSString * toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') && (index== %d)",[an subtitle],indice+1];
+				predicString=[NSString stringWithFormat:@"(type==%d)",TUTOR_INIZIO];
+				NSString * toAppend=[NSString stringWithFormat:@" && (index== %d) && (subtitle LIKE[cd] '%@') ",indice+1,[an subtitle]];
 				predicString=[predicString stringByAppendingString:toAppend];
 				//predicString=[predicString stringByAppendingString:@" && (index== %d)",indice+1];
 				predicate = [NSPredicate predicateWithFormat:predicString];
@@ -308,8 +319,8 @@
 				[request setPredicate:predicate];
 				NSError * err;
 				NSArray *arrayNext = [[managedObjectC executeFetchRequest:request error:&err] retain];
-				predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Inizio')"];
-				toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') && (index== %d)",[an subtitle],indice-1];
+				predicString=[NSString stringWithFormat:@"(type==%d)",TUTOR_INIZIO];
+				toAppend=[NSString stringWithFormat:@" && (index== %d) && (subtitle LIKE[cd] '%@')",indice-1,[an subtitle]];
 				predicString=[predicString stringByAppendingString:toAppend];
 				predicate = [NSPredicate predicateWithFormat:predicString];
 				[request setEntity:entity];
@@ -323,7 +334,7 @@
 				}
 				if([arrayNext count]==0)
 				{
-					predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Fine')"];
+					predicString=[NSString stringWithFormat:@"(type==%d)",TUTOR_FINE];
 					toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@')",[an subtitle]];
 					predicString=[predicString stringByAppendingString:toAppend];
 					//predicString=[predicString stringByAppendingString:@" && (index== %d)",indice+1];
@@ -757,7 +768,7 @@
 		//NSLog(@"Region with center %f %f and span %f %f",region.center.latitude,region.center.longitude, region.span.latitudeDelta, region.span.longitudeDelta);
 		//NSArray * tmp=map.annotations;
 		
-	/*	if(map.region.span.latitudeDelta>0.1)
+		if(map.region.span.latitudeDelta>0.1)
 		{
 			if(appoggio &&[appoggio count])
 			{
@@ -766,7 +777,7 @@
 			}
 			return;
 			
-		}*/
+		}
 		if(map.region.span.latitudeDelta<0.004189)
 		{
 			[map setRegion:MKCoordinateRegionMake(map.centerCoordinate, MKCoordinateSpanMake(0.0042, map.region.span.longitudeDelta)) animated:YES];

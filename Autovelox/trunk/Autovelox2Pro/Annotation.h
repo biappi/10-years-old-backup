@@ -31,6 +31,7 @@ typedef enum{
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSString * subtitle;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSNumber * type;
 //Indice dell'autovelox
 @property (nonatomic, retain) NSNumber * index;
 

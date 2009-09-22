@@ -168,7 +168,7 @@
 		else {
 			annotation.limit=[NSNumber numberWithInt:-1];
 		}
-
+		annotation.type=[NSNumber numberWithInt:AUTOVELOXFISSO];
 		//NSLog(@"Parsing %d",c);
 		if(c%(totaLines/20)==0)
 		{
@@ -188,7 +188,7 @@
 		pippo.latitude=[[content objectAtIndex:1] doubleValue];
 		pippo.longitude=[[content objectAtIndex:0] doubleValue];
 		Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];
-		
+		annotation.type=[NSNumber numberWithInt:AUTOVELOXMOBILE];
 		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 		annotation.title=@"Autovelox mobile";
@@ -223,7 +223,7 @@
 	 pippo.latitude=[[content objectAtIndex:1] doubleValue];
 	 pippo.longitude=[[content objectAtIndex:0] doubleValue];
 	 Annotation *annotation = (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedO];
-	 
+	 annotation.type=[NSNumber numberWithInt:ECOPASS];
 	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 	 annotation.title=@"Ecopass";
@@ -248,6 +248,8 @@
 	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 	 annotation.title=@"Tutor Inizio";
+     annotation.type=[NSNumber numberWithInt:TUTOR_INIZIO];
+
 	 annotation.subtitle=[content objectAtIndex:3];	
 	 annotation.limit=[NSNumber numberWithInt:-1];
 	 annotation.index=[NSNumber numberWithInt:[[content objectAtIndex:4] intValue]];
@@ -269,6 +271,7 @@
 		annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 		annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
 		annotation.title=@"Tutor Fine";
+		annotation.type=[NSNumber numberWithInt:TUTOR_FINE];
 		annotation.subtitle=[content objectAtIndex:3];	
 		annotation.limit=[NSNumber numberWithInt:-1];
 		annotation.index=[NSNumber numberWithInt:-1];
