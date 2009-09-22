@@ -306,7 +306,7 @@
 		if(!found)
 		{
 			//ADDING A TUTOR
-			if([an.title isEqualToString:@"Tutor Inizio"])
+			if([an.type intValue]==TUTOR_INIZIO)
 			{
 				NSLog(@"Adding tutor %@ with index %d",[an subtitle],[an index]);
 				int indice=[[an index] intValue];
@@ -440,7 +440,7 @@
 			}*/
 			if(currDist<40)
 			{
-				if([currentTutor.next.title isEqualToString:@"Tutor Fine"])
+				if([currentTutor.next.type intValue]==TUTOR_FINE)
 				{
 					[autoView alertTutorEnd];
 					inTutor=NO;
@@ -457,8 +457,8 @@
 					
 					//[request setEntity:entity];
 					int indice=[[currentTutor.next index] intValue];
-					NSString * predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Inizio')"];
-					NSString * toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') && (index== %d)",[currentTutor.autovelox subtitle],indice+1];
+					NSString * predicString=[NSString stringWithFormat:@"(type==%d)",TUTOR_INIZIO];
+					NSString * toAppend=[NSString stringWithFormat:@" && (index== %d) && (subtitle LIKE[cd] '%@')",indice+1,[currentTutor.autovelox subtitle]];
 					predicString=[predicString stringByAppendingString:toAppend];
 					//predicString=[predicString stringByAppendingString:@" && (index== %d)",indice+1];
 					NSPredicate *predicate = [NSPredicate predicateWithFormat:predicString];
@@ -470,7 +470,7 @@
 					ControlledTutor * a=[[ControlledTutor alloc] initWithAnnotation:currentTutor.next];
 					if([arrayNext count]==0)
 					{
-						predicString=[NSString stringWithFormat:@"(title LIKE[cd] 'Tutor Fine')"];
+						predicString=[NSString stringWithFormat:@"(type==%d)",TUTOR_FINE];
 						toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') ",[currentTutor.autovelox subtitle]];
 						predicString=[predicString stringByAppendingString:toAppend];
 						//predicString=[predicString stringByAppendingString:@" && (index== %d)",indice+1];
@@ -532,7 +532,7 @@
 				{
 					[autoView alertEnd];
 				}
-				if([a.autovelox.title isEqualToString:@"Tutor Inizio"])
+				if([a.autovelox.type intValue]==TUTOR_INIZIO)
 				{
 					if(!inTutor)
 					{
@@ -613,7 +613,7 @@
 				[autoToRemove addObject:a];
 			}
 			else {
-				if([a.autovelox.title isEqualToString:@"Tutor inizio"])
+				if([a.autovelox.type intValue]==TUTOR_INIZIO)
 				{
 					ControlledTutor *tut=(ControlledTutor*) a;
 					if(tut.next)
@@ -654,22 +654,23 @@
 				}
 				if(a.lastDistance<400 && a.goodEuristicResults>0)
 				{
-#pragma mark THROW GPSGENERICALARM
+#pragma mark THROW GPSGENERICALARM  GENERATE ECOPASS ALARM
 					[currentAlarms addObject:a];
 					//	[autoView alert:[a.autovelox getType] withDistance:a.lastDistance]; 
-					if([a.autovelox.title isEqualToString:@"Autovelox fisso"]){
+					if([a.autovelox.type intValue]==AUTOVELOXFISSO){
 						UIView *toAdd=[autoView alert:AUTOVELOXFISSO withDistance:a.lastDistance andText:a.autovelox.subtitle andLimit:[a.autovelox.limit intValue]];
 						a.alarmView=toAdd;
 						[alarmViews addObject:a];
 						currAlarmIndex=[alarmViews indexOfObject:a];
 					}
-					else if ([a.autovelox.title isEqualToString:@"Autovelox mobile"]){
+					else if ([a.autovelox.type intValue]==AUTOVELOXMOBILE){
 						UIView *toAdd=[autoView alert:AUTOVELOXMOBILE withDistance:a.lastDistance andText:a.autovelox.subtitle andLimit:[a.autovelox.limit intValue]];
 						a.alarmView=toAdd;
 						[alarmViews addObject:a];
 						currAlarmIndex=[alarmViews indexOfObject:a];
 					}
-					else if([a.autovelox.title isEqualToString:@"Tutor Inizio"] &&!inTutor){
+#pragma mark YOU NEED TO DO A BETTER CHECK HERE 
+					else if([a.autovelox.type intValue]==TUTOR_INIZIO &&!inTutor){
 						UIView *toAdd=[autoView alert:TUTOR_INIZIO withDistance:a.lastDistance andText:a.autovelox.subtitle andLimit:[a.autovelox.limit intValue]];
 						a.alarmView=toAdd;
 						[alarmViews addObject:a];
@@ -715,22 +716,22 @@
 			view.annotation=annotation;
 		}
 		Annotation * tmp=(Annotation *) annotation;
-		if([tmp.title isEqualToString:@"Autovelox fisso"]){
+		if([tmp.type intValue]==AUTOVELOXFISSO){
 			view.image=[UIImage imageNamed:@"autoVeloxFisso40.png"];
 		}
-		else if([tmp.title isEqualToString:@"Autovelox mobile"])
+		else if([tmp.type intValue]==AUTOVELOXMOBILE)
 		{
 			view.image=[UIImage imageNamed:@"autoVeloxMobile40.png"];
 		}
-		else if([tmp.title isEqualToString:@"Tutor Inizio"])
+		else if([tmp.type intValue]==TUTOR_INIZIO)
 		{
 			view.image=[UIImage imageNamed:@"tutorInizioSmall.png"];
 		}
-		else if([tmp.title isEqualToString:@"Tutor Fine"])
+		else if([tmp.type intValue]==TUTOR_FINE)
 		{
 			view.image=[UIImage imageNamed:@"tutorFineSmall.png"];
 		}
-		else if([tmp.title isEqualToString:@"Ecopass"])
+		else if([tmp.type intValue]==ECOPASS)
 		{
 			view.image=[UIImage imageNamed:@"tutorFineSmall.png"];
 		}
@@ -800,15 +801,19 @@
 		BOOL firstAnd=YES;
 		if(!fissi && !mobili && !ecopass && !tutor)
 			return;
+		
+		
 		if(fissi)
 		{
 			if(firstAnd)
 			{
 				firstAnd=NO;
-				predicString=[predicString stringByAppendingString:@" &&( (title LIKE[cd] 'Autovelox fisso')"];
+				NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",AUTOVELOXFISSO];
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 			else {
-				predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Autovelox fisso')"];
+				NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",AUTOVELOXFISSO];
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 			
 		}
@@ -817,10 +822,14 @@
 			if(firstAnd)
 			{
 				firstAnd=NO;
-				predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Autovelox mobile')"];
+				NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",AUTOVELOXMOBILE];
+				
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 			else {
-				predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Autovelox mobile')"];
+				NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",AUTOVELOXMOBILE];
+				
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 		}
 		if(tutor)
@@ -828,10 +837,13 @@
 			if(firstAnd)
 			{
 				firstAnd=NO;
-				predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Tutor*')"];
+				NSString * toApp=[NSString stringWithFormat:@" &&( ((type==%d) ||(type==%d))",TUTOR_INIZIO,TUTOR_FINE];
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 			else {
-				predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Tutor*')"];
+				NSString * toApp=[NSString stringWithFormat:@" || ((type==%d)||(type==%d))",TUTOR_INIZIO,TUTOR_FINE];
+				
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 		}
 		if(ecopass)
@@ -839,12 +851,15 @@
 			if(firstAnd)
 			{
 				firstAnd=NO;
-				predicString=[predicString stringByAppendingString:@" && ((title LIKE[cd] 'Ecopass')"];
+				NSString * toApp=[NSString stringWithFormat:@" &&( (type==%d)",ECOPASS];
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 			else {
-				predicString=[predicString stringByAppendingString:@" || (title LIKE[cd] 'Ecopass')"];
+				NSString * toApp=[NSString stringWithFormat:@" || (type==%d)",ECOPASS];
+				predicString=[predicString stringByAppendingString:toApp];
 			}
 		}
+		
 		predicString=[predicString stringByAppendingString:@")"];
 		
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:predicString];
