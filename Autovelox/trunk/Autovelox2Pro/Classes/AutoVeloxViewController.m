@@ -393,6 +393,39 @@
 	
 }
 
+-(void) setLimit;
+{	
+	if(limitTutor>0)
+	{
+		UIFont * fo;
+		limit.image = [UIImage imageNamed:@"divieto.png"];
+		if(limitTutor<100)
+		{
+			limitSpeed.frame = CGRectMake(33, 23, 75, 67);
+			fo=[UIFont fontWithName:@"Arial" size:35.0];
+		}
+		else
+		{
+			limitSpeed.frame = CGRectMake(32, 23, 75, 67);
+			fo=[UIFont fontWithName:@"Arial" size:30.0];
+		}
+		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
+		
+	}
+	else if(limitTutor<0) //limit not available
+	{
+		UIFont * fo;
+		limit.image = [UIImage imageNamed:@"divieto.png"];
+		limitSpeed.frame = CGRectMake(32, 23, 75, 67);
+		fo=[UIFont fontWithName:@"Arial" size:30.0];
+		limitSpeed.text=@"N.A.";
+	}
+	else if(limitTutor==0)//tutoror ecopass management
+	{
+		limit.image = [UIImage imageNamed:@"cameraTutor.png"];
+	}
+}
+
 -(void)setAlarmView:(AlertView*)alv withLimit:(int)lim;
 {
 	if(tAVD)
@@ -404,7 +437,8 @@
 	av=nil;
 	av=[alv retain];
 	[self.view addSubview:av];
-	[self setLimit:lim];
+	limitTutor=lim;
+	[self setLimit];
 }
 
 -(void) doSound;
@@ -457,47 +491,16 @@
 		[limit setNeedsDisplay];
 	}
 	tmp.descr=descrizione;
-	[self setLimit];
+	//[self setLimit];
 	[nDV removeFromSuperview];
 	[nDV release];
 	nDV=nil;
-	[self setAlarmView:tmp];
+	[self setAlarmView:tmp withLimit:limitTutor];
 	return tmp;
 	
 }
 
--(void) setLimit;
-{	
-	if(limitTutor>0)
-	{
-		UIFont * fo;
-		limit.image = [UIImage imageNamed:@"divieto.png"];
-		if(limitTutor<100)
-		{
-			limitSpeed.frame = CGRectMake(33, 23, 75, 67);
-			fo=[UIFont fontWithName:@"Arial" size:35.0];
-		}
-		else
-		{
-			limitSpeed.frame = CGRectMake(32, 23, 75, 67);
-			fo=[UIFont fontWithName:@"Arial" size:30.0];
-		}
-		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
-		
-	}
-	else if(limitTutor<0) //limit not available
-	{
-		UIFont * fo;
-		limit.image = [UIImage imageNamed:@"divieto.png"];
-		limitSpeed.frame = CGRectMake(32, 23, 75, 67);
-		fo=[UIFont fontWithName:@"Arial" size:30.0];
-		limitSpeed.text=@"N.A.";
-	}
-	else if(limitTutor==0)//tutor management
-	{
-		limit.image = [UIImage imageNamed:@"cameraTutor.png"];
-	}
-}
+
 
 -(void)alertTutorBegan;
 {
