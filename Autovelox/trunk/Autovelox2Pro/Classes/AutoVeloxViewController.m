@@ -393,7 +393,7 @@
 	
 }
 
--(void)setAlarmView:(AlertView*)alv;
+-(void)setAlarmView:(AlertView*)alv withLimit:(int)lim;
 {
 	if(tAVD)
 	{
@@ -404,6 +404,7 @@
 	av=nil;
 	av=[alv retain];
 	[self.view addSubview:av];
+	[self setLimit:lim];
 }
 
 -(void) doSound;
