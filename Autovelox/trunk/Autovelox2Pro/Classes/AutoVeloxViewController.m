@@ -563,21 +563,30 @@
 
 -(void)alertTutorEnd;
 {
-	tutor=NO;
-	/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
-	int al=[u integerForKey:@"AlertStatus"];
-	if(al)
+	if(av)
 	{
-		[u setInteger:0 forKey:@"AlertStatus"];		
-	}*/
-	[tAVD removeFromSuperview];
-	tAVD=nil;
-	[tAVD release];
-	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-
-	limit.image=[UIImage imageNamed:@"arrow.png"];
-	[limit setNeedsDisplay];
-	[self.view addSubview:nDV];
+		limit.frame=CGRectMake(32, 23, 75, 67);
+		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
+		[self setLimit];
+	}
+	else
+	{
+		tutor=NO;
+		/*NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+		 int al=[u integerForKey:@"AlertStatus"];
+		 if(al)
+		 {
+		 [u setInteger:0 forKey:@"AlertStatus"];		
+		 }*/
+		[tAVD removeFromSuperview];
+		tAVD=nil;
+		[tAVD release];
+		nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+		
+		limit.image=[UIImage imageNamed:@"arrow.png"];
+		[limit setNeedsDisplay];
+		[self.view addSubview:nDV];
+	}
 }
 
 -(int)averageSpeed:(CLLocation*)newLoc andOldLoc:(const CLLocation*) oldLoc andTime:(float)time;
