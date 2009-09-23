@@ -566,7 +566,7 @@
 	if(av)
 	{
 		limit.frame=CGRectMake(32, 23, 75, 67);
-		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
+		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[self setLimit];
 	}
 	else
