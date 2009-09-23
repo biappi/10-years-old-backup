@@ -105,7 +105,7 @@
 	limitSpeed.backgroundColor=[UIColor clearColor];
 	
 	limitSpeed.text=@"";
-	[self.view addSubview:limitSpeed];
+	
 	
 	
 	limit=[[UIImageView alloc] init];
@@ -113,7 +113,7 @@
 	limit.image=[UIImage imageNamed:@"arrow.png"];
 	
 	[self.view addSubview:limit];
-	[limitSpeed bringSubviewToFront:limit];
+	
 	//[self.view addSubview:tac];
 	[self.view addSubview:speedLabel];
 	[redGreenLight sendSubviewToBack:tac];
@@ -146,6 +146,7 @@
 	signal.image=[UIImage imageNamed:@"gps_red.png"];
 	signal.backgroundColor=[UIColor clearColor];
 	[self.view addSubview:signal];
+	[self.view addSubview:limitSpeed];
 	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(geoCode) userInfo:nil repeats:YES];
 
 }
@@ -366,7 +367,7 @@
 	
 	if(ontop)
 	{
-		//[self alert:TUTOR_INIZIO withDistance:800 andText:@"tutor" andLimit:0];
+		//[self alert:AUTOVELOXFISSO withDistance:800 andText:@"ecopass" andLimit:-1];
 		//[self alertTutorBegan];
 		[self animationSlideOff];	
 	}
@@ -398,7 +399,7 @@
 	if(limitTutor>0)
 	{
 		UIFont * fo;
-		limit.image = [UIImage imageNamed:@"divieto.png"];
+		//limit.image = [UIImage imageNamed:@"divieto.png"];
 		if(limitTutor<100)
 		{
 			limitSpeed.frame = CGRectMake(33, 23, 75, 67);
@@ -410,23 +411,25 @@
 			fo=[UIFont fontWithName:@"Arial" size:30.0];
 		}
 		limitSpeed.text=[NSString stringWithFormat:@"%d",limitTutor];
+		limitSpeed.font=fo;
 		
 	}
 	else if(limitTutor<0) //limit not available
 	{
 		UIFont * fo;
-		limit.image = [UIImage imageNamed:@"divieto.png"];
+		//limit.image = [UIImage imageNamed:@"divieto.png"];
 		limitSpeed.frame = CGRectMake(32, 23, 75, 67);
-		fo=[UIFont fontWithName:@"Arial" size:30.0];
+		fo=[UIFont fontWithName:@"Arial" size:25.0];
+		limitSpeed.font=fo;
 		limitSpeed.text=@"N.A.";
 	}
 	else if(limitTutor==0)//tutoror ecopass management
 	{
-		limit.image = [UIImage imageNamed:@"cameraTutor.png"];
+		//limit.image = [UIImage imageNamed:@"cameraTutor.png"];
 	}
 }
 
--(void)setAlarmView:(AlertView*)alv withLimit:(int)lim;
+-(void)setAlarmView:(AlertView*)alv withLimit:(int)lim andType:(AUTOVELOXTYPE)avt;
 {
 	if(tAVD)
 	{
@@ -439,6 +442,21 @@
 	[self.view addSubview:av];
 	limitTutor=lim;
 	[self setLimit];
+	if(avt==AUTOVELOXFISSO||avt==AUTOVELOXMOBILE)
+	{
+		limit.frame=CGRectMake(32, 23, 75, 67);
+		limit.image = [UIImage imageNamed:@"divieto.png"];
+	}
+	else if(avt==ECOPASS)
+	{
+		limit.frame=CGRectMake(32, 23, 67, 67);
+		limit.image = [UIImage imageNamed:@"EcopassAlert.png"];
+	}
+	else if(avt==TUTOR_INIZIO)
+	{
+		limit.frame=CGRectMake(32, 23, 75, 67);
+		limit.image = [UIImage imageNamed:@"cameraTutor.png"];
+	}
 }
 
 -(void) doSound;
@@ -463,6 +481,7 @@
 		if(!ontop)
 			[self animationSlideOn];
 		tmp.tipo=@"Tutor";
+		limit.frame=CGRectMake(32, 23, 75, 67);
 		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
 		[limit setNeedsDisplay];
 	}
@@ -471,6 +490,7 @@
 		if(!ontop)
 			[self animationSlideOn];
 		tmp.tipo=@"AutoVelox Mobile";
+		limit.frame=CGRectMake(32, 23, 75, 67);
 		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[limit setNeedsDisplay];
 	}
@@ -479,6 +499,7 @@
 		if(!ontop)
 			[self animationSlideOn];
 		tmp.tipo=@"AutoVelox Fisso";
+		limit.frame=CGRectMake(32, 23, 75, 67);
 		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[limit setNeedsDisplay];
 	}
@@ -487,15 +508,15 @@
 		if(!ontop)
 			[self animationSlideOn];
 		tmp.tipo=@"Ecopass";
+		limit.frame=CGRectMake(32, 23, 67, 67);
 		limit.image=[UIImage imageNamed:@"EcopassAlert.png"];
 		[limit setNeedsDisplay];
 	}
 	tmp.descr=descrizione;
-	//[self setLimit];
 	[nDV removeFromSuperview];
 	[nDV release];
 	nDV=nil;
-	[self setAlarmView:tmp withLimit:limitTutor];
+	[self setAlarmView:tmp withLimit:limitTutor andType:type];
 	return tmp;
 	
 }
