@@ -666,7 +666,7 @@
 #pragma mark THROW GPSGENERICALARM  GENERATE ECOPASS ALARM
 					[currentAlarms addObject:a];
 					//	[autoView alert:[a.autovelox getType] withDistance:a.lastDistance]; 
-					if([a.autovelox.type intValue]==AUTOVELOXFISSO){
+					/*if([a.autovelox.type intValue]==AUTOVELOXFISSO){
 						UIView *toAdd=[autoView alert:AUTOVELOXFISSO withDistance:a.lastDistance andText:a.autovelox.subtitle andLimit:[a.autovelox.limit intValue]];
 						a.alarmView=toAdd;
 						[alarmViews addObject:a];
@@ -684,8 +684,12 @@
 						a.alarmView=toAdd;
 						[alarmViews addObject:a];
 						currAlarmIndex=[alarmViews indexOfObject:a];
-					}
-					
+					}*/
+					UIView *toAdd=[autoView alert:[a.autovelox.type intValue] withDistance:a.lastDistance andText:a.autovelox.subtitle andLimit:[a.autovelox.limit intValue]];
+					a.alarmView=toAdd;
+					[alarmViews addObject:a];
+					currAlarmIndex=[alarmViews indexOfObject:a];					
+				
 				}
 				
 			}

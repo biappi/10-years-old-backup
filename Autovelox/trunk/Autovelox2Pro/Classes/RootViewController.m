@@ -227,6 +227,7 @@
 	 annotation.type=[NSNumber numberWithInt:ECOPASS];
 	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
+	 annotation.limit=[NSNumber numberWithInt:-1];
 	 annotation.title=@"Ecopass";
 	 annotation.subtitle=[content objectAtIndex:2];	
 	 //NSLog(@"Parsing %d",c);
