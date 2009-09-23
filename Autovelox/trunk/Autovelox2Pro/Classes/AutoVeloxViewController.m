@@ -457,6 +457,7 @@
 		limit.frame=CGRectMake(32, 23, 75, 67);
 		limit.image = [UIImage imageNamed:@"cameraTutor.png"];
 	}
+	[limit setNeedsDisplay];
 }
 
 -(void) doSound;
@@ -541,6 +542,9 @@
 		[nDV release];
 		nDV=nil;
 	}
+	limit.frame=CGRectMake(32, 23, 75, 67);
+	limit.image = [UIImage imageNamed:@"cameraTutor.png"];
+	[limit setNeedsDisplay];
 	limitTutor=0;
 	[self setLimit];	
 	[av removeFromSuperview];
