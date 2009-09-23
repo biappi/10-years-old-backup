@@ -644,7 +644,7 @@
 					}
 					
 					//MAKE SOME CHANGES HERE NOW SHOULD WORK BUT MUST BE TESTED
-					if(checkAngle && (abs(manager.newLocation.course -angleDir)<6) && currDist<a.lastDistance && distFromNext<tut.lastDistFromNext && distFromPrev>=tut.lastDistFromPrev)
+					if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance && distFromNext<tut.lastDistFromNext && distFromPrev>=tut.lastDistFromPrev)
 					{
 						a.goodEuristicResults=a.goodEuristicResults+1;
 					}
@@ -660,7 +660,7 @@
 				}
 				else{
 					
-					if(checkAngle && (abs(manager.newLocation.course -angleDir)<6) && currDist<a.lastDistance)
+					if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance)
 					{
 						a.goodEuristicResults=a.goodEuristicResults+1;
 					}

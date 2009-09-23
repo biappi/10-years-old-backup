@@ -1303,6 +1303,37 @@
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
+	20BF8E4B106A63DA00D06994 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 663";
+		rLen = 0;
+		rLoc = 22951;
+		rType = 0;
+		vrLen = 1474;
+		vrLoc = 22844;
+	};
+	20BF8E4C106A63DA00D06994 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
+		name = "AutoVeloxProViewController.m: 669";
+		rLen = 0;
+		rLoc = 23087;
+		rType = 0;
+		vrLen = 1474;
+		vrLoc = 22844;
+	};
+	20BF8E4D106A63DA00D06994 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 8D1107310486CEB800E47090 /* Autovelox2Pro-Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = "/Users/pako/Documents/AutoveloxTrunk/Autovelox2Pro/Autovelox2Pro-Info.plist";
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
 	20C3BB75101CAFB900D0971E /* AutoVeloxViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {899, 1729}}";
@@ -1447,9 +1478,9 @@
 	};
 	20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1097, 12480}}";
-			sepNavSelRange = "{7180, 0}";
-			sepNavVisRange = "{6996, 1277}";
+			sepNavIntBoundsRect = "{{0, 0}, {1503, 12207}}";
+			sepNavSelRange = "{23087, 0}";
+			sepNavVisRange = "{22844, 1474}";
 			sepNavWindowFrame = "{{50, 67}, {1230, 711}}";
 		};
 	};
@@ -1912,6 +1943,9 @@
 			20BF8E44106A61ED00D06994 /* PlistBookmark */ = 20BF8E44106A61ED00D06994 /* PlistBookmark */;
 			20BF8E49106A630200D06994 /* PBXTextBookmark */ = 20BF8E49106A630200D06994 /* PBXTextBookmark */;
 			20BF8E4A106A630200D06994 /* PlistBookmark */ = 20BF8E4A106A630200D06994 /* PlistBookmark */;
+			20BF8E4B106A63DA00D06994 /* PBXTextBookmark */ = 20BF8E4B106A63DA00D06994 /* PBXTextBookmark */;
+			20BF8E4C106A63DA00D06994 /* PBXTextBookmark */ = 20BF8E4C106A63DA00D06994 /* PBXTextBookmark */;
+			20BF8E4D106A63DA00D06994 /* PlistBookmark */ = 20BF8E4D106A63DA00D06994 /* PlistBookmark */;
 			20C3BB7E101CAFDD00D0971E = 20C3BB7E101CAFDD00D0971E /* PBXTextBookmark */;
 			20DD0D8210565C6D0064BDCA = 20DD0D8210565C6D0064BDCA /* PBXBookmark */;
 			20DD0D8310565C6D0064BDCA = 20DD0D8310565C6D0064BDCA /* PBXBookmark */;
