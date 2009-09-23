@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>20BF8E09106A5A6B00D06994</string>
+						<string>20BF8E4A106A630200D06994</string>
 						<key>history</key>
 						<array>
 							<string>20ABE81C1069CF1300C3DF2E</string>
@@ -318,14 +318,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>29</integer>
+									<integer>23</integer>
 									<integer>14</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 93}, {298, 594}}</string>
+							<string>{{0, 95}, {298, 594}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -344,7 +344,7 @@
 							<real>298</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>0 125 1280 653 0 0 1280 778 </string>
+						<string>-2 122 1280 653 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -374,7 +374,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>20BF8E08106A5A6B00D06994</string>
+										<string>20BF8E49106A630200D06994</string>
 										<key>history</key>
 										<array>
 											<string>20A07B76101C6459004994DC</string>
@@ -450,10 +450,11 @@
 											<string>20ABE8021069B22D00C3DF2E</string>
 											<string>20ABE8031069B22D00C3DF2E</string>
 											<string>20ABE8041069B22D00C3DF2E</string>
-											<string>20BF8DEB106A57A300D06994</string>
 											<string>20BF8DFB106A580D00D06994</string>
-											<string>20BF8DFC106A580D00D06994</string>
-											<string>20BF8DFD106A580D00D06994</string>
+											<string>20BF8E18106A5B4000D06994</string>
+											<string>20BF8E1A106A5B4000D06994</string>
+											<string>20BF8E27106A5E0700D06994</string>
+											<string>20BF8E28106A5E0700D06994</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -467,7 +468,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {960, 527}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 125 1280 653 0 0 1280 778 </string>
+								<string>-2 122 1280 653 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -487,7 +488,7 @@
 								<key>Frame</key>
 								<string>{{0, 532}, {960, 80}}</string>
 								<key>RubberWindowFrame</key>
-								<string>0 125 1280 653 0 0 1280 778 </string>
+								<string>-2 122 1280 653 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -651,6 +652,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>20BF8E14106A5B0200D06994</string>
+		<string>20BF8E15106A5B0200D06994</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>20D81B5F101C4DC300FD75A7</string>
@@ -659,7 +662,7 @@
 		<string>/Users/pako/Documents/AutoveloxTrunk/Autovelox2Pro/Autovelox2Pro.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>0 125 1280 653 0 0 1280 778 </string>
+	<string>-2 122 1280 653 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

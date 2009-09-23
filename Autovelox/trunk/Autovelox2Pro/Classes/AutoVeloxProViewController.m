@@ -203,7 +203,7 @@
 	if(read)
 		return;
 	
-	[self doTest];
+	//[self doTest];
 	CLLocationCoordinate2D userPosition=[map userLocation].coordinate;
 	NSNumber * latmax=[NSNumber numberWithDouble:( userPosition.latitude + (0.05))];
 	NSNumber * latmin=[NSNumber numberWithDouble:( userPosition.latitude - (0.05))];
@@ -939,7 +939,11 @@
 		
 		alarmAuto2=[self generateAlarm:autoMobile];
 		[autoView setAlarmView:alarmAuto1 withLimit:50 andType:AUTOVELOXFISSO];
-
+		//[autoView alertTutorBegan];
+		[autoView alertEnd];
+		[autoView alertTutorBegan];
+		[self generateAlarm:autoFisso];
+		[autoView alertTutorEnd];
 		//[self performSelector:
 	}
 -(UIAlertView*) generateAlarm:(Annotation*) ann
