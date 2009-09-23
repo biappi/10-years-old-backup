@@ -49,13 +49,12 @@
 	ld=[[LoadDataViewController alloc] initWithNibName:nil bundle:nil];
 	//ld.managedObjectC=self.managedObjectContext;
 	[self.view addSubview:ld.view];
-	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];	
 	int loadDb=[u integerForKey:@"DBLoaded"];
 	if(loadDb)
 	{		
 		[self performSelector:@selector(read) withObject:nil afterDelay:0.5];
-		
-		[u setInteger:0 forKey:@"DBLoaded"];
+	
 
 	}
 	else
@@ -82,6 +81,8 @@
 
 -(void) readFinished
 {
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];	
+	[u setInteger:0 forKey:@"DBLoaded"];
 	//UIViewAnimationTransition  trans = UIViewAnimationCurveEaseOut;
 	[UIView beginAnimations: nil context: nil];
 	[UIView setAnimationDelegate:self];
@@ -155,7 +156,7 @@
 		annotation.subtitle=[content objectAtIndex:3];
 		if([content count]>5)
 		{
-			NSObject * tmp=[content objectAtIndex:4];
+			//NSObject * tmp=[content objectAtIndex:4];
 			int lim=[[content objectAtIndex:4] intValue];
 			if(lim)
 				annotation.limit=[NSNumber numberWithInt:lim];
@@ -196,7 +197,7 @@
 		if([content count]>4)
 		{
 		//	NSLog(@"Read %@",[content objectAtIndex:3]);
-			NSObject * tmp=[content objectAtIndex:3];
+			//NSObject * tmp=[content objectAtIndex:3];
 			annotation.limit=[NSNumber numberWithInt:[[content objectAtIndex:3] intValue]];
 		}
 		else {

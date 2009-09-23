@@ -198,7 +198,10 @@
 - (void)controlNearAutovelox:(NSTimer*)theTimer
 {
 	
-	
+	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];	
+	int read=[u integerForKey:@"DBLoaded"];
+	if(read)
+		return;
 	CLLocationCoordinate2D userPosition=[map userLocation].coordinate;
 	NSNumber * latmax=[NSNumber numberWithDouble:( userPosition.latitude + (0.05))];
 	NSNumber * latmin=[NSNumber numberWithDouble:( userPosition.latitude - (0.05))];
@@ -372,7 +375,10 @@
 
 - (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error
 {
-	if(!alertNoNet)
+	static int count=0;
+	count++;
+	
+	if(!alertNoNet && count>3) 
 	{
 		alertNoNet=YES;
 		UIAlertView * a=[[UIAlertView alloc] initWithTitle:@"Rete dati non disponibile" message:@" Verranno visualizzati la posizione ed i PDI ma non la mappa il programma funzionera' comunque normalmente" delegate:nil cancelButtonTitle:@"Cancella" otherButtonTitles:nil];
@@ -575,7 +581,7 @@
 #pragma mark REMOVE TUTOR ALARM IF NEW TUTOR OR IF OUTSIDE THE TUTOR
 			//SWITCH THE ALARMS CONTROL THE TUTOR
 		}
-		if([alarmViews count]==[toRem count])
+		if([alarmViews count]==[toRem count] && [alarmViews count]>0)
 		{
 			[autoView alertEnd];
 		}

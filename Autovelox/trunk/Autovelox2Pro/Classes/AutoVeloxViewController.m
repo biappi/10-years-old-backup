@@ -202,11 +202,11 @@
 		[speedLabel setNeedsDisplay];
 	}
 	
-	if(gpsManager.newLocation.horizontalAccuracy<20)
+	if(gpsManager.newLocation.horizontalAccuracy<30)
 	{
 		signal.image=[UIImage imageNamed:@"gps_green.png"];
 	}
-	else if(gpsManager.newLocation.horizontalAccuracy>20 && gpsManager.newLocation.horizontalAccuracy<100)
+	else if(gpsManager.newLocation.horizontalAccuracy>30 && gpsManager.newLocation.horizontalAccuracy<100)
 	{
 		signal.image=[UIImage imageNamed:@"gps_yellow.png"];
 	}
