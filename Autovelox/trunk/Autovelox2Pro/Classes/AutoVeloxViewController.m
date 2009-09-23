@@ -447,6 +447,14 @@
 		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[limit setNeedsDisplay];
 	}
+	else if(type==ECOPASS)
+	{
+		if(!ontop)
+			[self animationSlideOn];
+		tmp.tipo=@"Ecopass";
+		limit.image=[UIImage imageNamed:@"EcopassAlert.png"];
+		[limit setNeedsDisplay];
+	}
 	tmp.descr=descrizione;
 	[self setLimit];
 	[nDV removeFromSuperview];
