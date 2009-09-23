@@ -383,14 +383,20 @@
 	if(tAVD)
 	{
 		tAVD.alpha=1;
+		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
+		[limit setNeedsDisplay];
+		limitSpeed.text=@"";
 	}
-	nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-	limit.image=[UIImage imageNamed:@"arrow.png"];
-	limitSpeed.text=@"";
-	[av removeFromSuperview];
-	av=nil;
-	[av release];
-	[self.view addSubview:nDV];
+	else
+	{
+		nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
+		limit.image=[UIImage imageNamed:@"arrow.png"];
+		limitSpeed.text=@"";
+		[av removeFromSuperview];
+		av=nil;
+		[av release];
+		[self.view addSubview:nDV];
+	}
 	
 }
 
