@@ -202,6 +202,8 @@
 	int read=[u integerForKey:@"DBLoaded"];
 	if(read)
 		return;
+	
+	[self doTest];
 	CLLocationCoordinate2D userPosition=[map userLocation].coordinate;
 	NSNumber * latmax=[NSNumber numberWithDouble:( userPosition.latitude + (0.05))];
 	NSNumber * latmin=[NSNumber numberWithDouble:( userPosition.latitude - (0.05))];
@@ -439,10 +441,10 @@
 			else if(currDist<currentTutor.lastDistFromNext){
 				currentTutor.lastFarDistance=0;
 			}
-			/*if(currDist<1000)
+			if(currDist<400)
 			{
 				[autoView doSound];
-			}*/
+			}
 			if(currDist<40)
 			{
 				if([currentTutor.next.type intValue]==TUTOR_FINE)
@@ -518,7 +520,7 @@
 	{
 		currAlarmIndex++;
 		currAlarmIndex=currAlarmIndex%([alarmViews count]);
-		[autoView setAlarmView:((AlertView*)((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).alarmView)];
+		[autoView setAlarmView:((AlertView*)((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).alarmView) withLimit:[((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).autovelox.limit intValue] andType:[((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).autovelox.type intValue]];
 		double currDist=[manager.newLocation getDistanceFrom: ((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).loc];
 		[autoView updateDistance:(int) currDist];
 		NSLog(@"Setted distance from alarm to %f",currDist);
@@ -533,10 +535,17 @@
 			if(currDi<40)
 			{
 				[toRem addObject:a];
-				/*if([alarmViews indexOfObject:a]==currAlarmIndex)
+				if([alarmViews indexOfObject:a]==currAlarmIndex &&[alarmViews count]>1)
 				{
-					[autoView alertEnd];
-				}*/
+					//[autoView alertEnd];
+					//CHANGE THE ALARM THIS ONE IS GOING TO BE DISMISSED
+					currAlarmIndex=currAlarmIndex%([alarmViews count]);
+					[autoView setAlarmView:((AlertView*)((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).alarmView) withLimit:[((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).autovelox.limit intValue] andType:[((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).autovelox.type intValue]];
+					double currDist=[manager.newLocation getDistanceFrom: ((ControlledAutovelox*)[alarmViews objectAtIndex:currAlarmIndex]).loc];
+					[autoView updateDistance:(int) currDist];
+					NSLog(@"Setted distance from alarm to %f",currDist);					
+					
+				}
 				if([a.autovelox.type intValue]==TUTOR_INIZIO)
 				{
 					if(!inTutor)
@@ -909,6 +918,34 @@
 		//[[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0] bringSubviewToFront:[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1]];
 		//[self inspectView:map depth:0 path:@""];
 	}
+	-(void) doTest
+	{
+		Annotation * autoFisso= (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];
+		autoFisso.type=[NSNumber numberWithInt:AUTOVELOXFISSO];
+		autoFisso.title=@"FISSO";
+		autoFisso.subtitle=@"sottofisso";
+		autoFisso.limit=[NSNumber numberWithInt:50];
+		
+		Annotation * autoMobile= (Annotation *)[NSEntityDescription insertNewObjectForEntityForName:@"Annotation" inManagedObjectContext:managedObjectC];
+		autoMobile.type=[NSNumber numberWithInt:AUTOVELOXMOBILE];
+		autoMobile.title=@"Mobile";
+		autoMobile.subtitle=@"sottoTitolomob";
+		autoMobile.limit=[NSNumber numberWithInt:50];
+		
+	    UIAlertView * alarmAuto1;
+		UIAlertView * alarmAuto2;
+		UIAlertView * alarmTutor;
+		alarmAuto1=[self generateAlarm:autoFisso];
+		
+		alarmAuto2=[self generateAlarm:autoMobile];
+		[autoView setAlarmView:alarmAuto1 withLimit:50 andType:AUTOVELOXFISSO];
+
+		//[self performSelector:
+	}
+-(UIAlertView*) generateAlarm:(Annotation*) ann
+{
+	return [autoView alert:[ann.type intValue] withDistance:1000 andText:ann.subtitle andLimit:[ann.limit intValue]];
+}
 	-(void) updateAnnotationViews;
 	{
 		[map setRegion:map.region];

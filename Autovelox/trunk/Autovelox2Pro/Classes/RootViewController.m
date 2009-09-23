@@ -227,7 +227,7 @@
 	 annotation.type=[NSNumber numberWithInt:ECOPASS];
 	 annotation.latitude=[NSNumber numberWithDouble:pippo.latitude];
 	 annotation.longitude=[NSNumber numberWithDouble:pippo.longitude];
-	 annotation.limit=[NSNumber numberWithInt:-1];
+	 annotation.limit=[NSNumber numberWithInt:0];
 	 annotation.title=@"Ecopass";
 	 annotation.subtitle=[content objectAtIndex:2];	
 	 //NSLog(@"Parsing %d",c);
@@ -253,7 +253,7 @@
      annotation.type=[NSNumber numberWithInt:TUTOR_INIZIO];
 
 	 annotation.subtitle=[content objectAtIndex:3];	
-	 annotation.limit=[NSNumber numberWithInt:-1];
+	 annotation.limit=[NSNumber numberWithInt:0];
 	 annotation.index=[NSNumber numberWithInt:[[content objectAtIndex:4] intValue]];
 			 //NSLog(@"Parsing %d",c);
 	 }
@@ -275,7 +275,7 @@
 		annotation.title=@"Tutor Fine";
 		annotation.type=[NSNumber numberWithInt:TUTOR_FINE];
 		annotation.subtitle=[content objectAtIndex:3];	
-		annotation.limit=[NSNumber numberWithInt:-1];
+		annotation.limit=[NSNumber numberWithInt:0];
 		annotation.index=[NSNumber numberWithInt:-1];
 	}		
 	[parserM release];

@@ -41,6 +41,7 @@ static NaviCLLManager * defaultManager;
 	lman=[[CLLocationManager alloc] init];
 	lman.delegate=self;
 	gpsOn = NO;
+	return self;
 }
 
 - (void) startGp

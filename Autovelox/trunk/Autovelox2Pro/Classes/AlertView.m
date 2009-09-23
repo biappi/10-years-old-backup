@@ -77,7 +77,6 @@
 	
 	if(distance>=1000)
 	{
-		float d = distance/1000.0;
 		uniN.text=@"Km";
 	}
 	else

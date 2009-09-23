@@ -93,7 +93,7 @@
 /**
  usato per settare la view di allarme
  */
--(void)setAlarmView:(AlertView*)alv withLimit:(int)lim;
+-(void)setAlarmView:(AlertView*)alv withLimit:(int)lim andType:(AUTOVELOXTYPE)avt;
 
 /**
  invocato per segnalere la fine di un allarme
