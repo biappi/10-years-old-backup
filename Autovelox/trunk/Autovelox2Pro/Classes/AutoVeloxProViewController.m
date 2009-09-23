@@ -113,11 +113,10 @@
 	map.frame=CGRectMake(0, 170, 320, 270);
 	map.delegate=self;
 	CLLocationCoordinate2D pippo;
-	pippo.latitude=39.37821;
-	pippo.longitude=9.04000;
+	pippo.latitude=41.89201223640885;
+	pippo.longitude=12.48283953157314;
 	map.showsUserLocation=YES;
-	
-	[map setRegion:MKCoordinateRegionMake(pippo, MKCoordinateSpanMake(1.0, 1.0))];
+	[map setRegion:MKCoordinateRegionMake(pippo, MKCoordinateSpanMake(5.0, 5.0))];
 	self.view=map;
 	controlledAutoveloxs=[[NSMutableArray alloc] init];
 	[NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(controlNearAutovelox:) userInfo:nil repeats:YES];
@@ -528,10 +527,10 @@
 			if(currDi<40)
 			{
 				[toRem addObject:a];
-				if([alarmViews indexOfObject:a]==currAlarmIndex)
+				/*if([alarmViews indexOfObject:a]==currAlarmIndex)
 				{
 					[autoView alertEnd];
-				}
+				}*/
 				if([a.autovelox.type intValue]==TUTOR_INIZIO)
 				{
 					if(!inTutor)
@@ -556,10 +555,10 @@
 				if(currDi>a.lastDistance+10)
 				{
 					
-					if([alarmViews indexOfObject:a]==currAlarmIndex)
+					/*if([alarmViews indexOfObject:a]==currAlarmIndex)
 					{
 						[autoView alertEnd];
-					}
+					}*/
 					[toRem addObject:a];
 					NSLog(@"Removed alarm %@ distance increased",a.autovelox.subtitle);
 				
@@ -575,6 +574,10 @@
 #pragma mark REMOVE CLOSED ALARMS DONE
 #pragma mark REMOVE TUTOR ALARM IF NEW TUTOR OR IF OUTSIDE THE TUTOR
 			//SWITCH THE ALARMS CONTROL THE TUTOR
+		}
+		if([alarmViews count]==[toRem count])
+		{
+			[autoView alertEnd];
 		}
 		[alarmViews removeObjectsInArray:toRem];
 		[toRem release];
@@ -733,7 +736,7 @@
 		}
 		else if([tmp.type intValue]==ECOPASS)
 		{
-			view.image=[UIImage imageNamed:@"tutorFineSmall.png"];
+			view.image=[UIImage imageNamed:@"Ecopass40.png"];
 		}
 		
 		
