@@ -25,9 +25,9 @@
 		20753FD91049E93300F00662 /* Sicve_Inizio.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20753FD81049E93300F00662 /* Sicve_Inizio.csv */; };
 		20753FDB1049E94B00F00662 /* Sicve_Fine.csv in Resources */ = {isa = PBXBuildFile; fileRef = 20753FDA1049E94B00F00662 /* Sicve_Fine.csv */; };
 		20754078104A010500F00662 /* tutorFineSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 20754077104A010500F00662 /* tutorFineSmall.png */; };
-		20ABE77A10699EDE00C3DF2E /* Ecopass40.png in Resources */ = {isa = PBXBuildFile; fileRef = 20ABE77910699EDE00C3DF2E /* Ecopass40.png */; };
 		20ABE7B51069A72F00C3DF2E /* gps_green.png in Resources */ = {isa = PBXBuildFile; fileRef = 20ABE7B41069A72F00C3DF2E /* gps_green.png */; };
 		20ABE7E81069AB6800C3DF2E /* EcopassAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = 20ABE7E71069AB6800C3DF2E /* EcopassAlert.png */; };
+		20ABE7EA1069AC1D00C3DF2E /* Ecopass40.png in Resources */ = {isa = PBXBuildFile; fileRef = 20ABE7E91069AC1D00C3DF2E /* Ecopass40.png */; };
 		20ADED671020E703007622BD /* ControlledAutovelox.m in Sources */ = {isa = PBXBuildFile; fileRef = 20ADED661020E703007622BD /* ControlledAutovelox.m */; };
 		20B8F1451026764200FA4ED8 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 20B8F1441026764200FA4ED8 /* back.png */; };
 		20C3BB2E101CA40400D0971E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C3BB2D101CA40400D0971E /* CoreLocation.framework */; };
@@ -87,9 +87,9 @@
 		20753FD81049E93300F00662 /* Sicve_Inizio.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sicve_Inizio.csv; sourceTree = "<group>"; };
 		20753FDA1049E94B00F00662 /* Sicve_Fine.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sicve_Fine.csv; sourceTree = "<group>"; };
 		20754077104A010500F00662 /* tutorFineSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorFineSmall.png; sourceTree = "<group>"; };
-		20ABE77910699EDE00C3DF2E /* Ecopass40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Ecopass40.png; path = ../../../Ecopass40.png; sourceTree = SOURCE_ROOT; };
 		20ABE7B41069A72F00C3DF2E /* gps_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gps_green.png; sourceTree = "<group>"; };
 		20ABE7E71069AB6800C3DF2E /* EcopassAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EcopassAlert.png; sourceTree = "<group>"; };
+		20ABE7E91069AC1D00C3DF2E /* Ecopass40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ecopass40.png; sourceTree = "<group>"; };
 		20ADED651020E703007622BD /* ControlledAutovelox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlledAutovelox.h; sourceTree = "<group>"; };
 		20ADED661020E703007622BD /* ControlledAutovelox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ControlledAutovelox.m; sourceTree = "<group>"; };
 		20B8F1441026764200FA4ED8 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -224,8 +224,8 @@
 				3D2F16C91042F22E00C75FDF /* gps_red.png */,
 				20ABE7B41069A72F00C3DF2E /* gps_green.png */,
 				3D2F16CB1042F22E00C75FDF /* gps_yellow.png */,
+				20ABE7E91069AC1D00C3DF2E /* Ecopass40.png */,
 				206D57FD10266B73000D4AB3 /* autoVeloxMobile40.png */,
-				20ABE77910699EDE00C3DF2E /* Ecopass40.png */,
 				3D2F16BB1042E6E100C75FDF /* arrow.png */,
 				3D2F14D8104193CD00C75FDF /* divieto.png */,
 				2058867E102480E400B69A7A /* slideUp.png */,
@@ -415,9 +415,9 @@
 				204A8DDB104F1814008A56DB /* cameraTutor.png in Resources */,
 				3DB534BE10569DB9007A97CC /* tutorInizioSmall.png in Resources */,
 				20F1222E1067AC34000BE2A8 /* Ecopass.csv in Resources */,
-				20ABE77A10699EDE00C3DF2E /* Ecopass40.png in Resources */,
 				20ABE7B51069A72F00C3DF2E /* gps_green.png in Resources */,
 				20ABE7E81069AB6800C3DF2E /* EcopassAlert.png in Resources */,
+				20ABE7EA1069AC1D00C3DF2E /* Ecopass40.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

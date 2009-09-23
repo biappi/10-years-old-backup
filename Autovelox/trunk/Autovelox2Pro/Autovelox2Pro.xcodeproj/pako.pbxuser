@@ -990,6 +990,13 @@
 		rLen = 0;
 		rLoc = 9223372036854775807;
 	};
+	20ABE77910699EDE00C3DF2E /* Ecopass40.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = Ecopass40.png;
+		path = /Users/pako/Ecopass40.png;
+		sourceTree = "<absolute>";
+	};
 	20ABE77D10699F0900C3DF2E /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */;
@@ -1660,9 +1667,9 @@
 	};
 	20D81B7A101C506D00FD75A7 /* AutoVeloxProViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1916, 11609}}";
-			sepNavSelRange = "{20844, 0}";
-			sepNavVisRange = "{20303, 1394}";
+			sepNavIntBoundsRect = "{{0, 0}, {1503, 11531}}";
+			sepNavSelRange = "{23491, 0}";
+			sepNavVisRange = "{22136, 1382}";
 			sepNavWindowFrame = "{{50, 67}, {1230, 711}}";
 		};
 	};
@@ -1761,9 +1768,9 @@
 	};
 	20F1222D1067AC34000BE2A8 /* Ecopass.csv */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {899, 559}}";
+			sepNavIntBoundsRect = "{{0, 0}, {899, 585}}";
 			sepNavSelRange = "{499, 0}";
-			sepNavVisRange = "{0, 1514}";
+			sepNavVisRange = "{61, 2136}";
 		};
 	};
 	20F1223F1067AED1000BE2A8 /* PBXBookmark */ = {
