@@ -375,7 +375,7 @@
 	[array release];
 }
 
-- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error
+/*- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error
 {
 	static int count=0;
 	count++;
@@ -388,7 +388,7 @@
 		[a release];
 	}
 }
-
+*/
 
 -(CGPoint) latLongToMM:(CLLocationCoordinate2D)coordinate
 {
