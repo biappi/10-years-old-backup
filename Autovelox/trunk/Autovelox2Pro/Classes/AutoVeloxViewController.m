@@ -469,12 +469,12 @@
 
 -(AlertView*)alert:(AUTOVELOXTYPE)type withDistance:(int)distance andText:(NSString*)descrizione andLimit:(int) lim;
 {
+	[self doSound];
 	if(tAVD)
 	{
 		tAVD.alpha=0;
 	}
 	limitTutor=lim;
-	[self doSound];
 	AlertView * tmp=[[AlertView alloc]initWithFrame:CGRectMake(145, 0, 160, 160)];
 	if(type==TUTOR_INIZIO)
 	{

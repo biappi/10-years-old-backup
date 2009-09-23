@@ -63,9 +63,9 @@
 
 - (void)playButtonPressed;
 {
-	if (self._player.playing == YES)
+/*	if (self._player.playing == YES)
 		[self pausePlayback];
-	else
+	else*/
 		[self startPlayback];
 }
 
