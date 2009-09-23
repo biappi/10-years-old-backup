@@ -565,7 +565,7 @@
 	{
 		NSLog(@"called set distance %d",distance);
 		av.distance=distance;
-		[av setNeedsDisplay];
+		//[av setNeedsDisplay];
 	}
 	else{
 		NSLog(@"called set distance %d but the view was not allocated",distance);
@@ -577,7 +577,7 @@
 	if(nDV)
 	{
 		nDV.numberOfAutovelox=num;
-		[nDV setNeedsDisplay];
+		[nDV update];
 	}
 }
 
