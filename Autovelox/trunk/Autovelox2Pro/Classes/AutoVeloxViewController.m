@@ -426,6 +426,7 @@
 	else if(limitTutor==0)//tutoror ecopass management
 	{
 		//limit.image = [UIImage imageNamed:@"cameraTutor.png"];
+		limitSpeed.text=@"";
 	}
 }
 
