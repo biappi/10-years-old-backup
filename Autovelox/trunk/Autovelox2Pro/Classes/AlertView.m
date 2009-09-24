@@ -20,8 +20,9 @@
 		dist = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 185, 65)];
 		uniN = [[UILabel alloc] initWithFrame:CGRectMake(105, 48,150, 65)];
 		distN= [[UILabel alloc] initWithFrame:CGRectMake(35, 38,70, 65)];
-		type = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 185, 65)];
-		description=[[UILabel alloc]initWithFrame:CGRectMake(5, 93, 185, 65)];
+		//era 75 ma si sovrapponeva
+		type = [[UILabel alloc]initWithFrame:CGRectMake(0, 68, 185, 65)];
+		description=[[UILabel alloc]initWithFrame:CGRectMake(5, 102, 185, 60)];
 		[self addSubview:distN];
 		[self addSubview:type];
 		[self addSubview:description];
@@ -31,11 +32,11 @@
 		dist.backgroundColor=[UIColor clearColor];
 		[self addSubview:dist];
 		
-		UIFont * fo = [UIFont fontWithName:@"Arial" size:30.0];
+		UIFont * fo = [UIFont fontWithName:@"Arial" size:50.0];
 		distN.font = fo;
 		
 		distN.textAlignment=UITextAlignmentRight;
-		distN.textColor=[UIColor redColor];
+		distN.textColor=[UIColor whiteColor];
 		distN.backgroundColor=[UIColor clearColor];
 		
 		
@@ -69,8 +70,8 @@
 	distance=x;
 	if(distance>=1000)
 	{
-		float d = distance/1000.0;
-		distN.text=[NSString stringWithFormat:@"%f",d];
+		float d = ((float)distance)/1000.0;
+		distN.text=[NSString stringWithFormat:@"%1.1f",d];
 	}
 	else
 		distN.text=[NSString stringWithFormat:@"%d",distance];

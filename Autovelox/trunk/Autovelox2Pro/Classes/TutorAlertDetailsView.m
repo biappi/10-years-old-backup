@@ -89,7 +89,7 @@
 	}
 	else 
 	{
-		dis.text=[NSString stringWithFormat:@"%1.1f",(float)(distanzaFineTutor/1000)];
+		dis.text=[NSString stringWithFormat:@"%1.1f",(float)((float)distanzaFineTutor/1000)];
 		unitDis.text=[NSString stringWithFormat:@"Km"];
 	}
 	//rilascia
