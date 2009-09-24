@@ -419,6 +419,13 @@
 	{
 		gpsUpdated=NO;
 #pragma mark CONTROL AND UPDATE THE TUTOR
+		double angleCheck;
+		if([NaviCLLManager defaultCLLManager].newLocation.horizontalAccuracy<50 && [NaviCLLManager defaultCLLManager].newLocation.speed*3.6<50)
+			angleCheck=7.0;
+		else {
+			angleCheck=60.0;
+		}
+
 		if(inTutor)
 		{
 			
@@ -477,6 +484,7 @@
 					ControlledTutor * a=[[ControlledTutor alloc] initWithAnnotation:currentTutor.next];
 					if([arrayNext count]==0)
 					{
+						NSLog(@"NOT Found next control point searching for end");
 						predicString=[NSString stringWithFormat:@"(type==%d)",TUTOR_FINE];
 						toAppend=[NSString stringWithFormat:@" && (subtitle LIKE[cd] '%@') ",[currentTutor.autovelox subtitle]];
 						predicString=[predicString stringByAppendingString:toAppend];
@@ -487,12 +495,16 @@
 						NSArray *arrayNext = [[managedObjectC executeFetchRequest:request error:&err] retain];
 						if([arrayNext count])
 							a.next=[arrayNext objectAtIndex:0];
+						
 					}
 					else {
+						NSLog(@"Found next control point");
 						a.next=[arrayNext objectAtIndex:0];
 					}
 					//[controlledAutoveloxs addObject:a];
 					[currentTutor release];
+					a.lastDistFromNext=10000000;
+					a.lastFarDistance=0;
 					currentTutor=a;
 					
 					[autoView resetAvgSpeed];
@@ -644,9 +656,12 @@
 					}
 					
 					//MAKE SOME CHANGES HERE NOW SHOULD WORK BUT MUST BE TESTED
-					if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance && distFromNext<tut.lastDistFromNext && distFromPrev>=tut.lastDistFromPrev)
+					
+					if(checkAngle && (abs(manager.newLocation.course -angleDir)<angleCheck) && currDist<a.lastDistance && distFromNext<tut.lastDistFromNext && distFromPrev>=tut.lastDistFromPrev)
 					{
 						a.goodEuristicResults=a.goodEuristicResults+1;
+						tut.lastDistFromNext=distFromNext;
+						tut.lastDistFromPrev=distFromPrev;
 					}
 					else {
 						if(checkAngle && distFromNext!=tut.lastDistFromNext)
@@ -660,7 +675,7 @@
 				}
 				else{
 					
-					if(checkAngle && (abs(manager.newLocation.course -angleDir)<7) && currDist<a.lastDistance)
+					if(checkAngle && (((abs(manager.newLocation.course -angleDir)<angleCheck) && currDist<a.lastDistance)))
 					{
 						a.goodEuristicResults=a.goodEuristicResults+1;
 					}
@@ -670,7 +685,7 @@
 					}
 					a.lastDistance=currDist;
 				}
-				if(a.lastDistance<400 && a.goodEuristicResults>0)
+				if((a.lastDistance<600 && a.goodEuristicResults>0))
 				{
 #pragma mark THROW GPSGENERICALARM  GENERATE ECOPASS ALARM
 					[currentAlarms addObject:a];

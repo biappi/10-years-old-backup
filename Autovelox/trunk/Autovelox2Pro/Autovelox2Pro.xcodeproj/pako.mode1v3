@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>20BF8E96106A6F2600D06994</string>
+						<string>20BF8F09106B727C00D06994</string>
 						<key>history</key>
 						<array>
 							<string>20ABE81C1069CF1300C3DF2E</string>
@@ -270,6 +270,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -319,15 +321,14 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>19</integer>
-									<integer>17</integer>
+									<integer>24</integer>
 									<integer>16</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {298, 594}}</string>
+							<string>{{0, 12}, {298, 594}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -346,7 +347,7 @@
 							<real>298</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>-2 122 1280 653 0 0 1280 778 </string>
+						<string>4 125 1280 653 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -357,14 +358,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AutoVeloxProViewController.m</string>
+								<string>AutoVeloxViewController.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -372,11 +371,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AutoVeloxProViewController.m</string>
+										<string>AutoVeloxViewController.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>20BF8E95106A6F2600D06994</string>
+										<string>20BF8F08106B727C00D06994</string>
 										<key>history</key>
 										<array>
 											<string>20A07B76101C6459004994DC</string>
@@ -437,11 +436,6 @@
 											<string>20ABE7D51069AA0E00C3DF2E</string>
 											<string>20ABE7D61069AA0E00C3DF2E</string>
 											<string>20ABE7D71069AA0E00C3DF2E</string>
-											<string>20ABE7D81069AA0E00C3DF2E</string>
-											<string>20ABE7D91069AA0E00C3DF2E</string>
-											<string>20ABE7DB1069AA0E00C3DF2E</string>
-											<string>20ABE7DC1069AA0E00C3DF2E</string>
-											<string>20ABE7FB1069B22D00C3DF2E</string>
 											<string>20ABE7FC1069B22D00C3DF2E</string>
 											<string>20ABE7FD1069B22D00C3DF2E</string>
 											<string>20ABE7FE1069B22D00C3DF2E</string>
@@ -454,10 +448,15 @@
 											<string>20BF8DFB106A580D00D06994</string>
 											<string>20BF8E1A106A5B4000D06994</string>
 											<string>20BF8E4F106A642700D06994</string>
-											<string>20BF8E92106A6F2600D06994</string>
-											<string>20BF8E93106A6F2600D06994</string>
 											<string>20BF8E94106A6F2600D06994</string>
-											<string>20BF8E4E106A642700D06994</string>
+											<string>20BF8E9A106A7E1B00D06994</string>
+											<string>20BF8E9B106A7E1B00D06994</string>
+											<string>20BF8EE9106A8DDB00D06994</string>
+											<string>20BF8EEA106A8DDB00D06994</string>
+											<string>20BF8EEB106A8DDB00D06994</string>
+											<string>20BF8EEC106A8DDB00D06994</string>
+											<string>20BF8F06106B727C00D06994</string>
+											<string>20BF8F07106B727C00D06994</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -471,7 +470,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {960, 527}}</string>
 								<key>RubberWindowFrame</key>
-								<string>-2 122 1280 653 0 0 1280 778 </string>
+								<string>4 125 1280 653 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -491,7 +490,7 @@
 								<key>Frame</key>
 								<string>{{0, 532}, {960, 80}}</string>
 								<key>RubberWindowFrame</key>
-								<string>-2 122 1280 653 0 0 1280 778 </string>
+								<string>4 125 1280 653 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -665,7 +664,7 @@
 		<string>/Users/pako/Documents/AutoveloxTrunk/Autovelox2Pro/Autovelox2Pro.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>-2 122 1280 653 0 0 1280 778 </string>
+	<string>4 125 1280 653 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -899,21 +898,23 @@
 							<key>Dock</key>
 							<array>
 								<dict>
+									<key>BecomeActive</key>
+									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string></string>
+										<string>AutoVeloxViewController.m</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{0, 0}, {1280, 211}}</string>
+										<string>{{0, 0}, {1280, 491}}</string>
 										<key>RubberWindowFrame</key>
-										<string>3 67 1280 711 0 0 1280 778 </string>
+										<string>0 67 1280 711 0 0 1280 778 </string>
 									</dict>
 									<key>Module</key>
 									<string>PBXNavigatorGroup</string>
@@ -922,11 +923,9 @@
 								</dict>
 							</array>
 							<key>Proportion</key>
-							<string>211pt</string>
+							<string>491pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -937,14 +936,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 216}, {1280, 454}}</string>
+								<string>{{0, 496}, {1280, 174}}</string>
 								<key>RubberWindowFrame</key>
-								<string>3 67 1280 711 0 0 1280 778 </string>
+								<string>0 67 1280 711 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXProjectFindModule</string>
 							<key>Proportion</key>
-							<string>454pt</string>
+							<string>174pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -968,7 +967,7 @@
 				<string>1CD0528E0623707200166675</string>
 			</array>
 			<key>WindowString</key>
-			<string>3 67 1280 711 0 0 1280 778 </string>
+			<string>0 67 1280 711 0 0 1280 778 </string>
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>

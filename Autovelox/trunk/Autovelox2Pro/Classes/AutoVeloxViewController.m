@@ -196,18 +196,18 @@
 	
 	if(gpsManager.newLocation.speed!=speedNumber)
 	{
-		if(gpsManager.newLocation.speed>0)
+		//if(gpsManager.newLocation.speed>0)
 			speedNumber=gpsManager.newLocation.speed*3.6;
 		
 		speedLabel.text =[NSString stringWithFormat:@"%.0f",speedNumber];
 		[speedLabel setNeedsDisplay];
 	}
 	
-	if(gpsManager.newLocation.horizontalAccuracy<30)
+	if(gpsManager.newLocation.horizontalAccuracy<50)
 	{
 		signal.image=[UIImage imageNamed:@"gps_green.png"];
 	}
-	else if(gpsManager.newLocation.horizontalAccuracy>30 && gpsManager.newLocation.horizontalAccuracy<100)
+	else if(gpsManager.newLocation.horizontalAccuracy>50 && gpsManager.newLocation.horizontalAccuracy<100)
 	{
 		signal.image=[UIImage imageNamed:@"gps_yellow.png"];
 	}
@@ -385,6 +385,9 @@
 		tAVD.alpha=1;
 		limit.image=[UIImage imageNamed:@"cameraTutor.png"];
 		[limit setNeedsDisplay];
+		[av removeFromSuperview];
+		[av release];
+		av=nil;
 		limitSpeed.text=@"";
 	}
 	else
@@ -393,8 +396,8 @@
 		limit.image=[UIImage imageNamed:@"arrow.png"];
 		limitSpeed.text=@"";
 		[av removeFromSuperview];
-		av=nil;
 		[av release];
+		av=nil;
 		[self.view addSubview:nDV];
 	}
 	
@@ -565,6 +568,9 @@
 {
 	if(av)
 	{
+		[tAVD removeFromSuperview];
+		tAVD=nil;
+		[tAVD release];																																						
 		limit.frame=CGRectMake(32, 23, 75, 67);
 		limit.image=[UIImage imageNamed:@"divieto.png"];
 		[self setLimit];
@@ -581,8 +587,7 @@
 		[tAVD removeFromSuperview];
 		tAVD=nil;
 		[tAVD release];
-		nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];
-		
+		nDV = [[NormalDetailsView alloc] initWithFrame:CGRectMake(145, 0, 160, 160)];		
 		limit.image=[UIImage imageNamed:@"arrow.png"];
 		[limit setNeedsDisplay];
 		[self.view addSubview:nDV];
