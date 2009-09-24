@@ -28,7 +28,7 @@
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated: NO];		
 	NSMutableDictionary * defaults;	
 	defaults = [NSMutableDictionary dictionary];
-	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"DBLoaded"   ];
+	[defaults setObject:[NSNumber numberWithInt:0] forKey:@"DBLoaded"   ];
 	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"Fissi"];
 	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"Mobili"];
 	[defaults setObject:[NSNumber numberWithInt:1] forKey:@"Tutor"];
@@ -147,8 +147,8 @@
 		return persistentStoreCoordinator;
     }
 	NSUserDefaults *u = [NSUserDefaults standardUserDefaults];
-	int loadDb=[u integerForKey:@"DBLoaded"];
-	NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"Autovelox2Pro.sqlite"]];
+	int loadDb=0;
+	NSURL *storeUrl = [NSURL fileURLWithPath: [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: @"Autovelox2Pro.sqlite"]];
 	if(loadDb!=0)
 	{
 		if(	[[NSFileManager defaultManager] fileExistsAtPath:[storeUrl path]])

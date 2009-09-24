@@ -134,6 +134,7 @@
 	//[[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1] addSubview:tmp];
 	//tmp.center=[map convertPoint:CGPointMake(100, 100) toView:[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1]];
 	//overlay=[((UIView*)[((UIView*)[map.subviews objectAtIndex:0]).subviews objectAtIndex:0]).subviews objectAtIndex:1];
+
 }
 -(void) centerMap
 {
@@ -166,6 +167,8 @@
 }
 -(void) center;
 {
+	[self doTest];
+
 	if(!centered)
 	{
 		centered=YES;
@@ -951,14 +954,14 @@
 		UIAlertView * alarmAuto2;
 		UIAlertView * alarmTutor;
 		alarmAuto1=[self generateAlarm:autoFisso];
-		
+		//sleep(2);
 		alarmAuto2=[self generateAlarm:autoMobile];
 		[autoView setAlarmView:alarmAuto1 withLimit:50 andType:AUTOVELOXFISSO];
 		//[autoView alertTutorBegan];
 		[autoView alertEnd];
 		[autoView alertTutorBegan];
-		[self generateAlarm:autoFisso];
-		[autoView alertTutorEnd];
+		//[self generateAlarm:autoFisso];
+		//[autoView alertTutorEnd];
 		//[self performSelector:
 	}
 -(UIAlertView*) generateAlarm:(Annotation*) ann
